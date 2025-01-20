@@ -4,7 +4,7 @@ import json
 
 #F = Fungustober's notes
 
-def generateHTML(codes):
+def generateHTML(codes, username):
 	output_html_file = "search.html"
 
 	# Start creating the HTML file content
@@ -221,7 +221,7 @@ def generateHTML(codes):
 	'''
 
 	with open(os.path.join('resources', 'snippets', 'header.txt'), encoding='utf-8-sig') as f:
-		snippet = f.read()
+		snippet = f.read().replace('USERNAME', username)
 		html_content += snippet
 
 	html_content += '''

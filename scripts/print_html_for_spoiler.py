@@ -4,7 +4,7 @@ import json
 
 #F = Fungustober's notes
 
-def generateHTML(setCode, setCodes):
+def generateHTML(setCode, setCodes, username):
 	#F: Copy the set codes over into a new variable
 	codes = setCodes.copy()
 	#F: this is SET-spoiler.html, the file that this outputs to
@@ -199,7 +199,7 @@ def generateHTML(setCode, setCodes):
 
 	#F: goes to resources/snippets/header.txt and gets a header, inserting it after everything so far
 	with open(os.path.join('resources', 'snippets', 'header.txt'), encoding='utf-8-sig') as f:
-		snippet = f.read()
+		snippet = f.read().replace('USERNAME', username)
 		html_content += snippet
 
 	html_content += '''

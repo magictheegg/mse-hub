@@ -1,7 +1,8 @@
 import os
 import sys
+import json
 
-def generateHTML(codes):
+def generateHTML(codes, username):
 	output_html_file = "all-sets.html"
 
 	# Start creating the HTML file content
@@ -77,7 +78,7 @@ def generateHTML(codes):
 		'''
 
 	with open(os.path.join('resources', 'snippets', 'header.txt'), encoding='utf-8-sig') as f:
-		snippet = f.read()
+		snippet = f.read().replace('USERNAME', username)
 		html_content += snippet
 
 	html_content += '''
@@ -90,9 +91,15 @@ def generateHTML(codes):
 		</div>
 	'''
 
+	#CGS: Requires set names in all-sets.json
+	sets = []
 	for code in codes:
 		with open(os.path.join('sets', code + '-files', code + '-fullname.txt'), encoding='utf-8-sig') as f:
 			set_name = f.read()
+		set_obj = {}
+		set_obj['code'] = code
+		set_obj['name'] = set_name
+		sets.append(set_obj)
 		html_content += '''
 		<a href="/sets/''' + code + '''" class="set-row"> 
 			<img src="/sets/''' + code + '''-files/icon.png">
@@ -101,6 +108,8 @@ def generateHTML(codes):
 			<div>''' + str(len(os.listdir(os.path.join('cards', code))) // 2) + '''</div>
 		</a>
 		'''
+	with open(os.path.join('lists', 'all-sets.json'), 'w', encoding='utf-8-sig') as f:
+		json.dump(sets, f)
 
 	html_content += '''
 		</div>

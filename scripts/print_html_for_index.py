@@ -2,7 +2,7 @@ import os
 import sys
 import json
 
-def generateHTML(set_codes):
+def generateHTML(set_codes, username):
 	output_html_file = "index.html"
 
 	# Start creating the HTML file content
@@ -100,7 +100,7 @@ def generateHTML(set_codes):
 	.button-grid {
 		display: grid;
 		margin: auto;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: repeat(3, 1fr);
 		gap: 20px;
 		padding-top: 10px;
 		padding-bottom: 20px;
@@ -205,6 +205,7 @@ def generateHTML(set_codes):
 			<div class="button-grid">
 				<button onclick="goToSets()"><img src="/img/sets.png" class="btn-img">All Sets</button>
 				<button onclick="randomCard()"><img src="/img/random.png" class="btn-img">Random Card</button>
+				<button onclick="playOnCgs()"><img src="/img/cgs.png" class="btn-img">Play on CGS</button>
 			</div>
 			<div class="two-part-grid">
 				<div class="container" id="preview-container">
@@ -372,6 +373,10 @@ def generateHTML(set_codes):
 
 			function goToSets() {
 				window.location = ("/all-sets");
+			}
+
+			function playOnCgs() {
+				window.open("https://cgs.gg/?url=https%3A%2F%2F''' + username + '''.github.io%2Fcgs.json", '_blank').focus();
 			}
 
 			function search() {

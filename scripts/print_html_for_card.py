@@ -4,7 +4,7 @@ import json
 
 #F = Fungustober's notes
 
-def generateHTML(card):
+def generateHTML(card, username):
 	code = card['set']
 	card_name = card['card_name']
 	card_name_cleaned = card_name
@@ -180,7 +180,7 @@ def generateHTML(card):
 	'''
 
 	with open(os.path.join('resources', 'snippets', 'header.txt'), encoding='utf-8-sig') as f:
-		snippet = f.read()
+		snippet = f.read().replace('USERNAME', username)
 		html_content += snippet
 
 	html_content += '''

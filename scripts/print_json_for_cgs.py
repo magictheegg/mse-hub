@@ -130,7 +130,7 @@ def generateJSON():
 	cgs["gameDefaultCardAction"] = "tap"
 	cgs["gameStartHandCount"] = 7
 	cgs["gameStartPointsCount"] = 20
-	cgs["name"] = "MSE HUB " + username
+	cgs["name"] = username
 	cgs["rulesUrl"] = f"https://{domain}/"
 	cgs["setCodeIdentifier"] = "set_code"
 	cgs["setDataIdentifier"] = "sets"

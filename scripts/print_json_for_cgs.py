@@ -1,17 +1,21 @@
 import json
+import os
 
-def generateJSON(username):
+def generateJSON():
 	output_json_file = "cgs.json"
 	cgs = {}
 
-	cgs["allCardsUrl"] = f"https://{username}.github.io/lists/all-cards.json"
-	cgs["allSetsUrl"] = f"https://{username}.github.io/lists/all-sets.json"
-	cgs["autoUpdateUrl"] = f"https://{username}.github.io/cgs.json"
-	cgs["bannerImageUrl"] = f"https://{username}.github.io/img/banner.png"
-	cgs["cardBackImageUrl"] = f"https://{username}.github.io/img/card_back.png"
+	domain = os.path.basename(os.getcwd())
+	username = domain.split(".")[0]
+
+	cgs["allCardsUrl"] = f"https://{domain}/lists/all-cards.json"
+	cgs["allSetsUrl"] = f"https://{domain}/lists/all-sets.json"
+	cgs["autoUpdateUrl"] = f"https://{domain}/cgs.json"
+	cgs["bannerImageUrl"] = f"https://{domain}/img/banner.png"
+	cgs["cardBackImageUrl"] = f"https://{domain}/img/card_back.png"
 	cgs["cardDataIdentifier"] = "cards"
 	cgs["cardIdIdentifier"] = "card_id"
-	cgs["cardImageUrl"] = f"https://{username}.github.io"+"{image_path}"
+	cgs["cardImageUrl"] = f"https://{domain}"+"{image_path}"
 	cgs["cardNameIdentifier"] = "card_name"
 	cgs["cardSetIdentifier"] = "set"
 	cgs["cardPrimaryProperty"] = "rules_text"
@@ -126,8 +130,11 @@ def generateJSON(username):
 	cgs["gameDefaultCardAction"] = "tap"
 	cgs["gameStartHandCount"] = 7
 	cgs["gameStartPointsCount"] = 20
-	cgs["name"] = username
-	cgs["rulesUrl"] = f"https://{username}.github.io/"
+	cgs["name"] = username + "'s MSE HUB"
+	cgs["rulesUrl"] = f"https://{domain}/"
+	cgs["setCodeIdentifier"] = "set_code"
+	cgs["setDataIdentifier"] = "sets"
+	cgs["setNameIdentifier"] = "set_name"
 
 	# Write the JSON content to the output JSON file
 	with open(output_json_file, 'w', encoding='utf-8-sig') as file:

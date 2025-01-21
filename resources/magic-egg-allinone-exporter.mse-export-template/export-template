@@ -36,6 +36,11 @@ option field:
 
 option field:
 	type: text
+	name: formats
+	descripton: formats in which this set is included
+
+option field:
+	type: text
 	name: optional suffix
 	description: suffix for name-to-image matching in Cockatrice; if you don't know, leave this blank
 
@@ -272,11 +277,11 @@ script:
 	}
 
 	##italics & bold processing
-	italics_tag_break := break_text@(match:"<i.*?>.*?i.*?>")
-	italics_tag_split := split_text@(match:"<i.*?>.*?i.*?>")
+	italics_tag_break := break_text@(match:"<i(-auto)?>.*?</i(-auto)?>")
+	italics_tag_split := split_text@(match:"<i(-auto)?>.*?</i(-auto)?>")
 	
-	bold_tag_break := break_text@(match:"<b.*?>.*?b.*?>")
-	bold_tag_split := split_text@(match:"<b.*?>.*?b.*?>")
+	bold_tag_break := break_text@(match:"<b>.*?</b>")
+	bold_tag_split := split_text@(match:"<b>.*?</b>")
 
 	replace_it := {
 		temp := "[i]" + input + "[/i]"
@@ -308,18 +313,21 @@ script:
 	
 	proc_text := { escape_linebreaks(to_text(convert_style(convert_rules_symbols(input)))) }
 
-	##Slightly more advanced CI function to let the exporter detect land types
+	##Slightly more advanced CI functions to let the exporter detect land types
+	get_land_type_CI := {
+		# and !contains(color_identity_statistic(), match:"W")
+		# Egg: fixing this on the code side for now
+		(if contains(card.type, match:"Plains") then "W" else "")
+		+ (if contains(card.type, match:"Island") then "U" else "")
+		+ (if contains(card.type, match:"Swamp") then "B" else "")
+		+ (if contains(card.type, match:"Mountain") then "R" else "")
+		+ (if contains(card.type, match:"Forest") then "G" else "")
+	}
+
 	get_color_identity := {
-		if contains(card.type, match:"Land") then (
-			temp := color_identity_statistic()
-			if contains(card.type, match:"Plains") == true and contains(temp, match:"W") == false then temp := replace(temp, match:"C", replace:"") + "W"
-			if contains(card.type, match:"Island") == true and contains(temp, match:"U") == false then temp := replace(temp, match:"C", replace:"") + "U"
-			if contains(card.type, match:"Swamp") == true and contains(temp, match:"B") == false then temp := replace(temp, match:"C", replace:"") + "B"
-			if contains(card.type, match:"Mountain") == true and contains(temp, match:"R") == false then temp := replace(temp, match:"C", replace:"") + "R"
-			if contains(card.type, match:"Forest") == true and contains(temp, match:"G") == false then temp := replace(temp, match:"C", replace:"") + "G"
-			)
-		else
-			color_identity_statistic()
+		if color_identity_statistic() == "C" and contains(card.type, match:"Land") and get_land_type_CI() != "" then get_land_type_CI()
+		else if contains(card.type, match:"Land") and get_land_type_CI() != "" then color_identity_statistic() + get_land_type_CI()
+		else color_identity_statistic()
 	}
 
 	##Shape function to deal with all the non-standard shapes
@@ -328,9 +336,6 @@ script:
 			"token"
 		else card.shape
 	}
-
-	#TO DO:
-	#Add set info to the beginning of the json string
 
 	write_card := {
 		##opening bracket, name, and color
@@ -372,7 +377,7 @@ script:
 			else ""
 		)
 		##notes
-		+"\"notes\":\"{card.notes}\"},"
+		+"\"notes\":\"{proc_text(card.notes)}\"},"
 	}
 	
 	write_cards := for each card in cards do write_card()
@@ -454,14 +459,12 @@ script:
 	}
 
 
-	write_main_file := "\{\"cards\":[" + remove_final_comma(write_cards) + "]\}"
+	write_main_file := "\{\"name\": \"" + set.title + "\", \"formats\": \"" + options.formats + "\", \"trimmed\": \"n\", \"cards\":[" + remove_final_comma(write_cards) + "]\}"
 	write_text_file(file: set.set_code + ".json", to_text(write_main_file))
 
 	write_draft_cards := for each card in cards do write_draft_card()
 	write_booster := write_draft_header() + write_draft_cards + write_draft_footer() + write_booster_contents()
 	write_draft_file := if options.export_draft_file == "yes" then write_text_file(file: set.set_code + "-draft.txt", to_text(write_booster))
-	write_text_file(file: set.set_code + "-fullname.txt", to_text(set.title))
-	write_text_file(file: set.set_code + "-trimmed.txt", to_text("false"))
 
 	write_image_file({symbol_variation(symbol: set.symbol, variation: "rare")}(), file: "icon.png", width: 512, height: 512)
 	write_image_file({symbol_variation(symbol: set.symbol, variation: "rare")}(), file: "logo.png", width: 320, height: 320)

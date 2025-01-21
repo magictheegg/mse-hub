@@ -11,7 +11,7 @@ function compareFunction(a, b) {
 				return -1;
 			}
 			
-			if (sortMode == 'set-num')
+			if (sortMode == 'set-code')
 			{
 				if (a.set === b.set)
 				{
@@ -40,10 +40,9 @@ function compareFunction(a, b) {
 			if (sortMode == 'mv')
 			{
 				//since cost is now formatted like {1}{U} instead of 1U, we need to remove the brackets from the string first
-				a_cost = a.cost.replaceAll('{', '').replaceAll('}','');
-				b_cost = b.cost.replaceAll('{', '').replaceAll('}','');
-				a_mv = isDecimal(a_cost.charAt(0)) ? parseInt(a_cost) + a_cost.replaceAll('x','').length - 1 : a_cost.replaceAll('x','').length;
-				b_mv = isDecimal(b_cost.charAt(0)) ? parseInt(b_cost) + b_cost.replaceAll('x','').length - 1 : b_cost.replaceAll('x','').length;
+				//CE: undoing this because we're counting { chars for MV
+				a_mv = isDecimal(a.cost.charAt(1)) ? parseInt(a.cost.substring(1, a.cost.indexOf('}'))) + a.cost.replaceAll('x','').split('{').length - 2 : a.cost.replaceAll('x','').split('{').length - 1;
+				b_mv = isDecimal(b.cost.charAt(1)) ? parseInt(b.cost.substring(1, b.cost.indexOf('}'))) + b.cost.replaceAll('x','').split('{').length - 2 : b.cost.replaceAll('x','').split('{').length - 1;
 				if (a_mv === b_mv)
 				{
 					if (a.card_name === b.card_name)

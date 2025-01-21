@@ -2,7 +2,7 @@ import os
 import sys
 import json
 
-def generateHTML(codes, username):
+def generateHTML():
 	output_html_file = "all-sets.html"
 
 	# Start creating the HTML file content
@@ -15,8 +15,12 @@ def generateHTML(codes, username):
 	</head>
 	<style>
 		@font-face {
-		  font-family: Beleren;
-		  src: url('/resources/beleren.ttf');
+			font-family: 'Beleren Small Caps';
+			src: url('/resources/beleren-caps.ttf');
+		}
+		@font-face {
+			font-family: Beleren;
+			src: url('/resources/beleren.ttf');
 		}
 		body {
 			font-family: 'Helvetica', 'Arial', sans-serif;
@@ -24,6 +28,7 @@ def generateHTML(codes, username):
 			margin: 0px;
 			background-color: #f3f3f3;
 			font-size: 20px;
+			padding-bottom: 30px;
 		}
 		a {
 			text-decoration: none;
@@ -34,8 +39,7 @@ def generateHTML(codes, username):
 			max-width: 1000px;
 			display: grid;
 			grid-template-columns: 1fr;
-			padding-top: 50px;
-			padding-bottom: 40px;
+			padding-top: 20px;
 			margin: auto;
 		}
 		.set-header-row {
@@ -73,46 +77,66 @@ def generateHTML(codes, username):
 			letter-spacing: .02em;
 			font-size: 22px;
 		}
+		.set-group {
+			font-family: Beleren Small Caps;
+			text-align: center;
+			font-size: 40px;
+			padding-top: 20px;
+		}
 	</style>
 	<body>
 		'''
 
 	with open(os.path.join('resources', 'snippets', 'header.txt'), encoding='utf-8-sig') as f:
-		snippet = f.read().replace('USERNAME', username)
+		snippet = f.read().replace('domain', os.path.basename(os.getcwd()))
 		html_content += snippet
 
-	html_content += '''
-		<div class="set-table">
-		<div class="set-header-row">
-			<div></div> <!-- empty div for spacing -->
-			<div>NAME</div>
-			<div>CODE</div>
-			<div>CARDS</div>
-		</div>
-	'''
+	with open(os.path.join('lists', 'set-order.json'), encoding='utf-8-sig') as j:
+		so_json = json.load(j)
 
-	#CGS: Requires set names in all-sets.json
-	sets = []
-	for code in codes:
-		with open(os.path.join('sets', code + '-files', code + '-fullname.txt'), encoding='utf-8-sig') as f:
-			set_name = f.read()
-		set_obj = {}
-		set_obj['code'] = code
-		set_obj['name'] = set_name
-		sets.append(set_obj)
-		html_content += '''
-		<a href="/sets/''' + code + '''" class="set-row"> 
-			<img src="/sets/''' + code + '''-files/icon.png">
-			<div class="set-title">''' + set_name + '''</div>
-			<div>''' + code + '''</div>
-			<div>''' + str(len(os.listdir(os.path.join('cards', code))) // 2) + '''</div>
-		</a>
+	for key in so_json:
+		html_content += '''			<div class="set-group">''' + key + '''</div>
 		'''
-	with open(os.path.join('lists', 'all-sets.json'), 'w', encoding='utf-8-sig') as f:
-		json.dump(sets, f)
+
+		html_content += '''
+			<div class="set-table">
+			<div class="set-header-row">
+				<div></div> <!-- empty div for spacing -->
+				<div>NAME</div>
+				<div>CODE</div>
+				<div>CARDS</div>
+			</div>
+		'''
+
+		set_codes = so_json[key]
+		for code in set_codes:
+			with open(os.path.join('lists', 'all-sets.json'), encoding='utf-8-sig') as f:
+				data = json.load(f)
+				for s in data['sets']:
+					if s['set_code'] == code:
+						set_name = s['set_name']
+						break
+
+			with open(os.path.join('sets', code + '-files', code + '.json'), encoding='utf-8-sig') as f:
+				data = json.load(f)
+				set_count = 0
+				for entry in data['cards']:
+					if 'token' not in entry['shape'] and 'Basic' not in entry['type']:
+						set_count += 1
+
+			html_content += '''
+			<a href="/sets/''' + code + '''" class="set-row"> 
+				<img src="/sets/''' + code + '''-files/icon.png">
+				<div class="set-title">''' + set_name + '''</div>
+				<div>''' + code + '''</div>
+				<div>''' + str(set_count) + '''</div>
+			</a>
+			'''
+
+		html_content += '''</div>
+		'''
 
 	html_content += '''
-		</div>
 	<script>
 		let card_list_arrayified = [];
 		let specialchars = "";

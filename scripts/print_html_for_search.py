@@ -4,7 +4,7 @@ import json
 
 #F = Fungustober's notes
 
-def generateHTML(codes, username):
+def generateHTML(codes):
 	output_html_file = "search.html"
 
 	# Start creating the HTML file content
@@ -189,24 +189,17 @@ def generateHTML(codes, username):
 		cursor: pointer;
 		border: none;
 		position: absolute;
-		top: 6.5%;
-		left: 8.5%;
-		transform: translate(-50%, -85%);
 		border-radius: 0px;
 		box-shadow: none;
+		left: 50%;
+		top: 48%;
+		transform: translate(-50%, -50%);
+		opacity: 0.5;
 	}
 	.img-container .btn:hover {
 		background: url('img/flip-hover.png') no-repeat;
 		background-size: contain;
 		background-position: center;
-		width: 15%;
-		height: 11%;
-		cursor: pointer;
-		border: none;
-		position: absolute;
-		top: 6.5%;
-		left: 8.5%;
-		transform: translate(-50%, -85%);
 	}
 	.img-container .hidden-text {
 		position: absolute;
@@ -221,7 +214,7 @@ def generateHTML(codes, username):
 	'''
 
 	with open(os.path.join('resources', 'snippets', 'header.txt'), encoding='utf-8-sig') as f:
-		snippet = f.read().replace('USERNAME', username)
+		snippet = f.read().replace('domain', os.path.basename(os.getcwd()))
 		html_content += snippet
 
 	html_content += '''
@@ -253,6 +246,7 @@ def generateHTML(codes, username):
 		let search_results = [];
 		let card_list_arrayified = [];
 		let specialchars = "";
+		let sets_json = {};
 
 		document.addEventListener("DOMContentLoaded", async function () {
 			'''
@@ -262,6 +256,15 @@ def generateHTML(codes, username):
 		html_content += snippet
 
 	html_content += '''
+
+			await fetch('/lists/all-sets.json')
+					.then(response => response.json())
+					.then(data => {
+						sets_json = data; 
+				}).catch(error => console.error('Error:', error));
+
+			card_list_arrayified = card_list.cards;
+
 			if (sessionStorage.getItem("display") != "cards-only")
 			{
 				cardGrid = document.getElementById("grid");
@@ -455,7 +458,7 @@ def generateHTML(codes, username):
 		{
 			for (const li of list)
 			{
-				if (li[0] == card.card_name && li[3] == card.type)
+				if (li.card_name == card.card_name && li.type == card.type)
 				{
 					return true;
 				}
@@ -464,436 +467,11 @@ def generateHTML(codes, username):
 			return false;
 		}
 
-		function tokenizeTerms(searchTerms)
-		{
-			let searchTokens = [];
-			let key = 0;
-			let inParens = false;
-			let inQuotes = false;
-			for (let i = 0; i < searchTerms.length; i++)
-			{
-				if (searchTerms.charAt(i) == '(')
-				{
-					inParens = true;
-				}
-				if (searchTerms.charAt(i) == ')')
-				{
-					inParens = false;
-				}
-				if (!inParens && !inQuotes && (searchTerms.charAt(i) == '"' || searchTerms.charAt(i) == '“' || searchTerms.charAt(i) == '/'))
-				{
-					inQuotes = true;
-				}
-				else if (!inParens && inQuotes && (searchTerms.charAt(i) == '"' || searchTerms.charAt(i) == '”' || searchTerms.charAt(i) == '/'))
-				{
-					inQuotes = false;
-				}
-				if (searchTerms.charAt(i) == ' ' && !inParens && !inQuotes)
-				{
-					searchTokens.push(searchTerms.substring(key, i));
-					key = i + 1;
-				}
-				if (i == searchTerms.length - 1)
-				{
-					searchTokens.push(searchTerms.substring(key));
-				}
-			}
-
-			return searchTokens;
-		}
-
-		function searchAllTokens(card, tokens)
-		{
-			if (tokens.length < 1)
-			{
-				return true;
-			}
-			for (let i = 0; i < tokens.length; i++)
-			{
-				if (tokens[i].charAt(0) == '*')
-				{
-					return searchAllTokens(card, tokens.slice(0, i)) && searchAllTokens(card, tokens.slice(i + 1));
-				}
-				if (tokens[i] == "or")
-				{
-					return searchAllTokens(card, tokens.slice(0, i)) || searchAllTokens(card, tokens.slice(i + 1));
-				}
-			}
-
-			for (let token of tokens)
-			{
-				if (token.charAt(0) == '-')
-				{
-					return !searchToken(card, token.substring(1)) && (tokens.length == 1 ? true : searchAllTokens(card, tokens.slice(1)));
-				}
-				if (token.charAt(0) == '(')
-				{
-					return searchAllTokens(card, tokenizeTerms(token.substring(1, token.length - 1))) && (tokens.length == 1 ? true : searchAllTokens(card, tokens.slice(1)));
-				}
-				else
-				{
-					return searchToken(card, token) && (tokens.length == 1 ? true : searchAllTokens(card, tokens.slice(1)));
-				}
-			}
-		}
-
-		function searchToken(card, token)
-		{
-			let card_stats = [];
-
-			for (var key in card)
-			{
-				if (isNaN(card[key]))
-				{
-					card_stats[key] = card[key].toLowerCase();
-				}
-				else
-				{
-					card_stats[key] = card[key];
-				}
-			}
-
-			let card_name = card_stats.card_name;
-			let card_color = card_stats.color != "" ? card_stats.color : "c";
-			let card_rarity = card_stats.rarity;
-			let card_type = card_stats.type;
-			// 4: collector number
-			let card_ci = card_stats.color_identity;
-			let card_cost = card_stats.cost;
-			let card_mv = (isDecimal(card_cost.charAt(0)) ? parseInt(card_cost) + card_cost.replaceAll('x','').length - 1 : card_cost.replaceAll('x','').length) - ((card_cost.split('/').length - 1) * 2);
-			//Strip out the lingering [i][/i] and [b][/b] tags while we're searching just in case someone decided to bold something in the
-			//middle of their rules text for some reason
-			let card_oracle_text = card_stats.rules_text != "" ? card_stats.rules_text.replace(/\[(\/)?([ib])\]/g, "") : card_stats.special_text.replace(/\[(\/)?([ib])\]/g, "");
-			let card_power = card_stats.pt.substring(0,card_stats.pt.indexOf('/'));
-			let card_toughness = card_stats.pt.substring(card_stats.pt.indexOf('/')+1);
-			let card_shape = card_stats.shape;
-			let card_set = card_stats.set;
-			let card_loyalty = card_stats.loyalty;
-			let card_notes = card_stats.notes;
-			let card_color_2 = "";
-			let card_cost_2 = "";
-			let card_power_2 = "";
-			let card_toughness_2 = "";
-			let card_loyalty_2 = ""
-
-			// two cards in one
-			if (card_shape.includes("adventure") || card_shape.includes("double") || card_shape.includes("spli"))
-			{
-				card_name = card_name + "	" + card_stats.card_name2;
-				card_type = card_type + "	" + card_stats.type2;
-				card_oracle_text = card_oracle_text + "	" + (card_stats.rules_text2 != "" ? card_stats.rules_text2.replace(/\[(\/)?([ib])\]/g, "") : card_stats.special_text2.replace(/\[(\/)?([ib])\]/g, ""));
-				card_color_2 = card_stats.color2 != "" ? card_stats.color2 : "c";
-				card_cost_2 = card_stats.cost2;
-				card_power_2 = card_stats.pt2.substring(0,card_stats.pt2.indexOf('/'));
-				card_toughness_2 = card_stats.pt.substring(card_stats.pt.indexOf('/')+1);
-				card_loyalty_2 = card_stats.loyalty2;
-			}
-
-			token = token.replaceAll("~", card_name).replaceAll("cardname", card_name).replaceAll('"','').replaceAll('/','').replaceAll('“','').replaceAll('”','');
-
-			const modifierRegex = /[!:<>=]/;
-			const match = token.search(modifierRegex);
-
-			if (match > -1)
-			{
-				const term = token.substring(0, match);
-				const modifier = token.charAt(match);
-				let check = token.substring(match + 1);
-
-				// availableTokens = ["mv", "c", "ci", "t", "o", "pow", "tou", "r", "is"]
-
-				/* template
-				if (term == "mv")
-				{
-					if (modifier == "!" || modifier == "=")
-					{
-
-					}
-					else if (modifier == ":")
-					{
-
-					}
-					else if (modifier == "<")
-					{
-
-					}
-					else if (modifier == ">")
-					{
-
-					}
-				} */
-				if (term == "mv")
-				{
-					if (modifier == "!" || modifier == "=")
-					{
-						return (card_mv == check);
-					}
-					else if (modifier == ":")
-					{
-						return (card_mv == check);
-					}
-					else if (modifier == "<")
-					{
-						return (card_mv < check);
-					}
-					else if (modifier == ">")
-					{
-						return (card_mv > check);
-					}
-				}
-				if (term == "c" || term == "color")
-				{
-					if (modifier == "!" || modifier == "=")
-					{
-						if (!isNaN(check))
-						{
-							return card_color.length == parseInt(check);
-						}
-						return (card_color.split("").sort().join("") == check.split("").sort().join(""));
-					}
-					else if (modifier == ":")
-					{
-						if (!isNaN(check))
-						{
-							return card_color.length == parseInt(check);
-						}
-						return hasAllChars(card_color, check);
-					}
-					else if (modifier == "<")
-					{
-						if (!isNaN(check))
-						{
-							return card_color.length < parseInt(check);
-						}
-						return hasNoChars(card_color, check);
-					}
-					else if (modifier == ">")
-					{
-						if (!isNaN(check))
-						{
-							return card_color.length > parseInt(check);
-						}
-						return hasAllAndMoreChars(card_color, check);
-					}
-				}
-				if (term == "ci")
-				{
-					if (modifier == "!" || modifier == "=")
-					{
-						// why is this the best way to do this?
-						if (!isNaN(check))
-						{
-							return card_ci.length == parseInt(check);
-						}
-						return (card_ci.split("").sort().join("") == check.split("").sort().join(""));
-					}
-					else if (modifier == ":")
-					{
-						if (!isNaN(check))
-						{
-							return card_ci.length == parseInt(check);
-						}
-						return hasAllChars(card_ci, check);
-					}
-					else if (modifier == "<")
-					{
-						if (!isNaN(check))
-						{
-							return card_ci.length < parseInt(check);
-						}
-						return hasNoChars(card_ci, check);
-					}
-					else if (modifier == ">")
-					{
-
-						if (!isNaN(check))
-						{
-							return card_ci.length > parseInt(check);
-						}
-						return hasAllAndMoreChars(card_ci, check);
-					}
-				}
-				if (term == "t" || term == "type")
-				{
-					if (modifier == ":")
-					{
-						return card_type.includes(check);
-					}
-					/* unsupported flows
-					if (modifier == "!" || modifier == "=")
-					{
-
-					}
-					else if (modifier == "<")
-					{
-
-					}
-					else if (modifier == ">")
-					{
-
-					} */
-				}
-				if (term == "o")
-				{
-					if (modifier == ":")
-					{
-						regex = new RegExp(check);
-						return regex.test(card_oracle_text);
-					}
-					/* unsupported flows
-					if (modifier == "!" || modifier == "=")
-					{
-
-					}
-					else if (modifier == "<")
-					{
-
-					}
-					else if (modifier == ">")
-					{
-
-					} */
-				}
-				if (term == "pow")
-				{
-					if (modifier == "!" || modifier == "=")
-					{
-						return (card_power == check);
-					}
-					else if (modifier == ":")
-					{
-						return (card_power == check);
-					}
-					else if (modifier == "<")
-					{
-						return (card_power < check);
-					}
-					else if (modifier == ">")
-					{
-						return (card_power > check);
-					}
-				}
-				if (term == "tou")
-				{
-					if (modifier == "!" || modifier == "=")
-					{
-						return (card_toughness == check);
-					}
-					else if (modifier == ":")
-					{
-						return (card_toughness == check);
-					}
-					else if (modifier == "<")
-					{
-						return (card_toughness < check);
-					}
-					else if (modifier == ">")
-					{
-						return (card_toughness > check);
-					}
-				}
-				if (term == "r" || term == "rarity")
-				{
-					rarities = [ "common", "uncommon", "rare", "mythic" ];
-					for (const rarity of rarities)
-					{
-						if (rarity.startsWith(check))
-						{
-							check = rarity;
-						}
-					}
-					if (modifier == ":" || modifier == "!" || modifier == "=")
-					{
-						return (card_rarity == check);
-					}
-					else if (modifier == "<")
-					{
-						return rarities.includes(card_rarity) && rarities.indexOf(card_rarity) < rarities.indexOf(check);
-					}
-					else if (modifier == ">")
-					{
-						return rarities.includes(card_rarity) && rarities.indexOf(card_rarity) > rarities.indexOf(check);
-					}
-				}
-				if (term == "e" || term == "set")
-				{
-					if (modifier == ":" || modifier == "!" || modifier == "=")
-					{
-						return (card_set == check);
-					}
-					/* unsupported flows
-					else if (modifier == "<")
-					{
-
-					}
-					else if (modifier == ">")
-					{
-
-					} */
-				}
-				if (term == "keyword" || term=="kw" || term == "has")
-				{
-					if (modifier == ":" || modifier == "!" || modifier == "=")
-					{
-						regex_kw1 = new RegExp(`(^|newline|, )${check}[^.]*($|newline|\\\\()`, "g");
-						regex_kw2 = new RegExp(`(^|newline)${check} `, "g");
-						return regex_kw1.test(card_oracle_text) || regex_kw2.test(card_oracle_text);
-					}
-					/* unsupported flows
-					else if (modifier == "<")
-					{
-
-					}
-					else if (modifier == ">")
-					{
-
-					} */
-				}
-				if (term == "is")
-				{
-					if (modifier == ":" || modifier == "!" || modifier == "=")
-					{
-						// all of these are implemented individually
-						if (check == "permanent")
-						{
-							return !card_type.includes("instant") && !card_type.includes("sorcery");
-						}
-						if (check == "spell")
-						{
-							return !card_type.includes("land");
-						}
-						if (check == "commander")
-						{
-							return (card_type.includes("legendary") && card_type.includes("creature")) || card_oracle_text.includes("can be your commander");
-						}
-						if (check == "hybrid")
-						{
-							return (card_cost.includes("/"));
-						}
-					}
-					/* unsupported flows
-					else if (modifier == "<")
-					{
-
-					}
-					else if (modifier == ">")
-					{
-
-					} */
-				}
-				if (term == "tag")
-				{
-					if (modifier == ":" || modifier == "=" || modifier == "!")
-					{
-						return card_notes.includes("!tag " + check);
-					}
-				}
-			}
-
-			return card_name.includes(token);
-		}
-
 		'''
+
+	with open(os.path.join('resources', 'snippets', 'search-defs.txt'), encoding='utf-8-sig') as f:
+		snippet = f.read()
+		html_content += snippet
 
 	with open(os.path.join('resources', 'snippets', 'tokenize-symbolize.txt'), encoding='utf-8-sig') as f:
 		snippet = f.read()

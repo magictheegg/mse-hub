@@ -2,7 +2,7 @@ import os
 import sys
 import json
 
-def generateHTML(set_codes, username):
+def generateHTML():
 	output_html_file = "index.html"
 
 	# Start creating the HTML file content
@@ -86,8 +86,7 @@ def generateHTML(set_codes, username):
 		margin: 0;
 	}
 	.container p {
-		padding-top: 11px;
-		padding-bottom: 16px;
+		padding: 11px 0px;
 	}
 	.preview-container {
 		display: grid;
@@ -95,12 +94,19 @@ def generateHTML(set_codes, username):
 		gap: 2px;
 		justify-items: center;
 		align-items: center;
-		padding-bottom: 20px;
+		padding-bottom: 10px;
+	}
+	.set-group {
+		font-family: Beleren Small Caps;
+		font-size: 18px;
+		width: 100%;
+		margin-bottom: 10px;
+		border-bottom: 2px solid #171717;
 	}
 	.button-grid {
 		display: grid;
 		margin: auto;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 		gap: 20px;
 		padding-top: 10px;
 		padding-bottom: 20px;
@@ -169,6 +175,7 @@ def generateHTML(set_codes, username):
 	.set-icon-container a {
 		text-decoration: none;
 		color: #171717;
+		height: 100%;
 	}
 	.set-icon {
 		height: 60px;
@@ -180,7 +187,8 @@ def generateHTML(set_codes, username):
 		width: 60px;
 	}
 	.set-icon-name {
-		height: 30px;
+		min-height: 30px;
+		height: 100%;
 	}
 	@media ( max-width: 750px ) {
 		.item-container {
@@ -204,26 +212,42 @@ def generateHTML(set_codes, username):
 			<input type="text" inputmode="search" placeholder="Search ..." autofocus="autofocus" name="search" id="search" spellcheck="false" autocomplete="off" autocorrext="off" spellcheck="false">
 			<div class="button-grid">
 				<button onclick="goToSets()"><img src="/img/sets.png" class="btn-img">All Sets</button>
+				<button onclick="goToDeckbuilder()"><img src="/img/deck.png" class="btn-img">Deckbuilder</button>
 				<button onclick="randomCard()"><img src="/img/random.png" class="btn-img">Random Card</button>
 				<button onclick="playOnCgs()"><img src="/img/cgs.png" class="btn-img">Play on CGS</button>
 			</div>
 			<div class="two-part-grid">
 				<div class="container" id="preview-container">
 					<p>Preview Galleries</p>
-					<div class="preview-container">
 					'''
 
-	for code in set_codes:
-		if not os.path.exists(os.path.join('sets', code + '-files', 'ignore.txt')):
-			with open(os.path.join('sets', code + '-files', code + '-fullname.txt'), encoding='utf-8-sig') as f:
-				set_name = f.read()
-			html_content += '''<div class="set-icon-container">
-								<a href="''' + code + '''-spoiler"><div class="set-icon"><img src="sets/''' + code + '''-files/icon.png" title="''' + set_name + '''"></img></div>
-								<div class="set-icon-name">''' + set_name + '''</div></a>
-							</div>
-			'''
+	with open(os.path.join('lists', 'set-order.json'), encoding='utf-8-sig') as j:
+		so_json = json.load(j)
+
+	for key in so_json:
+		html_content += '''					<div class="set-group">''' + key + '''</div>
+		'''
+		html_content += '''					<div class="preview-container">
+		'''
+		set_codes = so_json[key]
+		for code in set_codes:
+			if not os.path.exists(os.path.join('sets', code + '-files', 'ignore.txt')):
+				with open(os.path.join('lists', 'all-sets.json'), encoding='utf-8-sig') as f:
+					data = json.load(f)
+					for s in data['sets']:
+						if s['set_code'] == code:
+							set_name = s['set_name']
+							break
+
+				html_content += '''<div class="set-icon-container">
+									<a href="''' + code + '''-spoiler"><div class="set-icon"><img src="sets/''' + code + '''-files/icon.png" title="''' + set_name + '''"></img></div>
+									<div class="set-icon-name">''' + set_name + '''</div></a>
+								</div>
+				'''
+		html_content += '''					</div>
+		'''
 	
-	html_content += '''				</div>
+	html_content += '''
 				</div>
 				<div class="card-container" id="cotd-image">
 					<p>Card of the Day</p>
@@ -376,7 +400,11 @@ def generateHTML(set_codes, username):
 			}
 
 			function playOnCgs() {
-				window.open("https://cgs.gg/?url=https%3A%2F%2F''' + username + '''.github.io%2Fcgs.json", '_blank').focus();
+				window.open("https://cgs.gg/?url=https%3A%2F%2F''' + os.path.basename(os.getcwd()) + '''%2Fcgs.json", '_blank').focus();
+			}
+				
+			function goToDeckbuilder() {
+				window.location = ("/deckbuilder");
 			}
 
 			function search() {

@@ -12,12 +12,14 @@ import print_html_for_spoiler
 import print_html_for_card
 import print_html_for_set
 import print_html_for_sets_page
+import print_html_for_deckbuilder
 import print_json_for_cgs
 
 #F = Fungustober's notes
 
 def genAllCards(codes):
-	file_input = {'cards':[]}
+	card_input = {'cards':[]}
+	set_input = {'sets':[]}
 	#F: ...goes over all the set codes,
 	for code in codes:
 		#F: grabs the corresponding file,
@@ -38,12 +40,19 @@ def genAllCards(codes):
 				card['image_path'] = "/sets/" + str(card['set']) + "-files/img/" + str(card['number']) + token + "_" + str(card['card_name']) + double + ".png"
 				#CGS: Requires card id
 				card['card_id'] = card['set'] + '-' + str(card['number']) + token
-				file_input['cards'].append(card)
+				card_input['cards'].append(card)
+			set_data = {}
+			set_data['set_code'] = code
+			set_data['set_name'] = raw['name']
+			set_data['formats'] = raw['formats']
+			set_input['sets'].append(set_data)
 	#F: opens a path,
 	with open(os.path.join('lists', 'all-cards.json'), 'w', encoding='utf-8-sig') as f:
 		#F: turns the dictionary into a json object, and puts it into the all-cards.json file
 		#F: json.dump actually preserves the \n's and the \\'s and whatnot, so we won't have to escape them ourselves
-		json.dump(file_input, f)
+		json.dump(card_input, f)
+	with open(os.path.join('lists', 'all-sets.json'), 'w', encoding='utf-8-sig') as f:
+		json.dump(set_input, f)
 
 #F: first, get all the set codes
 
@@ -66,23 +75,23 @@ if os.path.isdir('cards'):
 	shutil.rmtree('cards')
 os.mkdir('cards')
 
-#CGS: Assumes USERNAME.github.io
-repo_name = os.path.basename(os.getcwd())
-username = repo_name.split('.')[0]
-
+set_order = []
 #F: iterate over set codes again
 for code in set_codes:
+	set_order.append(code)
 	#F: it makes a directory at cards/SET
 	os.mkdir(os.path.join('cards', code))
 
 	image_flip.flipImages(code)
 	set_dir = code + '-files'
-	with open(os.path.join('sets', set_dir, code + '-trimmed.txt'), encoding='utf-8-sig') as f:
-		trimmed = f.read()
-		if trimmed == "false":
-			card_edge_trimmer.batch_process_images(code)
-			with open(os.path.join('sets', set_dir, code + '-trimmed.txt'), 'w') as file:
-				file.write("true")
+	with open(os.path.join('sets', code + '-files', code + '.json'), encoding='utf-8-sig') as f:
+		raw = json.load(f)
+	trimmed = raw['trimmed']
+	if trimmed == 'n':
+		raw['trimmed'] = 'y'
+		card_edge_trimmer.batch_process_images(code)
+		with open(os.path.join('sets', code + '-files', code + '.json'), 'w', encoding='utf-8-sig') as file:
+			json.dump(raw, file)
 
 	#F: list_to_list.convertList is a long and important function
 	list_to_list.convertList(code)
@@ -101,11 +110,6 @@ for code in set_codes:
 				shutil.copy(filepath, destination)
 			print(filepath + ' added')
 
-	#F: more important functions
-	if not os.path.exists(os.path.join('sets', code + '-files', 'ignore.txt')):
-		print_html_for_spoiler.generateHTML(code, set_codes, username)
-	print_html_for_set.generateHTML(code, username)
-
 #F: grab lists/all-cards.txt & read it
 with open(os.path.join('lists', 'all-cards.json'), encoding='utf-8-sig') as f:
 	data = json.load(f)
@@ -122,8 +126,21 @@ for card in card_array:
 	with open(os.path.join('cards', card['set'], str(card['number']) + '_' + card_name + '.json'), 'w', encoding='utf-8-sig') as f:
 		json.dump(card, f)
 	#F: and then generate the html file for the card
-	print_html_for_card.generateHTML(card, username)
+	print_html_for_card.generateHTML(card)
 print(f"HTML card files saved as cards/<set>/<card>.html")
+
+set_order_data = {
+	"": set_order
+}
+with open(os.path.join('lists', 'set-order.json'), 'w', encoding='utf-8-sig') as f:
+	json.dump(set_order_data, f)
+
+for code in set_codes:
+	#F: more important functions
+	#CE: moving this down after we create the 'set-order.json' file
+	if not os.path.exists(os.path.join('sets', code + '-files', 'ignore.txt')):
+		print_html_for_spoiler.generateHTML(code)
+	print_html_for_set.generateHTML(code)
 
 custom_img_dir = os.path.join('custom', 'img')
 if os.path.isdir(custom_img_dir):
@@ -133,10 +150,23 @@ if os.path.isdir(custom_img_dir):
 		shutil.copy(filepath, destination)
 		print(filepath + ' added')
 
-print_html_for_sets_page.generateHTML(set_codes, username)
-print_html_for_search.generateHTML(set_codes, username)
-print_html_for_index.generateHTML(set_codes, username)
+custom_list_dir = os.path.join('custom', 'lists')
+if os.path.isdir(custom_list_dir):
+	for file in os.listdir(custom_list_dir):
+		filepath = os.path.join(custom_list_dir, file)
+		destination = 'lists'
+		shutil.copy(filepath, destination)
+		print(filepath + ' added')
 
-print_json_for_cgs.generateJSON(username)
+print_html_for_sets_page.generateHTML()
+print_html_for_search.generateHTML(set_codes)
+print_html_for_deckbuilder.generateHTML(set_codes)
+print_html_for_index.generateHTML()
+print_json_for_cgs.generateJSON()
+
+
+
+
+
 
 

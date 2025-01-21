@@ -4,7 +4,7 @@ import json
 
 #F = Fungustober's notes
 
-def generateHTML(card, username):
+def generateHTML(card):
 	code = card['set']
 	card_name = card['card_name']
 	card_name_cleaned = card_name
@@ -17,15 +17,18 @@ def generateHTML(card, username):
 	#F: /cards/SET/NUM_NAME.html
 	output_html_file = "cards/" + code + "/" + str(card_num) + "_" + card_name_cleaned + ".html"
 	
-	#F: sets/SET-files/SET-fullname.txt
-	with open(os.path.join("sets", code + "-files", code + "-fullname.txt"), encoding='utf-8-sig') as f:
-		set_name = f.read()
+	with open(os.path.join('lists', 'all-sets.json'), encoding='utf-8-sig') as f:
+		data = json.load(f)
+		for s in data['sets']:
+			if s['set_code'] == code:
+				set_name = s['set_name']
+				break
 	
 	# Start creating the HTML file content
 	html_content = '''<html>
 <head>
   <title>''' + card['card_name'] + '''</title>
-  <link rel="icon" type="image/x-icon" href="/img/favicon.png">
+  <link rel="icon" type="image/x-icon" href="/sets/''' + code + '''-files/icon.png">
   <link rel="stylesheet" href="/resources/mana.css">
   <link rel="stylesheet" href="/resources/header.css">
 </head>
@@ -131,6 +134,9 @@ def generateHTML(card, username):
 		font-weight: bold;
 		padding-bottom: 0px;
 	}
+	.printings {
+		display: none;
+	}
 	.printings a {
 		color: #1338be;
 		text-decoration: none;
@@ -155,22 +161,15 @@ def generateHTML(card, username):
 		cursor: pointer;
 		border: none;
 		position: absolute;
-		top: 6.5%;
-		left: 8.5%;
-		transform: translate(-50%, -85%);
+		left: 50%;
+		top: 48%;
+		transform: translate(-50%, -50%);
+		opacity: 0.5;
 	}
 	.img-container .btn:hover {
 		background: url('/img/flip-hover.png') no-repeat;
 		background-size: contain;
 		background-position: center;
-		width: 15%;
-		height: 11%;
-		cursor: pointer;
-		border: none;
-		position: absolute;
-		top: 6.5%;
-		left: 8.5%;
-		transform: translate(-50%, -85%);
 	}
 	.hidden {
 		display: none;
@@ -180,7 +179,7 @@ def generateHTML(card, username):
 	'''
 
 	with open(os.path.join('resources', 'snippets', 'header.txt'), encoding='utf-8-sig') as f:
-		snippet = f.read().replace('USERNAME', username)
+		snippet = f.read().replace('domain', os.path.basename(os.getcwd()))
 		html_content += snippet
 
 	html_content += '''
@@ -238,7 +237,8 @@ def generateHTML(card, username):
 			document.getElementById("grid").appendChild(gridifyCard(card));
 			if (document.getElementById("other-printings"))
 			{
-				document.getElementById("card-text").appendChild(document.getElementById("other-printings"));			
+				document.getElementById("card-text").appendChild(document.getElementById("other-printings"));
+				document.getElementById("other-printings").style.display = "block";
 			}
 		});
 

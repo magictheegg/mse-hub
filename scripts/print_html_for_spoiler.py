@@ -202,7 +202,7 @@ def generateHTML(setCode):
 
 	#F: goes to resources/snippets/header.txt and gets a header, inserting it after everything so far
 	with open(os.path.join('resources', 'snippets', 'header.txt'), encoding='utf-8-sig') as f:
-		snippet = f.read()
+		snippet = f.read().replace('domain', os.path.basename(os.getcwd()))
 		html_content += snippet
 
 	html_content += '''

@@ -13,6 +13,7 @@ import print_html_for_card
 import print_html_for_set
 import print_html_for_sets_page
 import print_html_for_deckbuilder
+import print_json_for_cgs
 
 #F = Fungustober's notes
 
@@ -33,6 +34,12 @@ def genAllCards(codes):
 					card['type2'] = card['type2'].replace('—', '–')
 					card['rules_text2'] = card['rules_text2'].replace('—', '–')
 					card['special_text2'] = card['special_text2'].replace('—', '–')
+				#CGS: Requires image path
+				token = "t" if "token" in str(card['shape']) else ""
+				double = "_front" if "double" in str(card['shape']) else ""
+				card['image_path'] = "/sets/" + str(card['set']) + "-files/img/" + str(card['number']) + token + "_" + str(card['card_name']) + double + ".png"
+				#CGS: Requires card id
+				card['card_id'] = card['set'] + '-' + str(card['number']) + token
 				card_input['cards'].append(card)
 			set_data = {}
 			set_data['set_code'] = code
@@ -155,6 +162,7 @@ print_html_for_sets_page.generateHTML()
 print_html_for_search.generateHTML(set_codes)
 print_html_for_deckbuilder.generateHTML(set_codes)
 print_html_for_index.generateHTML()
+print_json_for_cgs.generateJSON()
 
 
 

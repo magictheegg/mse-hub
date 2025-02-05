@@ -30,10 +30,15 @@ def genAllCards(codes):
 				card['type'] = card['type'].replace('—', '–')
 				card['rules_text'] = card['rules_text'].replace('—', '–')
 				card['special_text'] = card['special_text'].replace('—', '–')
+				if not card['rules_text']:
+					card['rules_text'] = card['special_text']
 				if 'type2' in card:
 					card['type2'] = card['type2'].replace('—', '–')
 					card['rules_text2'] = card['rules_text2'].replace('—', '–')
 					card['special_text2'] = card['special_text2'].replace('—', '–')
+				if not card['rules_text2']:
+					card['rules_text2'] = card['special_text2']
+				card['image_type'] = 'png' if 'image_type' not in raw else raw['image_type']
 				#CGS: Requires image path
 				token = "t" if "token" in str(card['shape']) else ""
 				double = "_front" if "double" in str(card['shape']) else ""
@@ -135,6 +140,14 @@ set_order_data = {
 with open(os.path.join('lists', 'set-order.json'), 'w', encoding='utf-8-sig') as f:
 	json.dump(set_order_data, f)
 
+custom_list_dir = os.path.join('custom', 'lists')
+if os.path.isdir(custom_list_dir):
+	for file in os.listdir(custom_list_dir):
+		filepath = os.path.join(custom_list_dir, file)
+		destination = 'lists'
+		shutil.copy(filepath, destination)
+		print(filepath + ' added')
+
 for code in set_codes:
 	#F: more important functions
 	#CE: moving this down after we create the 'set-order.json' file
@@ -147,14 +160,6 @@ if os.path.isdir(custom_img_dir):
 	for file in os.listdir(custom_img_dir):
 		filepath = os.path.join(custom_img_dir, file)
 		destination = 'img'
-		shutil.copy(filepath, destination)
-		print(filepath + ' added')
-
-custom_list_dir = os.path.join('custom', 'lists')
-if os.path.isdir(custom_list_dir):
-	for file in os.listdir(custom_list_dir):
-		filepath = os.path.join(custom_list_dir, file)
-		destination = 'lists'
 		shutil.copy(filepath, destination)
 		print(filepath + ' added')
 

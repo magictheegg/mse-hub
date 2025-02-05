@@ -479,12 +479,12 @@ def generateHTML(codes):
 
 	html_content += '''
 
-		function gridifyCard(card_stats) {
+		function gridifyCard(card_stats, card_text = false, rotate_card = false) {
 			const card_name = card_stats.card_name;
 
 			if (displayStyle == "cards-only")
 			{
-				return buildImgContainer(card_stats, true);
+				return buildImgContainer(card_stats, true, rotate_card);
 			}
 
 		'''

@@ -506,7 +506,21 @@ function tokenizeTerms(searchTerms)
 						{
 							if (set.set_code.toLowerCase() == card_set)
 							{
-								return set.formats.toLowerCase().includes(check);
+								formats = [ "standard", "modern", "legacy" ];
+								set_formats = set.formats.toLowerCase().replace(' ','').split(',');
+
+								for (const format of set_formats)
+								{
+									if (formats.includes(format) && formats.includes(check))
+									{
+										if (formats.indexOf(format) < formats.indexOf(check))
+										{
+											return true;
+										}
+									}
+								}
+
+								return set_formats.includes(check);
 							}
 						}
 					}

@@ -64,6 +64,10 @@ python3 -m pip install pillow
 python3 scripts/build_site.py
 ```
 
+> :memo: **Note:** If at this point `python3` prompts you to install through the Windows Store, do so. It's the path of least resistance.
+
+> :memo: **Note:** If `python3` can't be found, try running the same command with `py` or `python` instead.
+
 This will spit out a bunch of confirmation lines for different site elements being built. The first time it runs, it will take a few minutes to process through each image. Subsequent runs will be much quicker, unless you update the images with new files. After the command finishes, navigate back to Github desktop and you should see plenty of new artifacts in the "Changes" sidebar. In the bottom left, type a title for your change (this is for versioning), then click "Commit to main". Once you've done so, a big "Push origin" button will appear in the middle of the window. Click that, wait for the push to finish, and voila! Your site is deployed.
 
 To track the process of your site deployment, navigate to https://github.com/USERNAME/USERNAME.github.io/actions, replacing USERNAME with your Github username. Each time you push to origin, a deployment action will trigger, and once that's complete your site will be visible at https://\<username>.github.io.
@@ -71,6 +75,8 @@ To track the process of your site deployment, navigate to https://github.com/USE
 ## Future MSE Set Hub Updates
 
 To get updates to the scripts or resources, from Github Desktop, select "Fetch origin" in the bar along the top and wait for that process to complete. Once it's done, select "Current branch" in the same bar, then at the bottom of the opened menu click "Choose a branch to merge into **main**". On the next modal, select "upstream/main", then click "Create a merge commit". This will bring all new code in the main repo into your forked repo, and it will be ready to push the next time you push the contents of your site to main.
+
+If it's indicated that the new change comes with a change to the exporter, you can find the updated exporter in the `resources` directory. Make sure to copy it into your MSE's `data` folder.
 
 ## Appendix
 
@@ -90,7 +96,7 @@ The search page supports custom tags, which can be queried using "tag:\<foo>". I
 
 ### Changing the homepage's background gradient
 
-There are 34 gradients you can choose from on the homepage, which are stored in `resources/gradients.txt`. You can always switch between them using the select in the top left of the homepage. If you'd like to set a new gradient as the default, simply edit `gradients.txt` and move your favorite gradient's row to the top of the text file.
+There are 34 gradients you can choose from on the homepage, which are stored in `resources/gradients.json`. You can always switch between them using the select in the top left of the homepage. If you'd like to set a new gradient as the default, simply edit `gradients.json` and move your favorite gradient's entry to the top of the text file.
 
 ### HTML addenda
 

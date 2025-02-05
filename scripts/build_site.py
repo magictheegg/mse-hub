@@ -43,6 +43,8 @@ def genAllCards(codes):
 				token = "t" if "token" in str(card['shape']) else ""
 				double = "_front" if "double" in str(card['shape']) else ""
 				card['image_path'] = "/sets/" + str(card['set']) + "-files/img/" + str(card['number']) + token + "_" + str(card['card_name']) + double + ".png"
+				if 'type2' in card:
+					card['image_path2'] = card['image_path'].replace('_front', '_back')
 				#CGS: Requires card id
 				card['card_id'] = card['set'] + '-' + str(card['number']) + token
 				card_input['cards'].append(card)

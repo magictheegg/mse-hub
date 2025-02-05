@@ -10,12 +10,13 @@ def generateJSON():
 
 	cgs["allCardsUrl"] = f"https://{domain}/lists/all-cards.json"
 	cgs["allSetsUrl"] = f"https://{domain}/lists/all-sets.json"
-	cgs["autoUpdateUrl"] = f"https://{domain}/cgs.json"
+	cgs["autoUpdateUrl"] = f"https://{domain}/{output_json_file}"
 	cgs["bannerImageUrl"] = f"https://{domain}/img/banner.png"
 	cgs["cardBackImageUrl"] = f"https://{domain}/img/card_back.png"
 	cgs["cardDataIdentifier"] = "cards"
 	cgs["cardIdIdentifier"] = "card_id"
 	cgs["cardImageUrl"] = f"https://{domain}"+"{image_path}"
+	cgs["cardNameBackIdentifier"] = "card_name2"
 	cgs["cardNameIdentifier"] = "card_name"
 	cgs["cardSetIdentifier"] = "set"
 	cgs["cardPrimaryProperty"] = "rules_text"
@@ -30,8 +31,10 @@ def generateJSON():
 			"name": "color",
 			"delimiter": "",
 			"display": "Color",
-      		"displayEmpty": "Colorless",
-			"type": "stringEnumList"
+			"displayEmpty": "Colorless",
+			"type": "stringEnumList",
+			"frontName": "color",
+			"backName": "color2"
 		},
 		{
 			"name": "rarity",
@@ -41,7 +44,9 @@ def generateJSON():
 		{
 			"name": "type",
 			"display": "Type",
-			"type": "string"
+			"type": "string",
+			"frontName": "type",
+			"backName": "type2"
 		},
 		{
 			"name": "color_identity",
@@ -53,42 +58,51 @@ def generateJSON():
 		{
 			"name": "cost",
 			"display": "Cost",
-			"type": "string"
+			"type": "string",
+			"frontName": "cost",
+			"backName": "cost2"
 		},
 		{
 			"name": "rules_text",
 			"display": "Rules Text",
-			"type": "string"
+			"type": "string",
+			"frontName": "rules_text",
+			"backName": "rules_text2"
 		},
 		{
 			"name": "pt",
 			"display": "Power/Toughness",
-			"type": "string"
-		},
-		{
-			"name": "special_text",
-			"display": "Special Text",
-			"type": "string"
-		},
-		{
-			"name": "shape",
-			"display": "Shape",
-			"type": "string"
+			"type": "string",
+			"frontName": "pt",
+			"backName": "pt2"
 		},
 		{
 			"name": "loyalty",
 			"display": "Loyalty",
-			"type": "integer"
+			"type": "integer",
+			"frontName": "loyalty",
+			"backName": "loyalty2"
 		},
 		{
-			"name": "notes",
-			"display": "Notes",
-			"type": "string"
+			"name": "flavor_text",
+			"display": "Flavor Text",
+			"type": "string",
+			"frontName": "flavor_text",
+			"backName": "flavor_text2"
+		},
+		{
+			"name": "artist",
+			"display": "Artist",
+			"type": "string",
+			"frontName": "artist",
+			"backName": "artist2"
 		},
 		{
 			"name": "image_path",
 			"display": "Image Path",
-			"type": "string"
+			"type": "string",
+			"frontName": "image_path",
+			"backName": "image_path2"
 		}
 	]
 

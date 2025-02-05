@@ -36,8 +36,8 @@ def genAllCards(codes):
 					card['type2'] = card['type2'].replace('—', '–')
 					card['rules_text2'] = card['rules_text2'].replace('—', '–')
 					card['special_text2'] = card['special_text2'].replace('—', '–')
-				if not card['rules_text2']:
-					card['rules_text2'] = card['special_text2']
+					if not card['rules_text2']:
+						card['rules_text2'] = card['special_text2']
 				card['image_type'] = 'png' if 'image_type' not in raw else raw['image_type']
 				#CGS: Requires image path
 				token = "t" if "token" in str(card['shape']) else ""

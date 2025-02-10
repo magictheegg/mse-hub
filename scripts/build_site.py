@@ -13,6 +13,7 @@ import print_html_for_card
 import print_html_for_set
 import print_html_for_sets_page
 import print_html_for_deckbuilder
+import print_json_for_cgs
 
 #F = Fungustober's notes
 
@@ -29,11 +30,23 @@ def genAllCards(codes):
 				card['type'] = card['type'].replace('—', '–')
 				card['rules_text'] = card['rules_text'].replace('—', '–')
 				card['special_text'] = card['special_text'].replace('—', '–')
+				if not card['rules_text']:
+					card['rules_text'] = card['special_text']
 				if 'type2' in card:
 					card['type2'] = card['type2'].replace('—', '–')
 					card['rules_text2'] = card['rules_text2'].replace('—', '–')
 					card['special_text2'] = card['special_text2'].replace('—', '–')
+					if not card['rules_text2']:
+						card['rules_text2'] = card['special_text2']
 				card['image_type'] = 'png' if 'image_type' not in raw else raw['image_type']
+				#CGS: Requires image path
+				token = "t" if "token" in str(card['shape']) else ""
+				double = "_front" if "double" in str(card['shape']) else ""
+				card['image_path'] = "/sets/" + str(card['set']) + "-files/img/" + str(card['number']) + token + "_" + str(card['card_name']) + double + ".png"
+				if 'type2' in card:
+					card['image_path2'] = card['image_path'].replace('_front', '_back')
+				#CGS: Requires card id
+				card['card_id'] = card['set'] + '-' + str(card['number']) + token
 				card_input['cards'].append(card)
 			set_data = {}
 			set_data['set_code'] = code
@@ -156,6 +169,7 @@ print_html_for_sets_page.generateHTML()
 print_html_for_search.generateHTML(set_codes)
 print_html_for_deckbuilder.generateHTML(set_codes)
 print_html_for_index.generateHTML()
+print_json_for_cgs.generateJSON()
 
 
 

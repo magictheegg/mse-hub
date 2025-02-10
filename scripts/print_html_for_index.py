@@ -106,7 +106,7 @@ def generateHTML():
 	.button-grid {
 		display: grid;
 		margin: auto;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 		gap: 20px;
 		padding-top: 10px;
 		padding-bottom: 20px;
@@ -214,6 +214,7 @@ def generateHTML():
 				<button onclick="goToSets()"><img src="/img/sets.png" class="btn-img">All Sets</button>
 				<button onclick="goToDeckbuilder()"><img src="/img/deck.png" class="btn-img">Deckbuilder</button>
 				<button onclick="randomCard()"><img src="/img/random.png" class="btn-img">Random Card</button>
+				<button onclick="playOnCgs()"><img src="/img/cgs.png" class="btn-img">Play on CGS</button>
 			</div>
 			<div class="two-part-grid">
 				<div class="container" id="preview-container">
@@ -398,6 +399,10 @@ def generateHTML():
 				window.location = ("/all-sets");
 			}
 
+			function playOnCgs() {
+				window.open("https://cgs.gg/?url=https%3A%2F%2F''' + os.path.basename(os.getcwd()) + '''%2Fcgs.json", '_blank').focus();
+			}
+				
 			function goToDeckbuilder() {
 				window.location = ("/deckbuilder");
 			}

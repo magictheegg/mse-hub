@@ -194,7 +194,7 @@ def generateHTML(card):
 	'''
 
 	with open(os.path.join('resources', 'snippets', 'header.txt'), encoding='utf-8-sig') as f:
-		snippet = f.read()
+		snippet = f.read().replace('domain', os.path.basename(os.getcwd()))
 		html_content += snippet
 
 	html_content += '''

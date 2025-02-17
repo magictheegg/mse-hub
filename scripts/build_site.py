@@ -8,12 +8,13 @@ import card_edge_trimmer
 import list_to_list
 import print_html_for_index
 import print_html_for_search
-import print_html_for_spoiler
+import print_html_for_preview
 import print_html_for_card
 import print_html_for_set
 import print_html_for_sets_page
 import print_html_for_deckbuilder
-import print_json_for_cgs
+
+import markdown
 
 #F = Fungustober's notes
 
@@ -30,23 +31,16 @@ def genAllCards(codes):
 				card['type'] = card['type'].replace('—', '–')
 				card['rules_text'] = card['rules_text'].replace('—', '–')
 				card['special_text'] = card['special_text'].replace('—', '–')
-				if not card['rules_text']:
-					card['rules_text'] = card['special_text']
 				if 'type2' in card:
 					card['type2'] = card['type2'].replace('—', '–')
 					card['rules_text2'] = card['rules_text2'].replace('—', '–')
 					card['special_text2'] = card['special_text2'].replace('—', '–')
-					if not card['rules_text2']:
-						card['rules_text2'] = card['special_text2']
 				card['image_type'] = 'png' if 'image_type' not in raw else raw['image_type']
-				#CGS: Requires image path
-				token = "t" if "token" in str(card['shape']) else ""
-				double = "_front" if "double" in str(card['shape']) else ""
-				card['image_path'] = "/sets/" + str(card['set']) + "-files/img/" + str(card['number']) + token + "_" + str(card['card_name']) + double + ".png"
-				if 'type2' in card:
-					card['image_path2'] = card['image_path'].replace('_front', '_back')
-				#CGS: Requires card id
-				card['card_id'] = card['set'] + '-' + str(card['number']) + token
+				#CE: Designer notes (for Rachel)
+				d_notes_path = os.path.join('sets', code + '-files', 'card-notes', card['card_name'] + '.md')
+				if os.path.exists(d_notes_path):
+					with open(d_notes_path, encoding='utf-8-sig') as md:
+						card['designer_notes'] = markdown.markdown(md.read())
 				card_input['cards'].append(card)
 			set_data = {}
 			set_data['set_code'] = code
@@ -61,14 +55,41 @@ def genAllCards(codes):
 	with open(os.path.join('lists', 'all-sets.json'), 'w', encoding='utf-8-sig') as f:
 		json.dump(set_input, f)
 
-#F: first, get all the set codes
+def portCustomFiles(custom_dir, export_dir):
+	for entry in os.scandir(custom_dir):
+		#CE: ignore default or generated files
+		if entry.name in [ '.DS_Store', '__pycache__', 'README.md' ]:
+			continue
+		if entry.is_dir():
+			c_dir = os.path.join(export_dir, entry.name)
+			if not os.path.exists(c_dir): 
+				os.makedirs(c_dir) 
+			portCustomFiles(os.path.join(custom_dir, entry.name), c_dir)
+		else:
+			shutil.copy(entry.path, os.path.join(export_dir, entry.name))
+			print(os.path.join(export_dir, entry.name) + ' added')
 
+#CE: legacy file removal
+for entry in os.scandir('.'):
+	if '-spoiler' in entry.name:
+		os.remove(entry)
+
+#F: first, get all the set codes
 set_codes = []
+
+#CE: remove old files in /sets and /lists
 for entry in os.scandir('sets'):
 	if entry.is_dir() and entry.name[-6:] == '-files':
 		set_codes.append(entry.name[:-6])
 	elif entry.name != 'README.md' and os.path.isfile(entry):
 		os.remove(entry)
+
+for entry in os.scandir('lists'):
+	if entry.name != 'README.md' and os.path.isfile(entry):
+		os.remove(entry)
+
+#CE: copy the entire custom tree
+portCustomFiles('custom', '')
 
 #F: sort them
 
@@ -78,17 +99,10 @@ set_codes.sort()
 
 genAllCards(set_codes)
 
-if os.path.isdir('cards'):
-	shutil.rmtree('cards')
-os.mkdir('cards')
-
 set_order = []
 #F: iterate over set codes again
 for code in set_codes:
 	set_order.append(code)
-	#F: it makes a directory at cards/SET
-	os.mkdir(os.path.join('cards', code))
-
 	image_flip.flipImages(code)
 	set_dir = code + '-files'
 	with open(os.path.join('sets', code + '-files', code + '.json'), encoding='utf-8-sig') as f:
@@ -102,78 +116,28 @@ for code in set_codes:
 
 	#F: list_to_list.convertList is a long and important function
 	list_to_list.convertList(code)
-	
-	custom_dir = os.path.join('custom', set_dir)
-	if os.path.isdir(custom_dir):
-		for file in os.listdir(custom_dir):
-			filepath = os.path.join(custom_dir, file)
-			destination = os.path.join('sets', set_dir)
-			if os.path.isdir(filepath):
-				destination = os.path.join(destination, file)
-				if os.path.isdir(destination):
-					shutil.rmtree(destination)
-				shutil.copytree(filepath, destination)
-			else:
-				shutil.copy(filepath, destination)
-			print(filepath + ' added')
 
-#F: grab lists/all-cards.txt & read it
-with open(os.path.join('lists', 'all-cards.json'), encoding='utf-8-sig') as f:
-	data = json.load(f)
-#F: then the cards get put into an array
-card_array = data['cards']
-#F: iterate over the array
-for card in card_array:
-	card_name = card['card_name']
-	with open(os.path.join('resources', 'replacechars.txt'), encoding='utf-8-sig') as f:
-		chars = f.read()
-	for char in chars:
-		card_name = card_name.replace(char, '')
-	#F: then open a path to cards/SET/NUM_NAME.json & write there
-	with open(os.path.join('cards', card['set'], str(card['number']) + '_' + card_name + '.json'), 'w', encoding='utf-8-sig') as f:
-		json.dump(card, f)
-	#F: and then generate the html file for the card
-	print_html_for_card.generateHTML(card)
-print(f"HTML card files saved as cards/<set>/<card>.html")
+#CE: print html for card page
+print_html_for_card.generateHTML()
+print(f"HTML file for card display saved as card.html")
 
-set_order_data = {
-	"": set_order
-}
-with open(os.path.join('lists', 'set-order.json'), 'w', encoding='utf-8-sig') as f:
-	json.dump(set_order_data, f)
-
-custom_list_dir = os.path.join('custom', 'lists')
-if os.path.isdir(custom_list_dir):
-	for file in os.listdir(custom_list_dir):
-		filepath = os.path.join(custom_list_dir, file)
-		destination = 'lists'
-		shutil.copy(filepath, destination)
-		print(filepath + ' added')
+#CE: only create set_order file if no custom one is provided
+custom_order = os.path.join('lists', 'set-order.json')
+if not os.path.exists(custom_order):
+	set_order_data = {
+		"": set_order
+	}
+	with open(custom_order, 'w', encoding='utf-8-sig') as f:
+		json.dump(set_order_data, f)
 
 for code in set_codes:
 	#F: more important functions
 	#CE: moving this down after we create the 'set-order.json' file
 	if not os.path.exists(os.path.join('sets', code + '-files', 'ignore.txt')):
-		print_html_for_spoiler.generateHTML(code)
+		print_html_for_preview.generateHTML(code)
 	print_html_for_set.generateHTML(code)
-
-custom_img_dir = os.path.join('custom', 'img')
-if os.path.isdir(custom_img_dir):
-	for file in os.listdir(custom_img_dir):
-		filepath = os.path.join(custom_img_dir, file)
-		destination = 'img'
-		shutil.copy(filepath, destination)
-		print(filepath + ' added')
 
 print_html_for_sets_page.generateHTML()
 print_html_for_search.generateHTML(set_codes)
 print_html_for_deckbuilder.generateHTML(set_codes)
 print_html_for_index.generateHTML()
-print_json_for_cgs.generateJSON()
-
-
-
-
-
-
-

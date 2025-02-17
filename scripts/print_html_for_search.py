@@ -276,11 +276,11 @@ def generateHTML(codes):
 
 			card_list_arrayified.sort(compareFunction);
 
-			page = window.location.href.indexOf("page=") == -1 ? 0 : parseInt(window.location.href.substring(window.location.href.indexOf("page=") + 5)) - 1;
-
 			// refresh page values
-			let params = decodeURIComponent(window.location.href.indexOf("?search") == -1 ? "" : window.location.href.substring(window.location.href.indexOf("?search") + 8));
-			document.getElementById("search").value = (params.indexOf("&page=") == -1 ? params.replaceAll("+", " ") : params.substring(0, params.indexOf("&page=")).replaceAll("+", " "));
+			const params = new URLSearchParams(window.location.search);
+			page = params.get("page") ? params.get("page") : 0;
+			document.getElementById("search").value = decodeURIComponent(params.get("search"));
+
 			if (sessionStorage.getItem("sortMethod"))
 			{
 				document.getElementById("sort-by").value = sessionStorage.getItem("sortMethod");				
@@ -433,7 +433,7 @@ def generateHTML(codes):
 
 					let url = (window.location.href.indexOf("page=") == -1 ? new URL(window.location.href) : new URL(window.location.href.substring(0, window.location.href.indexOf("page="))));
 				let params = new URLSearchParams(url.search);
-				params.append("page", page+1);
+				params.append("page", page + 1);
 				history.replaceState({}, '', url.pathname + '?' + params.toString());
 				}
 
@@ -479,7 +479,7 @@ def generateHTML(codes):
 
 	html_content += '''
 
-		function gridifyCard(card_stats, card_text = false, rotate_card = false) {
+		function gridifyCard(card_stats, card_text = false, rotate_card = false, designer_notes = false) {
 			const card_name = card_stats.card_name;
 
 			if (displayStyle == "cards-only")
@@ -552,7 +552,7 @@ def generateHTML(codes):
 			let params = new URLSearchParams(url.search);
 			if (page != 0)
 			{
-				params.append("page", page+1);
+				params.append("page", page + 1);
 			}
 			history.pushState({}, '', url.pathname + '?' + params.toString());
 
@@ -578,7 +578,7 @@ def generateHTML(codes):
 			
 			let url = (window.location.href.indexOf("page=") == -1 ? new URL(window.location.href) : new URL(window.location.href.substring(0, window.location.href.indexOf("page="))));
 			let params = new URLSearchParams(url.search);
-			params.append("page", page+1);
+			params.append("page", page + 1);
 			history.pushState({}, '', url.pathname + '?' + params.toString());
 
 			cardGrid.innerHTML = "";

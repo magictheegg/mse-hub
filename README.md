@@ -61,6 +61,7 @@ This updates your buffer so you can upload all of your images with no timeout is
 
 ```
 python3 -m pip install pillow
+python3 -m pip install markdown
 python3 scripts/build_site.py
 ```
 
@@ -86,13 +87,28 @@ To update a set, re-export it using Egg's All-in-One exporter, then replace the 
 
 ### Custom assets
 
-If you want to replace default or generated assets, You can use the "custom" folder in your Github checkout. Put any files you'd like to replace in similarly named directories within "custom". For instance, to replace a set's logo, create "\<code>-files" within your "custom" folder, then put a new "logo.png" within it. Any assets replaced this way will be brought over once you run `build_site.py`.
+If you want to replace default or generated assets, You can use the "custom" folder in your Github checkout. Put any files you'd like to replace in similarly named directories within "custom". For instance, to replace a set's logo, create "sets/\<code>-files" within your "custom" folder, then put a new "logo.png" within it. Any assets replaced this way will be brought over once you run `build_site.py`.
 
-This is specifically useful for backgrounds on preview pages, which are by default blank. If you want a background, add "bg.png" to that set's "custom/\<code>-files" directory and rebuild the site.
+This is specifically useful for backgrounds on preview pages, which are by default blank. If you want a background, add "bg.png" to that set's "custom/sets/\<code>-files" directory and rebuild the site.
 
 ### Custom tags
 
 The search page supports custom tags, which can be queried using "tag:\<foo>". In your MSE file, add "!tag \<foo>" to the card notes. The exporter and site builder will do the rest.
+
+### Custom preview sorting
+
+If you want cards to sort to the same row, add "!sort <foo>" to their notes. If you want cards to sort to the end of the preview gallery, add "!last" to their notes.
+
+### Set splash pages
+
+Sets now support splash pages written in markdown! If you want to add one, add `splash.md` to your "custom/sets/\<code>-files" directory. It will automatically show up as the default view on the set's page. You can shortcut adding set logos/icons and card images by putting their name between `%` symbols. It'll look something like this:
+```
+![alt text](%Card Name Goes Here% "hover-over text")
+```
+
+### Designer Notes
+
+To add designer notes to a card, add `card-notes/<cardname>.md` to "custom/sets/\<code>-files" to your custom directory. This markdown file will automatically append to the card's page when you build your site.
 
 ### Changing the homepage's background gradient
 

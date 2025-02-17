@@ -1,6 +1,8 @@
 import os
 import sys
 import json
+import markdown
+import re
 
 #F = Fungustober's notes
 
@@ -24,6 +26,10 @@ def generateHTML(code):
   <link rel="stylesheet" href="/resources/header.css">
 </head>
 <style>
+		@font-face {
+			font-family: 'Beleren Small Caps';
+			src: url('/resources/beleren-caps.ttf');
+		}
 	@font-face {
 		font-family: Beleren;
 		src: url('/resources/beleren.ttf');
@@ -59,6 +65,7 @@ def generateHTML(code):
 		padding-bottom: 10px;
 		justify-self: left;
 		width: 100%;
+		white-space: nowrap;
 	}
 	.set-banner img {
 		width: 50px;
@@ -91,6 +98,31 @@ def generateHTML(code):
 		font-size: 13px;
 		height: 30px;
 	}
+	.button-container {
+		width: 50%;
+		max-width: 900px;
+		margin: auto;
+		padding: 15px 0 5px 0;
+		border-bottom: 2px solid #171717;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+	.button-container button {
+		font-family: Beleren;
+		font-size: 30px;
+		width: 100%;
+		justify-self: center;
+		border: none;
+		background: none;
+		cursor: pointer;
+	}
+	.button-container button:hover {
+		color: #797979;
+	}
+	.button-container button:disabled {
+		color: #797979;
+		cursor: auto;
+	}
 	.grid-container {
 		display: grid;
 		grid-template-columns: auto;
@@ -98,6 +130,12 @@ def generateHTML(code):
 		padding-bottom: 30px;
 		max-width: 1200px;
 		margin: auto;
+	}
+	.splash-container {
+		width: 70%;
+		max-width: 1200px;
+		margin: auto;
+		justify-items: center;
 	}
 	.image-grid-container {
 		display: grid;
@@ -206,6 +244,16 @@ def generateHTML(code):
 		font-size: .97vw;
 		color: rgba(0, 0, 0, 0);
 	}
+	h1 {
+		font-family: 'Beleren Small Caps';
+		font-size: 48px;
+		margin: 24px 0;
+	}
+	h2 {
+		font-family: 'Beleren';
+		font-size: 30px;
+		margin: 15px 0;
+	}
 </style>
 <body>
 	'''
@@ -231,6 +279,39 @@ def generateHTML(code):
 			</div>
 			<div class="select-text">Cards displayed as<select name="display" id="display"><option value="cards-only">Cards Only</option><option value="cards-text">Cards + Text</option></select>sorted by<select name="sort-by" id="sort-by"><option value="set-code">Set Number</option><option value="name">Name</option><option value="mv">Mana Value</option><option value="color">Color</option><option value="rarity">Rarity</option></select> : <select name="sort-order" id="sort-order"><option value="ascending">Asc</option><option value="descending">Desc</option></select></div>
 		</div>
+	</div>
+
+	<div class="button-container" id="buttons">
+		<button style="border-right: 1px solid #171717;" onclick="switchView('splash')" id="splash-button">Splash</button><button onclick="switchView('cards')"id="cards-button">Cards</button>
+	</div>
+
+	<div class="splash-container" id="splash">
+	'''
+
+	splashpath = os.path.join('sets', code + '-files', 'splash.md')
+	if os.path.isfile(splashpath):
+		with open(splashpath, 'r', encoding='utf-8') as md_file:
+			md_content = md_file.read()
+
+		md_html = markdown.markdown(md_content)
+
+		img_re = r'%([^%]*)%'
+		for img_name in re.findall(img_re, md_html):
+			img_name_re = r'%' + img_name + '%'
+			if img_name == 'logo' or img_name == 'icon':
+				img_path = os.path.join('/sets', code + '-files', img_name + '.png')
+			else:
+				with open(os.path.join('sets', code + '-files', code + '.json'), encoding='utf-8-sig') as f:
+					set_json = json.load(f)
+				for card in set_json['cards']:
+					if card['card_name'] == img_name:
+						img_path = os.path.join('/sets', code + '-files', 'img', str(card['number']) + ('t' if 'token' in card['shape'] else '') + '_' + img_name + '.png')
+						break
+					img_path = 'missing'
+			md_html = re.sub(img_name_re, img_path, md_html)
+		html_content += md_html
+
+	html_content +=	'''
 	</div>
 
 	<div class="grid-container" id="grid">
@@ -261,8 +342,15 @@ def generateHTML(code):
 					set_list_arrayified.push(card_list_arrayified[i]);
 				}
 			}
+			'''
 
-			setCardView();
+	if os.path.isfile(splashpath):
+		html_content += '''		switchView('splash');'''
+	else:
+		html_content += '''		buttons.style.display = 'none';
+		setCardView();'''
+
+	html_content += '''
 		});
 
 		document.getElementById("sort-by").onchange = displayChangeListener;
@@ -273,9 +361,26 @@ def generateHTML(code):
 			setCardView();
 		}
 
+		function switchView(view) {
+			if (view == "splash")
+			{
+				splash.style.display = '';
+				imagesOnlyGrid.style.display = 'none';
+				grid.style.display = 'none';
+			}
+			else if (view == "cards")
+			{
+				setCardView();
+			}
+
+			document.getElementById("splash-button").disabled = (view == "splash");
+			document.getElementById("cards-button").disabled = (view == "cards");
+		}
+
 		function setCardView() {
 			displayStyle = document.getElementById("display").value;
 
+			splash.style.display = 'none';
 			imagesOnlyGrid.style.display = displayStyle == "cards-only" ? '' : 'none';
 			grid.style.display = displayStyle == "cards-only" ? 'none' : '';
 
@@ -343,7 +448,7 @@ def generateHTML(code):
 	
 	html_content += '''
 
-		function gridifyCard(card_stats, card_text = false, rotate_card = false) {
+		function gridifyCard(card_stats, card_text = false, rotate_card = false, designer_notes = false) {
 			const card_name = card_stats.card_name;
 
 			if (displayStyle == "cards-only")
@@ -368,7 +473,9 @@ def generateHTML(code):
 		});
 
 		function search() {
-			window.location = ("/search?search=" + document.getElementById("search").value);
+			const url = new URL('search', window.location.origin);
+			url.searchParams.append('search', document.getElementById("search").value);
+			window.location.href = url;
 		}
 
 		'''

@@ -1,44 +1,14 @@
 function tokenizeTerms(searchTerms)
 		{
-			let searchTokens = [];
-			let key = 0;
-			let inParens = false;
-			let inQuotes = false;
-			for (let i = 0; i < searchTerms.length; i++)
-			{
-				if (searchTerms.charAt(i) == '(')
-				{
-					inParens = true;
-				}
-				if (searchTerms.charAt(i) == ')')
-				{
-					inParens = false;
-				}
-				if (!inParens && !inQuotes && (searchTerms.charAt(i) == '"' || searchTerms.charAt(i) == '“' || searchTerms.charAt(i) == '/'))
-				{
-					inQuotes = true;
-				}
-				else if (!inParens && inQuotes && (searchTerms.charAt(i) == '"' || searchTerms.charAt(i) == '”' || searchTerms.charAt(i) == '/'))
-				{
-					inQuotes = false;
-				}
-				if (searchTerms.charAt(i) == ' ' && !inParens && !inQuotes)
-				{
-					searchTokens.push(searchTerms.substring(key, i));
-					key = i + 1;
-				}
-				if (i == searchTerms.length - 1)
-				{
-					searchTokens.push(searchTerms.substring(key));
-				}
-			}
+			let tokenRegex = /-?\w*[!:<>=]?(([^ "\(\)“”]+)|(\".+?\")|(\(.+?\))|(\/.+?\/)|(\“.+?\”))/g;
+			let searchTokens = searchTerms.match(tokenRegex);
 
 			return searchTokens;
 		}
 
 		function searchAllTokens(card, tokens)
 		{
-			if (tokens.length < 1)
+			if (tokens == null)
 			{
 				return true;
 			}
@@ -86,6 +56,31 @@ function tokenizeTerms(searchTerms)
 			return ret_str;
 		}
 
+		function convertToMV(cost)
+		{
+			let mv = 0;
+			
+			costTokens = cost.substring(1, cost.length - 1).replaceAll("}{"," ").split(' ');
+			for (const token of costTokens)
+			{
+				if (isDecimal(token))
+				{
+					mv += parseInt(token);
+				}
+				// 2brid
+				else if (token.includes('2'))
+				{
+					mv += 2;
+				}
+				else if (token != "x")
+				{
+					mv += 1;
+				}
+			}
+
+			return mv;
+		}
+
 		function searchToken(card, token)
 		{
 			let card_stats = [];
@@ -109,7 +104,7 @@ function tokenizeTerms(searchTerms)
 			// 4: collector number
 			let card_ci = removeDuplicateChars(card_stats.color_identity);
 			let card_cost = card_stats.cost;
-			let card_mv = isDecimal(card_cost.charAt(1)) ? parseInt(card_cost.substring(1, card_cost.indexOf('}'))) + card_cost.replaceAll('x','').split('{').length - 2 : card_cost.replaceAll('x','').split('{').length - 1;
+			let card_mv = convertToMV(card_cost);
 			//Strip out the lingering [i][/i] and [b][/b] tags while we're searching just in case someone decided to bold something in the
 			//middle of their rules text for some reason
 			let card_oracle_text = card_stats.rules_text != "" ? card_stats.rules_text.replace(/\[(\/)?([ib])\]/g, "") : card_stats.special_text.replace(/\[(\/)?([ib])\]/g, "");
@@ -161,7 +156,7 @@ function tokenizeTerms(searchTerms)
 				card_loyalty_2 = card_stats.loyalty2;
 			}
 
-			token = token.replaceAll("~", card_name).replaceAll("cardname", card_name).replaceAll('"','').replaceAll('/','').replaceAll('“','').replaceAll('”','');
+			token = token.replaceAll("~", card_name).replaceAll("cardname", card_name).replaceAll('"','').replaceAll('“','').replaceAll('”','');
 
 			const modifierRegex = /[!:<>=]+/g;
 			const match = token.match(modifierRegex);
@@ -171,6 +166,15 @@ function tokenizeTerms(searchTerms)
 				const modifier = match[0];
 				const term = token.substring(0, token.indexOf(modifier));
 				let check = token.substring(token.indexOf(modifier) + modifier.length);
+
+				if (check.charAt(0) == '/')
+				{
+					check = check.substring(1);
+				}
+				if (check.charAt(check.length - 1) == '/')
+				{
+					check = check.substring(0,check.length - 1);
+				}
 
 				if (color_map.has(check))
 				{
@@ -362,7 +366,7 @@ function tokenizeTerms(searchTerms)
 				{
 					if (modifier == ":")
 					{
-						regex = new RegExp(check);
+						regex = new RegExp(check.replaceAll("+","\\+"));
 						return regex.test(card_oracle_text);
 					}
 					/* unsupported flows

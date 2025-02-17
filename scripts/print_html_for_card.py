@@ -181,7 +181,7 @@ def generateHTML():
 	'''
 
 	with open(os.path.join('resources', 'snippets', 'header.txt'), encoding='utf-8-sig') as f:
-		snippet = f.read().replace('domain', os.path.basename(os.getcwd()))
+		snippet = f.read()
 		html_content += snippet
 
 	html_content += '''

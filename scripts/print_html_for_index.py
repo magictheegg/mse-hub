@@ -405,12 +405,12 @@ def generateHTML():
 				window.location = ("/all-sets");
 			}
 
-			function playOnCgs() {
-				window.open("https://cgs.gg/?url=https%3A%2F%2F''' + os.path.basename(os.getcwd()) + '''%2Fcgs.json", '_blank').focus();
-			}
-				
 			function goToDeckbuilder() {
 				window.location = ("/deckbuilder");
+			}
+
+			function playOnCgs() {
+				window.location = ("/play");
 			}
 
 			function search() {

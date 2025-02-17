@@ -410,7 +410,7 @@ def generateHTML(codes):
 			<a href="/all-sets"><img src="/img/sets.png" class="sg-icon">Sets</a>
 			<a href="/deckbuilder"><img src="/img/deck.png" class="sg-icon">Deckbuilder</a>
 			<a onclick="randomCard()"><img src="/img/random.png" class="sg-icon">Random</a>
-			<a href="https://cgs.gg/?url=https%3A%2F%2F''' + os.path.basename(os.getcwd()) + '''%2Fcgs.json" target="_blank"><img src="/img/cgs.png" class="sg-icon">Play</a>
+			<a href="/play"><img src="/img/cgs.png" class="sg-icon">Play</a>
 		</div>
 	</div>
 	<div id="myContextMenu" class="rc-menu">

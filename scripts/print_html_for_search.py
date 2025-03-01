@@ -279,7 +279,7 @@ def generateHTML(codes):
 			// refresh page values
 			const params = new URLSearchParams(window.location.search);
 			page = params.get("page") ? params.get("page") : 0;
-			document.getElementById("search").value = decodeURIComponent(params.get("search"));
+			document.getElementById("search").value = params.get("search") ? decodeURIComponent(params.get("search")) : "";
 
 			if (sessionStorage.getItem("sortMethod"))
 			{
@@ -382,12 +382,17 @@ def generateHTML(codes):
 			cardGrid.innerHTML = "";
 
 			for (const card of card_list_arrayified) {
-				if (card.shape.includes("token") && !searchTerms.includes("*t:token") && !searchTerms.includes("t:token"))
+				if (card.shape.includes("token") && !searchTerms.includes("+t:token") && !searchTerms.includes("t:token"))
 				{
 					continue;
 				}
 
-				if (card.type.includes("Basic") && !searchTerms.includes("*t:basic") && !searchTerms.includes("t:basic"))
+				if (card.type.includes("Basic") && !searchTerms.includes("+t:basic") && !searchTerms.includes("t:basic"))
+				{
+					continue;
+				}
+
+				if (card.rarity.includes("masterpiece") && !searchTerms.includes("+r:masterpiece") && !searchTerms.includes("+r:mp") && !searchTerms.includes("t:basic"))
 				{
 					continue;
 				}

@@ -398,13 +398,23 @@ def generateHTML(code):
 			}
 
 			let set_cards = [];
-			let set_tokens_basics = [];
+			let set_basics = [];
+			let set_tokens = [];
+			let set_mp = [];
 
 			for (const card of set_list_arrayified)
 			{
-				if (card.shape.includes("token") || card.type.includes("Basic"))
+				if (card.rarity.includes("masterpiece"))
 				{
-					set_tokens_basics.push(card);
+					set_mp.push(card);
+				}
+				else if (card.shape.includes("token"))
+				{
+					set_tokens.push(card);
+				}
+				else if (card.type.includes("Basic"))
+				{
+					set_basics.push(card);
 				}
 				else
 				{
@@ -413,13 +423,17 @@ def generateHTML(code):
 			}
 
 			set_cards.sort(compareFunction);
-			set_tokens_basics.sort(compareFunction);
+			set_basics.sort(compareFunction);
+			set_tokens.sort(compareFunction);
+			set_mp.sort(compareFunction);
 			if (document.getElementById("sort-order").value == "descending")
 			{
 				set_cards.reverse();
-				set_tokens_basics.reverse();
+				set_basics.reverse();
+				set_tokens.reverse();
+				set_mp.reverse();
 			}
-			set_list_sorted = set_cards.concat(set_tokens_basics);
+			set_list_sorted = set_cards.concat(set_basics).concat(set_tokens).concat(set_mp);
 			cardGrid.innerHTML = "";
 
 			for (const card of set_list_sorted)

@@ -1,0 +1,17 @@
+﻿{ 
+	"1":  [ "W", "U", "B", "R", "G" ],
+	"2":  [ "WU", "UB", "BR", "RG", "GW" ],
+	"3":  [ "WB", "UR", "BG", "RW", "GU" ],
+	"4":  [ "WUB", "UBR", "BRG", "RGW", "GWU" ],
+	"5":  [ "RWB", "GUR", "WBG", "URW", "BGU" ],
+	"6":  [ "gold" ],
+	"7":  [ "C" ],
+	"8":  [ "WL", "UL", "BL", "RL", "GL" ],
+	"9":  [ "WUL", "UBL", "BRL", "RGL", "GWL" ],
+	"10": [ "WBL", "URL", "BGL", "RWL", "GUL" ],
+	"11": [ "basic" ],
+	"12": [ "token" ],
+	"13": [ "mp" ],
+	"14": [ "sort_group1" ],
+	"15": [ "sort_group2" ]
+}

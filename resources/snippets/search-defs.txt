@@ -1,6 +1,6 @@
 function tokenizeTerms(searchTerms)
 		{
-			let tokenRegex = /-?\w*[!:<>=]?(([^ "\(\)“”]+)|(\".+?\")|(\(.+?\))|(\/.+?\/)|(\“.+?\”))/g;
+			let tokenRegex = /-?\w*[!:<>=]?(([^ "\(\)\/“”]+)|(\".+?\")|(\(.+?\))|(\/.+?\/)|(\“.+?\”))/g;
 			let searchTokens = searchTerms.match(tokenRegex);
 
 			return searchTokens;
@@ -8,13 +8,13 @@ function tokenizeTerms(searchTerms)
 
 		function searchAllTokens(card, tokens)
 		{
-			if (tokens == null)
+			if (tokens == null || tokens == '')
 			{
 				return true;
 			}
 			for (let i = 0; i < tokens.length; i++)
 			{
-				if (tokens[i].charAt(0) == '*')
+				if (tokens[i].charAt(0) == '+')
 				{
 					return searchAllTokens(card, tokens.slice(0, i)) && searchAllTokens(card, tokens.slice(i + 1));
 				}
@@ -98,7 +98,7 @@ function tokenizeTerms(searchTerms)
 			}
 
 			let card_name = card_stats.card_name;
-			let card_color = card_stats.color != "" ? card_stats.color : "c";
+			let card_color = card_stats.color;
 			let card_rarity = card_stats.rarity;
 			let card_type = card_stats.type;
 			// 4: collector number
@@ -149,7 +149,7 @@ function tokenizeTerms(searchTerms)
 				card_name = card_name + "	" + card_stats.card_name2;
 				card_type = card_type + "	" + card_stats.type2;
 				card_oracle_text = card_oracle_text + "	" + (card_stats.rules_text2 != "" ? card_stats.rules_text2.replace(/\[(\/)?([ib])\]/g, "") : card_stats.special_text2.replace(/\[(\/)?([ib])\]/g, ""));
-				card_color_2 = card_stats.color2 != "" ? card_stats.color2 : "c";
+				card_color_2 = card_stats.color2;
 				card_cost_2 = card_stats.cost2;
 				card_power_2 = card_stats.pt2.substring(0,card_stats.pt2.indexOf('/'));
 				card_toughness_2 = card_stats.pt.substring(card_stats.pt.indexOf('/')+1);
@@ -232,53 +232,60 @@ function tokenizeTerms(searchTerms)
 				}
 				if (term == "c" || term == "color")
 				{
-					if (modifier == "!" || modifier == "=")
+					if (!isNaN(check))
 					{
-						if (!isNaN(check))
+						if (modifier == "!" || modifier == "=")
 						{
 							return card_color.length == parseInt(check);
 						}
-						return (card_color.split("").sort().join("") == check.split("").sort().join(""));
-					}
-					else if (modifier == ":")
-					{
-						if (!isNaN(check))
+						else if (modifier == ":")
 						{
 							return card_color.length == parseInt(check);
 						}
-						return hasAllChars(card_color, check);
-					}
-					else if (modifier == "<")
-					{
-						if (!isNaN(check))
+						else if (modifier == "<")
 						{
 							return card_color.length < parseInt(check);
 						}
-						return card_color == "c" || (check.length > card_color.length && hasAllChars(check, card_color));
-					}
-					else if (modifier == ">")
-					{
-						if (!isNaN(check))
+						else if (modifier == ">")
 						{
 							return card_color.length > parseInt(check);
 						}
-						return card_color.length > check.length && hasAllChars(card_color, check);
-					}
-					else if (modifier == "<=")
-					{
-						if (!isNaN(check))
+						else if (modifier == "<=")
 						{
 							return card_color.length <= parseInt(check);
 						}
-						return card_color == "c" || hasAllChars(check, card_color);
-					}
-					else if (modifier == ">=")
-					{
-						if (!isNaN(check))
+						else if (modifier == ">=")
 						{
 							return card_color.length >= parseInt(check);
 						}
-						return hasAllChars(card_color, check);
+					}
+					else
+					{
+						card_color = card_color == "" ? "c" : card_color;
+						if (modifier == "!" || modifier == "=")
+						{
+							return (card_color.split("").sort().join("") == check.split("").sort().join(""));
+						}
+						else if (modifier == ":")
+						{
+							return hasAllChars(card_color, check);
+						}
+						else if (modifier == "<")
+						{
+							return card_color == "c" || (check.length > card_color.length && hasAllChars(check, card_color));
+						}
+						else if (modifier == ">")
+						{
+							return card_color.length > check.length && hasAllChars(card_color, check);
+						}
+						else if (modifier == "<=")
+						{
+							return card_color == "c" || hasAllChars(check, card_color);
+						}
+						else if (modifier == ">=")
+						{
+							return hasAllChars(card_color, check);
+						}
 					}
 				}
 				if (term == "cost" || term == "mana")
@@ -291,55 +298,60 @@ function tokenizeTerms(searchTerms)
 				}
 				if (term == "ci" || term == "id")
 				{
-					if (modifier == "!" || modifier == "=")
+					if (!isNaN(check))
 					{
-						// why is this the best way to do this?
-						if (!isNaN(check))
+						card_ci = card_ci == "c" ? "" : card_ci;
+						if (modifier == "!" || modifier == "=")
 						{
 							return card_ci.length == parseInt(check);
 						}
-						return (card_ci.split("").sort().join("") == check.split("").sort().join(""));
-					}
-					else if (modifier == ":")
-					{
-						if (!isNaN(check))
+						else if (modifier == ":")
 						{
 							return card_ci.length == parseInt(check);
 						}
-						return hasAllChars(card_ci, check);
-					}
-					else if (modifier == "<")
-					{
-						if (!isNaN(check))
+						else if (modifier == "<")
 						{
 							return card_ci.length < parseInt(check);
 						}
-						return card_ci == "c" || (check.length > card_ci.length && hasAllChars(check, card_ci));
-					}
-					else if (modifier == ">")
-					{
-
-						if (!isNaN(check))
+						else if (modifier == ">")
 						{
 							return card_ci.length > parseInt(check);
 						}
-						return card_ci.length > check.length && hasAllChars(card_ci, check);
-					}
-					else if (modifier == "<=")
-					{
-						if (!isNaN(check))
+						else if (modifier == "<=")
 						{
 							return card_ci.length <= parseInt(check);
 						}
-						return card_ci == "c" || hasAllChars(check, card_ci);
-					}
-					else if (modifier == ">=")
-					{
-						if (!isNaN(check))
+						else if (modifier == ">=")
 						{
 							return card_ci.length >= parseInt(check);
 						}
-						return hasAllChars(card_ci, check);
+					}
+					else
+					{
+						if (modifier == "!" || modifier == "=")
+						{
+							return (card_ci.split("").sort().join("") == check.split("").sort().join(""));
+						}
+						else if (modifier == ":")
+						{
+							return hasAllChars(card_ci, check);
+						}
+						else if (modifier == "<")
+						{
+							return card_ci == "c" || (check.length > card_ci.length && hasAllChars(check, card_ci));
+						}
+						else if (modifier == ">")
+						{
+							return card_ci.length > check.length && hasAllChars(card_ci, check);
+						}
+						else if (modifier == "<=")
+						{
+							return card_ci == "c" || hasAllChars(check, card_ci);
+						}
+						else if (modifier == ">=")
+						{
+							return hasAllChars(card_ci, check);
+						}
 					}
 				}
 				if (term == "t" || term == "type")

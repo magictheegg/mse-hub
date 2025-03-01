@@ -117,6 +117,7 @@ def generateHTML():
 					if s['set_code'] == code:
 						set_name = s['set_name']
 						break
+					set_name = 'MISSING'
 
 			with open(os.path.join('sets', code + '-files', code + '.json'), encoding='utf-8-sig') as f:
 				data = json.load(f)

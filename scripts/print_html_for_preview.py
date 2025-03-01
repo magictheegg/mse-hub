@@ -112,7 +112,7 @@ def generateHTML(setCode):
 			gap: 2px;
 			padding-left: 5%;
 			padding-right: 5%;
-			padding-bottom: 3%;
+			padding-bottom: 1%;
 			justify-items: center;
 			max-width: 1200px;
 		}
@@ -448,7 +448,7 @@ def generateHTML(setCode):
 		sidebar_img.src = document.getElementById(id).src;
 		rotated_img.src = document.getElementById(id).src.replace("_back", "_front");
 
-		if (horizontal && sidebar_img.src.includes("_front"))
+		if (horizontal && !sidebar_img.src.includes("_back"))
 		{
 			rotated_img.style.display = "block";
 			sidebar_img.style.filter = "blur(2px) brightness(0.7)";

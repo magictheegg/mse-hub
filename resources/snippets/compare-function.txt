@@ -1,6 +1,16 @@
 function compareFunction(a, b) {
 			const sortMode = document.getElementById("sort-by").value;
 
+			if (a.rarity.includes("masterpiece") && !b.rarity.includes("masterpiece"))
+			{
+				return 1;
+			}
+
+			if (!a.rarity.includes("masterpiece") && b.rarity.includes("masterpiece"))
+			{
+				return -1;
+			}
+
 			if (a.shape.includes("token") && !b.shape.includes("token"))
 			{
 				return 1;

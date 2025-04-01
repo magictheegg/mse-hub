@@ -401,6 +401,85 @@ def generateHTML(codes):
 	.sg-icon {
 		cursor: pointer;
 	}
+	.load-modal-container {
+		display: none; 
+		position: fixed; 
+		z-index: 1; 
+		padding-top: 100px;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto; 
+		background-color: rgb(0,0,0); 
+		background-color: rgba(0,0,0,0.4); 
+	}
+	.load-modal-content {
+		background-color: #fefefe;
+		margin: auto;
+		padding: 20px;
+		border: 1px solid #888;
+		width: 80%;
+	}
+	.close {
+		color: #aaaaaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+	}
+	.close:hover,
+	.close:focus {
+		color: #000;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	#modal-container {
+		display: none; 
+		position: fixed; 
+		z-index: 1; 
+		padding-top: 100px;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto; 
+		background-color: rgb(0,0,0); 
+		background-color: rgba(0,0,0,0.4); 
+	}
+	#modal-content {
+		background-color: #fefefe;
+		margin: auto;
+		padding: 20px;
+		border: 1px solid #888;
+		width: 80%;
+	}
+	.close {
+		color: #aaaaaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+	}
+	.close:hover,
+	.close:focus {
+		color: #000;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	.load-btn {
+		color: #fff;
+		background-color: rgba(14, 126, 246, 1);
+		padding: 10px;
+		margin: 10px;
+	}
+	.del-btn {
+		color: #fff;
+		background-color: rgb(215, 69, 59);
+		padding: 10px;
+		margin: 10px;
+	}
+	.name-cost {
+		font-family: beleren;
+	}
 </style>
 <body>
 	<div class="header">
@@ -463,8 +542,16 @@ def generateHTML(codes):
 					<option value="default">Actions ...</option>
 					<option value="new">New deck</option>
 					<option value="import">Import deck</option>
+					<option value="save-collection">Save as collection</option>
+					<option value="load-collection">Load collection</option>
+					<option value="save">Save deck</option>
+					<option value="load">Load deck</option>
+					<option value="delete">Delete saved deck</option>
+					<option value="get-url">Get deck URL</option>
+					<option value="copy">Copy decklist</option>
 					<option value="export-dek">Export .dek</option>
 					<option value="export-txt">Export .txt</option>
+					<option value="draftmancer">Export Draftmancer File</option>
 				</select>
 				<input type="file" class="hidden" id="import-file" onclick="this.value=null;">
 			</div>
@@ -522,16 +609,26 @@ def generateHTML(codes):
 				</div>
 			</div>
 		</div>
+		<div id="modal-container">
+			<div id="modal-content">
+				<span class="close" onclick="closeModal()">&times;</span> <!--close button-->
+			</div>
+		</div>
 	</div>
 
+<script src="https://cdn.jsdelivr.net/gh/pieroxy/lz-string/libs/lz-string.js"></script>
+
 	<script>
-		let search_results = [];
+		et search_results = [];
 		let card_list_arrayified = [];
 		let specialchars = "";
 		let deck = [];
 		let sideboard = [];
 		let active_card = [];
 		let sets_json = {};
+		let collection_copies = {};
+		let deck_2 = {};
+		let sideboard_2 = {};
 
 		document.addEventListener("DOMContentLoaded", async function () {
 			'''
@@ -542,7 +639,7 @@ def generateHTML(codes):
 
 	html_content += '''
 
-			await fetch('/lists/all-sets.json')
+await fetch('/lists/all-sets.json')
 					.then(response => response.json())
 					.then(data => {
 						sets_json = data; 
@@ -558,6 +655,23 @@ def generateHTML(codes):
 
 			// initial search on load
 			preSearch();
+			const urlParams = new URLSearchParams(window.location.search);
+			let decoded = atob(urlParams.get('deck'));
+			console.log(decoded);
+			readDeckText(decoded);
+			if (document.getElementById("deck-name").value == "undefined") {
+				document.getElementById("deck-name").value = "Untitled Deck";
+			}
+
+			// initialize full card pool as collection
+			var colls = JSON.parse(localStorage.getItem("colls.collections"));
+			if (colls == null) {
+				colls = {}
+			}
+			colls["Full card pool"] = card_list_arrayified;
+			console.log("test");
+			console.log(colls);
+			localStorage.setItem("colls.collections", JSON.stringify(colls));
 		});
 
 		function displayChangeListener() {
@@ -574,6 +688,8 @@ def generateHTML(codes):
 			{
 				deck = [];
 				sideboard = [];
+				deck_2 = {};
+				sideboard_2 = {};
 				processDeck();
 				document.getElementById("file-menu").value = "default";
 			}
@@ -581,9 +697,42 @@ def generateHTML(codes):
 			{
 				document.getElementById("import-file").click();
 			}
+			else if (option == "save") {
+				localStorage.setItem(document.getElementById("deck-name").value, generateDeckText());
+				document.getElementById("file-menu").value = "default";
+				openSaveModal();
+			}
+			else if (option == "load") {
+				loadDeck();
+			}
+			else if (option == "delete") {
+				deleteModal();
+			}
+			else if (option == "get-url") {
+				navigator.clipboard.writeText(`https://voyager-mtg.github.io/deckbuilder?deck=${btao(generateDeckText())}&main=${deck.length}&side=${sideboard.length}`);
+				openCopyModal();
+			}
+			else if (option == "copy") {
+				navigator.clipboard.writeText(generateDeckText());
+				document.getElementById("file-menu").value = "default";
+				openCopy2Modal();
+			}
+			else if (option == "save-collection") {
+				let colls = JSON.parse(localStorage.getItem("colls.collections"));
+				colls[document.getElementById("deck-name").value.toString()] = deckTextToCollection();
+				localStorage.setItem("colls.collections", JSON.stringify(colls));
+				document.getElementById("file-menu").value = "default";
+			}
+			else if (option == "load-collection") {
+				openLoadCollectionWindow();
+			}
 			else if (option.startsWith("export"))
 			{
 				exportFile(option);
+			}
+			else if (option == "draftmancer")
+			{
+				exportDraftmancer();
 			}
 		});
 
@@ -607,13 +756,206 @@ def generateHTML(codes):
 			processDeck();
 		});
 
+		function openSaveModal() {
+			document.getElementById("modal-container").style.display = "block";
+			document.getElementById("modal-content").innerHTML = "Deck Saved as " + document.getElementById("deck-name").value + '<span class="close" onclick="closeModal()">&times;</span>';
+		}
+
+		function openCopyModal() {
+			document.getElementById("modal-container").style.display = "block";
+			document.getElementById("modal-content").innerHTML = "Url copied to clipboard" + '<span class="close" onclick="closeModal()">&times;</span>';
+		}
+
+		function openCopy2Modal() {
+			document.getElementById("modal-container").style.display = "block";
+			document.getElementById("modal-content").innerHTML = "Decklist copied to clipboard" + '<span class="close" onclick="closeModal()">&times;</span>';
+		}
+
+		function closeModal() {
+			document.getElementById("modal-container").style.display = "none";
+			document.getElementById("file-menu").value = "default";
+		}
+
+		function openSaveCollModal() {
+			document.getElementById("modal-container").style.display = "block";
+			document.getElementById("modal-content").innerHTML = "Deck Saved as collection" + document.getElementById("deck-name").value + '<span class="close" onclick="closeModal()">&times;</span>';
+		}
+
+		function loadDeck() {
+			document.getElementById("modal-container").style.display = "block";
+			document.getElementById("modal-content").innerHTML = "Loading Deck:";
+			Object.keys(localStorage).forEach(function(key){
+				if (key != "colls.collections") { 
+					console.log(key);
+					console.log(localStorage.getItem(key));
+					document.getElementById("modal-content").innerHTML += `<span class="load-btn" onclick="readDeckText(localStorage.getItem('${key}'),'${key}')">${key}</span>`;		
+				}	
+			});
+			document.getElementById("modal-content").innerHTML += '<span class="close" onclick="closeModal()">&times;</span>';
+		} 
+
+		function openLoadCollectionWindow() {
+			document.getElementById("modal-container").style.display = "block";
+			document.getElementById("modal-content").innerHTML = "Loading Collection:";
+			Object.keys(JSON.parse(localStorage.getItem("colls.collections"))).forEach(function(key){
+				console.log(key);
+   				// console.log(localStorage.getItem(key));
+				document.getElementById("modal-content").innerHTML += `<span class="load-btn" onclick="loadCollection('${key}')">${key}</span>`;			
+			});
+			document.getElementById("modal-content").innerHTML += '<span class="close" onclick="closeModal()">&times;</span>';
+		} 
+
+		function loadCollection(name) {
+			var e = document.getElementById("copies-style");
+			if (e != null){ e.remove(); }
+			if (name == "Full card pool") {
+				card_list_arrayified = card_list.cards;
+				closeModal();
+				preSearch();
+				return;
+			}
+			let colls = JSON.parse(localStorage.getItem("colls.collections"));
+			let collectionToLoad_ = colls[name];
+			let new_list = [];
+			let collectionToLoad = [];
+			let cssStr = "";
+			let i = 0;
+			for (const item of collectionToLoad_) {
+				collectionToLoad.push(item.slice(2));
+			}
+			console.log(collectionToLoad);
+			for (const card of card_list.cards) {
+				// console.log("---------------------------------------");
+				// console.log(card.card_name);
+				// console.log(collectionToLoad);
+				// console.log(collectionToLoad.includes(card.card_name));
+				if (collectionToLoad.includes(card.card_name)) {
+					new_list.push(card);
+					collection_copies[`${card["set"]}-${card["number"]}`] = Number(collectionToLoad_[i].split(" ")[0]);
+					cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}-cards-and-text):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${collectionToLoad_[i].split(" ")[0]}x"; z-index: 999; display: block; position: absolute; border-radius: 20px;}\n`
+					i++;
+					deck_2[`${card["set"]}-${card["number"]}`] = 0;
+					sideboard_2[`${card["set"]}-${card["number"]}`] = 0;
+				}
+			}
+			card_list_arrayified = new_list;
+			const cssElem = document.createElement("style");
+			cssElem.id = "copies-style";
+			cssElem.innerHTML = cssStr;
+			document.body.appendChild(cssElem);
+			closeModal();
+			preSearch();
+		}
+
+		function deckTextToCollection() {
+			var text = generateDeckText();
+			var lines = text.split("\n");
+			var cardlist = [];
+			for (const line of lines) {
+				cardlist.push(line);
+			}
+			console.log(cardlist);
+			return cardlist;
+		}
+
+		function readDeckText(text, name) {
+
+			document.getElementById("deck-name").value = name;
+
+			deck = [];
+			sideboard = [];
+			sb_cards = false;
+
+			const lines = text.split('\n');
+
+			let deck_map = new Map();
+			let sb_map = new Map();
+
+			for (const line of lines)
+			{
+				if (line == 'sideboard' || line == '') // '' for Draftmancer files
+				{
+					sb_cards = true;
+				}
+				else if (!sb_cards)
+				{
+					count = parseInt(line.substring(0, line.indexOf(' ')));
+					card_name = line.substring(line.indexOf(' ') + 1);
+
+					if (deck_map.has(card_name))
+					{
+						deck_map.set(card_name, deck_map.get(card_name) + count);
+					}
+					else
+					{
+						deck_map.set(card_name, count);
+					}
+				}
+				else
+				{
+					count = parseInt(line.substring(0, line.indexOf(' ')));
+					card_name = line.substring(line.indexOf(' ') + 1);
+
+					if (sb_map.has(card_name))
+					{
+						sb_map.set(card_name, sb_map.get(card_name) + count);
+					}
+					else
+					{
+						sb_map.set(card_name, count);
+					}
+				}
+			}
+			console.log(card_list_arrayified);
+			for (const card of card_list_arrayified)
+			{
+				if (deck_map.has(card.card_name))
+				{
+					for (let i = 0; i < deck_map.get(card.card_name); i++)
+					{
+						addCardToDeck(JSON.stringify(card));
+					}
+					deck_map.delete(card.card_name);
+				}
+
+				if (sb_map.has(card.card_name))
+				{
+					for (let i = 0; i < sb_map.get(card.card_name); i++)
+					{
+						addCardToSideboard(JSON.stringify(card));
+					}
+					sb_map.delete(card.card_name);
+				}
+			}
+		// reader.readAsText(file);
+		document.getElementById("modal-container").style.display = "none";
+		document.getElementById("file-menu").value = "default";
+		}
+		
+
+		function deleteModal() {
+			document.getElementById("modal-container").style.display = "block";
+			document.getElementById("modal-content").innerHTML = "Deleting Deck:";
+			Object.keys(localStorage).forEach(function(key){
+				console.log(key);
+   				console.log(localStorage.getItem(key));
+				document.getElementById("modal-content").innerHTML += `<span id="delete-${key}" class="del-btn" onclick="deleteDeck('${key}')">${key}</span>`;
+			});
+			document.getElementById("modal-content").innerHTML += '<span class="close" onclick="closeModal()">&times;</span>';
+		}
+
+		function deleteDeck(name) {
+			localStorage.removeItem(name);
+			document.getElementById(`delete-${name}`).remove();
+		}
+
 		document.getElementById("import-file").addEventListener("change", function(event) {
 			const files = event.target.files;
 
 			if (files.length > 0) {
 				const file = files[0];
-				const name = file.name.replace(/\\.[^/.]+$/, "");
-				const import_type = file.name.replace(/^[^/.]+\\./, "");
+				const name = file.name.replace(/\.[^/.]+$/, "");
+				const import_type = file.name.replace(/^[^/.]+\./, "");
 
 				document.getElementById("deck-name").value = name;
 
@@ -625,7 +967,7 @@ def generateHTML(codes):
 				reader.onload = function(e) {
 					const fileContent = e.target.result;
 
-					const lines = fileContent.split('\\n');
+					const lines = fileContent.split('\n');
 					if (import_type == 'dek')
 					{
 						for (const line of lines)
@@ -876,11 +1218,19 @@ def generateHTML(codes):
 		}
 
 		function addCardToDeck(card) {
+			let card_parsed = JSON.parse(card);
+			if (modifyDeck2(`${card_parsed['set']}-${card_parsed['number']}`, '+')) {
+				return;
+			}
 			deck.push(card);
 			processDeck();
 		}
 
 		function addCardToSideboard(card) {
+			let card_parsed = JSON.parse(card);
+			if (modifySB2(`${card_parsed['set']}-${card_parsed['number']}`, '+')) {
+				return;
+			}
 			sideboard.push(card);
 			processDeck();
 		}
@@ -977,7 +1327,7 @@ def generateHTML(codes):
 							card_row.className = "deck-line";
 							
 							card_in_deck = document.createElement("div");
-							card_in_deck.innerText += map.get(card) + " " + card_name + "\\n";
+							card_in_deck.innerText += map.get(card) + " " + card_name + "\n";
 							card_in_deck.style.cursor = "pointer";
 							card_in_deck.onmouseover = function() {
 								cgc = document.getElementById("card-grid-container");
@@ -1007,19 +1357,27 @@ def generateHTML(codes):
 
 								card_in_deck.onclick = function() {
 									sideboard.splice(sideboard.indexOf(card), 1);
+									let parsed_card = JSON.parse(card);
+									modifySB2(`${parsed_card['set']}-${parsed_card['number']}`, '-');
 									addCardToDeck(card);
 								}
 							}
 							else
 							{
+								// console.log(card);
 								del_btn.src = "/img/delete.png";
+								let card_parsed = JSON.parse(card);
 								del_btn.onclick = function() {
 									deck.splice(deck.indexOf(card), 1);
+									let card_parsed = JSON.parse(card);
+									modifyDeck2(`${card_parsed['set']}-${card_parsed['number']}`, "-");
 									processDeck();
 								}
 
 								card_in_deck.onclick = function() {
 									deck.splice(deck.indexOf(card), 1);
+									let card_parsed = JSON.parse(card);
+									modifyDeck2(`${card_parsed['set']}-${card_parsed['number']}`, "-");						
 									addCardToSideboard(card);
 								}
 							}
@@ -1076,19 +1434,25 @@ def generateHTML(codes):
 
 								card_img.onclick = function() {
 									sideboard.splice(sideboard.indexOf(card), 1);
+									let parsed_card = JSON.parse(card);
+									modifySB2(`${parsed_card['set']}-${parsed_card['number']}`, '-');
 									addCardToDeck(card);
 								}
 							}
 							else
 							{
+								// console.log(card);
 								del_btn.src = "/img/delete.png";
+								let card_parsed = JSON.parse(card);
 								del_btn.onclick = function() {
 									deck.splice(deck.indexOf(card), 1);
+									modifyDeck2(`${card_parsed['set']}-${card_parsed['number']}`, "-");
 									processDeck();
 								}
 
-								card_img.onclick = function() {
+								card_in_deck.onclick = function() {
 									deck.splice(deck.indexOf(card), 1);
+									modifyDeck2(`${card_parsed['set']}-${card_parsed['number']}`, "-");
 									addCardToSideboard(card);
 								}
 							}
@@ -1108,9 +1472,8 @@ def generateHTML(codes):
 			}
 		}
 
-		async function exportFile(export_as) {
+		function generateDeckText() {
 			let deck_text = "";
-
 			let map = new Map([]);
 			for (const card of deck)
 			{
@@ -1125,11 +1488,11 @@ def generateHTML(codes):
 			}
 			for (const card_map of Array.from(map.keys()))
 			{
-				deck_text += map.get(card_map) + " " + (export_as == "export-dek" ? card_map : JSON.parse(card_map).card_name) + "\\n";
+				deck_text += map.get(card_map) + " " + (JSON.parse(card_map).card_name) + "\n";
 			}
 			if (sideboard.length != 0)
 			{
-				deck_text += "sideboard\\n";
+				deck_text += "sideboard\n";
 				map = new Map([]);
 				for (const card of sideboard)
 				{
@@ -1144,10 +1507,51 @@ def generateHTML(codes):
 				}
 				for (const card_map of Array.from(map.keys()))
 				{
-					deck_text += map.get(card_map) + " " + (export_as == "export-dek" ? card_map : JSON.parse(card_map).card_name) + "\\n";
+					deck_text += map.get(card_map) + " " + (JSON.parse(card_map).card_name) + "\n";
 				}
 			}
+			return deck_text;
+		}
 
+		async function exportFile(export_as) {	
+			let deck_text = "";
+			let map = new Map([]);
+			for (const card of deck)
+			{
+				if (map.has(card))
+				{
+					map.set(card, map.get(card) + 1);
+				}
+				else
+				{
+					map.set(card, 1);
+				}
+			}
+			for (const card_map of Array.from(map.keys()))
+			{
+				deck_text += map.get(card_map) + " " + (export_as == "export-dek" ? card_map : JSON.parse(card_map).card_name) + "\n";
+			}
+			if (sideboard.length != 0)
+			{
+				deck_text += "sideboard\n";
+				map = new Map([]);
+				for (const card of sideboard)
+				{
+					if (map.has(card))
+					{
+						map.set(card, map.get(card) + 1);
+					}
+					else
+					{
+						map.set(card, 1);
+					}
+				}
+				for (const card_map of Array.from(map.keys()))
+				{
+					deck_text += map.get(card_map) + " " + (export_as == "export-dek" ? card_map : JSON.parse(card_map).card_name) + "\n";
+				}
+			}
+			//let deck_text = generateDeckText()
 			let downloadableLink = document.createElement('a');
 			downloadableLink.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(deck_text));
 			downloadableLink.download = document.getElementById("deck-name").value + (export_as == "export-dek" ? ".dek" : ".txt");
@@ -1156,6 +1560,121 @@ def generateHTML(codes):
 			document.body.removeChild(downloadableLink);
 
 			document.getElementById("file-menu").value = "default";
+		}
+
+		function convertManaCostForDraftmancer(mana_cost) {
+			return mana_cost
+				.replace(/{([A-Z])([A-Z])}/g, "{$1/$2}");
+		}
+
+		async function exportDraftmancer() {	
+			let output_text = "";
+			let cards = new Map();
+			
+			console.log("deck:", deck);
+			
+			for (const card of deck)
+			{
+				const c = JSON.parse(card);
+				if (cards.has(c.card_name))
+				{
+					cards.get(c.card_name).count += 1;
+				}
+				else
+				{
+					cards.set(c.card_name, {...c, count: 1});
+				}
+			}
+
+			const URLDomain = "https://voyager-mtg.github.io"; // FIXME: Shouldn't be hardcoded.
+
+			output_text += `[Settings]
+{
+  "layouts": {
+    "default": {
+      "weight": 1,
+      "slots": {
+        "rare": 1,
+        "uncommon": 3,
+        "common": 10,
+      }
+	}
+  }
+}
+`;
+			output_text += "[CustomCards]\n[\n";
+			for (const c of cards.values())
+			{
+				const img_url = URLDomain + "/sets/" + c.set + "-files/img/" + c.number + "_" + c.card_name + ((c.shape.includes("double")) ? "_front" : "") + "." + c.image_type;
+				output_text += "  {\n";
+				output_text += `    "name": "${c.card_name}",\n`;
+				if(c.cost)
+					output_text += `    "mana_cost": "${convertManaCostForDraftmancer(c.cost)}",\n`;
+				else 
+					output_text += `    "mana_cost": "",\n`;
+				if(c.rarity)
+					output_text += `    "rarity": "${c.rarity}",\n`;
+				if(c.set)
+					output_text += `    "set": "${c.set}",\n`;
+				if(c.number)
+					output_text += `    "collector_number": "${c.number}",\n`;
+				if(c.type) {
+					output_text += `    "type": "${c.type.split(" – ")[0]}",\n`;
+					const subtypes = c.type.split(" – ")[1];
+					if(subtypes)
+						output_text += `    "subtypes": ["${subtypes.split(" ").join("", "")}"],\n`;
+				}
+				if(c.rules_text)
+					output_text += `    "oracle_text": ${JSON.stringify(c.rules_text)},\n`;
+				output_text += `    "image": "${img_url}",\n`;
+				if(c.shape.includes("double")) {
+					const back_url = URLDomain + "/sets/" + c.set + "-files/img/" + c.number + "_" + c.card_name + "_back" + "." + c.image_type;
+					output_text += `    "back": {`
+					output_text += `      "name": "${c.card_name2}",\n`;
+					if(c.cost2)
+						output_text += `      "mana_cost": "${convertManaCostForDraftmancer(c.cost2)}",\n`;
+					else 
+						output_text += `    "mana_cost": "",\n`;
+					if(c.rarity2)
+						output_text += `      "rarity": "${c.rarity2}",\n`;
+					if(c.set2)
+						output_text += `      "set": "${c.set2}",\n`;
+					if(c.number2)
+						output_text += `      "collector_number": "${c.number2}",\n`;
+					if(c.type2) {
+						output_text += `      "type": "${c.type2.split(" – ")[0]}",\n`;
+						const subtypes = c.type2.split(" – ")[1];
+						if(subtypes)
+							output_text += `    "subtypes": ["${subtypes.split(" ").join("", "")}"],\n`;
+					}
+					if(c.rules_text2)
+						output_text += `      "oracle_text": ${JSON.stringify(c.rules_text2)},\n`;
+					output_text += `      "image": "${back_url}",`
+					output_text += `    },\n`;
+				}
+				output_text += "  },\n";
+			}
+			output_text += "]\n";
+
+			const rarities = [...(new Set([...cards.values().map(c => c.rarity)]))];
+
+			for(const r of rarities) {
+				output_text += `[${r}]\n`;
+				for (const c of cards.values()) {
+					if(c.rarity === r) 
+						output_text += `${c.count} ${c.card_name}\n`;
+				}
+			}
+
+			let downloadableLink = document.createElement('a');
+			downloadableLink.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(output_text));
+			downloadableLink.download = document.getElementById("deck-name").value + ".txt";
+			document.body.appendChild(downloadableLink);
+			downloadableLink.click();
+			document.body.removeChild(downloadableLink);
+
+			document.getElementById("file-menu").value = "default";
+		
 		}
 
 		function goToSearch() {
@@ -1168,6 +1687,52 @@ def generateHTML(codes):
 				preSearch();
 			}
 		});
+		modal = document.getElementById("modal-container");
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				closeModal();
+			}
+		}
+
+				function modifyDeck2(setNum, op) {
+			if (op == "+") {
+				console.log(deck_2[setNum], sideboard_2[setNum], collection_copies[setNum], setNum)
+				if ((deck_2[setNum] + sideboard_2[setNum]) > collection_copies[setNum]) {
+					console.log('ret');
+					return true;
+				}
+				if (setNum in deck_2) {
+					deck_2[setNum] += 1;
+				} else {
+					deck_2[setNum] = 1;
+				}
+			}
+			if (op == "-") {
+				deck_2[setNum] -= 1;
+			}
+			console.log(deck_2);
+			return false;
+		}
+		function modifySB2(setNum, op) {
+			if (op == "+") {
+				console.log(deck_2[setNum], sideboard_2[setNum], collection_copies[setNum], setNum)
+				if ((deck_2[setNum] + sideboard_2[setNum]) > collection_copies[setNum]) {
+					console.log('ret');
+					return true;
+				}
+				if (setNum in sideboard_2) {
+					sideboard_2[setNum] += 1;
+				} else {
+					sideboard_2[setNum] = 1;
+				}
+			}
+			if (op == "-") {
+				sideboard_2[setNum] -= 1;
+			}
+			console.log(sideboard_2, op, setNum);
+			return false;
+		}
+
 
 		'''
 

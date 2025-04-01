@@ -663,12 +663,11 @@ await fetch('/lists/all-sets.json')
 				document.getElementById("deck-name").value = "Untitled Deck";
 			}
 
-			// initialize full card pool as collection
 			var colls = JSON.parse(localStorage.getItem("colls.collections"));
 			if (colls == null) {
 				colls = {}
 			}
-			colls["Full card pool"] = card_list_arrayified;
+			colls["Full card pool"] = "This is a dummy, the code handles this";
 			console.log("test");
 			console.log(colls);
 			localStorage.setItem("colls.collections", JSON.stringify(colls));

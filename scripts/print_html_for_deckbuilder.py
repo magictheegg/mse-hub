@@ -978,7 +978,67 @@ await fetch('/lists/all-sets.json')
 			document.getElementById("modal-content").innerHTML = "Deck Saved as collection" + document.getElementById("deck-name").value + '<span class="close" onclick="closeModal()">&times;</span>';
 		}
 
+<<<<<<< Updated upstream
 		function loadDeck() {
+=======
+		function getCopies2(loc, key) {
+			if (loc == "deck") {
+				let val = deck_2[key];
+				if (val == undefined) {
+					return "0";
+				}
+				if (isNaN(val) || val <= 0) {
+					deck_2[key] = 0;
+					return "0";
+				}
+				return val;
+			}
+			// sideboard
+			let val = sideboard_2[key];
+			// console.log("getting", val, val == NaN);
+			if (val == undefined) {
+				return "0";
+			}
+			if (isNaN(val) || val <= 0) {
+				sideboard_2[key] = 0;
+				return "0";
+			}
+			return val;
+		}
+
+		function exportButtonHtml(name, func) {
+			let button = createElement("span", "export-modal-button", name);
+			button.onclick = func;
+			return button;
+		}
+
+		// jumphere
+
+		function openExportModal() {
+			document.getElementById("modal-content").innerHTML = `<span class="close" onclick="closeModal()">&times;</span>`;
+			let modalContent = document.createElement("div");
+			modalContent.appendChild(exportButtonHtml("Copy Deck URL", function() {
+				navigator.clipboard.writeText(`${window.location.href.split("/d")[0]}/deckbuilder?deck=${document.getElementById("deck-name").value.replaceAll(" ", "%20") + ';' + btoa(generateDeckText())}&main=${deck.length}&side=${sideboard.length}`); // write the url + ?deck= + the name with spaces replaced + ; + base64 encoded deck text + &main = deck count + &side= + sideboard count
+				openModal('<span class="close" onclick="closeModal()">&times;</span>' + "Url copied to clipboard"); // open the modal notifying the user
+			}));
+			modalContent.appendChild(exportButtonHtml("Copy Decklist", function() {
+				navigator.clipboard.writeText(generateDeckText()); // copy the deck text to clipboard
+				document.getElementById("file-menu").value = "default"; // set the dropdown back
+				openModal('<span class="close" onclick="closeModal()">&times;</span>' + "Decklist copied to clipboard"); // open the modal to notify the user
+			}));
+			modalContent.appendChild(exportButtonHtml("Copy Discord Message", function() {
+				navigator.clipboard.writeText(`# [${document.getElementById("deck-name").value}](${window.location.href.split("/d")[0]}/deckbuilder?deck=${document.getElementById("deck-name").value.replaceAll(" ", "%20") + ';' + btoa(generateDeckText())}&main=${deck.length}&side=${sideboard.length})\\n\\`\\`\\`${generateDeckText()}\\`\\`\\``); // CURSED
+ 				document.getElementById("file-menu").value = "default"
+				openModal('<span class="close" onclick="closeModal()">&times;</span>' + "Discord message copied to clipboard"); // open the modal to notify the user
+			}));
+			modalContent.appendChild(exportButtonHtml("Download Draftmancer JSON", exportDraftmancer));
+			modalContent.appendChild(exportButtonHtml("Download .txt", function() {
+				exportFile("export-txt");
+			}));
+			modalContent.appendChild(exportButtonHtml("Download .dek", function() {
+				exportFile("export-dek");
+			}));
+>>>>>>> Stashed changes
 			document.getElementById("modal-container").style.display = "block";
 <<<<<<< Updated upstream
 			document.getElementById("modal-content").innerHTML = "Loading Deck:";
@@ -2131,7 +2191,7 @@ await fetch('/lists/all-sets.json')
 				}
 			}
 
-			const URLDomain = "https://voyager-mtg.github.io"; // FIXME: Shouldn't be hardcoded.
+			const URLDomain = window.location.href.split("/d")[0];
 
 			output_text += `[Settings]
 {

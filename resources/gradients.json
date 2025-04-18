@@ -1,6 +1,31 @@
 {
 	"gradients":[
 	{
+		"name": "Voyager",
+		"color1":"#fda62b",
+		"color2":"#49b2e1"
+	},
+	{
+		"name":"Default (White)",
+		"color1":"#ffffff",
+		"color2":"#ffffff"
+	},
+	{
+		"name":"Gray",
+		"color1":"#bbbbbb",
+		"color2":"#bbbbbb"
+	},
+	{
+		"name":"Black",
+		"color1":"#000000",
+		"color2":"#000000"
+	},
+	{
+		"name":"Night",
+		"color1":"#000033",
+		"color2":"#000010"
+	},
+	{
 		"name":"Purple White",
 		"color1":"#ba5370",
 		"color2":"#f4e2d8"

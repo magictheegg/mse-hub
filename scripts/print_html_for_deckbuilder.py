@@ -147,6 +147,23 @@ def generateHTML(codes):
 		gap: 3px;
 		justify-items: center;
 		padding: 8px 1%;
+<<<<<<< Updated upstream
+=======
+		direction: ltr;
+		position: absolute;
+		/* overflow-y: scroll; */
+	}
+	.search-image-grid {
+		position: relative;
+	}
+	.search-image-gradient {
+		top: 91vh;
+		height: 6vh;
+		z-index: 1;
+		/*width: 32vw;*/
+		background-size: cover;
+		pointer-events: none;
+>>>>>>> Stashed changes
 	}
 	@media ( max-width: 750px ) {
 		.image-grid {
@@ -288,6 +305,22 @@ def generateHTML(codes):
 		overflow-y: hidden;
 		position: relative;
 	}
+<<<<<<< Updated upstream
+=======
+	::-webkit-scrollbar {
+    	background-color: rgba(0, 0, 0, 0.1);
+	}
+	::-webkit-scrollbar-button {
+		background-color: #999;
+		border-radius: 5px;
+		border: 2px solid #333;
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: #ddd;
+		border-radius: 5px;
+		border: 2px solid #333;
+	}
+>>>>>>> Stashed changes
 	.deck-info-grid {
 		width: 95%;
 		max-width: 1200px;
@@ -480,6 +513,121 @@ def generateHTML(codes):
 	.name-cost {
 		font-family: beleren;
 	}
+<<<<<<< Updated upstream
+=======
+	.sanctum-img {
+		height: 150%;
+		width: 150%;
+	}
+	.preload-hidden {
+		display: none;
+	}
+	/* let container_div = createElement("div", "card-modal-info-container");
+			let card_name = createElement("div", "card-modal-name", card_stats.card_name);
+			let card_img = gridifyCard(card_stats);
+			let card_buttons_container = createElement("div", "card-modal-buttons");
+			let maindeck_text = createElement("div", "card-modal-maindeck-text", "Maindeck (" + deck_2[card_stats.set + '-' + card_stats.number] + ")");
+			let maindeck_buttons = createElement("div", "card-modal-buttons");
+			let sideboard_text = createElement("div", "card-modal-sideboard-text", "Sideboard (" + sideboard_2[card_stats.set + '-' + card_stats.number] + ")");
+			let sideboard_buttons = createElement("div", "card-modal-buttons");
+			let add_button = createElement("span", "card-modal-add-button", "+");
+			let minus_button = createElement("span", "card-modal-minus-button", "-"); */
+	.card-modal-info-container {
+		display: grid;
+		grid-template-rows: 1fr 1fr 1fr 2fr 1fr 2fr;
+		max-height: 10vh;
+		gap: 5px;
+		height: 100%;
+		width: 100%;
+		justify-content: center;
+		justify-items: center;
+	}
+	.card-modal-img-container {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		max-width: 80%;
+	}
+	.card-modal-add-button {
+		display: block;
+		padding: 10px;
+		border-radius: 10px;
+		background-color: #29e86f;
+		color: white;
+		font-weight: bold;
+		font-size: 20px;
+		text-align: center;
+		margin: 3px;
+	}
+	.card-modal-minus-button {
+		display: block;
+		padding: 10px;
+		border-radius: 10px;
+		background-color: #e95034;
+		color: white;
+		font-weight: bold;
+		font-size: 20px;
+		text-align: center;
+		margin: 3px;
+	}
+	.card-modal-buttons {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+	.card-modal-name {
+		font-family: beleren;
+		font-size: 25px;
+		margin-bottom: 10px;
+	}
+	.file-icon-container {
+		align-items: center;
+		justify-items: center;
+		justify-content: center;
+		align-content: center;
+	}
+	.file-icon-container .file-icon {
+		width: 4vw;
+		max-width: 20px;
+	}
+	.export-modal-button {
+		color: #fff;
+		background-color: rgba(14, 126, 246, 1);
+		padding: 10px;
+		margin: 10px;
+		display: inline-block;
+		margin-bottom: 3px;
+		margin-top: 3px;
+		border-radius: 10px;
+	}
+	.settings-modal-header, .settings-modal-header-active {
+		padding: 10px;
+		padding-left: 20px;
+		padding-right: 20px;
+		font-size: 15px;
+		color: #aaa;
+		border-bottom: #ccc solid 2px;
+		/* width: 100%; */
+	}
+	.settings-modal-header-active {
+		color: #333;
+		border-color: #333;
+	}
+	.settings-modal-header-container {
+		align-items: center;
+		justify-items: center;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 5px;
+		margin-bottom: 20px;
+	}
+</style>
+<style id="popout-style">
+	.popout {
+		background-color: #f3f3f3 !important;
+		/* color: #f3f3f3; */
+	}
+>>>>>>> Stashed changes
 </style>
 <body>
 	<div class="header">
@@ -537,8 +685,21 @@ def generateHTML(codes):
 					<option value="text">Text</option>
 					<option value="images">Images</option>
 				</select>
+<<<<<<< Updated upstream
 				<div></div> <!-- empty div for spacing -->
 				<select name="file-menu" class="file-menu" id="file-menu">
+=======
+				<div id="save-btn" class="file-icon-container">
+					<img src="/img/save.png" class="file-icon" title="save" style="cursor: pointer;" onclick="saveDeck()">
+				</div>
+				<div id="export-btn" class="file-icon-container" title="export" style="cursor: pointer;" onclick="openExportModal()">
+					<img src="/img/export.png" class="file-icon">
+				</div>
+				<div id="settings-btn" class="file-icon-container" title="settings" style="cursor: pointer;" onclick="openSettingsModal('Home')">
+					<img src="/img/settings.png" class="file-icon">
+				</div> 
+				<select name="file-menu" class="file-menu popout" id="file-menu">
+>>>>>>> Stashed changes
 					<option value="default">Actions ...</option>
 					<option value="new">New deck</option>
 					<option value="import">Import deck</option>
@@ -546,12 +707,16 @@ def generateHTML(codes):
 					<option value="load-collection">Load collection</option>
 					<option value="save">Save deck</option>
 					<option value="load">Load deck</option>
+<<<<<<< Updated upstream
 					<option value="delete">Delete saved deck</option>
 					<option value="get-url">Get deck URL</option>
 					<option value="copy">Copy decklist</option>
 					<option value="export-dek">Export .dek</option>
 					<option value="export-txt">Export .txt</option>
 					<option value="draftmancer">Export Draftmancer File</option>
+=======
+					<option value="delete">Delete saved property</option>
+>>>>>>> Stashed changes
 				</select>
 				<input type="file" class="hidden" id="import-file" onclick="this.value=null;">
 			</div>
@@ -610,7 +775,7 @@ def generateHTML(codes):
 			</div>
 		</div>
 		<div id="modal-container">
-			<div id="modal-content">
+			<div id="modal-content" class="popout">
 				<span class="close" onclick="closeModal()">&times;</span> <!--close button-->
 			</div>
 		</div>
@@ -639,7 +804,11 @@ def generateHTML(codes):
 
 	html_content += '''
 
+<<<<<<< Updated upstream
 await fetch('/lists/all-sets.json')
+=======
+								await fetch('/lists/all-sets.json')
+>>>>>>> Stashed changes
 					.then(response => response.json())
 					.then(data => {
 						sets_json = data; 
@@ -671,6 +840,27 @@ await fetch('/lists/all-sets.json')
 			console.log("test");
 			console.log(colls);
 			localStorage.setItem("colls.collections", JSON.stringify(colls));
+<<<<<<< Updated upstream
+=======
+
+			if (localStorage.getItem("settings.autosave") == "On") {
+				readDeckText(localStorage.getItem(localStorage.getItem("info.lastdeck")));
+				document.getElementById("deck-name").value = localStorage.getItem("info.lastdeck");
+			}
+
+			// Initialize default settings
+			defaultSetting('settings.autosave', 'On');
+			defaultSetting('settings.searchalias', 'On');
+			defaultSetting('settings.exportcube', 'On');
+			defaultSetting('settings.maxcopies', 'On');
+			defaultSetting('settings.sanctumbasic', 'On');
+			defaultSetting('settings.textcolor', 'Black');
+			defaultSetting('settings.gradient', 'Default-(White)');
+			defaultSetting('settings.darkthememenu', 'Off');
+			
+			setGradient(localStorage.getItem("settings.gradient"));
+			processDeck();
+>>>>>>> Stashed changes
 		});
 
 		function displayChangeListener() {
@@ -755,9 +945,17 @@ await fetch('/lists/all-sets.json')
 			processDeck();
 		});
 
+<<<<<<< Updated upstream
 		function openSaveModal() {
 			document.getElementById("modal-container").style.display = "block";
 			document.getElementById("modal-content").innerHTML = "Deck Saved as " + document.getElementById("deck-name").value + '<span class="close" onclick="closeModal()">&times;</span>';
+=======
+		function saveDeck() {
+			localStorage.setItem(document.getElementById("deck-name").value, generateDeckText()); // save the deck text with the key of the deck name to localstorage
+			localStorage.setItem("info.lastdeck", document.getElementById("deck-name").value);
+			document.getElementById("file-menu").value = "default"; // set the value back
+			openModal('<span class="close" onclick="closeModal()">&times;</span>' + "Deck Saved as " + document.getElementById("deck-name").value); // open the modal giving the user a notification
+>>>>>>> Stashed changes
 		}
 
 		function openCopyModal() {
@@ -782,12 +980,155 @@ await fetch('/lists/all-sets.json')
 
 		function loadDeck() {
 			document.getElementById("modal-container").style.display = "block";
+<<<<<<< Updated upstream
 			document.getElementById("modal-content").innerHTML = "Loading Deck:";
 			Object.keys(localStorage).forEach(function(key){
 				if (key != "colls.collections") { 
 					console.log(key);
 					console.log(localStorage.getItem(key));
 					document.getElementById("modal-content").innerHTML += `<span class="load-btn" onclick="readDeckText(localStorage.getItem('${key}'),'${key}')">${key}</span>`;		
+=======
+			document.getElementById("modal-content").appendChild(modalContent);
+		}
+
+		function createText(text) {
+			let ele = document.createElement('span');
+			ele.innerText = text;
+			return ele;
+		}
+
+		function openSettingsModal(menu) {
+			// initialize empty HTML then add each option and the X to it, then make the modal visible and add the content
+			let headerContainer = document.createElement("div");
+			headerContainer.className = "settings-modal-header-container";
+			const settingsMenus = ["Home", "Style"]
+			for (const menuName of settingsMenus) {
+				let ele = document.createElement("span");
+				ele.onclick = function() {
+					openSettingsModal(menuName);
+				}
+				ele.innerText = menuName;
+				if (menuName == menu) {
+					ele.className = "settings-modal-header-active";
+					if (localStorage.getItem("settings.darkthememenu") == "On") {
+						ele.style.color = "#aaa";
+						ele.style.borderColor = "#ccc";
+					}
+				} else {
+					ele.className = "settings-modal-header";
+					if (localStorage.getItem("settings.darkthememenu") == "On") {
+						ele.style.color = "#333";
+						ele.style.borderColor = "#333";
+					}
+				}
+				headerContainer.appendChild(ele);
+			}
+			let contentContainer = document.createElement("div");
+			contentContainer.style.display = "grid";
+			contentContainer.style.gridTemplateColumns = "1fr 0.5fr";
+			contentContainer.style.gap = "10px";
+			let modalContent = '</select><span class="close" onclick="closeModal()">&times;</span>';
+			if (menu == "Home") {
+				contentContainer.appendChild(createText("Auto save/load decks: "));
+				contentContainer.appendChild(settingsOptionHtml("Auto save/load decks", "settings.autosave"));
+				contentContainer.appendChild(createText("Export draftmancer as cube: "));
+				contentContainer.appendChild(settingsOptionHtml("Export draftmancer as cube", "settings.exportcube"));
+				contentContainer.appendChild(createText("Include aliases in name searching: "));
+				contentContainer.appendChild(settingsOptionHtml("Include aliases in name searching", "settings.searchalias"));
+				contentContainer.appendChild(createText("Disable adding over max copies in collection: "));
+				contentContainer.appendChild(settingsOptionHtml("Disable adding over max copies in collection", "settings.maxcopies"));
+			} else if (menu == "Style") {
+				let gradientDropdown = document.createElement('select');
+				gradientDropdown.id = 'color-select';
+				gradientDropdown.onchange = function() {
+					setGradient();
+				}
+				let gradientText = document.createElement('span');
+				gradientText.innerText = "Background Gradient:"
+				contentContainer.appendChild(gradientText);
+				contentContainer.appendChild(gradientDropdown);
+				contentContainer.appendChild(createText("Dark theme: "));
+				contentContainer.appendChild(settingsOptionHtml("Dark Theme", "settings.darktheme", ["On", "Off"], function() {
+					let val = document.getElementById('settings.darktheme').value;
+					document.getElementById("settings.darkthememenu").value = val;
+					localStorage.setItem("settings.darkthememenu", val);
+					document.getElementById("settings.textcolor").value = (val == "On" ? "White" : "Black");
+					localStorage.setItem("settings.textcolor", (val == "On" ? "White" : "Black"));
+					setGradient(val == "On" ? 'Frost' : 'Voyager');
+					document.getElementById("color-select").value = (val == "On" ? 'Frost' : 'Voyager');
+					localStorage.setItem("settings.darktheme", val);
+					processDeck();
+				}));
+				contentContainer.appendChild(createText("Dark theme menus: "));
+				contentContainer.appendChild(settingsOptionHtml("Dark Theme Menus", "settings.darkthememenu"));
+				contentContainer.appendChild(createText("Use sanctum indicator: "));
+				contentContainer.appendChild(settingsOptionHtml("Use sanctum symbol", "settings.sanctumsym"));
+				contentContainer.appendChild(createText("Include basics in sanctum indicator: "));
+				contentContainer.appendChild(settingsOptionHtml("Include basics in sanctum indicator", "settings.sanctumbasic"));
+				contentContainer.appendChild(createText("Gradient at bottom of search results: "));
+				contentContainer.appendChild(settingsOptionHtml("Gradient at bottom of search results", "settings.resultgradient"));
+				contentContainer.appendChild(createText("Scrollbar in search results: "));
+				contentContainer.appendChild(settingsOptionHtml("Scrollbar in search results", "settings.scrollbar"));
+				contentContainer.appendChild(createText("Black text color: "));
+				contentContainer.appendChild(settingsOptionHtml("Text Color: ", "settings.textcolor", ["Black", "White"]));
+			}
+			document.getElementById("modal-container").style.display = "block";
+			document.getElementById("modal-content").innerHTML = modalContent;
+			document.getElementById("modal-content").appendChild(headerContainer);
+			document.getElementById("modal-content").appendChild(contentContainer);
+			prepareGradients();
+			setGradient();
+		}
+
+		function settingsOptionHtml(settingname, settingtag, options=['On', 'Off'], func=false) {
+			let settingsText = document.createElement('span');
+			// add the text then :
+			settingsText.innerText = settingname + ": ";
+			// add the dropdown with an onchange to set the localStorage value of the settingtag
+			let dropdown = document.createElement("select");
+			dropdown.className = "settings-dropdown";
+			dropdown.id = settingtag;
+			if (!func) {
+				dropdown.onchange = function() {
+					localStorage.setItem(settingtag, document.getElementById(settingtag).value); 
+					processDeck();
+				}
+			} else {
+				dropdown.onchange = func;
+			}
+			let defaultOption = localStorage.getItem(settingtag);
+			let dropdownOption_ = document.createElement('option');
+			dropdownOption_.innerText = defaultOption;
+			dropdownOption_.value = defaultOption;
+			dropdown.appendChild(dropdownOption_);
+
+			for (const opt of options) {
+				if (opt == defaultOption) {
+					continue;
+				}
+				let dropdownOption = document.createElement('option');
+				dropdownOption.innerText = opt;
+				dropdownOption.value = opt;
+				dropdown.appendChild(dropdownOption);
+			}
+			return dropdown;
+		}
+
+		function defaultSetting(name, default_) {
+			// if you dont have a value in localstorage, set that value to default_
+			if (localStorage.getItem(name) == null) {
+				localStorage.setItem(name, default_);
+			}
+		}
+
+		function loadDeck() { // this name is misleading, this opens the load modal
+			// Unhide the modal and add the text 'Loading Deck:'
+			document.getElementById("modal-container").style.display = "block"; 
+			document.getElementById("modal-content").innerHTML = "Loading Deck:";
+			Object.keys(localStorage).forEach(function(key){ // Loop through each localstorage value, then check if its not a setting or collections
+				if (key != "colls.collections" && !key.startsWith("settings.") && !key.startsWith("info.")) { 
+					document.getElementById("modal-content").innerHTML += `<span class="load-btn" onclick="readDeckText(localStorage.getItem('${key}'),'${key}')">${key}</span>`; // add a button that loads the deck using readDeckText and has the name of the deck (key = deck name)
+>>>>>>> Stashed changes
 				}	
 			});
 			document.getElementById("modal-content").innerHTML += '<span class="close" onclick="closeModal()">&times;</span>';
@@ -1145,7 +1486,7 @@ await fetch('/lists/all-sets.json')
 				cardGrid.appendChild(imgContainer);
 			}
 		}
-
+		
 		'''
 
 	with open(os.path.join('resources', 'snippets', 'search-defs.txt'), encoding='utf-8-sig') as f:
@@ -1174,7 +1515,7 @@ await fetch('/lists/all-sets.json')
 
 	html_content += '''
 
-		function hasAllChars(strOut, strIn) {
+		ffunction hasAllChars(strOut, strIn) {
 			let retVal = true;
 
 			for (let i = 0; i < strIn.length; i++)
@@ -1235,6 +1576,30 @@ await fetch('/lists/all-sets.json')
 		}
 
 		function processDeck() {
+<<<<<<< Updated upstream
+=======
+
+			// handle settings at the top
+			if (localStorage.getItem("settings.darkthememenu") == "On") {
+				document.getElementById("popout-style").innerHTML = ".popout { background-color: #000 !important; color: #f3f3f3 !important; }";
+			} else if (localStorage.getItem("settings.darkthememenu") == "Off") {
+				document.getElementById("popout-style").innerHTML = ".popout { background-color: #f3f3f3 !important;  }";
+			}
+
+			if (localStorage.getItem("settings.resultgradient") == "Off") {
+				document.getElementsByClassName("search-image-gradient")[0].style.display = "none";
+			} else if (localStorage.getItem("settings.darkthememenu") == "On") {
+				document.getElementsByClassName("search-image-gradient")[0].style.display = "block";
+			}
+
+			if (localStorage.getItem("settings.scrollbar") == "On") {
+				document.getElementsByClassName("search-image-grid-container")[0].style.scrollbarWidth = "auto";
+			} else if (localStorage.getItem("settings.scrollbar") == "Off") {
+				document.getElementsByClassName("search-image-grid-container")[0].style.scrollbarWidth = "none";
+			}
+
+			// add the no-cards-text if there's no cards in the deck or sideboard, otherwise hide it
+>>>>>>> Stashed changes
 			const nct = document.getElementById("no-cards-text");
 			nct.style.display = (deck.length == 0 && sideboard.length == 0) ? "block" : "none";
 
@@ -1299,10 +1664,20 @@ await fetch('/lists/all-sets.json')
 				else
 				{
 					outer_ele.style.display = "grid";
+<<<<<<< Updated upstream
 					dsec_c_id = dsec_id + "-cards";
 					
 					dsec_t_id = dsec_id + "-title";
 					title_ele = document.getElementById(dsec_t_id);
+=======
+					deck_section_cards_id = deck_section_id + "-cards";
+					deck_section_title_id = deck_section_id + "-title";
+					title_ele = document.getElementById(deck_section_title_id);
+
+					title_ele.style.color = localStorage.getItem('settings.textcolor');
+
+					// get the number of copies of the card type and add it to the title
+>>>>>>> Stashed changes
 					let count = 0;
 					for (const val of Array.from(map.values()))
 					{
@@ -1471,6 +1846,177 @@ await fetch('/lists/all-sets.json')
 			}
 		}
 
+<<<<<<< Updated upstream
+=======
+		function generateCardHTML(display_style, map, card, key, card_stats, cards_list) {
+			const card_name = card_stats.card_name;
+			// make a div for the card line (will contain the name, copies, and - button)
+			card_row = document.createElement("div");
+			card_row.className = "deck-line";
+
+			card_in_deck = document.createElement("div"); // make a div
+			card_in_deck.innerText += map.get(card) + " " + card_name + "\\n"; // add the card name to it
+			card_in_deck.style.cursor = "pointer"; // make the cursor style pointer
+
+			if (display_style == "text") {
+				card_in_deck = document.createElement("div"); // make a div
+				card_in_deck.innerText += map.get(card) + " " + card_name + "\\n"; // add the card name to it
+				card_in_deck.style.cursor = "pointer"; // make the cursor style pointer
+				// card_in_deck.onmouseover = updateCardGrid(card_stats);
+				card_in_deck.style.color = localStorage.getItem("settings.textcolor");
+			} else if (display_style == "image") {
+				// make the card image container div & give it the class
+				card_row = document.createElement("div");
+				card_row.className = "card-img-container";
+				// if its the last one, give it auto height and 100% maxheight
+				if (card == cards_list[cards_list.length - 1])
+				{
+					card_row.style.height = "auto";
+					card_row.style.maxHeight = "100%";
+				}
+
+				// make an image element and give it the correct url
+				card_in_deck = document.createElement("img");
+				card_in_deck.src = "/sets/" + card_stats.set + "-files/img/" + card_stats.number + "_" + card_stats.card_name + ((card_stats.shape.includes("double")) ? "_front" : "") + "." + card_stats.image_type;
+				card_in_deck.style.borderRadius = "8px";
+				// card_in_deck.onmouseover = updateCardGrid(card_stats);
+
+				card_count = document.createElement("div");
+				card_count.innerText = map.get(card) + "x";
+				card_count.className = "card-fx";
+				if (localStorage.getItem("settings.textcolor") == "On") {
+					card_count.style.color = "black";
+				} else {
+					card_count.style.color = "white";			
+				}
+			}			
+
+			// create an image with the class icon, add the pointer cursor style, this is the delete button
+			del_btn = document.createElement("img");
+			del_btn.className = "icon";
+			del_btn.style.cursor = "pointer";
+
+			// do the same for the add button
+			add_btn = document.createElement("img");
+			add_btn.className = "icon";
+			add_btn.style.cursor = "pointer";
+			if (key == "sideboard")
+			{
+				// if its the sideboard, add the sideboard delete button and setup the onclick accordingly
+				del_btn.src = "/img/sb-delete.png";
+				del_btn.onclick = function() {
+					sideboard.splice(sideboard.indexOf(card), 1);
+					processDeck();
+				}
+
+				// if its the sideboard, add the sideboard add button and setup the onclick accordingly
+				add_btn.src = "/img/sb-add.png";
+				add_btn.onclick = function() {
+					addCardToSideboard(card);
+					processDeck();
+				}
+
+				card_in_deck.onclick = function() {
+					openCardModal(card_stats, "sideboard");
+				}
+
+				// when a card in the sideboard is clicked, remove it from the sideboard and add it to the maindeck
+				card_in_deck.oncontextmenu = function(event) { 
+					event.preventDefault();
+					sideboard.splice(sideboard.indexOf(card), 1);
+					let parsed_card = JSON.parse(card);
+					modifySB2(`${parsed_card['set']}-${parsed_card['number']}`, '-');
+					addCardToDeck(card);
+				}
+			}
+			else
+			{
+				// make the delete button have the normal delete image
+				del_btn.src = "/img/delete.png";
+				add_btn.src = "/img/add.png";
+				let card_parsed = JSON.parse(card);
+				del_btn.onclick = function() {
+					deck.splice(deck.indexOf(card), 1);
+					modifyDeck2(`${card_parsed['set']}-${card_parsed['number']}`, "-");
+					processDeck();
+				}
+
+				// do the same for the add button
+				add_btn.onclick = function() {
+					addCardToDeck(card);
+					processDeck();
+				}
+
+				card_in_deck.onclick = function() {
+					openCardModal(card_stats, "deck");
+				}
+
+				// when a card in the deck is clicked, remove it from the deck and add it to the sideboard
+				card_in_deck.oncontextmenu = function(event) {
+					event.preventDefault();
+					deck.splice(deck.indexOf(card), 1);
+					modifyDeck2(`${card_parsed['set']}-${card_parsed['number']}`, "-");
+					addCardToSideboard(card);
+					processDeck();
+				}
+			}
+
+			card_in_deck.onmouseover = function() { // on mouse over: do the following
+				// reset the card grid container's html
+				card_grid_container = document.getElementById("card-grid-container");
+				card_grid_container.innerHTML = "";
+
+				const gridified_card = gridifyCard(card_stats, true, true); // line 2158
+				gridified_card.getElementsByTagName("img")[0].id = "image-grid-card"; // set gridified
+				gridified_card.getElementsByTagName("a")[0].removeAttribute("href");
+				if (card_stats.shape.includes("double")) // if its a dfc, add the flip button and give it an onlcick that calls imgFlip (line 2342)
+				{
+					gridified_card.getElementsByTagName("button")[0].onclick = function() {
+						imgFlip("image-grid-card", card_stats.type.includes("Battle"));
+					}
+				}
+				// add gridified card to the card grid container
+				card_grid_container.appendChild(gridified_card);
+			};
+
+			// card_img_container.appendChild(db_container);
+			// card_img_container.appendChild(card_count);
+			// card_img_container.appendChild(card_img);
+			// cards_ele.appendChild(card_img_container);
+
+			// make a container div with the card-fx class and add the delete button to it, do the same for the add button
+			db_container = document.createElement("div");
+			db_container.className = "card-fx";
+			ab_container = document.createElement("div");
+			ab_container.className = "card-fx";
+			db_container.appendChild(del_btn);
+			ab_container.appendChild(add_btn);
+
+			// add all of our elements to the card_row and cards_ele elements
+			card_row.appendChild(db_container);
+			card_row.appendChild(ab_container);
+			if (display_style == "image") card_row.appendChild(card_count);
+			card_row.appendChild(card_in_deck);
+			// sanctum stuff, similar to delete button
+			if (display_style == "text" && localStorage.getItem("settings.sanctumsym") == "On") {
+				let sanctum_coll = JSON.parse(localStorage.getItem("colls.collections"))["Sanctum cards"];
+				for (card_ of sanctum_coll) {
+					if ( (card_stats.card_name == card_.substring(card_.indexOf(' ') + 1, card_.length)) && (!card_stats.type.includes("Basic") || localStorage.getItem("settings.sanctumbasic") == "On") ) {
+						sanctum_container = document.createElement("div");
+						sanctum_container.className = "card-fx sanctum-img";
+						sanctum_img = document.createElement("img");
+						sanctum_img.className = "icon";
+						sanctum_img.src = "/img/sanctum.png";
+						sanctum_container.appendChild(sanctum_img);
+						card_row.appendChild(sanctum_container);
+						break;
+					}
+				}
+			}
+			cards_ele.appendChild(card_row);
+		}
+
+>>>>>>> Stashed changes
 		function generateDeckText() {
 			let deck_text = "";
 			let map = new Map([]);
@@ -1732,6 +2278,15 @@ await fetch('/lists/all-sets.json')
 			return false;
 		}
 
+<<<<<<< Updated upstream
+=======
+		window.onbeforeunload = function() {
+			if (localStorage.getItem("settings.autosave") == "On") {
+				saveDeck();
+			}
+		}
+
+>>>>>>> Stashed changes
 
 		'''
 

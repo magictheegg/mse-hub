@@ -213,6 +213,19 @@ script:
 		for x from 0 to length(add)-1 do if not contains(base, match:add[x]) then base := base + add[x]
 		base
 	}
+	color_identity_side := {
+		  ( if contains(color, match:"white") or contains(cost, match:"W") or contains(text, match:"\{W}") then "W" else "" )
+		+ ( if contains(color, match:"blue") or contains(cost, match:"U") or contains(text, match:"\{U}") then "U" else "" )
+		+ ( if contains(color, match:"black") or contains(cost, match:"B") or contains(text, match:"\{B}") then "B" else "" )
+		+ ( if contains(color, match:"red") or contains(cost, match:"R") or contains(text, match:"\{R}") then "R" else "" )
+		+ ( if contains(color, match:"green") or contains(cost, match:"G") or contains(text, match:"\{G}") then "G" else "" )
+	}
+	color_identity_statistic := {
+		merge_ci(
+			color_identity_side(color:card.card_color, cost:card.casting_cost, text: card.text),
+			with:color_identity_side(color:card.card_color_2, cost:card.casting_cost_2, text: card.text_2)
+		)
+	}
 
 	get_color_identity := {
 		land_ci := get_land_type_CI()

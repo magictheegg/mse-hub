@@ -56,6 +56,14 @@ option field:
 	type: text
 	name: v mana replacement
 	description: The replacement mana symbol icon for Mainframe Mana
+
+option field:
+	type: choice
+	name: export description
+	choice: no
+	choice: yes
+	description: Export set description as splash page
+
 script:
 	fix_tm := replace@(match:"™", replace:"TM")
 	remove_quotes := replace@(match:"\"", replace:"")
@@ -301,6 +309,9 @@ script:
 
 	write_image_file({symbol_variation(symbol: set.symbol, variation: options.symbol_rarity)}(), file: "icon.png", width: 512, height: 512)
 	write_image_file({symbol_variation(symbol: set.symbol, variation: options.symbol_rarity)}(), file: "logo.png", width: 320, height: 320)
-	
+
+	if options.export_description == "yes"
+		then write_text_file(file: "splash.md", set.description)
+
 	write_images := if options.export_images == "yes" then write_all_images() else ""
 	"This file doesn't contain anything. Exported files can be found in the name-files folder with the same name you saved as."

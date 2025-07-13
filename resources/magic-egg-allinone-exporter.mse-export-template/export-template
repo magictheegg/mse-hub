@@ -245,7 +245,7 @@ script:
 		or card.shape == "counter"
 		or card.shape == "rulestip"
 		or card.shape == "checklist"
-		or contains (card.notes, match:"!token")
+		or contains (card.notes, match:"!token") and not contains (card.notes, match:"!tokens")
 			then "token"
 		else card.shape
 	}

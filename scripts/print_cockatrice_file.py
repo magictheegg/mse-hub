@@ -13,13 +13,15 @@ def format_cost(cost):
 	return cost
 
 def cost_to_cmc(cost):
-	cost = re.sub(r'2[^{}]+', '2', cost)		# Replace 2/M costs with just 2
-	cost = re.sub(r'[^{}][^{}]+', '1', cost)	# Clean remaining hybrids
-	cost = re.sub(r'[{}]', '', cost)			# Remove curly brackets
+	symbols = re.split(r'\{([^{}]+)\}', cost)
 	cmc = 0
-	for char in cost:
+	for symbol in symbols:
+		if len(symbol) == 0 or symbol == "X": continue
+		if len(symbol) > 1:
+			cmc += 2 if '2' in symbol else 1
+			continue
 		try:
-			cmc += int(char)
+			cmc += int(symbol)
 		except:
 			cmc += 1
 	return cmc

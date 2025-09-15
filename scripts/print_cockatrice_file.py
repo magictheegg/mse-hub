@@ -41,6 +41,24 @@ def get_related(notes, instruction, tag):
 
 	return related
 
+def get_picurl(github_path, set_data, card, back):
+	return (
+		f'https://{github_path}/sets/{card['set']}-files/img/'
+		f'{card['number']}{'t' if 'token' in card['shape'] else ''}{'' if 'double' not in card['shape'] else '_back' if back else '_front'}_{card[f'card_name{suffix}']}'
+		f'.{set_data['image_type']}'
+	)
+
+def get_number(card, back):
+	return f'{card['number']}{'' if 'double' not in card['shape'] else 'b' if back else 'a'}'
+
+def get_tablerow(card_type):
+	return (
+		2 if 'Creature' in card_type else
+		0 if 'Land' in card_type else
+		3 if 'Instant' in card_type or 'Sorcery' in card_type else
+		1
+	)
+
 def render_card(set_data, github_path, card, back=False):
 	suffix = '2' if back else ''
 	props = f'''
@@ -73,10 +91,10 @@ def render_card(set_data, github_path, card, back=False):
 		<card>
 			<name>{card[f'card_name{suffix}']}</name>
 			<text>{re.sub(r'\[/?i\]', '', card[f'rules_text{suffix}'])}</text>
-			<set rarity="{'rare' if card['rarity'] == 'cube' else card['rarity']}" picurl="https://{github_path}/sets/{card['set']}-files/img/{card['number']}{'t' if 'token' in card['shape'] else ''}_{card[f'card_name{suffix}']}.{set_data['image_type']}" num="{card['number']}{'' if 'double' not in card['shape'] else 'b' if back else 'a'}">{card['set']}</set>
+			<set rarity="{'rare' if card['rarity'] == 'cube' else card['rarity']}" picurl="{get_picurl(github_path, set_data, card, back)}" num="{get_number(card, back)}">{card['set']}</set>
 			<prop>{props}
 			</prop>
-			<tablerow>{2 if 'Creature' in card_type else 0 if 'Land' in card_type else 3 if 'Instant' in card_type or 'Sorcery' in card_type else 1}</tablerow>'''
+			<tablerow>{get_tablerow(card_type)}</tablerow>'''
 
 	if 'token' in card['shape']:
 		card_string += '''

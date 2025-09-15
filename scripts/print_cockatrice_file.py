@@ -48,14 +48,14 @@ def render_card(set_data, github_path, card, back=False):
 	props = f'''
 				<layout>{'split' if 'split' in card['shape'] else 'transform' if 'double' in card['shape'] else 'normal'}</layout>
 				<side>front</side>
-				<type>{card['type'].strip()}</type>
-				<maintype>{get_maintype(card['type'])}</maintype>
-				<manacost>{format_cost(card['cost'])}</manacost>
-				<cmc>{cost_to_cmc(card['cost'])}</cmc>'''
+				<type>{card[f'type{suffix}'].strip()}</type>
+				<maintype>{get_maintype(card[f'type{suffix}'])}</maintype>
+				<manacost>{format_cost(card[f'cost{suffix}'])}</manacost>
+				<cmc>{cost_to_cmc(card[f'cost{suffix}'])}</cmc>'''
 
 	if len(card[f'color{suffix}']):
 		props += f'''
-				<colors>{card['color']}</colors>'''
+				<colors>{card[f'color{suffix}']}</colors>'''
 
 	color_identity = card['color_identity'].replace('C', '')
 	if len(color_identity):
@@ -64,20 +64,21 @@ def render_card(set_data, github_path, card, back=False):
 
 	if len(card[f'pt{suffix}']):
 		props += f'''
-				<pt>{card['pt']}</pt>'''
+				<pt>{card[f'pt{suffix}']}</pt>'''
 
 	if len(card[f'loyalty{suffix}']):
 		props += f'''
-				<loyalty>{card['loyalty']}</loyalty>'''
+				<loyalty>{card[f'loyalty{suffix}']}</loyalty>'''
 
+	card_type = card[f'type{suffix}']
 	card_string = f'''
 		<card>
 			<name>{card[f'card_name{suffix}']}</name>
 			<text>{re.sub(r'\[/?i\]', '', card[f'rules_text{suffix}'])}</text>
-			<set rarity="{'rare' if card['rarity'] == 'cube' else card['rarity']}" picurl="{f'https://{github_path}/sets/{card['set']}-files/img/{card['number']}{'t' if 'token' in card['shape'] else ''}_{card[f'card_name{suffix}']}.{set_data['image_type']}'}" num="{card['number']}{'' if 'double' not in card['shape'] else 'b' if back else 'a'}">{card['set']}</set>
+			<set rarity="{'rare' if card['rarity'] == 'cube' else card['rarity']}" picurl="https://{github_path}/sets/{card['set']}-files/img/{card['number']}{'t' if 'token' in card['shape'] else ''}_{card[f'card_name{suffix}']}.{set_data['image_type']}" num="{card['number']}{'' if 'double' not in card['shape'] else 'b' if back else 'a'}">{card['set']}</set>
 			<prop>{props}
 			</prop>
-			<tablerow>{2 if 'Creature' in card[f'type{suffix}'] else 0 if 'Land' in card[f'type{suffix}'] else 3 if 'Instant' in card[f'type{suffix}'] or 'Sorcery' in card[f'type{suffix}'] else 1}</tablerow>'''
+			<tablerow>{2 if 'Creature' in card_type else 0 if 'Land' in card_type else 3 if 'Instant' in card_type or 'Sorcery' in card_type else 1}</tablerow>'''
 
 	if 'token' in card['shape']:
 		card_string += '''
@@ -89,7 +90,7 @@ def render_card(set_data, github_path, card, back=False):
 
 	related = get_related(card['notes'], '!tokens', 'related')
 	if 'double' in card['shape']:
-		related.append(f'<related attach="transform">{card['name' if back else 'name2']}</related>')
+		related.append(f'<related attach="transform">{card['card_name' if back else 'card_name2']}</related>')
 	if len(related):
 		card_string += f'''
 			{'\n			'.join(related)}'''

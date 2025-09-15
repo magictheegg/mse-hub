@@ -17,11 +17,9 @@ def cost_to_cmc(cost):
 	cmc = 0
 	for symbol in symbols:
 		if len(symbol) == 0 or symbol == "X": continue
-		if len(symbol) > 1:
-			cmc += 2 if '2' in symbol else 1
-			continue
+		num = re.match(r'\d+', symbol).group(0)
 		try:
-			cmc += int(symbol)
+			cmc += int(num)
 		except:
 			cmc += 1
 	return cmc

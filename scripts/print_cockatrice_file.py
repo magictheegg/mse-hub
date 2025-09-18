@@ -17,8 +17,8 @@ def cost_to_cmc(cost):
 	cmc = 0
 	for symbol in symbols:
 		if len(symbol) == 0 or symbol == "X": continue
-		num = re.match(r'\d+', symbol).group(0)
 		try:
+			num = re.match(r'\d+', symbol).group(0)
 			cmc += int(num)
 		except:
 			cmc += 1
@@ -44,7 +44,7 @@ def get_related(notes, instruction, tag):
 def get_picurl(github_path, set_data, card, back):
 	return (
 		f'https://{github_path}/sets/{card['set']}-files/img/'
-		f'{card['number']}{'t' if 'token' in card['shape'] else ''}{'' if 'double' not in card['shape'] else '_back' if back else '_front'}_{card[f'card_name{suffix}']}'
+		f'{card['number']}{'t' if 'token' in card['shape'] else ''}{'' if 'double' not in card['shape'] else '_back' if back else '_front'}_{card[f'card_name{'2' if back else ''}']}'
 		f'.{set_data['image_type']}'
 	)
 
@@ -89,7 +89,7 @@ def render_card(set_data, github_path, card, back=False):
 	card_type = card[f'type{suffix}']
 	card_string = f'''
 		<card>
-			<name>{card[f'card_name{suffix}']}</name>
+			<name>{card[f'card_name{suffix}']}{f' {card['set']}' if 'token' in card['shape'] else ''}</name>
 			<text>{re.sub(r'\[/?i\]', '', card[f'rules_text{suffix}'])}</text>
 			<set rarity="{'rare' if card['rarity'] == 'cube' else card['rarity']}" picurl="{get_picurl(github_path, set_data, card, back)}" num="{get_number(card, back)}">{card['set']}</set>
 			<prop>{props}

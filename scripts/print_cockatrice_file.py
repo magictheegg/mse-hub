@@ -3,12 +3,23 @@ import json
 import re
 from datetime import datetime
 
+def escape_and_format(text: str):
+	return text.replace('&', '&amp;') \
+				.replace('"', '&quot;') \
+				.replace('\'', '&apos;') \
+				.replace('’', '&apos;') \
+				.replace('<', '&lt;') \
+				.replace('>', '&gt;') \
+
 def format_cost(cost):
 	if len(cost) == 0: return ''
 	symbols = re.split(r'\{([^{}]+)\}', cost)
 	cost = ''
 	for symbol in symbols:
 		if len(symbol) == 0: continue
+		if symbol.isdecimal(): 
+			cost += symbol
+			continue
 		cost += '/'.join(symbol)
 	return cost
 
@@ -16,7 +27,7 @@ def cost_to_cmc(cost):
 	symbols = re.split(r'\{([^{}]+)\}', cost)
 	cmc = 0
 	for symbol in symbols:
-		if len(symbol) == 0 or symbol == "X": continue
+		if len(symbol) == 0 or symbol == "X" or symbol == "Y": continue
 		try:
 			num = re.match(r'\d+', symbol).group(0)
 			cmc += int(num)
@@ -37,7 +48,7 @@ def get_related(notes, instruction, tag):
 		tokens = line[len(instruction) + 1:].split(';')
 		for token in tokens:
 			name, num = re.match(r'([^<]+)(?:<(\d+)>)?', token).groups()
-			related.append(f'<{tag}{f' count="{num}"' if num else ''}>{name}</{tag}>')
+			related.append(f'<{tag}{f' count="{num}"' if num else ''}>{escape_and_format(name)}</{tag}>')
 
 	return related
 
@@ -64,9 +75,9 @@ def render_card(set_data, github_path, card, back=False):
 	props = f'''
 				<layout>{'split' if 'split' in card['shape'] else 'transform' if 'double' in card['shape'] else 'normal'}</layout>
 				<side>front</side>
-				<type>{card[f'type{suffix}'].strip()}</type>
-				<maintype>{get_maintype(card[f'type{suffix}'])}</maintype>
-				<manacost>{format_cost(card[f'cost{suffix}'])}</manacost>
+				<type>{escape_and_format(card[f'type{suffix}'].strip())}</type>
+				<maintype>{escape_and_format(get_maintype(card[f'type{suffix}']))}</maintype>
+				<manacost>{escape_and_format(format_cost(card[f'cost{suffix}']))}</manacost>
 				<cmc>{cost_to_cmc(card[f'cost{suffix}'])}</cmc>'''
 
 	if len(card[f'color{suffix}']):
@@ -80,18 +91,18 @@ def render_card(set_data, github_path, card, back=False):
 
 	if len(card[f'pt{suffix}']):
 		props += f'''
-				<pt>{card[f'pt{suffix}']}</pt>'''
+				<pt>{escape_and_format(card[f'pt{suffix}'])}</pt>'''
 
 	if len(card[f'loyalty{suffix}']):
 		props += f'''
-				<loyalty>{card[f'loyalty{suffix}']}</loyalty>'''
+				<loyalty>{escape_and_format(card[f'loyalty{suffix}'])}</loyalty>'''
 
 	card_type = card[f'type{suffix}']
 	card_string = f'''
 		<card>
-			<name>{card[f'card_name{suffix}']}{f' {card['set']}' if 'token' in card['shape'] else ''}</name>
-			<text>{re.sub(r'\[/?i\]', '', card[f'rules_text{suffix}'])}</text>
-			<set rarity="{'rare' if card['rarity'] == 'cube' else card['rarity']}" picurl="{get_picurl(github_path, set_data, card, back)}" num="{get_number(card, back)}">{card['set']}</set>
+			<name>{escape_and_format(card[f'card_name{suffix}'] + (f' {card['set']}' if 'token' in card['shape'] else ''))}</name>
+			<text>{re.sub(r'\[/?i\]', '', escape_and_format(card[f'rules_text{suffix}']))}</text>
+			<set rarity="{'rare' if card['rarity'] == 'cube' else card['rarity']}" picurl="{escape_and_format(get_picurl(github_path, set_data, card, back))}" num="{get_number(card, back)}">{escape_and_format(card['set'])}</set>
 			<prop>{props}
 			</prop>
 			<tablerow>{get_tablerow(card_type)}</tablerow>'''
@@ -106,7 +117,7 @@ def render_card(set_data, github_path, card, back=False):
 
 	related = get_related(card['notes'], '!tokens', 'related')
 	if 'double' in card['shape']:
-		related.append(f'<related attach="transform">{card['card_name' if back else 'card_name2']}</related>')
+		related.append(f'<related attach="transform">{escape_and_format(card['card_name' if back else 'card_name2'])}</related>')
 	if len(related):
 		card_string += f'''
 			{'\n			'.join(related)}'''
@@ -138,8 +149,8 @@ def generateFile(code):
 <cockatrice_carddatabase version='4'>
 	<sets>
 		<set>
-			<name>{code}</name>
-			<longname>{set_data['name']}</longname>
+			<name>{escape_and_format(code)}</name>
+			<longname>{escape_and_format(set_data['name'])}</longname>
 			<settype>Custom</settype>
 			<releasedate>{datetime.today().strftime('%Y-%m-%d')}</releasedate>
 		</set>

@@ -49,8 +49,13 @@ def get_related(notes, instruction, tag):
 
 		tokens = line[len(instruction) + 1:].split(';')
 		for token in tokens:
-			name, num = re.match(r'([^<]+)(?:<(\d+)>)?', token).groups()
-			related.append(f'<{tag}{f' count="{num}"' if num else ''}>{escape_and_format(name)}</{tag}>')
+			name, num = re.match(r'([^<]+)(?:<([^<]+)>)?', token).groups()
+			extra = ''
+			if num.isdecimal() or num == "x":
+				extra = f' count="{num}"'
+			elif num == "persistent" or num == "conjure":
+				extra = ' persistent=""'
+			related.append(f'<{tag}{extra}>{escape_and_format(name)}</{tag}>')
 
 	return related
 

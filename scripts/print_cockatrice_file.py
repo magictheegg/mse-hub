@@ -6,6 +6,8 @@ from datetime import datetime
 def escape_and_format(text: str):
 	return text.replace('&', '&amp;') \
 				.replace('"', '&quot;') \
+				.replace('“', '&quot;') \
+				.replace('”', '&quot;') \
 				.replace('\'', '&apos;') \
 				.replace('’', '&apos;') \
 				.replace('<', '&lt;') \

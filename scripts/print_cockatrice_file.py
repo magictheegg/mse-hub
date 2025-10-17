@@ -50,11 +50,15 @@ def get_related(notes, instruction, tag):
 		tokens = line[len(instruction) + 1:].split(';')
 		for token in tokens:
 			name, num = re.match(r'([^<]+)(?:<([^<]+)>)?', token).groups()
-			extra = ''
-			if num.isdecimal() or num == "x":
+			if not num:
+				extra = ''
+			elif num.isdecimal() or num == "x" or num == "X":
 				extra = f' count="{num}"'
 			elif num == "persistent" or num == "conjure":
 				extra = ' persistent=""'
+			else:
+				print(f'Warning: unknown !tokens parameter <{num}>. Ignoring')
+				extra = ''
 			related.append(f'<{tag}{extra}>{escape_and_format(name)}</{tag}>')
 
 	return related

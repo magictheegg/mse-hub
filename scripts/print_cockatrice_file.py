@@ -57,7 +57,7 @@ def get_related(notes, instruction, tag):
 			elif num == "persistent" or num == "conjure":
 				extra = ' persistent=""'
 			else:
-				print(f'Warning: unknown !tokens parameter <{num}>. Ignoring')
+				print(f'Warning: unknown {instruction} parameter <{num}>. Ignoring')
 				extra = ''
 			related.append(f'<{tag}{extra}>{escape_and_format(name)}</{tag}>')
 
@@ -65,8 +65,9 @@ def get_related(notes, instruction, tag):
 
 def get_picurl(github_path, set_data, card, back):
 	return (
-		f'https://{github_path}/sets/{card['set']}-files/img/'
-		f'{card['number']}{'t' if 'token' in card['shape'] else ''}{'' if 'double' not in card['shape'] else '_back' if back else '_front'}_{card[f'card_name{'2' if back else ''}']}'
+		f'https://{github_path}/sets/{card['set']}-files/img/' +
+		(f'{card['position']}' if 'position' in card else f'{card['number']}{'t' if 'token' in card['shape'] else ''}_{card[f'card_name']}') +
+		('' if 'double' not in card['shape'] else '_back' if back else '_front') +
 		f'.{set_data['image_type']}'
 	)
 
@@ -81,15 +82,44 @@ def get_tablerow(card_type):
 		1
 	)
 
-def render_card(set_data, github_path, card, back=False):
-	suffix = '2' if back else ''
+def get_text(card, back, flipped):
+	combine_texts = not back and not flipped and ('split' in card['shape'] or 'adventure' in card['shape'] or 'aftermath' in card['shape'])
+	return (
+		f'{card[f'rules_text{'2' if back or flipped else ''}']}' +
+		(f'\n---\n({'Front' if back else 'Back'}): {card[f'card_name{'' if back else '2'}']}' if 'double' in card['shape'] else '') +
+		(f'\n{card['rules_text3']}' if 'rules_text3' in card and card['rules_text3'] else '') +
+		(f'\n\n---\n\n{get_text(card, True, False)}' if combine_texts else '')
+	).strip()
+
+def render_card(set_data, github_path, card, /, *, back=False, flipped=False):
+	is_split = 'split' in card['shape'] or 'aftermath' in card['shape']
+	is_two_cards = is_split or 'adventure' in card['shape']
+	suffix = '2' if back or flipped else ''
+
+	layout = 'normal'
+	shape_to_layout = {
+		'adventure': 'adventure',
+		'aftermath': 'aftermath',
+		'split': 'split',
+		'flip': 'flip',
+		'double': 'transform'
+	}
+	for shape, new_layout in shape_to_layout.items():
+		if shape in card['shape']:
+			layout = new_layout
+			break
+
+	mana_cost = format_cost(card[f'cost{suffix}']) + (f' // {format_cost(card[f'cost2'])}' if is_two_cards else '')
+	card_type = card[f'type{suffix}'].strip() + (f' // {card[f'type2'].strip()}' if is_two_cards and card[f'type2'] and card[f'type2'] != card[f'type'] else '')
+	cmc = cost_to_cmc(card[f'cost{suffix}']) + (cost_to_cmc(card[f'cost2']) if is_split else 0)
+	# For the <side>, canon flip cards have their side set to "back" in Cockatrice for their flipped version to transform it back when it leaves the battlefield
 	props = f'''
-				<layout>{'split' if 'split' in card['shape'] else 'transform' if 'double' in card['shape'] else 'normal'}</layout>
-				<side>front</side>
-				<type>{escape_and_format(card[f'type{suffix}'].strip())}</type>
+				<layout>{layout}</layout>
+				<side>{'back' if back or flipped else 'front'}</side>
+				<type>{escape_and_format(card_type)}</type>
 				<maintype>{escape_and_format(get_maintype(card[f'type{suffix}']))}</maintype>
-				<manacost>{escape_and_format(format_cost(card[f'cost{suffix}']))}</manacost>
-				<cmc>{cost_to_cmc(card[f'cost{suffix}'])}</cmc>'''
+				<manacost>{escape_and_format(mana_cost)}</manacost>
+				<cmc>{cmc}</cmc>'''
 
 	if len(card[f'color{suffix}']):
 		props += f'''
@@ -108,11 +138,11 @@ def render_card(set_data, github_path, card, back=False):
 		props += f'''
 				<loyalty>{escape_and_format(card[f'loyalty{suffix}'])}</loyalty>'''
 
-	card_type = card[f'type{suffix}']
+	card_name = (f'{card[f'card_name']} // {card[f'card_name2']}' if is_two_cards else card[f'card_name{suffix}']) + (f' {card['set']}' if 'token' in card['shape'] else '')
 	card_string = f'''
 		<card>
-			<name>{escape_and_format(card[f'card_name{suffix}'] + (f' {card['set']}' if 'token' in card['shape'] else ''))}</name>
-			<text>{re.sub(r'\[/?i\]', '', escape_and_format(card[f'rules_text{suffix}']))}</text>
+			<name>{escape_and_format(card_name)}</name>
+			<text>{re.sub(r'\[/?i\]', '', escape_and_format(get_text(card, back, flipped)))}</text>
 			<set rarity="{'rare' if card['rarity'] == 'cube' else card['rarity']}" picurl="{escape_and_format(get_picurl(github_path, set_data, card, back))}" num="{get_number(card, back)}">{escape_and_format(card['set'])}</set>
 			<prop>{props}
 			</prop>
@@ -122,13 +152,15 @@ def render_card(set_data, github_path, card, back=False):
 		card_string += '''
 			<token>1</token>'''
 
-	if 'split' in card['shape']:
+	if flipped:
 		card_string += '''
 			<upsidedown>1</upsidedown>'''
 
 	related = get_related(card['notes'], '!tokens', 'related')
 	if 'double' in card['shape']:
 		related.append(f'<related attach="transform">{escape_and_format(card['card_name' if back else 'card_name2'])}</related>')
+	if 'flip' in card['shape']:
+		related.append(f'<related attach="transform">{escape_and_format(card['card_name' if flipped else 'card_name2'])}</related>')
 	if len(related):
 		card_string += f'''
 			{'\n			'.join(related)}'''
@@ -146,7 +178,10 @@ def render_card(set_data, github_path, card, back=False):
 		</card>'''
 
 	if 'double' in card['shape'] and not back:
-		card_string += render_card(set_data, github_path, card, True)
+		card_string += render_card(set_data, github_path, card, back=True)
+
+	if 'flip' in card['shape'] and not flipped:
+		card_string += render_card(set_data, github_path, card, flipped=True)
 
 	return card_string
 

@@ -2,6 +2,7 @@ import os
 import json
 import re
 from datetime import datetime
+import utils
 
 def escape_and_format(text: str):
 	return text.replace('&', '&amp;') \
@@ -63,14 +64,6 @@ def get_related(notes, instruction, tag):
 
 	return related
 
-def get_picurl(github_path, set_data, card, back):
-	return (
-		f'https://{github_path}/sets/{card['set']}-files/img/' +
-		(f'{card['position']}' if 'position' in card else f'{card['number']}{'t' if 'token' in card['shape'] else ''}_{card[f'card_name']}') +
-		('' if 'double' not in card['shape'] else '_back' if back else '_front') +
-		f'.{set_data['image_type']}'
-	)
-
 def get_number(card, back):
 	return f'{card['number']}{'' if 'double' not in card['shape'] else 'b' if back else 'a'}'
 
@@ -91,7 +84,7 @@ def get_text(card, back, flipped):
 		(f'\n\n---\n\n{get_text(card, True, False)}' if combine_texts else '')
 	).strip()
 
-def render_card(set_data, github_path, card, /, *, back=False, flipped=False):
+def render_card(set_data, card, /, *, back=False, flipped=False):
 	is_split = 'split' in card['shape'] or 'aftermath' in card['shape']
 	is_two_cards = is_split or 'adventure' in card['shape']
 	suffix = '2' if back or flipped else ''
@@ -149,7 +142,7 @@ def render_card(set_data, github_path, card, /, *, back=False, flipped=False):
 		<card>
 			<name>{escape_and_format(card_name)}</name>
 			<text>{re.sub(r'\[/?i\]', '', escape_and_format(get_text(card, back, flipped)))}</text>
-			<set rarity="{'rare' if card['rarity'] == 'cube' else card['rarity']}" picurl="{escape_and_format(get_picurl(github_path, set_data, card, back))}" num="{get_number(card, back)}">{escape_and_format(card['set'])}</set>
+			<set rarity="{'rare' if card['rarity'] == 'cube' else card['rarity']}" picurl="{escape_and_format(utils.get_picurl(set_data, card, back))}" num="{get_number(card, back)}">{escape_and_format(card['set'])}</set>
 			<prop>{props}
 			</prop>
 			<tablerow>{get_tablerow(card_type)}</tablerow>'''
@@ -184,18 +177,16 @@ def render_card(set_data, github_path, card, /, *, back=False, flipped=False):
 		</card>'''
 
 	if 'double' in card['shape'] and not back:
-		card_string += render_card(set_data, github_path, card, back=True)
+		card_string += render_card(set_data, card, back=True)
 
 	if 'flip' in card['shape'] and not flipped:
-		card_string += render_card(set_data, github_path, card, flipped=True)
+		card_string += render_card(set_data, card, flipped=True)
 
 	return card_string
 
 def generateFile(code):
 	with open(os.path.join('sets', code + '-files', code + '.json'), encoding='utf-8-sig') as j:
 		set_data = json.load(j)
-
-	github_path = os.path.split(os.getcwd())[1] # this gets the current working directory, so it's an easy failcase
 
 	cockatrice_string = f'''<?xml version='1.0' encoding='UTF-8'?>
 <cockatrice_carddatabase version='4'>
@@ -210,7 +201,7 @@ def generateFile(code):
 	<cards>'''
 
 	for card in set_data['cards']:
-		cockatrice_string += render_card(set_data, github_path, card)
+		cockatrice_string += render_card(set_data, card)
 
 	cockatrice_string += '''
 	</cards>

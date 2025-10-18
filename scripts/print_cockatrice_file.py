@@ -96,13 +96,20 @@ def render_card(set_data, github_path, card, /, *, back=False, flipped=False):
 	is_two_cards = is_split or 'adventure' in card['shape']
 	suffix = '2' if back or flipped else ''
 
-	layout = 'normal'
+	card_type = card[f'type{suffix}'].strip() + (f' // {card[f'type2'].strip()}' if is_two_cards and card[f'type2'] and card[f'type2'] != card[f'type'] else '')
+	layout = (
+		'mutate' if 'Mutate' not in card[f'rules_text{suffix}'] else
+		'saga' if 'Saga' in card_type else
+		'normal'
+	)
 	shape_to_layout = {
+		'double': 'transform',
+		'flip': 'flip',
+		'split': 'split',
+		'battle': 'battle',
 		'adventure': 'adventure',
 		'aftermath': 'aftermath',
-		'split': 'split',
-		'flip': 'flip',
-		'double': 'transform'
+		'leveler': 'leveler',
 	}
 	for shape, new_layout in shape_to_layout.items():
 		if shape in card['shape']:
@@ -110,7 +117,6 @@ def render_card(set_data, github_path, card, /, *, back=False, flipped=False):
 			break
 
 	mana_cost = format_cost(card[f'cost{suffix}']) + (f' // {format_cost(card[f'cost2'])}' if is_two_cards else '')
-	card_type = card[f'type{suffix}'].strip() + (f' // {card[f'type2'].strip()}' if is_two_cards and card[f'type2'] and card[f'type2'] != card[f'type'] else '')
 	cmc = cost_to_cmc(card[f'cost{suffix}']) + (cost_to_cmc(card[f'cost2']) if is_split else 0)
 	# For the <side>, canon flip cards have their side set to "back" in Cockatrice for their flipped version to transform it back when it leaves the battlefield
 	props = f'''

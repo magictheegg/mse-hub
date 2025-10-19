@@ -91,7 +91,7 @@ def render_card(set_data, card, /, *, back=False, flipped=False):
 
 	card_type = card[f'type{suffix}'].strip() + (f' // {card[f'type2'].strip()}' if is_two_cards and card[f'type2'] and card[f'type2'] != card[f'type'] else '')
 	layout = (
-		'mutate' if 'Mutate' not in card[f'rules_text{suffix}'] else
+		'mutate' if 'Mutate' in card[f'rules_text{suffix}'] else
 		'saga' if 'Saga' in card_type else
 		'normal'
 	)

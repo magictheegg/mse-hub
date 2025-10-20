@@ -4,7 +4,7 @@ import re
 from datetime import datetime
 import utils
 
-def escape_and_format(text: str):
+def xml_escape(text: str):
 	return text.replace('&', '&amp;') \
 				.replace('"', '&quot;') \
 				.replace('“', '&quot;') \
@@ -50,7 +50,12 @@ def get_related(notes, instruction, tag):
 
 		tokens = line[len(instruction) + 1:].split(';')
 		for token in tokens:
-			name, num = re.match(r'([^<]+)(?:<([^<]+)>)?', token).groups()
+			match = re.match(r'([^<]+)(?:<([^<]+)>)?', token)
+			if not match:
+				print(f'Warning: could not process {instruction} name "{token}". Ignoring')
+				continue
+
+			name, num = match.groups()
 			if not num:
 				extra = ''
 			elif num.isdecimal() or num == "x" or num == "X":
@@ -60,7 +65,7 @@ def get_related(notes, instruction, tag):
 			else:
 				print(f'Warning: unknown {instruction} parameter <{num}>. Ignoring')
 				extra = ''
-			related.append(f'<{tag}{extra}>{escape_and_format(name)}</{tag}>')
+			related.append(f'<{tag}{extra}>{xml_escape(name)}</{tag}>')
 
 	return related
 
@@ -115,9 +120,9 @@ def render_card(set_data, card, /, *, back=False, flipped=False):
 	props = f'''
 				<layout>{layout}</layout>
 				<side>{'back' if back or flipped else 'front'}</side>
-				<type>{escape_and_format(card_type)}</type>
-				<maintype>{escape_and_format(get_maintype(card[f'type{suffix}']))}</maintype>
-				<manacost>{escape_and_format(mana_cost)}</manacost>
+				<type>{xml_escape(card_type)}</type>
+				<maintype>{xml_escape(get_maintype(card[f'type{suffix}']))}</maintype>
+				<manacost>{xml_escape(mana_cost)}</manacost>
 				<cmc>{cmc}</cmc>'''
 
 	if len(card[f'color{suffix}']):
@@ -131,18 +136,18 @@ def render_card(set_data, card, /, *, back=False, flipped=False):
 
 	if len(card[f'pt{suffix}']):
 		props += f'''
-				<pt>{escape_and_format(card[f'pt{suffix}'])}</pt>'''
+				<pt>{xml_escape(card[f'pt{suffix}'])}</pt>'''
 
 	if len(card[f'loyalty{suffix}']):
 		props += f'''
-				<loyalty>{escape_and_format(card[f'loyalty{suffix}'])}</loyalty>'''
+				<loyalty>{xml_escape(card[f'loyalty{suffix}'])}</loyalty>'''
 
 	card_name = (f'{card[f'card_name']} // {card[f'card_name2']}' if is_two_cards else card[f'card_name{suffix}']) + (f' {card['set']}' if 'token' in card['shape'] else '')
 	card_string = f'''
 		<card>
-			<name>{escape_and_format(card_name)}</name>
-			<text>{re.sub(r'\[/?i\]', '', escape_and_format(get_text(card, back, flipped)))}</text>
-			<set rarity="{'rare' if card['rarity'] == 'cube' else card['rarity']}" picurl="{escape_and_format(utils.get_picurl(set_data, card, back))}" num="{get_number(card, back)}">{escape_and_format(card['set'])}</set>
+			<name>{xml_escape(card_name)}</name>
+			<text>{re.sub(r'\[/?i\]', '', xml_escape(get_text(card, back, flipped)))}</text>
+			<set rarity="{'rare' if card['rarity'] == 'cube' else card['rarity']}" picurl="{xml_escape(utils.get_picurl(set_data, card, back))}" num="{get_number(card, back)}">{xml_escape(card['set'])}</set>
 			<prop>{props}
 			</prop>
 			<tablerow>{get_tablerow(card_type)}</tablerow>'''
@@ -157,9 +162,9 @@ def render_card(set_data, card, /, *, back=False, flipped=False):
 
 	related = get_related(card['notes'], '!tokens', 'related')
 	if 'double' in card['shape']:
-		related.append(f'<related attach="transform">{escape_and_format(card['card_name' if back else 'card_name2'])}</related>')
+		related.append(f'<related attach="transform">{xml_escape(card['card_name' if back else 'card_name2'])}</related>')
 	if 'flip' in card['shape']:
-		related.append(f'<related attach="transform">{escape_and_format(card['card_name' if flipped else 'card_name2'])}</related>')
+		related.append(f'<related attach="transform">{xml_escape(card['card_name' if flipped else 'card_name2'])}</related>')
 	if len(related):
 		card_string += f'''
 			{'\n			'.join(related)}'''
@@ -192,8 +197,8 @@ def generateFile(code):
 <cockatrice_carddatabase version='4'>
 	<sets>
 		<set>
-			<name>{escape_and_format(code)}</name>
-			<longname>{escape_and_format(set_data['name'])}</longname>
+			<name>{xml_escape(code)}</name>
+			<longname>{xml_escape(set_data['name'])}</longname>
 			<settype>Custom</settype>
 			<releasedate>{datetime.today().strftime('%Y-%m-%d')}</releasedate>
 		</set>

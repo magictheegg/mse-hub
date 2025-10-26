@@ -238,6 +238,7 @@ script:
 	##Grab special_text if it's not empty, otherwise grab rule_text
 	full_text := { if card.special_text != "" then card.special_text else card.rule_text }
 	full_text2 := { if card.special_text_2 != "" then card.special_text_2 else card.rule_text_2 }
+	full_text3 := { card.rule_text_3 }
 
 	##Shape function to deal with all the non-standard shapes
 	get_shape := {
@@ -250,7 +251,7 @@ script:
 		else card.shape
 	}
 
-	is_double_card := match@(match:"double|adventure|aftermath|spli")
+	is_double_card := match@(match:"double|adventure|aftermath|split|flip")
 	q := "\""
 	write_card := {
 		strings := [
@@ -283,7 +284,8 @@ script:
 			"{q}special_text2{q}: {q}{format_textbox(card.special_text_2)}{q}",
 			"{q}loyalty2{q}: {q}{sanitize(card.loyalty_2)}{q}",
 			"{q}artist2{q}: {q}{sanitize(card.illustrator_2)}{q}",
-			"{q}alias2{q}: {q}{sanitize(card.alias_2)}{q}"
+			"{q}alias2{q}: {q}{sanitize(card.alias_2)}{q}",
+			"{q}rules_text3{q}: {q}{format_textbox(full_text3())}{q}"  ## For things like Fuse/Room reminder text
 		]
 		strings := strings + [
 			"{q}notes{q}: {q}{sanitize(card.notes)}{q}"

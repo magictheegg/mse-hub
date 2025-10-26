@@ -4,10 +4,12 @@ import shutil
 import json
 import glob
 import re
+import traceback
 
 import image_flip
 import card_edge_trimmer
 import list_to_list
+import print_cockatrice_file
 import print_draft_file
 import print_html_for_index
 import print_html_for_search
@@ -144,12 +146,21 @@ for code in set_codes:
 	set_dir = code + '-files'
 	with open(os.path.join('sets', code + '-files', code + '.json'), encoding='utf-8-sig') as f:
 		raw = json.load(f)
+
 	if 'draft_structure' in raw and not raw['draft_structure'] == 'none' and not os.path.isfile(os.path.join('custom', 'sets', code + '-files', code + '-draft.txt')):
 		try:
 			print_draft_file.generateFile(code)
 			print('Generated draft file for {0}.'.format(code))
 		except Exception as e:
 			print('Unable to generate draft file for {0}: {1}'.format(code, e))
+
+	if not os.path.isfile(os.path.join('custom', 'sets', code + '-files', code + '.xml')):
+		try:
+			print_cockatrice_file.generateFile(code)
+			print('Generated Cockatrice file for {0}.'.format(code))
+		except Exception as e:
+			print('Unable to generate Cockatrice file for {0}: {1}\n{2}'.format(code, e, traceback.format_exc()))
+			print(e)
 
 	#CE: this code is all for version history
 	if 'version' not in raw:

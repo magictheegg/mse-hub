@@ -1,0 +1,947 @@
+﻿[CustomCards]
+	[
+		{
+			"name": "Ajani, One for All",
+			"rarity": "special",
+			"mana_cost": "{3}{W}",
+			"type": "Legendary Planeswalker — Ajani",
+			"collector_number": "3",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/0.png"
+			}
+		},
+		{
+			"name": "Jace, Alone",
+			"rarity": "special",
+			"mana_cost": "{1}{U}",
+			"type": "Legendary Planeswalker — Jace",
+			"collector_number": "21",
+			"back": {
+				"name": "",
+				"type": "",
+				"image_uris": {
+					"en": "https://BOMB/sets/BOMB-files/img/1_back.png"
+				}
+			},
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/1_front.png"
+			}
+		},
+		{
+			"name": "Liliana, Cruel Mistress",
+			"rarity": "special",
+			"mana_cost": "{1}{B}{B}",
+			"type": "Legendary Planeswalker — Liliana",
+			"collector_number": "37",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/2.png"
+			}
+		},
+		{
+			"name": "Chandra, Breaching Flame",
+			"rarity": "special",
+			"mana_cost": "{1}{R}{R}",
+			"type": "Legendary Planeswalker — Chandra",
+			"collector_number": "43",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/3.png"
+			}
+		},
+		{
+			"name": "Garruk, Renewed Herald",
+			"rarity": "special",
+			"mana_cost": "{X}{2}{G}{G}",
+			"type": "Legendary Planeswalker — Garruk",
+			"collector_number": "56",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/4.png"
+			}
+		},
+		{
+			"name": "Demonlord Darvas-Zan",
+			"rarity": "special",
+			"mana_cost": "{5}{B}{B}{B}",
+			"type": "Legendary Enchantment Creature — Demon",
+			"collector_number": "31",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/5.png"
+			}
+		},
+		{
+			"name": "Halfbeast Smuggler",
+			"rarity": "special",
+			"mana_cost": "{1}{B}",
+			"type": "Creature — Human Cat Rebel",
+			"collector_number": "35",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/6.png"
+			}
+		},
+		{
+			"name": "Palace Leophore",
+			"rarity": "special",
+			"mana_cost": "{2}{W}{W}",
+			"type": "Creature — Human Knight",
+			"collector_number": "13",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/7.png"
+			}
+		},
+		{
+			"name": "Mirthful Trickster",
+			"rarity": "special",
+			"mana_cost": "{1}{U}",
+			"type": "Creature — Satyr Rogue",
+			"collector_number": "24",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/8.png"
+			}
+		},
+		{
+			"name": "Dreamer's Charm",
+			"rarity": "special",
+			"mana_cost": "{1}{U}",
+			"type": "Instant",
+			"collector_number": "19",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/9.png"
+			}
+		},
+		{
+			"name": "Thunder And Lightning",
+			"rarity": "special",
+			"mana_cost": "{R}",
+			"type": "Instant",
+			"collector_number": "49",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/10.png"
+			}
+		},
+		{
+			"name": "Accursed Accountant",
+			"rarity": "special",
+			"mana_cost": "{2}{B}",
+			"type": "Creature — Zombie Advisor",
+			"collector_number": "28",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/11.png"
+			}
+		},
+		{
+			"name": "Red-Mist Revolutionary",
+			"rarity": "special",
+			"mana_cost": "{2}{R}",
+			"type": "Creature — Human Soldier Rebel",
+			"collector_number": "48",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/12.png"
+			}
+		},
+		{
+			"name": "Unstable Mutant",
+			"rarity": "special",
+			"mana_cost": "{U}{R}",
+			"type": "Creature — Frog Mutant",
+			"collector_number": "72",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/13.png"
+			}
+		},
+		{
+			"name": "Mournful Satyr",
+			"rarity": "special",
+			"mana_cost": "{2}{G}",
+			"type": "Creature — Satyr",
+			"collector_number": "58",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/14.png"
+			}
+		},
+		{
+			"name": "Underworld Guides",
+			"rarity": "special",
+			"mana_cost": "{1}{W}",
+			"type": "Creature — Spirit",
+			"collector_number": "15",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/15.png"
+			}
+		},
+		{
+			"name": "Unburial Hymn",
+			"rarity": "special",
+			"mana_cost": "{1}{B}",
+			"type": "Sorcery",
+			"collector_number": "39",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/16.png"
+			}
+		},
+		{
+			"name": "Lightforge Mystic",
+			"rarity": "special",
+			"mana_cost": "{X}{W}",
+			"type": "Creature — Cat Cleric Rebel",
+			"collector_number": "9",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/17.png"
+			}
+		},
+		{
+			"name": "Eclipse",
+			"rarity": "special",
+			"mana_cost": "{B}",
+			"type": "Sorcery",
+			"collector_number": "32",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/18.png"
+			}
+		},
+		{
+			"name": "Antique Core",
+			"rarity": "special",
+			"mana_cost": "{G}",
+			"type": "Artifact Creature — Construct",
+			"collector_number": "52",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/19.png"
+			}
+		},
+		{
+			"name": "Kiko, Rebellious Messenger",
+			"rarity": "special",
+			"mana_cost": "{1}{U}",
+			"type": "Legendary Creature — Harpy Rebel",
+			"collector_number": "22",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/20.png"
+			}
+		},
+		{
+			"name": "Apex of Sorcery",
+			"rarity": "special",
+			"mana_cost": "{1}{U}{R}",
+			"type": "Creature — Human Sorcerer",
+			"collector_number": "66",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/21.png"
+			}
+		},
+		{
+			"name": "Lorewyrm's Apprentice",
+			"rarity": "special",
+			"mana_cost": "{5}{R}",
+			"type": "Creature — Human Wizard",
+			"collector_number": "46",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/22.png"
+			}
+		},
+		{
+			"name": "Silvershine Dragon",
+			"rarity": "special",
+			"mana_cost": "{3}{U}{U}",
+			"type": "Creature — Dragon",
+			"collector_number": "25",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/23.png"
+			}
+		},
+		{
+			"name": "Radiant Tempest, Throne",
+			"rarity": "special",
+			"mana_cost": "{3}{R}{W}",
+			"type": "Legendary Creature — Angel",
+			"collector_number": "68",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/24.png"
+			}
+		},
+		{
+			"name": "Descent of the Pomegranate",
+			"rarity": "special",
+			"mana_cost": "{R}",
+			"type": "Enchantment",
+			"collector_number": "44",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/25.png"
+			}
+		},
+		{
+			"name": "Zenobia, Twice-to-Die",
+			"rarity": "special",
+			"mana_cost": "{4}{U}{B}",
+			"type": "Legendary Creature — Sphinx",
+			"collector_number": "73",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/26.png"
+			}
+		},
+		{
+			"name": "Budding Gladiator",
+			"rarity": "special",
+			"mana_cost": "{2}{W}",
+			"type": "Creature — Fungus Soldier",
+			"collector_number": "4",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/27.png"
+			}
+		},
+		{
+			"name": "Day of Judgement",
+			"rarity": "special",
+			"mana_cost": "{2}{W}{W}",
+			"type": "Sorcery",
+			"collector_number": "5",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/28.png"
+			}
+		},
+		{
+			"name": "Devour the Sun",
+			"rarity": "special",
+			"mana_cost": "{3}{W}{W}",
+			"type": "Sorcery",
+			"collector_number": "6",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/29.png"
+			}
+		},
+		{
+			"name": "An Eternity In a Blink of an Eye",
+			"rarity": "special",
+			"mana_cost": "{W}",
+			"type": "Instant",
+			"collector_number": "7",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/30.png"
+			}
+		},
+		{
+			"name": "Keeper of Bindings",
+			"rarity": "special",
+			"mana_cost": "{1}{W}{W}",
+			"type": "Creature — Human Knight",
+			"collector_number": "8",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/31.png"
+			}
+		},
+		{
+			"name": "Swords to Plowshares",
+			"rarity": "special",
+			"mana_cost": "{W}",
+			"type": "Instant",
+			"collector_number": "14",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/32.png"
+			}
+		},
+		{
+			"name": "*Banisher Rebel",
+			"rarity": "special",
+			"mana_cost": "{3}{W}",
+			"type": "Creature — Human Rebel",
+			"collector_number": "2",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/33.png"
+			}
+		},
+		{
+			"name": "Horn of Calling",
+			"rarity": "special",
+			"mana_cost": "{2}",
+			"type": "Artifact — Equipment",
+			"collector_number": "74",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/34.png"
+			}
+		},
+		{
+			"name": "MK1/Scorched Earth",
+			"rarity": "special",
+			"mana_cost": "{7}",
+			"type": "Artifact Creature — Construct",
+			"collector_number": "75",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/35.png"
+			}
+		},
+		{
+			"name": "Torments of Torments",
+			"rarity": "special",
+			"mana_cost": "{1}{B}{B}",
+			"type": "Instant",
+			"collector_number": "38",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/36.png"
+			}
+		},
+		{
+			"name": "Bad Things Happen to Good People",
+			"rarity": "special",
+			"mana_cost": "{B}",
+			"type": "Sorcery",
+			"collector_number": "29",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/37.png"
+			}
+		},
+		{
+			"name": "Lightning Bolt",
+			"rarity": "special",
+			"mana_cost": "{R}",
+			"type": "Instant",
+			"collector_number": "45",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/38.png"
+			}
+		},
+		{
+			"name": "Counterspell",
+			"rarity": "special",
+			"mana_cost": "{U}{U}",
+			"type": "Instant",
+			"collector_number": "17",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/39.png"
+			}
+		},
+		{
+			"name": "witty counterspell name",
+			"rarity": "special",
+			"mana_cost": "{U}",
+			"type": "Instant",
+			"collector_number": "27",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/40.png"
+			}
+		},
+		{
+			"name": "Sublime Robbery",
+			"rarity": "special",
+			"mana_cost": "{U}",
+			"type": "Instant",
+			"collector_number": "26",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/41.png"
+			}
+		},
+		{
+			"name": "Solar Cantor",
+			"rarity": "special",
+			"mana_cost": "{G}",
+			"type": "Creature — Elf Druid",
+			"collector_number": "61",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/42.png"
+			}
+		},
+		{
+			"name": "Steadfast Companion",
+			"rarity": "special",
+			"mana_cost": "{1}{G}",
+			"type": "Creature — Satyr Citizen",
+			"collector_number": "62",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/43.png"
+			}
+		},
+		{
+			"name": "Truth in the Flames",
+			"rarity": "special",
+			"mana_cost": "{1}{R}",
+			"type": "Sorcery",
+			"collector_number": "51",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/44.png"
+			}
+		},
+		{
+			"name": "Wolfbitten Oathbreaker",
+			"rarity": "special",
+			"mana_cost": "{2}{G}{G}",
+			"type": "Creature — Werewolf Rebel",
+			"collector_number": "64",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/45.png"
+			}
+		},
+		{
+			"name": "Dork2",
+			"rarity": "special",
+			"mana_cost": "{G}",
+			"type": "Creature — TYPE1 TYPE2",
+			"collector_number": "55",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/46.png"
+			}
+		},
+		{
+			"name": "Diluvial Dandân",
+			"rarity": "special",
+			"mana_cost": "{U}{U}",
+			"type": "Creature — Fish",
+			"collector_number": "18",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/47.png"
+			}
+		},
+		{
+			"name": "Birthing Pod",
+			"rarity": "special",
+			"mana_cost": "{3}{G/P}",
+			"type": "Artifact",
+			"collector_number": "53",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/48.png"
+			}
+		},
+		{
+			"name": "Brash Trainer",
+			"rarity": "special",
+			"mana_cost": "{2}{R}",
+			"type": "Creature — Human Warrior",
+			"collector_number": "42",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/49.png"
+			}
+		},
+		{
+			"name": "Faithful Boarder",
+			"rarity": "special",
+			"mana_cost": "{1}{U}",
+			"type": "Creature — Azra Pirate",
+			"collector_number": "20",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/50.png"
+			}
+		},
+		{
+			"name": "Traggy, Petty Piper",
+			"rarity": "special",
+			"mana_cost": "{4}{U}{R}",
+			"type": "Legendary Creature — Satyr Bard",
+			"collector_number": "71",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/51.png"
+			}
+		},
+		{
+			"name": "Lorena, Heartpiercer",
+			"rarity": "special",
+			"mana_cost": "{1}{U}{U}",
+			"type": "Legendary Creature — Harpy Archer Rebel",
+			"collector_number": "23",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/52.png"
+			}
+		},
+		{
+			"name": "Oketra's Loyalist",
+			"rarity": "special",
+			"mana_cost": "{W}",
+			"type": "Creature — Cat Warrior",
+			"collector_number": "11",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/53.png"
+			}
+		},
+		{
+			"name": "Timeslip Thingimabob",
+			"rarity": "special",
+			"mana_cost": "{1}{W}{U}",
+			"type": "Creature — Spirit",
+			"collector_number": "70",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/54.png"
+			}
+		},
+		{
+			"name": "Enduring Majesty",
+			"rarity": "special",
+			"mana_cost": "{2}{B}{B}",
+			"type": "Enchantment Creature — Cat Glimmer",
+			"collector_number": "33",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/55.png"
+			}
+		},
+		{
+			"name": "Gibbering Rag Man",
+			"rarity": "special",
+			"mana_cost": "{B}",
+			"type": "Creature — Minion",
+			"collector_number": "34",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/56.png"
+			}
+		},
+		{
+			"name": "Deepfathom Mourner",
+			"rarity": "special",
+			"mana_cost": "{2}{B}",
+			"type": "Creature — Merfolk Warlock",
+			"collector_number": "30",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/57.png"
+			}
+		},
+		{
+			"name": "Herald of Open Tombs",
+			"rarity": "special",
+			"mana_cost": "{2}{B}",
+			"type": "Creature — Zombie Noble",
+			"collector_number": "36",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/58.png"
+			}
+		},
+		{
+			"name": "Badlands",
+			"rarity": "special",
+			"mana_cost": "",
+			"type": "Land — Swamp Mountain",
+			"collector_number": "76",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/59.png"
+			}
+		},
+		{
+			"name": "Bayou",
+			"rarity": "special",
+			"mana_cost": "",
+			"type": "Land — Swamp Forest",
+			"collector_number": "77",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/60.png"
+			}
+		},
+		{
+			"name": "Plateau",
+			"rarity": "special",
+			"mana_cost": "",
+			"type": "Land — Mountain Plains",
+			"collector_number": "78",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/61.png"
+			}
+		},
+		{
+			"name": "Savannah",
+			"rarity": "special",
+			"mana_cost": "",
+			"type": "Land",
+			"collector_number": "79",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/62.png"
+			}
+		},
+		{
+			"name": "Scrubland",
+			"rarity": "special",
+			"mana_cost": "",
+			"type": "Land — Plains Swamp",
+			"collector_number": "80",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/63.png"
+			}
+		},
+		{
+			"name": "Taiga",
+			"rarity": "special",
+			"mana_cost": "",
+			"type": "Land — Mountain Forest",
+			"collector_number": "81",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/64.png"
+			}
+		},
+		{
+			"name": "Tropical Island",
+			"rarity": "special",
+			"mana_cost": "",
+			"type": "Land — Forest Island",
+			"collector_number": "82",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/65.png"
+			}
+		},
+		{
+			"name": "Tundra",
+			"rarity": "special",
+			"mana_cost": "",
+			"type": "Land — Plains Island",
+			"collector_number": "83",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/66.png"
+			}
+		},
+		{
+			"name": "Underground Sea",
+			"rarity": "special",
+			"mana_cost": "",
+			"type": "Land — Island Swamp",
+			"collector_number": "84",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/67.png"
+			}
+		},
+		{
+			"name": "Volcanic Island",
+			"rarity": "special",
+			"mana_cost": "",
+			"type": "Land — Island Mountain",
+			"collector_number": "85",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/68.png"
+			}
+		},
+		{
+			"name": "Life Begets Life",
+			"rarity": "special",
+			"mana_cost": "{G}",
+			"type": "Enchantment",
+			"collector_number": "57",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/69.png"
+			}
+		},
+		{
+			"name": "",
+			"rarity": "special",
+			"mana_cost": "?{G}{U}",
+			"type": "Legendary Creature — RACE Monk",
+			"collector_number": "65",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/70.png"
+			}
+		},
+		{
+			"name": "Charming Conjurer",
+			"rarity": "special",
+			"mana_cost": "{1}{U}{U}",
+			"type": "Creature — RACE Wizard",
+			"collector_number": "16",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/71.png"
+			}
+		},
+		{
+			"name": "?",
+			"rarity": "special",
+			"mana_cost": "{R}",
+			"type": "Artifact — Equipment",
+			"collector_number": "40",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/72.png"
+			}
+		},
+		{
+			"name": "Bloodbanner Bearer",
+			"rarity": "special",
+			"mana_cost": "{R}",
+			"type": "Creature — Human Rebel",
+			"collector_number": "41",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/73.png"
+			}
+		},
+		{
+			"name": "Mandala Tracer",
+			"rarity": "special",
+			"mana_cost": "{1}{R}",
+			"type": "Creature — Human Monk",
+			"collector_number": "47",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/74.png"
+			}
+		},
+		{
+			"name": "Devoted Druid kinda",
+			"rarity": "special",
+			"mana_cost": "{1}{G}",
+			"type": "Creature — X Druid",
+			"collector_number": "54",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/75.png"
+			}
+		},
+		{
+			"name": "PLACENAME Sunseeker",
+			"rarity": "special",
+			"mana_cost": "{2}{G}",
+			"type": "Creature — Human Scout",
+			"collector_number": "59",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/76.png"
+			}
+		},
+		{
+			"name": "Sworn Bladewitch",
+			"rarity": "special",
+			"mana_cost": "{B}{R}",
+			"type": "Creature — Human Knight Warlock",
+			"collector_number": "69",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/77.png"
+			}
+		},
+		{
+			"name": "Truefire Shaper",
+			"rarity": "special",
+			"mana_cost": "{3}{R}{R}",
+			"type": "Creature — Human Sorcerer",
+			"collector_number": "50",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/78.png"
+			}
+		},
+		{
+			"name": "Rite of Hunt",
+			"rarity": "special",
+			"mana_cost": "{1}{G}",
+			"type": "Sorcery",
+			"collector_number": "60",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/79.png"
+			}
+		},
+		{
+			"name": "The Tragedy of Sire Leu",
+			"rarity": "special",
+			"mana_cost": "{2}{G}{G}",
+			"type": "Enchantment — Saga",
+			"collector_number": "63",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/80.png"
+			}
+		},
+		{
+			"name": "cool elemental name",
+			"rarity": "special",
+			"mana_cost": "{3}{W}{U}",
+			"type": "Creature — Elemental",
+			"collector_number": "67",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/81.png"
+			}
+		},
+		{
+			"name": "ominous monolith oooo",
+			"rarity": "special",
+			"mana_cost": "{2}{W}",
+			"type": "Artifact",
+			"collector_number": "12",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/82.png"
+			}
+		},
+		{
+			"name": "Lin Sivvi, Reloaded",
+			"rarity": "special",
+			"mana_cost": "{1}{W}",
+			"type": "Legendary Creature — Human Rebel",
+			"collector_number": "10",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/83.png"
+			}
+		},
+		{
+			"name": "Sic Transit Gloria Mundi",
+			"rarity": "special",
+			"mana_cost": "{W}",
+			"type": "",
+			"collector_number": "1",
+			"image_uris": {
+				"en": "https://BOMB/sets/BOMB-files/img/84.png"
+			}
+		}
+	]
+
+[cube(15)]
+	1 Ajani, One for All
+	1 Jace, Alone
+	1 Liliana, Cruel Mistress
+	1 Chandra, Breaching Flame
+	1 Garruk, Renewed Herald
+	1 Demonlord Darvas-Zan
+	1 Halfbeast Smuggler
+	1 Palace Leophore
+	1 Mirthful Trickster
+	1 Dreamer's Charm
+	1 Thunder And Lightning
+	1 Accursed Accountant
+	1 Red-Mist Revolutionary
+	1 Unstable Mutant
+	1 Mournful Satyr
+	1 Underworld Guides
+	1 Unburial Hymn
+	1 Lightforge Mystic
+	1 Eclipse
+	1 Antique Core
+	1 Kiko, Rebellious Messenger
+	1 Apex of Sorcery
+	1 Lorewyrm's Apprentice
+	1 Silvershine Dragon
+	1 Radiant Tempest, Throne
+	1 Descent of the Pomegranate
+	1 Zenobia, Twice-to-Die
+	1 Budding Gladiator
+	1 Day of Judgement
+	1 Devour the Sun
+	1 An Eternity In a Blink of an Eye
+	1 Keeper of Bindings
+	1 Swords to Plowshares
+	1 *Banisher Rebel
+	1 Horn of Calling
+	1 MK1/Scorched Earth
+	1 Torments of Torments
+	1 Bad Things Happen to Good People
+	1 Lightning Bolt
+	1 Counterspell
+	1 witty counterspell name
+	1 Sublime Robbery
+	1 Solar Cantor
+	1 Steadfast Companion
+	1 Truth in the Flames
+	1 Wolfbitten Oathbreaker
+	1 Dork2
+	1 Diluvial Dandân
+	1 Birthing Pod
+	1 Brash Trainer
+	1 Faithful Boarder
+	1 Traggy, Petty Piper
+	1 Lorena, Heartpiercer
+	1 Oketra's Loyalist
+	1 Timeslip Thingimabob
+	1 Enduring Majesty
+	1 Gibbering Rag Man
+	1 Deepfathom Mourner
+	1 Herald of Open Tombs
+	1 Badlands
+	1 Bayou
+	1 Plateau
+	1 Savannah
+	1 Scrubland
+	1 Taiga
+	1 Tropical Island
+	1 Tundra
+	1 Underground Sea
+	1 Volcanic Island
+	1 Life Begets Life
+	1 
+	1 Charming Conjurer
+	1 ?
+	1 Bloodbanner Bearer
+	1 Mandala Tracer
+	1 Devoted Druid kinda
+	1 PLACENAME Sunseeker
+	1 Sworn Bladewitch
+	1 Truefire Shaper
+	1 Rite of Hunt
+	1 The Tragedy of Sire Leu
+	1 cool elemental name
+	1 ominous monolith oooo
+	1 Lin Sivvi, Reloaded
+	1 Sic Transit Gloria Mundi

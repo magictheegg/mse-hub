@@ -1,0 +1,803 @@
+﻿[
+    {
+        "card_name": "Sic Transit Gloria Mundi",
+        "number": 1,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "84"
+    },
+    {
+        "card_name": "Charming Conjurer",
+        "number": 16,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "71"
+    },
+    {
+        "card_name": "Accursed Accountant",
+        "number": 28,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "11"
+    },
+    {
+        "card_name": "?",
+        "number": 40,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "72"
+    },
+    {
+        "card_name": "Antique Core",
+        "number": 52,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "19"
+    },
+    {
+        "card_name": "*Banisher Rebel",
+        "number": 2,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "33"
+    },
+    {
+        "card_name": "Counterspell",
+        "number": 17,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "39"
+    },
+    {
+        "card_name": "Bad Things Happen to Good People",
+        "number": 29,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "37"
+    },
+    {
+        "card_name": "Bloodbanner Bearer",
+        "number": 41,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "73"
+    },
+    {
+        "card_name": "Birthing Pod",
+        "number": 53,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "48"
+    },
+    {
+        "card_name": "Ajani, One for All",
+        "number": 3,
+        "shape": "planeswalker",
+        "set": "BOMB",
+        "position": "0"
+    },
+    {
+        "card_name": "Diluvial Dand\u00e2n",
+        "number": 18,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "47"
+    },
+    {
+        "card_name": "Deepfathom Mourner",
+        "number": 30,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "57"
+    },
+    {
+        "card_name": "Brash Trainer",
+        "number": 42,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "49"
+    },
+    {
+        "card_name": "Devoted Druid kinda",
+        "number": 54,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "75"
+    },
+    {
+        "card_name": "Budding Gladiator",
+        "number": 4,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "27"
+    },
+    {
+        "card_name": "Dreamer's Charm",
+        "number": 19,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "9"
+    },
+    {
+        "card_name": "Demonlord Darvas-Zan",
+        "number": 31,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "5"
+    },
+    {
+        "card_name": "Chandra, Breaching Flame",
+        "number": 43,
+        "shape": "planeswalker",
+        "set": "BOMB",
+        "position": "3"
+    },
+    {
+        "card_name": "Dork2",
+        "number": 55,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "46"
+    },
+    {
+        "card_name": "Day of Judgement",
+        "number": 5,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "28"
+    },
+    {
+        "card_name": "Faithful Boarder",
+        "number": 20,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "50"
+    },
+    {
+        "card_name": "Eclipse",
+        "number": 32,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "18"
+    },
+    {
+        "card_name": "Descent of the Pomegranate",
+        "number": 44,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "25"
+    },
+    {
+        "card_name": "Garruk, Renewed Herald",
+        "number": 56,
+        "shape": "planeswalker",
+        "set": "BOMB",
+        "position": "4"
+    },
+    {
+        "card_name": "Devour the Sun",
+        "number": 6,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "29"
+    },
+    {
+        "card_name": "Jace, Alone",
+        "number": 21,
+        "shape": "transform double faced",
+        "set": "BOMB",
+        "position": "1"
+    },
+    {
+        "card_name": "Enduring Majesty",
+        "number": 33,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "55"
+    },
+    {
+        "card_name": "Lightning Bolt",
+        "number": 45,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "38"
+    },
+    {
+        "card_name": "Life Begets Life",
+        "number": 57,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "69"
+    },
+    {
+        "card_name": "An Eternity In a Blink of an Eye",
+        "number": 7,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "30"
+    },
+    {
+        "card_name": "Kiko, Rebellious Messenger",
+        "number": 22,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "20"
+    },
+    {
+        "card_name": "Gibbering Rag Man",
+        "number": 34,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "56"
+    },
+    {
+        "card_name": "Lorewyrm's Apprentice",
+        "number": 46,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "22"
+    },
+    {
+        "card_name": "Mournful Satyr",
+        "number": 58,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "14"
+    },
+    {
+        "card_name": "Keeper of Bindings",
+        "number": 8,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "31"
+    },
+    {
+        "card_name": "Lorena, Heartpiercer",
+        "number": 23,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "52"
+    },
+    {
+        "card_name": "Halfbeast Smuggler",
+        "number": 35,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "6"
+    },
+    {
+        "card_name": "Mandala Tracer",
+        "number": 47,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "74"
+    },
+    {
+        "card_name": "PLACENAME Sunseeker",
+        "number": 59,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "76"
+    },
+    {
+        "card_name": "Lightforge Mystic",
+        "number": 9,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "17"
+    },
+    {
+        "card_name": "Mirthful Trickster",
+        "number": 24,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "8"
+    },
+    {
+        "card_name": "Herald of Open Tombs",
+        "number": 36,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "58"
+    },
+    {
+        "card_name": "Red-Mist Revolutionary",
+        "number": 48,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "12"
+    },
+    {
+        "card_name": "Rite of Hunt",
+        "number": 60,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "79"
+    },
+    {
+        "card_name": "Lin Sivvi, Reloaded",
+        "number": 10,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "83"
+    },
+    {
+        "card_name": "Silvershine Dragon",
+        "number": 25,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "23"
+    },
+    {
+        "card_name": "Liliana, Cruel Mistress",
+        "number": 37,
+        "shape": "planeswalker",
+        "set": "BOMB",
+        "position": "2"
+    },
+    {
+        "card_name": "Thunder And Lightning",
+        "number": 49,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "10"
+    },
+    {
+        "card_name": "Solar Cantor",
+        "number": 61,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "42"
+    },
+    {
+        "card_name": "Oketra's Loyalist",
+        "number": 11,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "53"
+    },
+    {
+        "card_name": "Sublime Robbery",
+        "number": 26,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "41"
+    },
+    {
+        "card_name": "Torments of Torments",
+        "number": 38,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "36"
+    },
+    {
+        "card_name": "Truefire Shaper",
+        "number": 50,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "78"
+    },
+    {
+        "card_name": "Steadfast Companion",
+        "number": 62,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "43"
+    },
+    {
+        "card_name": "ominous monolith oooo",
+        "number": 12,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "82"
+    },
+    {
+        "card_name": "witty counterspell name",
+        "number": 27,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "40"
+    },
+    {
+        "card_name": "Unburial Hymn",
+        "number": 39,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "16"
+    },
+    {
+        "card_name": "Truth in the Flames",
+        "number": 51,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "44"
+    },
+    {
+        "card_name": "The Tragedy of Sire Leu",
+        "number": 63,
+        "shape": "saga",
+        "set": "BOMB",
+        "position": "80"
+    },
+    {
+        "card_name": "Palace Leophore",
+        "number": 13,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "7"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "Wolfbitten Oathbreaker",
+        "number": 64,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "45"
+    },
+    {
+        "card_name": "Swords to Plowshares",
+        "number": 14,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "32"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "Underworld Guides",
+        "number": 15,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "15"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    "a->gold",
+    {
+        "card_name": "cool elemental name",
+        "number": 67,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "81"
+    },
+    {
+        "card_name": "Zenobia, Twice-to-Die",
+        "number": 73,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "26"
+    },
+    {
+        "card_name": "Sworn Bladewitch",
+        "number": 69,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "77"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "Timeslip Thingimabob",
+        "number": 70,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "54"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "Apex of Sorcery",
+        "number": 66,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "21"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "Radiant Tempest, Throne",
+        "number": 68,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "24"
+    },
+    {
+        "card_name": "",
+        "number": 65,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "70"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "Traggy, Petty Piper",
+        "number": 71,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "51"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "Unstable Mutant",
+        "number": 72,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "13"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    "a->colorless",
+    {
+        "card_name": "Horn of Calling",
+        "number": 74,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "34"
+    },
+    {
+        "card_name": "MK1/Scorched Earth",
+        "number": 75,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "35"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "Tundra",
+        "number": 83,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "66"
+    },
+    {
+        "card_name": "Underground Sea",
+        "number": 84,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "67"
+    },
+    {
+        "card_name": "Badlands",
+        "number": 76,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "59"
+    },
+    {
+        "card_name": "Taiga",
+        "number": 81,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "64"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "Scrubland",
+        "number": 80,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "63"
+    },
+    {
+        "card_name": "Volcanic Island",
+        "number": 85,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "68"
+    },
+    {
+        "card_name": "Bayou",
+        "number": 77,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "60"
+    },
+    {
+        "card_name": "Plateau",
+        "number": 78,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "61"
+    },
+    {
+        "card_name": "Tropical Island",
+        "number": 82,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "65"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "Savannah",
+        "number": 79,
+        "shape": "normal",
+        "set": "BOMB",
+        "position": "62"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "e"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    },
+    {
+        "card_name": "er"
+    }
+]

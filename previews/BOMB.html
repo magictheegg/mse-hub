@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="icon" type="image/png" href="/sets/BOMB-files/icon.png"/>
+	<link rel="stylesheet" href="/resources/header.css">
+	<title>BOMB visual preview</title>
+	<style>
+		@font-face {
+			font-family: Beleren;
+			src: url('/resources/beleren.ttf');
+		}
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			overscroll-behavior: none;
+			background-size: cover;
+			background-attachment: fixed;
+		}
+		.main-content {
+			position: relative;
+			width: 100%;
+			float: left;
+			z-index: 2;
+			justify-items: center;
+		}
+		.sidebar {
+			position: sticky;
+			top: 0;
+			display: none;
+			text-align: center;
+			padding-right: 3%;
+			z-index: 1;
+			justify-items: center;
+		}
+		.sidebar-container {
+			width: 80%;
+			max-width: 375px;
+			position: relative;
+		}
+		.sidebar-h-img {
+			opacity: 0;
+			transform: rotateY(0deg) rotate(90deg);
+			position: absolute;
+			left: 10%;
+			top: 10%;
+			width: 85%;
+		}
+		.sidebar-img {
+			vertical-align: middle;
+			width: 100%;
+		}
+		.close-btn {
+			background: url('/img/close.png') no-repeat;
+			background-size: contain;
+			background-position: center;
+			width: 10%;
+			height: 10%;
+			border: none;
+			cursor: pointer;
+			position: absolute;
+			right: 4%;
+		}
+		.close-btn:hover {
+			background: url('/img/close-hover.png') no-repeat;
+			background-size: contain;
+			background-position: center;
+		}
+		.grid-container {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+			gap: 2px;
+			padding-left: 5%;
+			padding-right: 5%;
+			padding-bottom: 1%;
+			justify-items: center;
+			max-width: 1200px;
+		}
+		.grid-container img {
+			width: 100%;
+			height: auto;
+			display: block;
+			visibility: hidden;
+			cursor: pointer;
+		}
+		.banner {
+			width: 100%;
+			height: auto;
+			padding-top: 80px;
+			padding-bottom: 50px;
+		}
+		.logo {
+			display: block;
+			margin: auto;
+			max-width: 30%;
+			max-height: 320px;
+		}
+		.container {
+			position: relative;
+			width: 100%;
+		}
+		.container img {
+			width: 100%;
+			height: auto;
+		}
+		.flip-btn {
+			background: url('/img/flip.png') no-repeat;
+			background-size: contain;
+			background-position: center;
+			width: 15%;
+			height: 11%;
+			cursor: pointer;
+			border: none;
+			position: absolute;
+			left: 50%;
+			top: 48%;
+			transform: translate(-50%, -50%);
+			opacity: 0.5;
+		}
+		.flip-btn:hover {
+			background: url('/img/flip-hover.png') no-repeat;
+			background-size: contain;
+			background-position: center;
+		}
+		.dropdown {
+			background: rgba(23, 23, 23, 0.8);
+			border-radius: 8px;
+			position: absolute;
+			left: 5%;
+			width: fit-content;
+			max-width: 90%;
+			margin: 20px 0;
+			padding: 5px 0;
+			display: grid;
+			grid-template-columns: 1fr;
+			z-index: 3;
+		}
+		.dropdown .set-bar {
+			font-family: Beleren;
+			font-size: 20px;
+			text-decoration: none;
+			color: #e3e3e3;
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			padding: 0 12px;
+			margin: 5px;
+		}
+		.dropdown .set-bar:hover {
+			background: rgba(163, 163, 163, 0.5);
+			color: #f3f3f3;
+		}
+		.dropdown .set-bar img {
+			width: 32px;
+		}
+		.dropdown .inactive {
+			height: 0px;
+			overflow: hidden;
+			margin: 0px 5px;
+		}
+		.preload-hidden {
+			display: none;
+		}
+		.addenda-container {
+			text-align: center;
+			width: fit-content;
+			max-width: 1200px;
+			padding: 0 5%;
+		}
+		/* This is here to enable the stickiness in a Float environment. I don't know why it works but it does */
+		.footer {
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<img class="preload-hidden" src="/img/dot.png" />
+	<img class="preload-hidden" src="/sets/BOMB-files/logo.png" />
+	<img class="preload-hidden" src="/sets/BOMB-files/icon.png" />
+		<div class="header">
+		<div class="search-grid">
+			<a href="/"><img class="sg-logo" src="/img/banner.png"></a>
+			<img class="sg-icon" src="/img/search.png">
+			<input type="text" inputmode="search" placeholder="Search ..." name="search" id="search" spellcheck="false" autocomplete="off" autocorrect="off" spellcheck="false">
+			<a href="/all-sets"><img src="/img/sets.png" class="sg-icon">Sets</a>
+			<a href="/deckbuilder"><img src="/img/deck.png" class="sg-icon">Deckbuilder</a>
+			<a onclick="randomCard()"><img src="/img/random.png" class="sg-icon">Random</a>
+		</div>
+	</div>
+
+	<div class="dropdown" id="dropdown" onmouseenter="rolldown()" onmouseleave="rollup()">
+	
+		<a class="set-bar" href="BOMB"><img src="/sets/BOMB-files/icon.png"></a>
+	
+		</div>
+		<div class="banner">
+		<img class="logo" src="/sets/BOMB-files/logo.png">
+		</div>
+		<div class="main-content" id="main-content">
+			<div class="grid-container">
+					<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/84.png" id="84" data-flag="@X" onclick="openSidebar('84',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/71.png" id="71" data-flag="@X" onclick="openSidebar('71',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/11.png" id="11" data-flag="@X" onclick="openSidebar('11',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/72.png" id="72" data-flag="@X" onclick="openSidebar('72',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/19.png" id="19" data-flag="@X" onclick="openSidebar('19',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/33.png" id="33" data-flag="@X" onclick="openSidebar('33',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/39.png" id="39" data-flag="@X" onclick="openSidebar('39',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/37.png" id="37" data-flag="@X" onclick="openSidebar('37',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/73.png" id="73" data-flag="@X" onclick="openSidebar('73',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/48.png" id="48" data-flag="@X" onclick="openSidebar('48',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/0.png" id="0" data-flag="@X" onclick="openSidebar('0',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/47.png" id="47" data-flag="@X" onclick="openSidebar('47',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/57.png" id="57" data-flag="@X" onclick="openSidebar('57',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/49.png" id="49" data-flag="@X" onclick="openSidebar('49',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/75.png" id="75" data-flag="@X" onclick="openSidebar('75',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/27.png" id="27" data-flag="@X" onclick="openSidebar('27',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/9.png" id="9" data-flag="@X" onclick="openSidebar('9',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/5.png" id="5" data-flag="@X" onclick="openSidebar('5',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/3.png" id="3" data-flag="@X" onclick="openSidebar('3',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/46.png" id="46" data-flag="@X" onclick="openSidebar('46',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/28.png" id="28" data-flag="@X" onclick="openSidebar('28',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/50.png" id="50" data-flag="@X" onclick="openSidebar('50',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/18.png" id="18" data-flag="@X" onclick="openSidebar('18',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/25.png" id="25" data-flag="@X" onclick="openSidebar('25',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/4.png" id="4" data-flag="@X" onclick="openSidebar('4',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/29.png" id="29" data-flag="@X" onclick="openSidebar('29',false)"></div>
+				<div class="container"><img loading="lazy" data-alt_src="/sets/BOMB-files/img/1_back.png" alt="/sets/BOMB-files/img/1_front.png" id="1" data-flag="@XD" onclick="openSidebar('1',false)"><button class="flip-btn" onclick="imgFlip('1')"></button></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/55.png" id="55" data-flag="@X" onclick="openSidebar('55',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/38.png" id="38" data-flag="@X" onclick="openSidebar('38',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/69.png" id="69" data-flag="@X" onclick="openSidebar('69',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/30.png" id="30" data-flag="@X" onclick="openSidebar('30',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/20.png" id="20" data-flag="@X" onclick="openSidebar('20',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/56.png" id="56" data-flag="@X" onclick="openSidebar('56',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/22.png" id="22" data-flag="@X" onclick="openSidebar('22',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/14.png" id="14" data-flag="@X" onclick="openSidebar('14',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/31.png" id="31" data-flag="@X" onclick="openSidebar('31',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/52.png" id="52" data-flag="@X" onclick="openSidebar('52',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/6.png" id="6" data-flag="@X" onclick="openSidebar('6',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/74.png" id="74" data-flag="@X" onclick="openSidebar('74',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/76.png" id="76" data-flag="@X" onclick="openSidebar('76',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/17.png" id="17" data-flag="@X" onclick="openSidebar('17',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/8.png" id="8" data-flag="@X" onclick="openSidebar('8',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/58.png" id="58" data-flag="@X" onclick="openSidebar('58',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/12.png" id="12" data-flag="@X" onclick="openSidebar('12',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/79.png" id="79" data-flag="@X" onclick="openSidebar('79',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/83.png" id="83" data-flag="@X" onclick="openSidebar('83',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/23.png" id="23" data-flag="@X" onclick="openSidebar('23',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/2.png" id="2" data-flag="@X" onclick="openSidebar('2',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/10.png" id="10" data-flag="@X" onclick="openSidebar('10',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/42.png" id="42" data-flag="@X" onclick="openSidebar('42',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/53.png" id="53" data-flag="@X" onclick="openSidebar('53',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/41.png" id="41" data-flag="@X" onclick="openSidebar('41',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/36.png" id="36" data-flag="@X" onclick="openSidebar('36',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/78.png" id="78" data-flag="@X" onclick="openSidebar('78',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/43.png" id="43" data-flag="@X" onclick="openSidebar('43',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/82.png" id="82" data-flag="@X" onclick="openSidebar('82',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/40.png" id="40" data-flag="@X" onclick="openSidebar('40',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/16.png" id="16" data-flag="@X" onclick="openSidebar('16',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/44.png" id="44" data-flag="@X" onclick="openSidebar('44',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/80.png" id="80" data-flag="@X" onclick="openSidebar('80',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/7.png" id="7" data-flag="@X" onclick="openSidebar('7',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/45.png" id="45" data-flag="@X" onclick="openSidebar('45',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/32.png" id="32" data-flag="@X" onclick="openSidebar('32',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/15.png" id="15" data-flag="@X" onclick="openSidebar('15',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div id="gold" class="anchor"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/81.png" id="81" data-flag="@X" onclick="openSidebar('81',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/26.png" id="26" data-flag="@X" onclick="openSidebar('26',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/77.png" id="77" data-flag="@X" onclick="openSidebar('77',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/54.png" id="54" data-flag="@X" onclick="openSidebar('54',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/21.png" id="21" data-flag="@X" onclick="openSidebar('21',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/24.png" id="24" data-flag="@X" onclick="openSidebar('24',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/70.png" id="70" data-flag="@X" onclick="openSidebar('70',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/51.png" id="51" data-flag="@X" onclick="openSidebar('51',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/13.png" id="13" data-flag="@X" onclick="openSidebar('13',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div id="colorless" class="anchor"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/34.png" id="34" data-flag="@X" onclick="openSidebar('34',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/35.png" id="35" data-flag="@X" onclick="openSidebar('35',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/66.png" id="66" data-flag="@X" onclick="openSidebar('66',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/67.png" id="67" data-flag="@X" onclick="openSidebar('67',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/59.png" id="59" data-flag="@X" onclick="openSidebar('59',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/64.png" id="64" data-flag="@X" onclick="openSidebar('64',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/63.png" id="63" data-flag="@X" onclick="openSidebar('63',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/68.png" id="68" data-flag="@X" onclick="openSidebar('68',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/60.png" id="60" data-flag="@X" onclick="openSidebar('60',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/61.png" id="61" data-flag="@X" onclick="openSidebar('61',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/65.png" id="65" data-flag="@X" onclick="openSidebar('65',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/sets/BOMB-files/img/62.png" id="62" data-flag="@X" onclick="openSidebar('62',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/e.png" id="e" data-flag="@E" onclick="openSidebar('e',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+				<div class="container"><img loading="lazy" alt="/img/er.png" id="er" data-flag="@E" onclick="openSidebar('er',false)"></div>
+	</div>
+	</div>
+	<div class="sidebar" id="sidebar">
+		<div class="sidebar-container">
+			<img id="sidebar_img" class="sidebar-img" src="/img/er.png">
+			<img id="sidebar_h_img" class="sidebar-h-img">
+			<button class="flip-btn" id="sidebar-flip-btn" onclick="imgFlip('sidebar_img')"></button>
+		</div>
+		<button class="close-btn" onclick="closeSidebar()"></button>
+	</div>
+	<div class="footer"></div>
+
+	<script>
+	const delay = ms => new Promise(res => setTimeout(res, ms));
+		let specialchars = "";
+
+	document.addEventListener('DOMContentLoaded', async function() {
+		await fetch('/lists/all-cards.json')
+					.then(response => response.json())
+					.then(json => {
+						card_list = json;
+				}).catch(error => console.error('Error:', error));
+
+				await fetch('/resources/replacechars.txt')
+					.then(response => response.text())
+					.then(text => {
+						specialchars = text; 
+				}).catch(error => console.error('Error:', error));
+
+				card_list_arrayified = card_list.cards;
+
+		preloadImgs = document.getElementsByClassName('preload-hidden');
+
+		let images_loaded = [];
+
+		do {
+			await delay(100);
+			images_loaded = []
+			for (const img of preloadImgs)
+			{
+				images_loaded.push(isImageOk(img));
+			}
+		}
+		while (images_loaded.includes(false));
+
+		
+		loadImages();
+	});
+
+	function isImageOk(img) {
+		if (!img.complete || img.naturalWidth == 0) {
+			return false;
+		}
+
+		return true;
+	}
+
+	function loadImages() {
+		const images = document.querySelectorAll('.grid-container img');
+
+		images.forEach(img => {
+			const flag = img.getAttribute('data-flag');
+
+			if (flag === '@N') {
+				img.src = '/img/card_back.png';
+				img.removeAttribute("onclick");
+				img.style.cursor = 'default';
+			}
+			else
+			{
+				img.src = img.alt;
+
+				if (flag === '@E') {
+					img.removeAttribute("onclick");
+					img.style.cursor = 'default';
+				}
+			}
+
+			img.style.visibility = 'visible';
+		});
+	}
+
+	window.addEventListener('resize', function(event) {
+		setSidebarTop();
+	}, true);
+
+	function setSidebarTop() {
+		let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+		let sh = document.getElementById('sidebar').offsetHeight;
+		let height = 100 * ((vh - sh) / 2) / vh;
+		document.getElementById('sidebar').style.top = height + '%';
+	}
+
+	let horizontal = false;
+
+	function imgFlip(num) {
+		const img = document.getElementById(num);
+		const seconds = 0.2;
+		const rotated_img = document.getElementById('sidebar_h_img');
+
+        img.style.transition = seconds.toString() + "s";
+        img.style.transform = "rotateY(90deg)";
+
+        if (num == 'sidebar_img')
+		{
+			const sidebar_img = document.getElementById('sidebar_img');
+
+			if (horizontal)
+            {
+            	rotated_img.style.transition = seconds.toString() + "s";
+           		rotated_img.style.transform = "rotateY(90deg) rotate(90deg)";
+
+           		if (rotated_img.style.opacity != "0") {
+		            setTimeout(() => {
+		                rotated_img.style.opacity = "0";
+		                img.style.filter = "none";
+		            }, (seconds / 2) * 1000);
+		        }
+		        else {
+		        	setTimeout(() => {
+		                rotated_img.style.opacity = "1";
+		                img.style.filter = "blur(2px) brightness(0.7)";
+		            }, (seconds / 2) * 1000);
+		        }
+            }
+		}
+
+         setTimeout(function() {
+            tmp = document.getElementById(num).src;
+			document.getElementById(num).src = document.getElementById(num).dataset.alt_src;
+			document.getElementById(num).dataset.alt_src = tmp;
+
+            img.style.transition = seconds.toString() + "s";
+            img.style.transform = "rotateY(0deg)";
+
+            if (horizontal)
+            {
+            	rotated_img.style.transition = seconds.toString() + "s";
+           		rotated_img.style.transform = "rotateY(0deg) rotate(90deg)";
+            }
+        }, seconds * 1000);
+	}
+
+	function openSidebar(id, h = false) {
+		horizontal = h;
+		scroll_pct = window.scrollY / document.documentElement.scrollHeight;
+
+		document.getElementById('sidebar').style.display = 'grid';
+
+		const rotated_img = document.getElementById('sidebar_h_img');
+		const sidebar_img = document.getElementById('sidebar_img');
+
+		sidebar_img.style.transition = "none";
+		rotated_img.style.transition = "none";
+		sidebar_img.src = document.getElementById(id).src;
+		rotated_img.src = document.getElementById(id).src.replace("_back", "_front");
+
+		if (horizontal && !sidebar_img.src.includes("_back"))
+		{
+			rotated_img.style.opacity = "1";
+			sidebar_img.style.filter = "blur(2px) brightness(0.7)";
+		}
+		else
+		{
+			rotated_img.style.opacity = "0";
+			sidebar_img.style.filter = "";
+		}
+
+		if (document.getElementById(id).dataset.alt_src)
+		{
+			document.getElementById('sidebar_img').dataset.alt_src = document.getElementById(id).dataset.alt_src;
+			document.getElementById('sidebar-flip-btn').style.display = 'block';
+		}
+		else
+		{
+			delete document.getElementById('sidebar_img').dataset.alt_src;
+			document.getElementById('sidebar-flip-btn').style.display = 'none';
+		}
+		document.getElementById('main-content').style.width = '60%';
+
+		scroll_pos = scroll_pct * document.documentElement.scrollHeight;
+		window.scrollTo(window.scrollX, scroll_pos);
+		setSidebarTop();
+	}
+
+	function closeSidebar() {
+		scroll_pct = window.scrollY / document.documentElement.scrollHeight;
+
+		document.getElementById('sidebar').style.display = 'none';
+		document.getElementById('main-content').style.width = '100%';
+
+
+		scroll_pos = scroll_pct * document.documentElement.scrollHeight;
+		window.scrollTo(window.scrollX, scroll_pos);
+	}
+
+	function rolldown() {
+		dropdown.style.gridTemplateColumns = "repeat(3, 1fr)";
+		var sets = document.querySelectorAll('.inactive');
+		for(const set of sets)
+		{
+			set.style.height = "auto";
+			set.style.margin = "5px";
+		}
+	}
+
+	function rollup() {
+		dropdown.style.gridTemplateColumns = "1fr";
+		var sets = document.querySelectorAll('.inactive');
+		for(const set of sets)
+		{
+			set.style.height = "0px";
+			set.style.margin = "0px 5px";
+		}
+	}
+
+	document.getElementById("search").addEventListener("keypress", function(event) {
+		if (event.key === "Enter") {
+			event.preventDefault();
+			search();
+		}
+	});
+
+	function search() {
+		const url = new URL('search', window.location.origin);
+		url.searchParams.append('search', document.getElementById("search").value);
+		window.location.href = url;
+	}
+
+		function randomCard() {
+				let i = Math.floor(Math.random() * (card_list_arrayified.length + 1));
+				let random_card = card_list_arrayified[i];
+
+				const url = new URL('card', window.location.origin);
+				const params = {
+					set: random_card.set,
+					num: random_card.number,
+					name: random_card.card_name
+				}
+				for (const key in params) {
+					url.searchParams.append(key, params[key]);
+				}
+
+				window.location.href = url;
+			}
+	</script>
+</body>
+</html>

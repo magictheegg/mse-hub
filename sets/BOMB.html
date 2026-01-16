@@ -1,0 +1,1237 @@
+﻿<html>
+<head>
+  <title></title>
+  <link rel="icon" type="image/x-icon" href="/sets/BOMB-files/icon.png">
+  <link rel="stylesheet" href="/resources/mana.css">
+  <link rel="stylesheet" href="/resources/header.css">
+  <link rel="stylesheet" href="/resources/card-text.css">
+</head>
+<style>
+	@font-face {
+		font-family: 'Beleren Small Caps';
+		src: url('/resources/beleren-caps.ttf');
+	}
+	@font-face {
+		font-family: Beleren;
+		src: url('/resources/beleren.ttf');
+	}
+	body {
+		font-family: 'Helvetica', 'Arial', sans-serif;
+		overscroll-behavior: none;
+		margin: 0px;
+		background-color: #f3f3f3;
+	}
+	.banner {
+		width: 100%;
+		background-color: #bbbbbb;
+	}
+	.banner-container {
+		width: 85%;
+		max-width: 1100px;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 20px;
+		align-items: center;
+		margin: auto;
+	}
+	.set-banner {
+		font-family: Beleren;
+		display: flex;
+		align-items: center;
+		justify-items: center;
+		font-size: 26px;
+		color: #171717;
+		margin: auto;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		justify-self: left;
+		width: 100%;
+		white-space: nowrap;
+	}
+	.set-banner img {
+		width: 60px;
+		padding-right: 12px;
+	}
+	.set-banner a {
+		font-size: 18px;
+		color: #1338be;
+		text-decoration: none;
+	}
+	.set-banner a:hover {
+		color: #0492c2;
+	}
+	.select-text {
+		display: flex;
+		align-items: center;
+		justify-content: left;
+		gap: 8px;
+		font-size: 14.5px;
+		justify-self: right;
+		text-align: center;
+	}
+	select {
+		background-color: #fafafa;
+		border: 1px solid #656565;
+		border-radius: 8px;
+		box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+		text-align: center;
+		color: #171717;
+		font-size: 13px;
+		height: 30px;
+	}
+	.button-container {
+		width: 50%;
+		max-width: 900px;
+		margin: auto;
+		padding: 15px 0 5px 0;
+		border-bottom: 2px solid #171717;
+		display: none;
+		grid-template-columns: 1fr 1fr;
+	}
+	.button-container button {
+		font-family: Beleren;
+		font-size: 30px;
+		width: 100%;
+		justify-self: center;
+		border: none;
+		background: none;
+		cursor: pointer;
+	}
+	.button-container button:hover {
+		color: #797979;
+	}
+	.button-container button:disabled {
+		color: #797979;
+		cursor: auto;
+	}
+	.grid-container {
+		display: grid;
+		grid-template-columns: auto;
+		padding-top: 30px;
+		padding-bottom: 30px;
+		max-width: 1200px;
+		margin: auto;
+	}
+	.splash-container {
+		width: 70%;
+		max-width: 1200px;
+		margin: auto;
+		justify-items: center;
+		padding-bottom: 20px;
+	}
+	.image-grid-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		width: 70%;
+		max-width: 1200px;
+		margin: auto;
+		gap: 5px;
+		justify-items: center;
+		padding-top: 30px;
+		padding-bottom: 30px;
+		font-size: 36px;
+		font-family: 'Beleren';
+		color: #535353;
+	}
+	.small-caps {
+		font-family: 'Beleren Small Caps';
+		font-size: 46px;
+	}
+	@media ( max-width: 750px ) {
+		.image-grid-container {
+			grid-template-columns: 1fr 1fr;  
+		}
+	}
+	.image-grid {
+		width: 70%;
+		margin: auto;
+		display: grid;
+		grid-template-columns: minmax(150px, 1fr) minmax(300px, 2fr);
+		gap: 50px;
+		padding-bottom: 10px;
+		justify-items: left;
+	}
+	.image-grid img {
+		position: relative;
+	}
+	.card-image {
+		float: left;
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+	.card-text {
+		padding-top: 20px;
+		padding-bottom: 20px;
+		background: #fcfcfc;
+		width: 100%;
+		border: 1px solid #d5d9d9;
+		border-top: 3px solid #171717;
+		border-bottom: 3px solid #171717;
+		border-radius: 6px;
+		height: fit-content;
+		min-height: 75%;
+		margin-top: 3%;
+	}
+	.img-container {
+		position: relative;
+		width: 100%;
+		align-self: center;
+	}
+	.img-container img {
+		width: 100%;
+		height: auto;
+	}
+	.img-container .btn {
+		background: url('/img/flip.png') no-repeat;
+		background-size: contain;
+		background-position: center;
+		width: 15%;
+		height: 11%;
+		cursor: pointer;
+		border: none;
+		position: absolute;
+		left: 50%;
+		top: 48%;
+		transform: translate(-50%, -50%);
+		opacity: 0.5;
+	}
+	.img-container .btn:hover {
+		background: url('/img/flip-hover.png') no-repeat;
+		background-size: contain;
+		background-position: center;
+	}
+	.img-container .hidden-text {
+		position: absolute;
+		font-family: Beleren;
+		top: 5%;
+		left: 9%;
+		font-size: .97vw;
+		color: rgba(0, 0, 0, 0);
+	}
+	h1 {
+		font-family: 'Beleren Small Caps';
+		font-size: 48px;
+		margin: 24px 0;
+	}
+	h2 {
+		font-family: 'Beleren';
+		font-size: 30px;
+		margin: 15px 0;
+	}
+	.overlay {
+		position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    margin-right: -50%;
+	    transform: translate(-50%, -50%);
+	    height: 90%;
+	    width: 90%;
+		max-width: 1000px;
+		background-color: #e3e3e3;
+		border: 2px solid #171717;
+		border-radius: 20px;
+		display: none;
+	}
+	.overlay-title {
+		font-family: 'Beleren';
+		font-size: 34px;
+	}
+	.close-btn {
+		background: url('/img/close.png') no-repeat;
+		background-size: contain;
+		background-position: center;
+		width: 50px;
+		height: 50px;
+		border: none;
+		cursor: pointer;
+	}
+	.copy-btn {
+		background: url('/img/copy.png') no-repeat;
+		background-size: contain;
+		background-position: center;
+		width: 50px;
+		height: 50px;
+		border: none;
+		cursor: pointer;
+	}
+	.canvas {
+		max-width: 95%;
+		max-height: 95%;
+		width: auto;
+		height: auto;
+		display: flex;
+		justify-self: center;
+	}
+	.overlay-header {
+		display: grid;
+		height: 7%;
+		grid-template-columns: 2fr 18fr 1fr 1fr;
+		gap: 10px;
+		padding: 1%;
+		justify-self: center;
+		justify-items: center;
+		align-items: center;
+	}
+	.canvas-container {
+		height: 89%;
+		align-content: center;
+		padding-bottom: 1%;
+	}
+	.extras-container {
+		padding-left: 4px;
+		display: flex;
+		align-items: center;
+	}
+	.dot {
+		font-family: 'Helvetica', 'Arial';
+		white-space: pre;
+	}
+	a {
+		cursor: pointer;
+	}
+	p {
+		width: 100%;
+	}
+	p img {
+		display: block;
+		margin: auto;
+	}
+</style>
+<body>
+	<div class="header">
+		<div class="search-grid">
+			<a href="/"><img class="sg-logo" src="/img/banner.png"></a>
+			<img class="sg-icon" src="/img/search.png">
+			<input type="text" inputmode="search" placeholder="Search ..." name="search" id="search" spellcheck="false" autocomplete="off" autocorrect="off" spellcheck="false">
+			<a href="/all-sets"><img src="/img/sets.png" class="sg-icon">Sets</a>
+			<a href="/deckbuilder"><img src="/img/deck.png" class="sg-icon">Deckbuilder</a>
+			<a onclick="randomCard()"><img src="/img/random.png" class="sg-icon">Random</a>
+		</div>
+	</div>
+	<div class="banner">
+		<div class="banner-container">
+			<div class="set-banner" id="set-banner">
+				<img class="set-logo" src="/sets/BOMB-files/icon.png">
+				<div class="banner-text">
+					<div class="set-title"></div>
+					<div class="extras-container"><a href="/sets/BOMB-files/BOMB-draft.txt" download>Draft</a><div class="dot"> • </div>
+			<a onclick="packOnePickOne()">P1P1</a><div class="dot"> • </div>
+			<a onclick="randomSetCard()">I'm Feeling Lucky</a>
+				</div>
+			</div>
+		</div>
+
+			<div class="select-text">Cards displayed as<select name="display" id="display"><option value="cards-only">Cards Only</option><option value="cards-text">Cards + Text</option></select>sorted by<select name="sort-by" id="sort-by"><option value="set-code">Set Number</option><option value="name">Name</option><option value="mv">Mana Value</option><option value="color">Color</option><option value="rarity">Rarity</option><option value="cube">Cube</option></select> : <select name="sort-order" id="sort-order"><option value="ascending">Asc</option><option value="descending">Desc</option></select></div>
+		</div>
+	</div>
+
+	<div class="button-container" id="buttons">
+		<button style="border-right: 1px solid #171717;" onclick="switchView('splash')" id="splash-button">Splash</button><button onclick="switchView('cards')"id="cards-button">Cards</button>
+	</div>
+
+	<div class="splash-container" id="splash">
+	
+	</div>
+
+	<div class="grid-container" id="grid">
+	</div>
+
+	<div class="image-grid-container" id="imagesOnlyGrid">
+	</div>
+
+	<div class="overlay" id="p1p1">
+		<div class="overlay-header">
+			<div></div> <!-- empty div for spacing -->
+			<div class="overlay-title">Pack 1, Pick 1</div>
+			<button class="copy-btn" onclick="copyP1P1()"></button>
+			<button class="close-btn" onclick="closeP1P1()"></button>
+		</div>
+		<div class="canvas-container">
+			<canvas id="canvas" class="canvas"></canvas>
+		</div>
+	</div>
+
+	<script>
+		let card_list_arrayified = [];
+		let set_list_arrayified = [];
+		let specialchars = "";
+		let displayStyle = "";
+		let p1p1cards = [];
+
+		document.addEventListener("DOMContentLoaded", async function () {
+			await fetch('/lists/all-cards.json')
+					.then(response => response.json())
+					.then(json => {
+						card_list = json;
+				}).catch(error => console.error('Error:', error));
+
+				await fetch('/resources/replacechars.txt')
+					.then(response => response.text())
+					.then(text => {
+						specialchars = text; 
+				}).catch(error => console.error('Error:', error));
+
+				card_list_arrayified = card_list.cards;
+
+
+			await fetch('/sets/BOMB-files/BOMB-draft.txt')
+				.then(response => response.text())
+				.then(text => {
+					draft_file = text.replace(/},\n\t]/g, '}\n\t]');
+			}).catch(error => console.error('Error:', error));
+
+			draftmancerToP1P1(draft_file);
+      
+			for (let i = 0; i < card_list_arrayified.length; i++)
+			{
+				if (card_list_arrayified[i].set == "BOMB")
+				{
+					set_list_arrayified.push(card_list_arrayified[i]);
+				}
+			}
+			
+		setCardView();
+		});
+
+		document.getElementById("sort-by").onchange = displayChangeListener;
+		document.getElementById("display").onchange = displayChangeListener;
+		document.getElementById("sort-order").onchange = displayChangeListener;
+  
+		function displayChangeListener() {
+			setCardView();
+		}
+
+		function switchView(view) {
+			if (view == "splash")
+			{
+				splash.style.display = '';
+				imagesOnlyGrid.style.display = 'none';
+				grid.style.display = 'none';
+			}
+			else if (view == "cards")
+			{
+				setCardView();
+			}
+
+			document.getElementById("splash-button").disabled = (view == "splash");
+			document.getElementById("cards-button").disabled = (view == "cards");
+		}
+
+		function setCardView() {
+			displayStyle = document.getElementById("display").value;
+
+			splash.style.display = 'none';
+			imagesOnlyGrid.style.display = displayStyle == "cards-only" ? '' : 'none';
+			grid.style.display = displayStyle == "cards-only" ? 'none' : '';
+
+			updatePageContents();
+		}
+
+		function updatePageContents() {
+			if (displayStyle == "cards-only")
+			{
+				cardGrid = document.getElementById("imagesOnlyGrid");
+			}
+			else
+			{
+				cardGrid = document.getElementById("grid");
+			}
+			cardGrid.innerHTML = "";
+
+			if (false)
+			{
+				let text1 = document.createElement("div");
+				let text2 = document.createElement("div");
+				
+				text1.innerText = "Currently Previewing";
+				text2.innerText = "check back soon";
+
+				text1.className = "small-caps";
+
+				cardGrid.appendChild(text1);
+				cardGrid.appendChild(text2);
+				cardGrid.style.gridTemplateColumns = "1fr";
+			}
+			else
+			{
+				let set_cards = [];
+				let set_basics = [];
+				let set_tokens = [];
+				let set_mp = [];
+
+				for (const card of set_list_arrayified)
+				{
+					if (card.rarity.includes("masterpiece"))
+					{
+						set_mp.push(card);
+					}
+					else if (card.shape.includes("token"))
+					{
+						set_tokens.push(card);
+					}
+					else if (card.type.includes("Basic"))
+					{
+						set_basics.push(card);
+					}
+					else
+					{
+						set_cards.push(card);
+					}
+				}
+
+				set_cards.sort(compareFunction);
+				set_basics.sort(compareFunction);
+				set_tokens.sort(compareFunction);
+				set_mp.sort(compareFunction);
+				if (document.getElementById("sort-order").value == "descending")
+				{
+					set_cards.reverse();
+					set_basics.reverse();
+					set_tokens.reverse();
+					set_mp.reverse();
+				}
+				set_list_sorted = set_cards.concat(set_basics).concat(set_tokens).concat(set_mp);
+				cardGrid.innerHTML = "";
+
+				for (const card of set_list_sorted)
+				{
+					cardGrid.append(gridifyCard(card));
+				}
+			}
+		}
+
+		function draftmancerToP1P1(draft_file) { // comments in here by aanginer
+			let draft_slots = {};
+			let p1p1_object = [];
+			let result_json = [];
+			let card_map    = {};
+			let current_slot_index = 0;
+			let slot_indexes = {};
+			let card_images = [];
+			let mapping = true;
+
+			const draft_headers = draft_file.matchAll(/\[(.*?)\]/g); // match text between [ and ]
+			for (const result of draft_headers) {
+				if (result[1] == "CustomCards")
+					continue; // skip the CustomCards header
+
+				if (mapping)
+				{
+					draft_json = JSON.parse(draft_file.substring(15, draft_file.indexOf(result[1]) - 1));
+
+					for (const card of draft_json)
+					{
+						card_images.push({
+							name: card.name,
+							url: card.image_uris.en
+						});
+					}
+
+					mapping = false;
+				}
+
+				const copies = parseInt(result[0].match(/\((.*?)\)/g)[0].split("(")[1].split(")")[0]); // match text between ( and ) -- do the split thing bc js regex doesnt let me grab the group for some reason????????
+				// -- this is useless but if needed, const name = result.groups[0].match(/\[(.*)\(/g); // match text before (
+				draft_slots[result[0]] = copies;
+				slot_indexes[result[0]] = current_slot_index;
+				current_slot_index += copies;
+			}
+
+			for (let i = 0; i < current_slot_index; i++) { // the current index should be the total number
+				p1p1_object.push([]);
+			}
+
+			draft_slots["EOF"] = 0; // add this so when we check for the next slot in the final one we don't get an index error
+			for (let i = 0; i < Object.keys(draft_slots).length - 1; i++) {
+				const draft_slot = Object.keys(draft_slots)[i];
+				const next_slot  = Object.keys(draft_slots)[i + 1];
+				const slot_size  = draft_slots[draft_slot];
+
+				let card_lines = draft_file.split(draft_slot)[1].split(next_slot)[0].split("\n"); // split between the 2 slots -- splitting by EOF shouldnt be a problem as thatll yield a 1 element list
+
+				for (const line of card_lines) {
+					const count = parseInt(line.substring(0, line.indexOf(' ')));
+					const card_name = line.substring(line.indexOf(' ') + 1).trim();
+
+					if (!card_map[card_name]) {
+						card_map[card_name] = {};
+					}
+
+					card_map[card_name][draft_slot] = card_map[card_name][draft_slot] ? card_map[card_name][draft_slot] + count : count; // fancy way to do a null check to decide between = and +=
+				}
+			}
+
+			for (const card of card_images) { // grab the needed card data
+				if (Object.keys(card_map).includes(card.name)) {
+					const card_slots = card_map[card.name];
+					for (const slot in card_slots) {
+						const slot_copies = draft_slots[slot];
+						for (let i = 0; i < slot_copies; i++) {
+							for (let j = 0; j < card_slots[slot]; j++) {
+								p1p1_object[slot_indexes[slot] + i].push(card);
+							}
+						}
+					}
+				}
+			}
+
+			p1p1_cards = p1p1_object;
+		}
+
+
+		function packOnePickOne() {
+			img_list = [];
+			used_cards = [];
+			for (const slot of p1p1_cards)
+			{
+				if (slot.length == 0) 
+					continue;
+
+				do {
+					rand_i = Math.floor(Math.random() * (slot.length));
+					card = slot[rand_i];
+				} while (used_cards.includes(card));
+
+				const img_url = card.url;
+
+				const image = new Image();
+				image.src = img_url;
+
+				img_list.push(image);
+				used_cards.push(card);
+			}
+
+			const canvas = document.getElementById("canvas");
+			const ctx = canvas.getContext('2d');
+
+			canvas.width = 1883;
+			canvas.height = 1573;
+
+			for (let i = 0; i < img_list.length; i++)
+			{
+				img_list[i].onload = function() {
+					x_offset = 377 * (i % 5);
+					y_offset = 525 * Math.floor(i / 5);
+					ctx.drawImage(img_list[i], x_offset, y_offset, 375, 523);
+				};
+			}
+
+			document.getElementById("p1p1").style.display = "block";
+		}
+
+		async function copyP1P1() {
+			const canvas = document.getElementById("canvas");
+
+			canvas.toBlob(async (blob) => {
+				if (!blob) {
+					console.error('Failed to create Blob from canvas.');
+					return;
+				}
+
+				try {
+					const item = new ClipboardItem({ [blob.type]: blob });
+					await navigator.clipboard.write([item]);
+				} catch (err) {
+					console.error('Failed to copy canvas image:', err);
+				}
+			}, 'image/png');
+		}
+
+		function closeP1P1() {
+			document.getElementById("p1p1").style.display = "none";
+		}
+
+		function compareFunction(a, b) {
+			const sortMode = document.getElementById("sort-by").value;
+			color_sort_order = ["W", "U", "B", "R", "G", "WU", "UB", "BR", "RG", "GW", "WB", "UR", "BG", "RW", "GU", "WUB", "UBR", "BRG", "RGW", "GWU", "RWB", "GUR", "WBG", "URW", "BGU", "WUBR", "UBRG", "BRGW", "RGWU", "GWUB", "WUBRG", ""];
+
+			if (a.rarity.includes("masterpiece") && !b.rarity.includes("masterpiece"))
+			{
+				return 1;
+			}
+
+			if (!a.rarity.includes("masterpiece") && b.rarity.includes("masterpiece"))
+			{
+				return -1;
+			}
+
+			if (a.shape.includes("token") && !b.shape.includes("token"))
+			{
+				return 1;
+			}
+
+			if (!a.shape.includes("token") && b.shape.includes("token"))
+			{
+				return -1;
+			}
+			
+			if (sortMode == 'set-code')
+			{
+				if (a.set === b.set)
+				{
+					if (a.number === b.number)
+					{
+						return 0;
+					}
+					else {
+						return (a.number < b.number) ? -1 : 1;
+					}
+				}
+				else {
+					return (a.set < b.set) ? -1 : 1;
+				}
+			}
+			if (sortMode == 'name')
+			{
+				if (a.card_name === b.card_name)
+				{
+					return 0;
+				}
+				else {
+					return (a.card_name < b.card_name) ? -1 : 1;
+				}
+			}
+			if (sortMode == 'mv')
+			{
+				//since cost is now formatted like {1}{U} instead of 1U, we need to remove the brackets from the string first
+				//CE: undoing this because we're counting { chars for MV
+				a_mv = isDecimal(a.cost.charAt(1)) ? parseInt(a.cost.substring(1, a.cost.indexOf('}'))) + a.cost.replaceAll('x','').split('{').length - 2 : a.cost.replaceAll('x','').split('{').length - 1;
+				b_mv = isDecimal(b.cost.charAt(1)) ? parseInt(b.cost.substring(1, b.cost.indexOf('}'))) + b.cost.replaceAll('x','').split('{').length - 2 : b.cost.replaceAll('x','').split('{').length - 1;
+				if (a_mv === b_mv)
+				{
+					if (a.card_name === b.card_name)
+					{
+						return 0;
+					}
+					else {
+						return (a.card_name < b.card_name) ? -1 : 1;
+					}
+				}
+				else {
+					return (a_mv < b_mv) ? -1 : 1;
+				}
+			}
+			if (sortMode == 'color')
+			{
+				a_color_index = -1;
+				b_color_index = -1;
+
+				for (let i = 0; i < color_sort_order.length; i++)
+				{
+					if (a.color.toLowerCase().split('').sort().join('') == color_sort_order[i].toLowerCase().split('').sort().join(''))
+					{
+						a_color_index = i;
+					}
+					if (b.color.toLowerCase().split('').sort().join('') == color_sort_order[i].toLowerCase().split('').sort().join(''))
+					{
+						b_color_index = i;
+					}
+				}
+
+				if (a_color_index === b_color_index)
+				{
+					if (a.card_name === b.card_name)
+					{
+						return 0;
+					}
+					else {
+						return (a.card_name < b.card_name) ? -1 : 1;
+					}
+				}
+				else {
+					return (a_color_index < b_color_index) ? -1 : 1;
+				}
+			}
+			if (sortMode == 'rarity')
+			{
+				rarity_sort_order = [ "mythic", "rare", "uncommon", "common" ];
+				a_rarity_index = 100;
+				b_rarity_index = 100;
+
+				for (let i = 0; i < rarity_sort_order.length; i++)
+				{
+					if (a.rarity.toLowerCase() == rarity_sort_order[i])
+					{
+						a_rarity_index = i;
+					}
+					if (b.rarity.toLowerCase() == rarity_sort_order[i])
+					{
+						b_rarity_index = i;
+					}
+				}
+
+				if (a_rarity_index === b_rarity_index)
+				{
+					a_color_index = -1;
+					b_color_index = -1;
+
+					for (let i = 0; i < color_sort_order.length; i++)
+					{
+						if (a.color.toLowerCase().split('').sort().join('') == color_sort_order[i].toLowerCase().split('').sort().join(''))
+						{
+							a_color_index = i;
+						}
+						if (b.color.toLowerCase().split('').sort().join('') == color_sort_order[i].toLowerCase().split('').sort().join(''))
+						{
+							b_color_index = i;
+						}
+					}
+
+					if (a_color_index === b_color_index)
+					{
+						if (a.card_name === b.card_name)
+						{
+							return 0;
+						}
+						else {
+							return (a.card_name < b.card_name) ? -1 : 1;
+						}
+					}
+					else {
+						return (a_color_index < b_color_index) ? -1 : 1;
+					}		
+				}
+				else {
+					return (a_rarity_index < b_rarity_index) ? -1 : 1;
+				}
+			}
+			if (sortMode == 'cube')
+			{
+				type_sort_order = [ 'Creature', 'Planeswalker', 'Instant', 'Sorcery', 'Artifact', 'Enchantment', 'Battle' ];
+				// color, type, MV
+				a_color_index = -1;
+				b_color_index = -1;
+
+				for (let i = 0; i < color_sort_order.length; i++)
+				{
+					if (a.color.toLowerCase().split('').sort().join('') == color_sort_order[i].toLowerCase().split('').sort().join(''))
+					{
+						a_color_index = i;
+					}
+					if (b.color.toLowerCase().split('').sort().join('') == color_sort_order[i].toLowerCase().split('').sort().join(''))
+					{
+						b_color_index = i;
+					}
+				}
+
+				if (a_color_index === b_color_index)
+				{
+					a_type_index = -1;
+					b_type_index = -1;
+
+					for (let i = type_sort_order.length - 1; i >= 0; i--)
+					{
+						if (a.type.includes(type_sort_order[i]))
+						{
+							a_type_index = i;
+						}
+						if (b.type.includes(type_sort_order[i]))
+						{
+							b_type_index = i;
+						}
+					}
+
+					if (a_type_index === b_type_index)
+					{
+						a_mv = isDecimal(a.cost.charAt(1)) ? parseInt(a.cost.substring(1, a.cost.indexOf('}'))) + a.cost.replaceAll('x','').split('{').length - 2 : a.cost.replaceAll('x','').split('{').length - 1;
+						b_mv = isDecimal(b.cost.charAt(1)) ? parseInt(b.cost.substring(1, b.cost.indexOf('}'))) + b.cost.replaceAll('x','').split('{').length - 2 : b.cost.replaceAll('x','').split('{').length - 1;
+						if (a_mv === b_mv)
+						{
+							if (a.card_name === b.card_name)
+							{
+								return 0;
+							}
+							else {
+								return (a.card_name < b.card_name) ? -1 : 1;
+							}
+						}
+						else {
+							return (a_mv < b_mv) ? -1 : 1;
+						}
+					}
+					else {
+						return (a_type_index < b_type_index) ? -1 : 1;
+					}
+				}
+				else {
+					return (a_color_index < b_color_index) ? -1 : 1;
+				}
+			}
+		}
+
+		function isDecimal(char) {
+			return char >= '0' && char <= '9';
+		}
+
+		function tokenize(text) {
+			let tokens = [];
+
+			for (let i = 0; i < text.length; i++)
+			{
+				if (i < text.length - 1)
+				{
+					if (text[i + 1] == '/')
+					{
+						tokens.push(text.substring(i, i + 3));
+						i = i + 2;
+					}
+					else if (isDecimal(text[i]) && isDecimal(text[i + 1]))
+					{
+						tokens.push(text.substring(i, i + 2));
+						i = i + 1;
+					}
+					else
+					{
+						tokens.push(text[i]);
+					}
+				}
+				else
+				{
+					tokens.push(text[i]);
+				}
+			}
+
+			return tokens;
+		}
+
+		function symbolize(text) {
+			//This isn't needed now that the { & } are put into the cost & text by the exporter
+			//let tokens = tokenize(text);
+			//let symText = "";
+			//for (const token of tokens)
+			//{
+			//	symText = symText + "{" + token + "}";
+			//}
+
+			return formatTextHTML(text);
+		}
+
+		function formatTextHTML(str) {
+			if(!str)
+				return "";
+			str = str.replace(/[{]([^}]+)[}]/g, function(matched, _1) {
+				let letters = _1.toLowerCase()
+				return '<span class="mana mana-cost mana-' + letters + '"></span>';
+			})
+			return str;
+		}
+
+		function gridifyCard(card_stats, card_text = false, rotate_card = false, designer_notes = false) {
+			const card_name = card_stats.card_name;
+
+			if (displayStyle == "cards-only")
+			{
+				return buildImgContainer(card_stats, true, rotate_card);
+			}
+
+			const grid = document.createElement("div");
+			grid.className = "image-grid";
+
+			grid.appendChild(buildImgContainer(card_stats, false, rotate_card));
+			
+			const text = document.createElement("div");
+			text.className = "card-text";
+			text.id = "card-text";
+
+			const name_cost = document.createElement("div");
+			name_cost.className = "name-cost";
+			name_cost.innerHTML = card_stats.card_name + (card_stats.cost != "" ? '     ' + symbolize(card_stats.cost) : "");
+			text.appendChild(name_cost);
+
+			const type = document.createElement("div");
+			type.className = "type";
+			type.textContent = card_stats.type;
+			text.appendChild(type);
+
+			const effect = document.createElement("div");
+			effect.className = "effect";
+			let card_effects = "";
+			if (card_stats.rules_text != "")
+			{
+				card_effects = card_stats.rules_text + (card_stats.flavor_text != "[i][/i]" ? "\n" + "<hr class=\"ft-divider text-bg\">" + "\n" + card_stats.flavor_text.replace('\n','<br>') : ""); // this expression looks cursed but what it does is check if the ft is empty, and if it isn't, insert a divider + the ft
+			} else {
+				card_effects = "";
+			}
+			if ("v_mana" in card_stats)
+			{
+				card_effects = card_effects.replaceAll('{V}', '<img style="vertical-align: middle; padding: 0px 2px; display: inline; width: 15px;" src="/img/' + card_stats.v_mana + '">');
+			}
+			effect.innerHTML += prettifyEffects(card_effects);
+			text.appendChild(effect);
+
+			if(card_stats.pt != "")
+			{
+				const pt = document.createElement("div");
+				pt.className = "pt";
+				pt.textContent = card_stats.pt;
+				text.appendChild(pt);
+			}
+			else if (card_stats.loyalty != "")
+			{
+				const loyalty = document.createElement("div");
+				loyalty.className = "pt";
+				loyalty.textContent = "[" + card_stats.loyalty + "]";
+				text.appendChild(loyalty);
+			}
+
+			if(designer_notes && card_stats.designer_notes != null)
+			{
+				const dnotes = document.createElement("div");
+				dnotes.className = "designer-notes";
+				dnotes.innerHTML = "<u><b>Designer Notes</b></u>";
+				dnotes.innerHTML = dnotes.innerHTML + card_stats.designer_notes;
+				text.appendChild(dnotes);
+			}
+
+			// 13-name	14-color	15-type	16-ci	17-cost	18-ability	19-pt	20-special-text	21-loyalty
+			if(card_stats.shape.includes("adventure") || card_stats.shape.includes("double") || card_stats.shape.includes("spli"))
+			{
+				const name_cost_2 = document.createElement("div");
+				name_cost_2.className = "name-cost";
+				name_cost_2.innerHTML = card_stats.card_name2 + (card_stats.cost2 != "" ? '     ' + symbolize(card_stats.cost2) : "");
+				text.appendChild(name_cost_2);
+
+				const type_2 = document.createElement("div");
+				type_2.className = "type";
+				type_2.textContent = card_stats.type2;
+				text.appendChild(type_2);
+
+				const effect_2 = document.createElement("div");
+				effect_2.className = "effect";
+				let card_effects_2 = "";
+				if (card_stats.rules_text2 != "")
+				{
+					card_effects_2 = card_stats.rules_text2 + (card_stats.flavor_text2 != "[i][/i]" ? "\n" + "<hr class=\"ft-divider text-bg\">" + "\n" + card_stats.flavor_text2.replace('\n','<br>') : "");
+				} else {
+					card_effects_2 = "";
+				}
+				if ("v_mana" in card_stats)
+				{
+					card_effects_2 = card_effects_2.replaceAll('{V}', '<img width="15px;" style="vertical-align: middle; padding: 0px 2px;" src="/img/' + card_stats.v_mana + '">');
+				}
+				effect_2.innerHTML += prettifyEffects(card_effects_2);
+				text.appendChild(effect_2);
+
+				if(card_stats.pt2 != "")
+				{
+					const pt_2 = document.createElement("div");
+					pt_2.className = "pt";
+					pt_2.textContent = card_stats.pt2;
+					text.appendChild(pt_2);
+				}
+				else if (card_stats.loyalty2 != "")
+				{
+					const loyalty = document.createElement("div");
+					loyalty.className = "pt";
+					loyalty.textContent = "[" + card_stats.loyalty2 + "]";
+					text.appendChild(loyalty);
+				}
+			}
+			
+			grid.appendChild(text);
+
+			return grid;
+		}
+
+		function buildImgContainer(card_stats, hidden_title = false, rotate_card = false) {
+			const imgContainer = document.createElement("div");
+			imgContainer.className = "img-container";
+			const id = card_stats.set + "-" + card_stats.number + "-" + document.getElementById("display").value;
+
+			const img = document.createElement("img");
+			img.className = "card-image";
+			img.id = id;
+			img.loading = "lazy";
+
+			if ("position" in card_stats) {
+				img.src = "/sets/" + card_stats.set + "-files/img/" + card_stats.position + ((card_stats.shape.includes("double")) ? "_front" : "") + "." + card_stats.image_type;
+			}
+			else {
+				img.src = "/sets/" + card_stats.set + "-files/img/" + card_stats.number + (card_stats.shape.includes("token") ? "t_" : "_") + card_stats.card_name + ((card_stats.shape.includes("double")) ? "_front" : "") + "." + card_stats.image_type;
+			}
+			
+			const link = document.createElement("a");
+			
+			const url = new URL('card', window.location.origin);
+			const params = {
+				set: card_stats.set,
+				num: card_stats.number,
+				name: card_stats.card_name
+			}
+			for (const key in params) {
+				url.searchParams.append(key, params[key]);
+			}
+			link.href = url;
+
+			link.appendChild(img);
+
+			rotate_card = (card_stats.shape.includes("spli") || card_stats.type.includes("Battle")) && rotate_card;
+			if (rotate_card)
+			{
+				const rotated_img = document.createElement("img");
+				rotated_img.className = "h-img";
+				rotated_img.id = "h-img";
+				rotated_img.src = img.src;
+				rotated_img.style.display = "block";
+				img.style.filter = "blur(2px) brightness(0.7)";
+
+				link.appendChild(rotated_img);
+			}
+
+			imgContainer.appendChild(link);
+
+			if (card_stats.shape.includes("double"))
+			{
+				const imgFlipBtn = document.createElement("button");
+				imgFlipBtn.className = "btn";
+				imgFlipBtn.onclick = function() { imgFlip(id, rotate_card); };
+				imgContainer.appendChild(imgFlipBtn);
+			}
+
+			if (hidden_title)
+			{
+				const title = document.createElement("div");
+				title.innerText = card_stats.card_name;
+				title.className = "hidden-text";
+				imgContainer.appendChild(title);
+			}
+
+			return imgContainer;
+		}
+
+		function imgFlip(id, rotate_card = false) { // comments in here by aanginer
+            const img = document.getElementById(id);
+            const seconds = 0.2;
+
+            img.style.transition = seconds.toString() + "s";
+            img.style.transform = "rotateY(90deg)"; // rotate 90 degrees
+
+            const rotated_img = document.getElementById("h-img");
+            if (rotated_img)
+            {
+            	rotated_img.style.transition = seconds.toString() + "s";
+           		rotated_img.style.transform = "rotateY(90deg) rotate(90deg)";
+
+           		if (rotate_card && rotated_img.style.opacity != "0") {
+		            setTimeout(() => {
+		                rotated_img.style.opacity = "0";
+		            }, (seconds / 2) * 1000);
+		        }
+            }
+
+            setTimeout(function() { // wait for the rotation, then set the image's src correctly
+                const rotated_img = document.getElementById("h-img");
+
+                const cardName = img.src;
+                
+                if (cardName.includes("_front"))
+                {
+                    img.src = cardName.replace("_front", "_back");
+
+                    if (rotate_card)
+                    {
+                        rotated_img.style.opacity = "0";
+                        img.style.filter = "";
+                    }
+                }
+                else if (cardName.includes("_back"))
+                {
+                    img.src = cardName.replace("_back", "_front");
+
+                    if (rotate_card)
+                    {
+                        rotated_img.style.opacity = "1";
+                        img.style.filter = "blur(2px) brightness(0.7)";
+                    }
+                }
+
+                img.style.transition = seconds.toString() + "s";
+                img.style.transform = "rotateY(0deg)";
+
+                if (rotated_img)
+	            {
+	            	rotated_img.style.transition = seconds.toString() + "s";
+	           		rotated_img.style.transform = "rotateY(0deg) rotate(90deg)";
+	            }
+            }, seconds * 1000);
+        }
+
+		function prettifyEffects(card_effect) {
+			let HTML = "";
+
+			let styled_effect = card_effect.replace(/(\[i\])+(.+?)(\[\/i\])+/gs, function(matched, _1, _2) {
+				return '<i>' + _2 + '</i>'
+			}).replaceAll(/(\[b\])+(.+?)(\[\/b\])+/gs, function(matched, _1, _2) {
+				return '<b>' + _2 + '</b>'
+			});
+
+			let card_effects = styled_effect.split("\n");
+
+			for (let i = 0; i < card_effects.length; i++)
+			{
+				HTML += "<p>" + card_effects[i] + "</p>";
+			}
+			
+			let regexHTML = symbolize(HTML);
+
+			return regexHTML;
+		}
+
+		document.getElementById("search").addEventListener("keypress", function(event) {
+		  if (event.key === "Enter") {
+				event.preventDefault();
+				search();
+		  }
+		});
+
+		function search() {
+			const url = new URL('search', window.location.origin);
+			url.searchParams.append('search', document.getElementById("search").value);
+			window.location.href = url;
+		}
+
+		function randomSetCard() {
+			let set_card_list = [];
+			for (card of card_list_arrayified)
+			{
+				if (card.set == "BOMB")
+				{
+					set_card_list.push(card);
+				}
+			}
+			let i = Math.floor(Math.random() * (set_card_list.length + 1));
+			let random_card = set_card_list[i];
+
+			const url = new URL('card', window.location.origin);
+			const params = {
+				set: random_card.set,
+				num: random_card.number,
+				name: random_card.card_name
+			}
+			for (const key in params) {
+				url.searchParams.append(key, params[key]);
+			}
+
+			window.location.href = url;
+		}
+
+		function randomCard() {
+				let i = Math.floor(Math.random() * (card_list_arrayified.length + 1));
+				let random_card = card_list_arrayified[i];
+
+				const url = new URL('card', window.location.origin);
+				const params = {
+					set: random_card.set,
+					num: random_card.number,
+					name: random_card.card_name
+				}
+				for (const key in params) {
+					url.searchParams.append(key, params[key]);
+				}
+
+				window.location.href = url;
+			}
+	</script>
+</body>
+</html>

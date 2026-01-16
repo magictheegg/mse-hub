@@ -1,0 +1,164 @@
+﻿<html>
+	<head>
+	  <title>All Sets</title>
+	  <link rel="icon" type="image/x-icon" href="/img/sets.png">
+	  <link rel="stylesheet" href="/resources/mana.css">
+	  <link rel="stylesheet" href="/resources/header.css">
+	</head>
+	<style>
+		@font-face {
+			font-family: 'Beleren Small Caps';
+			src: url('/resources/beleren-caps.ttf');
+		}
+		@font-face {
+			font-family: Beleren;
+			src: url('/resources/beleren.ttf');
+		}
+		body {
+			font-family: 'Helvetica', 'Arial', sans-serif;
+			overscroll-behavior: none;
+			margin: 0px;
+			background-color: #f3f3f3;
+			font-size: 20px;
+			padding-bottom: 30px;
+		}
+		a {
+			text-decoration: none;
+			color: #171717;
+		}
+		.set-table {
+			width: 60%;
+			max-width: 1000px;
+			display: grid;
+			grid-template-columns: 1fr;
+			padding-top: 20px;
+			margin: auto;
+		}
+		.set-header-row {
+			width: 100%;
+			display: grid;
+			grid-template-columns: 0.5fr 2.5fr 0.5fr 0.5fr;
+			gap: 5px;
+			font-weight: bold;
+			padding-bottom: 10px;
+		}
+		.set-row {
+			height: 6em;
+			width: 100%;
+			display: grid;
+			grid-template-columns: 0.5fr 2.5fr 0.5fr 0.5fr;
+			gap: 5px;
+			align-items: center;
+			border-top: 1px solid #171717;
+		}
+		.set-row:hover {
+			background-color: #fafafa;
+		}
+		.set-row:nth-child(2n) {
+		  background-color: #dedede;
+		}
+		.set-row:nth-child(2n):hover {
+			background-color: #e6e6e6;
+		}
+		.set-row img {
+			width: 70%;
+			justify-self: center;
+		}
+		.set-title {
+			font-family: Beleren;
+			letter-spacing: .02em;
+			font-size: 22px;
+		}
+		.set-group {
+			font-family: Beleren Small Caps;
+			text-align: center;
+			font-size: 40px;
+			padding-top: 20px;
+		}
+	</style>
+	<body>
+		<div class="header">
+		<div class="search-grid">
+			<a href="/"><img class="sg-logo" src="/img/banner.png"></a>
+			<img class="sg-icon" src="/img/search.png">
+			<input type="text" inputmode="search" placeholder="Search ..." name="search" id="search" spellcheck="false" autocomplete="off" autocorrect="off" spellcheck="false">
+			<a href="/all-sets"><img src="/img/sets.png" class="sg-icon">Sets</a>
+			<a href="/deckbuilder"><img src="/img/deck.png" class="sg-icon">Deckbuilder</a>
+			<a onclick="randomCard()"><img src="/img/random.png" class="sg-icon">Random</a>
+		</div>
+	</div>			<div class="set-group"></div>
+		
+			<div class="set-table">
+			<div class="set-header-row">
+				<div></div> <!-- empty div for spacing -->
+				<div>NAME</div>
+				<div>CODE</div>
+				<div>CARDS</div>
+			</div>
+		
+			<a href="/sets/BOMB" class="set-row"> 
+				<img src="/sets/BOMB-files/icon.png">
+				<div class="set-title"></div>
+				<div>BOMB</div>
+				<div>85</div>
+			</a>
+			</div>
+		
+	<script>
+		let card_list_arrayified = [];
+		let specialchars = "";
+		let displayStyle = "";
+
+		document.addEventListener("DOMContentLoaded", async function () {
+			await fetch('/lists/all-cards.json')
+					.then(response => response.json())
+					.then(json => {
+						card_list = json;
+				}).catch(error => console.error('Error:', error));
+
+				await fetch('/resources/replacechars.txt')
+					.then(response => response.text())
+					.then(text => {
+						specialchars = text; 
+				}).catch(error => console.error('Error:', error));
+
+				card_list_arrayified = card_list.cards;
+
+		});
+
+		function isDecimal(char) {
+			return char >= '0' && char <= '9';
+		}
+
+		document.getElementById("search").addEventListener("keypress", function(event) {
+		  if (event.key === "Enter") {
+				event.preventDefault();
+				search();
+		  }
+		});
+
+		function search() {
+			const url = new URL('search', window.location.origin);
+			url.searchParams.append('search', document.getElementById("search").value);
+			window.location.href = url;
+		}
+
+		function randomCard() {
+				let i = Math.floor(Math.random() * (card_list_arrayified.length + 1));
+				let random_card = card_list_arrayified[i];
+
+				const url = new URL('card', window.location.origin);
+				const params = {
+					set: random_card.set,
+					num: random_card.number,
+					name: random_card.card_name
+				}
+				for (const key in params) {
+					url.searchParams.append(key, params[key]);
+				}
+
+				window.location.href = url;
+			}
+	</script>
+</body>
+</html>

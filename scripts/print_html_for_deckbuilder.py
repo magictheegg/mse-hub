@@ -392,6 +392,22 @@ def generateHTML(codes):
 	.sg-icon {
 		cursor: pointer;
 	}
+
+	/* layout fixes for smaller devices */
+	@media (max-device-width: 800px) {
+		.page-container {
+			grid-template-rows: 3fr 2fr;
+			grid-template-columns: auto;
+		}
+
+		.card-img-container {
+			height: 50px;
+		}
+
+		.image-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
 </style>
 <body>
 	<div class="header">
@@ -448,6 +464,7 @@ def generateHTML(codes):
 				<select name="display-select" class="display-select" id="display-select">
 					<option value="text">Text</option>
 					<option value="images">Images</option>
+					<option value="stats">Stats</option>
 				</select>
 				<div></div> <!-- empty div for spacing -->
 				<select name="file-menu" class="file-menu" id="file-menu">
@@ -463,59 +480,14 @@ def generateHTML(codes):
 			</div>
 			<div class="static-deck-container">
 				<div class="deck-cards-container">
-					<div class="deck-col" id="col1">
-						<div class="deck-section" id="deck-creature">
-							<span id="deck-creature-title">Creatures (0)</span>
-							<div class="deck-inner-section" id="deck-creature-cards">
-							</div>
-						</div>
-						<div class="deck-section" id="deck-planeswalker">
-							<span id="deck-planeswalker-title">Planeswalkers (0)</span>
-							<div class="deck-inner-section" id="deck-planeswalker-cards">
-							</div>
-						</div>
-						<div class="deck-section" id="deck-artifact">
-							<span id="deck-artifact-title">Artifacts (0)</span>
-							<div class="deck-inner-section" id="deck-artifact-cards">
-							</div>
-						</div>
-						<div class="deck-section" id="deck-enchantment">
-							<span id="deck-enchantment-title">Enchantments (0)</span>
-							<div class="deck-inner-section" id="deck-enchantment-cards">
-							</div>
-						</div>
-						<div class="deck-section" id="deck-battle">
-							<span id="deck-battle-title">Battles (0)</span>
-							<div class="deck-inner-section" id="deck-battle-cards">
-							</div>
-						</div>
-					</div>
-					<div class="deck-col" id="col2">
-						<div class="deck-section" id="deck-instant">
-							<span id="deck-instant-title">Instants (0)</span>
-							<div class="deck-inner-section" id="deck-instant-cards">
-							</div>
-						</div>
-						<div class="deck-section" id="deck-sorcery">
-							<span id="deck-sorcery-title">Sorceries (0)</span>
-							<div class="deck-inner-section" id="deck-sorcery-cards">
-							</div>
-						</div>
-						<div class="deck-section" id="deck-land">
-							<span id="deck-land-title">Lands (0)</span>
-							<div class="deck-inner-section" id="deck-land-cards">
-							</div>
-						</div>
-						<div class="deck-section" id="deck-sideboard">
-							<span id="deck-sideboard-title">Sideboard (0)</span>
-							<div class="deck-inner-section" id="deck-sideboard-cards">
-							</div>
-						</div>
-					</div>
+					<!-- This element's innerhtml is assigned via a string found a bit below in `deck_cards_html` Html editing for this element should be done there -->
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
 
 	<script>
 		let search_results = [];
@@ -525,6 +497,61 @@ def generateHTML(codes):
 		let sideboard = [];
 		let active_card = [];
 		let sets_json = {};
+
+		const deck_cards_html = `<div class="deck-col" id="col1">
+					<div class="deck-section" id="deck-creature">
+						<span id="deck-creature-title">Creatures (0)</span>
+						<div class="deck-inner-section" id="deck-creature-cards">
+						</div>
+					</div>
+					<div class="deck-section" id="deck-planeswalker">
+						<span id="deck-planeswalker-title">Planeswalkers (0)</span>
+						<div class="deck-inner-section" id="deck-planeswalker-cards">
+						</div>
+					</div>
+					<div class="deck-section" id="deck-artifact">
+						<span id="deck-artifact-title">Artifacts (0)</span>
+						<div class="deck-inner-section" id="deck-artifact-cards">
+						</div>
+					</div>
+					<div class="deck-section" id="deck-enchantment">
+						<span id="deck-enchantment-title">Enchantments (0)</span>
+						<div class="deck-inner-section" id="deck-enchantment-cards">
+						</div>
+					</div>
+					<div class="deck-section" id="deck-battle">
+						<span id="deck-battle-title">Battles (0)</span>
+						<div class="deck-inner-section" id="deck-battle-cards">
+						</div>
+					</div>
+					<div class="deck-section" id="deck-other">
+						<span id="deck-other-title">Other (0)</span>
+						<div class="deck-inner-section" id="deck-other-cards">
+						</div>
+					</div>
+				</div>
+				<div class="deck-col" id="col2">
+					<div class="deck-section" id="deck-instant">
+						<span id="deck-instant-title">Instants (0)</span>
+						<div class="deck-inner-section" id="deck-instant-cards">
+						</div>
+					</div>
+					<div class="deck-section" id="deck-sorcery">
+						<span id="deck-sorcery-title">Sorceries (0)</span>
+						<div class="deck-inner-section" id="deck-sorcery-cards">
+						</div>
+					</div>
+					<div class="deck-section" id="deck-land">
+						<span id="deck-land-title">Lands (0)</span>
+						<div class="deck-inner-section" id="deck-land-cards">
+						</div>
+					</div>
+					<div class="deck-section" id="deck-sideboard">
+						<span id="deck-sideboard-title">Sideboard (0)</span>
+						<div class="deck-inner-section" id="deck-sideboard-cards">
+						</div>
+					</div>
+				</div>`
 
 		document.addEventListener("DOMContentLoaded", async function () {
 			'''
@@ -548,6 +575,8 @@ def generateHTML(codes):
 			gridified_card.getElementsByTagName("img")[0].id = "image-grid-card";
 			gridified_card.getElementsByTagName("a")[0].removeAttribute("href");
 			document.getElementById("card-grid-container").appendChild(gridified_card);
+
+			document.getElementById("display-select").value = "text"; // Aanginer: initalize display style as text to prevent funkiness with browsers saving data and initializing on the stats tab
 
 			// initial search on load
 			preSearch();
@@ -931,36 +960,42 @@ def generateHTML(codes):
 				}
 			}
 
+			const display_style = document.getElementById("display-select").value;
+			document.getElementsByClassName("deck-cards-container")[0].innerHTML = deck_cards_html;
+
+
 			for (const [key, map] of deck_cards)
 			{
 				dsec_id = "deck-" + key;
 				outer_ele = document.getElementById(dsec_id);
 
-				if (map.size == 0)
+				if (map.size == 0 && outer_ele)
 				{
 					outer_ele.style.display = "none";
 				}
 				else
-				{
-					outer_ele.style.display = "grid";
-					dsec_c_id = dsec_id + "-cards";
-					
-					dsec_t_id = dsec_id + "-title";
-					title_ele = document.getElementById(dsec_t_id);
-					let count = 0;
-					for (const val of Array.from(map.values()))
-					{
-						count += val;
-					}
-					const numregex = /[0-9]+/;
-					title_ele.innerText = title_ele.innerText.replace(numregex, count);
+				{	
+					if (outer_ele) {
+						outer_ele.style.display = "grid";
+						dsec_c_id = dsec_id + "-cards";
+						
+						dsec_t_id = dsec_id + "-title";
+						title_ele = document.getElementById(dsec_t_id);
+						let count = 0;
+						for (const val of Array.from(map.values()))
+						{
+							count += val;
+						}
+						const numregex = /[0-9]+/;
+						title_ele.innerText = title_ele.innerText.replace(numregex, count);
 
-					cards_ele = document.getElementById(dsec_c_id);
-					cards_ele.innerHTML = "";
+						cards_ele = document.getElementById(dsec_c_id);
+						cards_ele.innerHTML = "";
+					}
+
 					const cards_list = Array.from(map.keys()).sort();				
 					for (const card of cards_list)
 					{
-						const display_style = document.getElementById("display-select").value;
 						const card_stats = JSON.parse(card);
 						const card_name = card_stats.card_name;
 
@@ -1047,7 +1082,7 @@ def generateHTML(codes):
 							card_row.appendChild(card_in_deck);
 							cards_ele.appendChild(card_row);
 						}
-						else
+						else if (display_style == "images")
 						{
 							card_img_container = document.createElement("div");
 							card_img_container.className = "card-img-container";
@@ -1145,9 +1180,196 @@ def generateHTML(codes):
 							card_img_container.appendChild(card_img);
 							cards_ele.appendChild(card_img_container);
 						}
+						else {
+							// stats view
+							document.getElementsByClassName("deck-cards-container")[0].innerHTML = "";
+							makeStatsTab(deck_cards);
+						}
 					}
 				}
 			}
+		}
+
+		function makeStatsTab(deck_cards) {
+			const stats_tab_1 = document.createElement("div");
+			stats_tab_1.className = "stats-tab-container";
+			const stats_tab_2 = document.createElement("div");
+			stats_tab_2.className = "stats-tab-container";
+
+			let mana_values = [0, 0, 0, 0, 0, 0, 0, 0];
+			let color_cards = { "W": 0, "U": 0, "B": 0, "R": 0, "G": 0, "I": 0, "M": 0, "C": 0 };
+			let card_types = {};
+			const mv_labels = ["0", "1", "2", "3", "4", "5", "6+"];
+			const total_length = deck.length + sideboard.length;
+			let total_nonlands = 0;
+
+			const mana_curve_chart = document.createElement("canvas");
+			mana_curve_chart.id = "mana-curve-chart";
+			mana_curve_chart.className = "mana-curve-chart";
+
+			const colors_chart = document.createElement("canvas");
+			colors_chart.id = "deck-colors-chart";
+			colors_chart.className = "deck-colors-chart";
+
+			const types_chart = document.createElement("canvas");
+			types_chart.id = "deck-types-chart";
+			types_chart.className = "deck-types-chart";
+
+			for (const card of deck) {
+				const card_stats = JSON.parse(card);
+				let card_mv = convertToMV(card_stats.cost);
+				const color = card_stats.color;
+				if (!card_stats.type.includes("Land")) {
+					card_mv = Math.min(6, card_mv);
+					mana_values[card_mv] += 1;
+					if (color_cards[color] != null) {
+						color_cards[color] += 1;
+					} else if (color == "") {
+						color_cards["C"] += 1;
+					} else {
+						color_cards["M"] += 1;
+					}
+					total_nonlands++;
+				}
+
+			}
+
+			for (const card of sideboard) {
+				const card_stats = JSON.parse(card);
+				let card_mv = convertToMV(card_stats.cost);
+				const color = card_stats.color;
+				if (!card_stats.type.includes("Land")) {
+					card_mv = Math.min(6, card_mv);
+					mana_values[card_mv] += 1;
+					if (color_cards[color] != null) {
+						color_cards[color] += 1;
+					} else if (color == "") {
+						color_cards["C"] += 1;
+					} else {
+						color_cards["M"] += 1;
+					}
+					total_nonlands++;
+				}
+			}
+
+			for (const [key, map] of deck_cards) {
+				if (key == "sideboard")
+					continue;
+				for (const card of map.keys()) {
+					let num = map.get(card);
+					if (card_types[key] == null) {
+						card_types[key] = num;
+					} else {
+						card_types[key] += num;
+					}
+				}
+			}
+
+			stats_tab_1.appendChild(mana_curve_chart);
+			stats_tab_1.appendChild(types_chart);
+			stats_tab_2.appendChild(colors_chart);
+
+			document.getElementsByClassName("deck-cards-container")[0].appendChild(stats_tab_1);
+			document.getElementsByClassName("deck-cards-container")[0].appendChild(stats_tab_2);
+			const background_colors = "rgba(0,0,0,0.6) ".repeat(mana_values.length).split(" ");
+
+			new Chart("mana-curve-chart", {
+				type: "bar",
+				data: {
+					labels: mv_labels,
+					datasets: [{
+						data: mana_values,
+						backgroundColor: background_colors
+					}]
+				}, options: {
+					legend: { display: false },
+					title: {
+						display: true,
+						text: `       Mana Curve       (Average: ${mv_average(mana_values, total_nonlands).toFixed(2)})`
+					},
+					plugins: {
+						labels: {
+							render: "value"
+						}
+					},
+					scales: {
+						yAxes: [{
+							display: true,
+							ticks: {
+								beginAtZero: true,
+							}
+						}]
+					}
+				}
+			});
+
+			const color_bgs = ["#F0F2C0", "#B5CDE3", "#ACA29A", "#DB8664", "#93B483", "#9B91B2", "#ebd567", "#BEB9B2"]
+
+			new Chart("deck-colors-chart", {
+				type: "pie",
+				data: {
+					labels: ["White", "Blue", "Black", "Red", "Green", "Silver", "Multicolor", "Colorless"],
+					datasets: [{
+						data: Object.values(color_cards),
+						backgroundColor: color_bgs
+					}]
+				}, options: {
+					legend: { display: false },
+					title: {
+						display: true,
+						text: "Card Colors"
+					},
+					plugins: {
+						labels: {
+							render: "value",
+							position: "border"
+						}
+					}
+				}
+			});
+
+			new Chart("deck-types-chart", {
+				type: "bar",
+				data: {
+					labels: Object.keys(card_types),
+					datasets: [{
+						data: Object.values(card_types),
+						backgroundColor: background_colors
+					}]
+				}, options: {
+					legend: { display: false },
+					title: {
+						display: true,
+						text: "Card Types"
+					},
+					plugins: {
+						labels: {
+							render: "value",
+							position: "outside"
+						}
+					},
+					scales: {
+						yAxes: [{
+							display: true,
+							ticks: {
+								beginAtZero: true,
+							}
+						}]
+					}
+				}
+			});
+		}
+
+		function mv_average(l, total_length) {
+			let total_mv = 0;
+			let current_mv = 0;
+
+			for (const i of l) {
+				total_mv += current_mv * i;
+				current_mv++;
+			}
+
+			return total_mv / total_length;
 		}
 
 		async function exportFile(export_as) {

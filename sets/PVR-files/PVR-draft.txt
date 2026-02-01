@@ -2581,13 +2581,13 @@
 			}
 		},
 		{
-			"name": "Lévy Paths",
+			"name": "Levy Paths",
 			"rarity": "mythic",
 			"mana_cost": "{R}{R}",
 			"type": "Sorcery",
 			"collector_number": "157",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/PVR-files/img/157_Lévy Paths.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/PVR-files/img/157_Levy Paths.jpg"
 			}
 		},
 		{
@@ -3321,7 +3321,7 @@
 	5 Flesh Centrifuge
 	5 Thassaraptor
 	5 Harsurfir Overseer
-	5 Lévy Paths
+	5 Levy Paths
 	5 Usurp the Quintarchy
 	5 Into Primal Archives
 	5 Optimise

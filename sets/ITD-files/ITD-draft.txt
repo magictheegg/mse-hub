@@ -25,9 +25,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{U}{R}",
 			"type": "Artifact Creature — Cleric",
-			"collector_number": "148",
+			"collector_number": "147",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/148_Priest of Perfection.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/147_Priest of Perfection.jpg"
 			}
 		},
 		{
@@ -35,9 +35,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land",
-			"collector_number": "173",
+			"collector_number": "172",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/173_Far-Off Factory.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/172_Far-Off Factory.jpg"
 			}
 		},
 		{
@@ -55,9 +55,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}",
 			"type": "Artifact — Vehicle",
-			"collector_number": "158",
+			"collector_number": "157",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/158_Endless Distortion Line.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/157_Endless Distortion Line.jpg"
 			}
 		},
 		{
@@ -65,9 +65,9 @@
 			"rarity": "rare",
 			"mana_cost": "{5}",
 			"type": "Artifact Creature — Construct",
-			"collector_number": "164",
+			"collector_number": "163",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/164_Matryoshka Crawler.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/163_Matryoshka Crawler.jpg"
 			}
 		},
 		{
@@ -75,9 +75,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}",
 			"type": "Artifact Creature — Golem",
-			"collector_number": "166",
+			"collector_number": "165",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/166_Sorting Servant.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/165_Sorting Servant.jpg"
 			}
 		},
 		{
@@ -85,9 +85,9 @@
 			"rarity": "rare",
 			"mana_cost": "{8}",
 			"type": "Artifact Creature — Demon",
-			"collector_number": "165",
+			"collector_number": "164",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/165_Rattlefiend.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/164_Rattlefiend.jpg"
 			}
 		},
 		{
@@ -155,9 +155,9 @@
 			"rarity": "rare",
 			"mana_cost": "{U}{B}",
 			"type": "Artifact",
-			"collector_number": "149",
+			"collector_number": "148",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/149_The Red Door.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/148_The Red Door.jpg"
 			}
 		},
 		{
@@ -175,9 +175,9 @@
 			"rarity": "rare",
 			"mana_cost": "{7}",
 			"type": "Enchantment Artifact Creature — Giant",
-			"collector_number": "157",
+			"collector_number": "156",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/157_Dreamlured Giant.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/156_Dreamlured Giant.jpg"
 			}
 		},
 		{
@@ -185,9 +185,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Enchantment Land — Saga",
-			"collector_number": "175",
+			"collector_number": "174",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/175_The Gardener's Saga.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/174_The Gardener's Saga.jpg"
 			}
 		},
 		{
@@ -215,9 +215,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}",
 			"type": "Artifact Creature — Horror Wizard",
-			"collector_number": "167",
+			"collector_number": "166",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/167_Vertigomancer.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/166_Vertigomancer.jpg"
 			}
 		},
 		{
@@ -255,9 +255,9 @@
 			"rarity": "rare",
 			"mana_cost": "{W}{B}",
 			"type": "Enchantment",
-			"collector_number": "150",
+			"collector_number": "149",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/150_Secrets of Radiance.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/149_Secrets of Radiance.jpg"
 			}
 		},
 		{
@@ -285,9 +285,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{G}",
 			"type": "Legendary Creature — Human Cleric",
-			"collector_number": "135",
+			"collector_number": "134",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/135_Vaga, True Prophet.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/134_Vaga, True Prophet.jpg"
 			}
 		},
 		{
@@ -315,9 +315,9 @@
 			"rarity": "rare",
 			"mana_cost": "{3}",
 			"type": "Artifact",
-			"collector_number": "161",
+			"collector_number": "160",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/161_Foreboding Monolith.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/160_Foreboding Monolith.jpg"
 			}
 		},
 		{
@@ -335,9 +335,9 @@
 			"rarity": "rare",
 			"mana_cost": "{R}{W}",
 			"type": "Sorcery",
-			"collector_number": "147",
+			"collector_number": "146",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/147_Overcome All.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/146_Overcome All.jpg"
 			}
 		},
 		{
@@ -355,9 +355,9 @@
 			"rarity": "rare",
 			"mana_cost": "{G}",
 			"type": "Creature — Zombie",
-			"collector_number": "121",
+			"collector_number": "120",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/121_Ichor-Drowned.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/120_Ichor-Drowned.jpg"
 			}
 		},
 		{
@@ -385,9 +385,9 @@
 			"rarity": "rare",
 			"mana_cost": "{G}",
 			"type": "Sorcery",
-			"collector_number": "124",
+			"collector_number": "123",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/124_Lamplure.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/123_Lamplure.jpg"
 			}
 		},
 		{
@@ -405,9 +405,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{G}",
 			"type": "Creature — Shapeshifter",
-			"collector_number": "128",
+			"collector_number": "127",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/128_Observation Agent.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/127_Observation Agent.jpg"
 			}
 		},
 		{
@@ -425,9 +425,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Island Mountain",
-			"collector_number": "183",
+			"collector_number": "182",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/183_Volcanic Steambed.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/182_Volcanic Steambed.jpg"
 			}
 		},
 		{
@@ -435,9 +435,9 @@
 			"rarity": "rare",
 			"mana_cost": "{3}",
 			"type": "Legendary Artifact",
-			"collector_number": "159",
+			"collector_number": "158",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/159_Far-off Door.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/158_Far-off Door.jpg"
 			}
 		},
 		{
@@ -445,9 +445,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{R}{G}",
 			"type": "Creature — Incarnation",
-			"collector_number": "140",
+			"collector_number": "139",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/140_A Blossoming of Flowers.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/139_A Blossoming of Flowers.jpg"
 			}
 		},
 		{
@@ -475,9 +475,9 @@
 			"rarity": "rare",
 			"mana_cost": "{5}",
 			"type": "Artifact — Equipment",
-			"collector_number": "155",
+			"collector_number": "154",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/155_Corpse-Shell Container.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/154_Corpse-Shell Container.jpg"
 			}
 		},
 		{
@@ -495,9 +495,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{G}",
 			"type": "Enchantment — Aura",
-			"collector_number": "127",
+			"collector_number": "126",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/127_Mycelial Coating.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/126_Mycelial Coating.jpg"
 			}
 		},
 		{
@@ -535,9 +535,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land",
-			"collector_number": "176",
+			"collector_number": "175",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/176_Hall of the Hands.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/175_Hall of the Hands.jpg"
 			}
 		},
 		{
@@ -565,9 +565,9 @@
 			"rarity": "rare",
 			"mana_cost": "{4}",
 			"type": "Enchantment Artifact Creature — Fractal",
-			"collector_number": "154",
+			"collector_number": "153",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/154_Collapsed Chaos.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/153_Collapsed Chaos.jpg"
 			}
 		},
 		{
@@ -575,9 +575,9 @@
 			"rarity": "rare",
 			"mana_cost": "{7}",
 			"type": "Enchantment Artifact Creature — Avatar",
-			"collector_number": "153",
+			"collector_number": "152",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/153_Aspect of Logic.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/152_Aspect of Logic.jpg"
 			}
 		},
 		{
@@ -615,9 +615,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Swamp Forest",
-			"collector_number": "182",
+			"collector_number": "181",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/182_Stretching Tangle.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/181_Stretching Tangle.jpg"
 			}
 		},
 		{
@@ -655,9 +655,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}",
 			"type": "Artifact — Equipment",
-			"collector_number": "160",
+			"collector_number": "159",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/160_Firmament-Rending Blade.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/159_Firmament-Rending Blade.jpg"
 			}
 		},
 		{
@@ -675,9 +675,9 @@
 			"rarity": "rare",
 			"mana_cost": "{4}{G}",
 			"type": "Creature — Eye Wolf Horror",
-			"collector_number": "136",
+			"collector_number": "135",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/136_Watching Wolf.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/135_Watching Wolf.jpg"
 			}
 		},
 		{
@@ -695,9 +695,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{G}",
 			"type": "Sorcery",
-			"collector_number": "130",
+			"collector_number": "129",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/130_Pestilent Meeting.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/129_Pestilent Meeting.jpg"
 			}
 		},
 		{
@@ -705,9 +705,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{G}{U}",
 			"type": "Legendary Creature — Isopod Horror",
-			"collector_number": "139",
+			"collector_number": "138",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/139_Ajaxala, Cunning Puppeteer.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/138_Ajaxala, Cunning Puppeteer.jpg"
 			}
 		},
 		{
@@ -755,9 +755,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Kindred Artifact Land — Shapeshifter",
-			"collector_number": "180",
+			"collector_number": "179",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/180_Shifting Silverscape.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/179_Shifting Silverscape.jpg"
 			}
 		},
 		{
@@ -775,9 +775,9 @@
 			"rarity": "rare",
 			"mana_cost": "{3}{G}{G}",
 			"type": "Enchantment Creature — Horror",
-			"collector_number": "134",
+			"collector_number": "133",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/134_Tyrant of Long Death.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/133_Tyrant of Long Death.jpg"
 			}
 		},
 		{
@@ -785,9 +785,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land",
-			"collector_number": "168",
+			"collector_number": "167",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/168_Antisun's Domain.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/167_Antisun's Domain.jpg"
 			}
 		},
 		{
@@ -805,9 +805,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{G}",
 			"type": "Creature — Human Advisor",
-			"collector_number": "118",
+			"collector_number": "117",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/118_Forgotten Prophet.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/117_Forgotten Prophet.jpg"
 			}
 		},
 		{
@@ -815,9 +815,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{B}{G}",
 			"type": "Legendary Artifact Creature — Construct",
-			"collector_number": "138",
+			"collector_number": "137",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/138_001, Errant Spark-Engine.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/137_001, Errant Spark-Engine.jpg"
 			}
 		},
 		{
@@ -835,9 +835,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{G}{G}",
 			"type": "Enchantment",
-			"collector_number": "129",
+			"collector_number": "128",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/129_The Pact.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/128_The Pact.jpg"
 			}
 		},
 		{
@@ -865,9 +865,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{G}",
 			"type": "Sorcery",
-			"collector_number": "137",
+			"collector_number": "136",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/137_Water-Witch's Bargain.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/136_Water-Witch's Bargain.jpg"
 			}
 		},
 		{
@@ -935,9 +935,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{G}",
 			"type": "Sorcery",
-			"collector_number": "123",
+			"collector_number": "122",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/123_Infested Heart.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/122_Infested Heart.jpg"
 			}
 		},
 		{
@@ -945,9 +945,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Swamp Mountain",
-			"collector_number": "170",
+			"collector_number": "169",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/170_Cursed Range.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/169_Cursed Range.jpg"
 			}
 		},
 		{
@@ -955,9 +955,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Plains Swamp",
-			"collector_number": "171",
+			"collector_number": "170",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/171_Desolate Expanse.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/170_Desolate Expanse.jpg"
 			}
 		},
 		{
@@ -975,9 +975,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{G}",
 			"type": "Enchantment Creature — Devil",
-			"collector_number": "122",
+			"collector_number": "121",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/122_Imprisoned Aspect.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/121_Imprisoned Aspect.jpg"
 			}
 		},
 		{
@@ -995,9 +995,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{G}",
 			"type": "Creature — Illusion",
-			"collector_number": "120",
+			"collector_number": "119",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/120_Harbinger of Doubt.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/119_Harbinger of Doubt.jpg"
 			}
 		},
 		{
@@ -1005,9 +1005,9 @@
 			"rarity": "rare",
 			"mana_cost": "{5}",
 			"type": "Legendary Artifact",
-			"collector_number": "163",
+			"collector_number": "162",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/163_The Living Coffin.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/162_The Living Coffin.jpg"
 			}
 		},
 		{
@@ -1015,9 +1015,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{G}{W}",
 			"type": "Artifact Creature — Construct",
-			"collector_number": "142",
+			"collector_number": "141",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/142_Decrepid Terraformer.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/141_Decrepid Terraformer.jpg"
 			}
 		},
 		{
@@ -1025,9 +1025,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{G}",
 			"type": "Instant",
-			"collector_number": "117",
+			"collector_number": "116",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/117_Find the Corrupt Heart.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/116_Find the Corrupt Heart.jpg"
 			}
 		},
 		{
@@ -1035,9 +1035,9 @@
 			"rarity": "rare",
 			"mana_cost": "{4}{G}{G}",
 			"type": "Creature — Horror",
-			"collector_number": "131",
+			"collector_number": "130",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/131_Scion of the Unknowable.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/130_Scion of the Unknowable.jpg"
 			}
 		},
 		{
@@ -1055,9 +1055,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{G}{G}",
 			"type": "Enchantment — Saga",
-			"collector_number": "116",
+			"collector_number": "115",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/116_Embrace Rebirth.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/115_Embrace Rebirth.jpg"
 			}
 		},
 		{
@@ -1071,23 +1071,13 @@
 			}
 		},
 		{
-			"name": "Deepgrowth Animist",
-			"rarity": "rare",
-			"mana_cost": "{G}",
-			"type": "Creature — Elf Spirit Shaman",
-			"collector_number": "115",
-			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/115_Deepgrowth Animist.jpg"
-			}
-		},
-		{
 			"name": "Embryonic Mound",
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Mountain Forest",
-			"collector_number": "172",
+			"collector_number": "171",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/172_Embryonic Mound.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/171_Embryonic Mound.jpg"
 			}
 		},
 		{
@@ -1095,9 +1085,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Mountain Plains",
-			"collector_number": "174",
+			"collector_number": "173",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/174_Forlorn Battlefield.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/173_Forlorn Battlefield.jpg"
 			}
 		},
 		{
@@ -1135,9 +1125,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Forest Island",
-			"collector_number": "177",
+			"collector_number": "176",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/177_Living Bog.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/176_Living Bog.jpg"
 			}
 		},
 		{
@@ -1205,9 +1195,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{W}{U}",
 			"type": "Legendary Creature — Reflection",
-			"collector_number": "146",
+			"collector_number": "145",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/146_The Nowhere Girl.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/145_The Nowhere Girl.jpg"
 			}
 		},
 		{
@@ -1215,9 +1205,9 @@
 			"rarity": "rare",
 			"mana_cost": "{G}",
 			"type": "Sorcery",
-			"collector_number": "132",
+			"collector_number": "131",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/132_Somnibiotic Emergence.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/131_Somnibiotic Emergence.jpg"
 			}
 		},
 		{
@@ -1245,9 +1235,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{W}{U}",
 			"type": "Sorcery",
-			"collector_number": "144",
+			"collector_number": "143",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/144_Experience Infinite Time.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/143_Experience Infinite Time.jpg"
 			}
 		},
 		{
@@ -1295,9 +1285,9 @@
 			"rarity": "rare",
 			"mana_cost": "{3}{G}",
 			"type": "Creature — Horror",
-			"collector_number": "133",
+			"collector_number": "132",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/133_Strange Wayfarer.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/132_Strange Wayfarer.jpg"
 			}
 		},
 		{
@@ -1355,9 +1345,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Plains Island",
-			"collector_number": "169",
+			"collector_number": "168",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/169_Celestial Realm.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/168_Celestial Realm.jpg"
 			}
 		},
 		{
@@ -1375,9 +1365,9 @@
 			"rarity": "rare",
 			"mana_cost": "{X}{G}",
 			"type": "Legendary Planeswalker — Gardener",
-			"collector_number": "119",
+			"collector_number": "118",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/119_The Gardener, Waning.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/118_The Gardener, Waning.jpg"
 			}
 		},
 		{
@@ -1405,9 +1395,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Island Swamp",
-			"collector_number": "178",
+			"collector_number": "177",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/178_Phantom City.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/177_Phantom City.jpg"
 			}
 		},
 		{
@@ -1425,9 +1415,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{G}",
 			"type": "Legendary Enchantment",
-			"collector_number": "125",
+			"collector_number": "124",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/125_Living Heart.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/124_Living Heart.jpg"
 			}
 		},
 		{
@@ -1465,9 +1455,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{G}{W}{U}",
 			"type": "Legendary Planeswalker — Lursk",
-			"collector_number": "143",
+			"collector_number": "142",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/143_The Ephemeral Piper.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/142_The Ephemeral Piper.jpg"
 			}
 		},
 		{
@@ -1475,9 +1465,9 @@
 			"rarity": "rare",
 			"mana_cost": "{B}{R}{G}",
 			"type": "Sorcery",
-			"collector_number": "152",
+			"collector_number": "151",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/152_Wyrm's Death.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/151_Wyrm's Death.jpg"
 			}
 		},
 		{
@@ -1485,9 +1475,9 @@
 			"rarity": "rare",
 			"mana_cost": "{B}{G}{U}",
 			"type": "Creature — Human Scout Rogue",
-			"collector_number": "145",
+			"collector_number": "144",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/145_Interstellar Drifter.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/144_Interstellar Drifter.jpg"
 			}
 		},
 		{
@@ -1495,9 +1485,9 @@
 			"rarity": "rare",
 			"mana_cost": "{5}",
 			"type": "Artifact Creature — Serpent",
-			"collector_number": "156",
+			"collector_number": "155",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/156_Crackling Serpent.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/155_Crackling Serpent.jpg"
 			}
 		},
 		{
@@ -1505,9 +1495,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Forest Plains",
-			"collector_number": "179",
+			"collector_number": "178",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/179_Reflective Savannah.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/178_Reflective Savannah.jpg"
 			}
 		},
 		{
@@ -1515,9 +1505,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land",
-			"collector_number": "181",
+			"collector_number": "180",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/181_Shortcut Through Hell.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/180_Shortcut Through Hell.jpg"
 			}
 		},
 		{
@@ -1615,9 +1605,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{B}{R}",
 			"type": "Enchantment Creature — Eye Horror",
-			"collector_number": "141",
+			"collector_number": "140",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/141_Callous Observer.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/140_Callous Observer.jpg"
 			}
 		},
 		{
@@ -1625,9 +1615,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{G}{U}",
 			"type": "Sorcery — Revelation",
-			"collector_number": "151",
+			"collector_number": "150",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/151_Siltcurrent Obsession.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/150_Siltcurrent Obsession.jpg"
 			}
 		},
 		{
@@ -1645,9 +1635,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{G}{G}",
 			"type": "Legendary Creature — Human Horror",
-			"collector_number": "126",
+			"collector_number": "125",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/126_Maktel and the Unknowable.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/125_Maktel and the Unknowable.jpg"
 			}
 		},
 		{
@@ -1865,9 +1855,9 @@
 			"rarity": "rare",
 			"mana_cost": "{4}",
 			"type": "Legendary Artifact",
-			"collector_number": "162",
+			"collector_number": "161",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/162_The Howling Door.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/ITD-files/img/161_The Howling Door.jpg"
 			}
 		},
 		{
@@ -2140,7 +2130,6 @@
 	2 Lighting the False Sun
 	2 Embrace Rebirth
 	2 Corvid Defacer
-	2 Deepgrowth Animist
 	2 Embryonic Mound
 	2 Forlorn Battlefield
 	2 Seek Understanding

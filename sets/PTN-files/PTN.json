@@ -3,7 +3,7 @@
     "formats": "",
     "trimmed": "y",
     "image_type": "jpg",
-    "draft_structure": "cube",
+    "draft_structure": "play booster",
     "designer": "Kogane</soft-line></soft-line></soft-line></soft-line></soft-line></soft-line></soft-line></soft-line></soft-line>",
     "cards": [
         {
@@ -280,7 +280,7 @@
             "loyalty": "",
             "designer": "Kogane",
             "artist": "Katie Red Brooks",
-            "notes": "reprint"
+            "notes": "reprint\n!tag CanonReprint"
         },
         {
             "card_name": "Lessons of Strife",
@@ -774,7 +774,7 @@
             "loyalty": "",
             "designer": "Kogane",
             "artist": "James Zapata",
-            "notes": "reprint"
+            "notes": "!tag CanonReprint\nreprint"
         },
         {
             "card_name": "Bars Across the Sun",
@@ -869,7 +869,7 @@
             "loyalty": "",
             "designer": "Kogane",
             "artist": "SamC-Art",
-            "notes": "reprint"
+            "notes": "!tag CanonReprint\nreprint"
         },
         {
             "card_name": "Legacy of Tides",
@@ -1154,7 +1154,7 @@
             "loyalty": "",
             "designer": "Kogane",
             "artist": "AyyaSAP",
-            "notes": "reprint"
+            "notes": "!tag CanonReprint\nreprint"
         },
         {
             "card_name": "Life's Legacy",
@@ -1173,7 +1173,7 @@
             "loyalty": "",
             "designer": "Kogane",
             "artist": "Daria Rattik",
-            "notes": "reprint"
+            "notes": "!tag CanonReprint\nreprint"
         },
         {
             "card_name": "Ezeem, the Second Thirstly",
@@ -1487,7 +1487,7 @@
             "number": 38,
             "color_identity": "W",
             "cost": "{2}{W}",
-            "rules_text": "When Rarefied Illuminator enters, scry 3, then you may exile the top card of your library. If a creature card with mana value 3 or less was exiled this way. It becomes foretold. [i](Its foretell cost is its mana cost if it isn't already specified.)[/i]\nForetell {W} [i](During your turn, you may pay {2} and exile this card from your hand face down. Play it on a later turn for its foretell cost.)[/i]",
+            "rules_text": "When Rarefied Illuminator enters, scry 3, then exile the top card of your library. A creature card with mana value 3 or less exiled this way becomes foretold. [i](Its foretell cost is its mana cost if it isn't already specified.)[/i]\nForetell {W} [i](During your turn, you may pay {2} and exile this card from your hand face down. Play it on a later turn for its foretell cost.)[/i]",
             "flavor_text": "[i][/i]",
             "pt": "2/3",
             "special_text": "",
@@ -1563,7 +1563,7 @@
             "number": 113,
             "color_identity": "B",
             "cost": "{B}",
-            "rules_text": "Target creature gets -0/-1 and gains deathtouch until end of turn. When that creature you control dies this turn, draw a card.",
+            "rules_text": "Target creature gets -0/-1 and gains deathtouch until end of turn. When that creature dies under your control this turn, draw a card.",
             "flavor_text": "[i]The assistant is offered to the Mother of Ants. But she knows healing as well as poison, and she may be merciful.[/i]",
             "pt": "",
             "special_text": "",
@@ -1895,7 +1895,7 @@
             "loyalty": "",
             "designer": "Kogane",
             "artist": "Andrea Butera",
-            "notes": "reprint"
+            "notes": "!tag CanonReprint\nreprint"
         },
         {
             "card_name": "Ritual Daggar",
@@ -2370,7 +2370,7 @@
             "loyalty": "",
             "designer": "Kogane",
             "artist": "Alessia H. Valastro",
-            "notes": "https://alessiahv.artstation.com/projects/8waYYw\nreprint"
+            "notes": "!tag CanonReprint\nhttps://alessiahv.artstation.com/projects/8waYYw\nreprint"
         },
         {
             "card_name": "Eyes Everywhere",
@@ -2389,7 +2389,7 @@
             "loyalty": "",
             "designer": "Kogane",
             "artist": "Nils Hamm",
-            "notes": "reprint"
+            "notes": "!tag CanonReprint\nreprint"
         },
         {
             "card_name": "Map's Edge Monstrosity",
@@ -3130,7 +3130,7 @@
             "loyalty": "",
             "designer": "Kogane",
             "artist": "Eleonor Piteira",
-            "notes": "reprint"
+            "notes": "!tag CanonReprint\nreprint"
         },
         {
             "card_name": "Carapace Crusader",
@@ -3273,7 +3273,7 @@
             "number": 178,
             "color_identity": "G",
             "cost": "{1}{G}",
-            "rules_text": "Until end of turn, target creature gets +3/+3 and gains \u201cWhenever this creature is dealt damage while its tapped, you get a Scar.\u201d [i](They're boons with \u201cWhen a creature you control dies, you may pay {1}. If you do, draw a card.\u201d)[/i]",
+            "rules_text": "Until end of turn, target creature gets +3/+3 and gains \u201cWhenever this creature is dealt damage while it's tapped, you get a Scar.\u201d [i](They're boons with \u201cWhen a creature you control dies, you may pay {1}. If you do, draw a card.\u201d)[/i]",
             "flavor_text": "[i]The old gives way, the skin will shed, and not only once. [/i]",
             "pt": "",
             "special_text": "",
@@ -3510,7 +3510,7 @@
             "loyalty": "",
             "designer": "Kogane",
             "artist": "Anastasiya Emelyanova",
-            "notes": "reprint"
+            "notes": "!tag CanonReprint\nreprint"
         },
         {
             "card_name": "Malleary Phantasm",
@@ -3643,7 +3643,7 @@
             "loyalty": "",
             "designer": "Kogane",
             "artist": "Tania Rys",
-            "notes": "reprint"
+            "notes": "!tag CanonReprint\nreprint"
         },
         {
             "card_name": "Sanctuary of Mysteries",

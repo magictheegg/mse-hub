@@ -388,8 +388,10 @@
 	<div class="search-grid">
 		<a href="/"><img class="sg-logo" src="/img/banner.png"></a>
 		<img class="sg-icon" src="/img/header/search.png">
-		<input type="text" inputmode="search" placeholder="Search ..." name="search" id="search" spellcheck="false"
-			autocomplete="off" autocorrect="off" spellcheck="false">
+		<div style="position: relative; width: 100%;">
+			<input type="text" inputmode="search" placeholder="Search ..." name="search" id="search" spellcheck="false" autocomplete="off" autocorrect="off" spellcheck="false">
+			<div id="tag-dropdown" style="display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; border: 1px solid #d5d9d9; z-index: 1000; max-height: 200px; overflow-y: auto; color: black; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></div>
+		</div>
 		<a href="/all-sets"><img src="/img/header/sets.png" class="sg-icon">Sets</a>
 		<a href="/deckbuilder"><img src="/img/header/deck.png" class="sg-icon">Deckbuilder</a>
 		<a onclick="randomCard()"><img src="/img/random.png" class="sg-icon">Random</a>
@@ -475,6 +477,99 @@
 				}).catch(error => console.error('Error:', error));
 
 				card_list_arrayified = card_list.cards;
+
+				let all_tags = new Set();
+			card_list_arrayified.forEach(card => {
+				if (card.notes) {
+					const tagMatches = card.notes.matchAll(/!tag(?:<\w+>)?\s+([^\s\n\b]+)/g);
+					for (const match of tagMatches) {
+						if (match[0].includes('!tag<')) continue;
+						all_tags.add(match[1].replace(/;$/, ''));
+					}
+				}
+			});
+
+			const searchInput = document.getElementById("search");
+			const tagDropdown = document.getElementById("tag-dropdown");
+
+			// Create a mirror element for position calculation
+			const mirror = document.createElement("div");
+			Object.assign(mirror.style, {
+				position: "absolute",
+				visibility: "hidden",
+				whiteSpace: "pre",
+				font: getComputedStyle(searchInput).font,
+				padding: "0", // No padding for pure text measurement
+				border: "none",
+				boxSizing: "content-box"
+			});
+			document.body.appendChild(mirror);
+
+			if (searchInput && tagDropdown) {
+				tagDropdown.style.width = "auto";
+				tagDropdown.style.minWidth = "75px";
+				tagDropdown.style.maxWidth = "300px";
+				tagDropdown.style.maxHeight = "200px";
+				tagDropdown.style.overflowY = "auto";
+
+				const updateDropdown = function() {
+					const value = searchInput.value;
+					const cursorPosition = searchInput.selectionStart;
+					
+					// Find the tag: prefix immediately preceding the cursor
+					const lastTagIndex = value.substring(0, cursorPosition).lastIndexOf("tag:");
+					
+					if (lastTagIndex !== -1) {
+						const queryStart = lastTagIndex + 4;
+						const query = value.substring(queryStart, cursorPosition);
+						
+						if (!query.includes(" ")) {
+							const filteredTags = Array.from(all_tags).filter(tag => tag.toLowerCase().startsWith(query.toLowerCase())).sort();
+							if (filteredTags.length > 0) {
+								tagDropdown.innerHTML = "";
+								filteredTags.forEach(tag => {
+									const div = document.createElement("div");
+									div.innerText = tag;
+									div.style.padding = "5px 10px";
+									div.style.cursor = "pointer";
+									div.style.whiteSpace = "nowrap";
+									div.onmouseover = () => div.style.background = "#f0f0f0";
+									div.onmouseout = () => div.style.background = "white";
+									div.onclick = () => {
+										const newValue = value.substring(0, queryStart) + tag + " " + value.substring(cursorPosition);
+										searchInput.value = newValue;
+										tagDropdown.style.display = "none";
+										searchInput.focus();
+										const newCursorPos = queryStart + tag.length + 1;
+										searchInput.setSelectionRange(newCursorPos, newCursorPos);
+									};
+									tagDropdown.appendChild(div);
+								});
+
+								// Calculate position
+								mirror.textContent = value.substring(0, lastTagIndex + 4);
+								const textWidth = mirror.getBoundingClientRect().width;
+								const inputPaddingLeft = parseFloat(getComputedStyle(searchInput).paddingLeft) || 0;
+								
+								tagDropdown.style.left = Math.min(textWidth + inputPaddingLeft, searchInput.offsetWidth - tagDropdown.offsetWidth) + "px";
+								tagDropdown.style.display = "block";
+								return;
+							}
+						}
+					}
+					tagDropdown.style.display = "none";
+				};
+
+				searchInput.addEventListener("input", updateDropdown);
+				searchInput.addEventListener("click", updateDropdown);
+				searchInput.addEventListener("keyup", updateDropdown);
+
+				document.addEventListener("click", function(e) {
+					if (e.target !== searchInput && e.target !== tagDropdown) {
+						tagDropdown.style.display = "none";
+					}
+				});
+			}
 
 
 			await fetch('/sets/WAW-files/WAW-draft.txt')

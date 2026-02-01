@@ -3,7 +3,7 @@
     "formats": "",
     "trimmed": "y",
     "image_type": "jpg",
-    "draft_structure": "cube",
+    "draft_structure": "play booster",
     "designer": "Zangy",
     "cards": [
         {
@@ -546,7 +546,7 @@
             "number": 104,
             "color_identity": "B",
             "cost": "{2}{B}",
-            "rules_text": "Sneak {2}{B}\nWhenever Plaskett Trickster deals combat damage to a player or planeswalker, choose one to be exiled. You may play the exiled cards for as long as they remain exiled and spend mana as though it were mana of any type to cast spells this way.\n\u2022 A card from defending player's hand.\n\u2022 A random card form defending player's sanctum.",
+            "rules_text": "Sneak {2}{B}\nWhenever Plaskett Trickster deals combat damage to a player or planeswalker, choose one to be exiled. You may play the exiled cards for as long as they remain exiled and spend mana as though it were mana of any type to cast spells this way.\n\u2022 A card from defending player's hand.\n\u2022 A random card from defending player's sanctum.",
             "flavor_text": "[i][/i]",
             "pt": "1/4",
             "special_text": "",
@@ -708,7 +708,7 @@
             "number": 144,
             "color_identity": "R",
             "cost": "{4}{R}",
-            "rules_text": "Haste\n{T}: Create a token that's a copy of target non-Ouphe creature you control. That token has haste. At the beginning of your next end step, forsake. [i](Sacrifice creatures with total toughness 3 or more.)[/i]",
+            "rules_text": "Haste\n{T}: Create a token that's a copy of target non-Ouphe creature you control. That token has haste. At the beginning of your next end step, forsake. [i](To forsake, sacrifice creatures with total toughness 3 or more.)[/i]",
             "flavor_text": "[i][/i]",
             "pt": "3/3",
             "special_text": "",
@@ -1430,9 +1430,9 @@
             "number": 246,
             "color_identity": "WBG",
             "cost": "{W}{B}{G}",
-            "rules_text": "Lifelink\nAt the beginning of each end step, you may discard a card. If you do, return Cherrywood Elite from your graveyard to the battlefield if you spent four or more mana on casting noncreature spells and/or paying for bloom costs this turn.",
+            "rules_text": "At the beginning of each end step, you may discard a card. If you do, return Cherrywood Elite from your graveyard to the battlefield if you spent four or more mana on casting noncreature spells and/or paying for bloom costs this turn.",
             "flavor_text": "[i][/i]",
-            "pt": "3/2",
+            "pt": "4/2",
             "special_text": "",
             "shape": "normal",
             "set": "HOD",
@@ -3738,7 +3738,7 @@
             "loyalty": "",
             "designer": "Zangy",
             "artist": "Andy Jaramillo",
-            "notes": "!tag Dewold\nLand Cycle\nHouse Phyre"
+            "notes": "!tag Dewold\nLand Cycle\nHouse Phyre\n!tag castle"
         },
         {
             "card_name": "Beachside Castle",
@@ -3757,7 +3757,7 @@
             "loyalty": "",
             "designer": "Zangy",
             "artist": "Andrew Mironov",
-            "notes": "!tag Dewold\n!tag Minna\nLand Cycle\nHouse Radcliff"
+            "notes": "!tag castle\n!tag Dewold\n!tag Minna\nLand Cycle\nHouse Radcliff"
         },
         {
             "card_name": "Castle of Death's Sting",
@@ -3776,7 +3776,7 @@
             "loyalty": "",
             "designer": "Zangy",
             "artist": "Andreas Rocha",
-            "notes": "!tag Dewold\n!tag Wulfric\nLand Cycle\nHouse Hook"
+            "notes": "!tag castle\n!tag Dewold\n!tag Wulfric\nLand Cycle\nHouse Hook"
         },
         {
             "card_name": "Castle of Shrouded Coasts",
@@ -3795,7 +3795,7 @@
             "loyalty": "",
             "designer": "Zangy",
             "artist": "Norbert Varga",
-            "notes": "!tag Dewold\n!tag Elias\nLand Cycle\nHouse Plaskett"
+            "notes": "!tag castle\n!tag Dewold\n!tag Elias\nLand Cycle\nHouse Plaskett"
         },
         {
             "card_name": "Cloudkissed Keep",
@@ -3814,7 +3814,7 @@
             "loyalty": "",
             "designer": "Zangy",
             "artist": "Hue Teo",
-            "notes": "!tag Dewold\n!tag Roul\nLand Cycle\nHouse Banefort"
+            "notes": "!tag castle\n!tag Dewold\n!tag Roul\nLand Cycle\nHouse Banefort"
         },
         {
             "card_name": "Hall of Flowing Streams",
@@ -3833,7 +3833,7 @@
             "loyalty": "",
             "designer": "Zangy",
             "artist": "Aleksandra Wojtas",
-            "notes": "!tag Dewold\nLand Cycle\nHouse Attwater"
+            "notes": "!tag castle\n!tag Dewold\nLand Cycle\nHouse Attwater"
         },
         {
             "card_name": "Riverdale Fortress",
@@ -3852,7 +3852,7 @@
             "loyalty": "",
             "designer": "Zangy",
             "artist": "David Honz",
-            "notes": "!tag Dewold\n!tag Oriel\nLand Cycle\nHouse Rivers"
+            "notes": "!tag castle\n!tag Dewold\n!tag Oriel\nLand Cycle\nHouse Rivers"
         },
         {
             "card_name": "Sandrock Castle",
@@ -3871,7 +3871,7 @@
             "loyalty": "",
             "designer": "Zangy",
             "artist": "Andrew Mironov",
-            "notes": "!tag Dewold\n!tag Conrad\nLand Cycle\nHouse Whitaker"
+            "notes": "!tag castle\n!tag Dewold\n!tag Conrad\nLand Cycle\nHouse Whitaker"
         },
         {
             "card_name": "Truetower Castle",
@@ -3890,7 +3890,7 @@
             "loyalty": "",
             "designer": "Zangy",
             "artist": "Roberto Robert",
-            "notes": "!tag Dewold\nLand Cycle\nHouse Perle"
+            "notes": "!tag castle\n!tag Dewold\nLand Cycle\nHouse Perle"
         },
         {
             "card_name": "Turnberry Citadel",
@@ -3909,7 +3909,7 @@
             "loyalty": "",
             "designer": "Zangy",
             "artist": "Florian Herold",
-            "notes": "!tag Dewold\nLand Cycle\nHouse Turnberry\n!tag Gosfridus"
+            "notes": "!tag castle\n!tag Dewold\nLand Cycle\nHouse Turnberry\n!tag Gosfridus"
         },
         {
             "card_name": "Dreadship Vessel",
@@ -4622,7 +4622,7 @@
             "number": 148,
             "color_identity": "R",
             "cost": "{3}{R}",
-            "rules_text": "As an additional cost to cast this spell, you may forsake. [i](Sacrifice creatures with total toughness 3 or more.)[/i]\nExile the top three cards of your library. You may play them until the end of your next turn. If Innocent Rendezvous was forsaken, add {R}{R}{R}{R}{R}.",
+            "rules_text": "As an additional cost to cast this spell, you may forsake. [i](To forsake, sacrifice creatures with total toughness 3 or more.)[/i]\nExile the top three cards of your library. You may play them until the end of your next turn. If Innocent Rendezvous was forsaken, add {R}{R}{R}{R}{R}.",
             "flavor_text": "[i][/i]",
             "pt": "",
             "special_text": "",
@@ -4755,7 +4755,7 @@
             "number": 4,
             "color_identity": "W",
             "cost": "{3}{W}",
-            "rules_text": "Flying\nBloom [i](Whenever you cast a spell that targets this permanent, you may pay that spell's mana cost. If you do, copy that spell. You may choose new targets for the copy.)[/i]",
+            "rules_text": "Flying\nBloom [i](Whenever you cast a spell that targets this creature, you may pay that spell's mana cost. If you do, copy that spell. You may choose new targets for the copy.)[/i]",
             "flavor_text": "[i]House Banefort fights a paradoxical war: they kill only for peace.[/i]",
             "pt": "3/3",
             "special_text": "",
@@ -5420,7 +5420,7 @@
             "number": 14,
             "color_identity": "W",
             "cost": "{W}",
-            "rules_text": "When Hopeful Spouse enters, choose a name. Create a 2/1 red Soldier creature token in your reserves. [i]({3}: Put up to three tokens from your reserves onto the battlefield. Activate only as a sorcery.)[/i]",
+            "rules_text": "When Hopeful Spouse enters, create a 2/1 red Soldier creature token in your reserves. [i]({3}: Put up to three tokens from your reserves onto the battlefield. Activate only as a sorcery.)[/i]",
             "flavor_text": "[i]\u201cI will always love you. When this petty squabble is over, I will return to you.\u201d\n\u2014Last in the letters to Bryanna[/i]",
             "pt": "1/1",
             "special_text": "",
@@ -5572,7 +5572,7 @@
             "number": 139,
             "color_identity": "R",
             "cost": "{4}{R}",
-            "rules_text": "Death's Sting Diplomacy deals 6 damage to target creature or planeswalker. If excess damage was dealt this way, create Weapon token in your reserves. [i]({3}: Put up to three tokens from your reserves onto the battlefield. Activate only as a sorcery.)[/i]",
+            "rules_text": "Death's Sting Diplomacy deals 6 damage to target creature or planeswalker. If excess damage was dealt this way, create a Weapon token in your reserves. [i]({3}: Put up to three tokens from your reserves onto the battlefield. Activate only as a sorcery.)[/i]",
             "flavor_text": "[i]House Hook doesn't wait for an answer.[/i]",
             "pt": "",
             "special_text": "",
@@ -5686,7 +5686,7 @@
             "number": 99,
             "color_identity": "B",
             "cost": "{5}{B}{B}",
-            "rules_text": "Lifelink\nWhen Mockery of Innocence enters, you may destroy target creature. You gain life equal to 8 minus that creature's mana value.",
+            "rules_text": "Lifelink\nWhen Mockery of Innocence enters, you may destroy target creature. If you do, you gain life equal to 8 minus that creature's mana value.",
             "flavor_text": "[i]\u201cMy armies don't need soldiers and swords. I have siege weapons.\u201d\n\u2014Gosfridus Turnberry[/i]",
             "pt": "7/5",
             "special_text": "",
@@ -5992,14 +5992,14 @@
             "cost": "",
             "rules_text": "Menace",
             "flavor_text": "[i][/i]",
-            "pt": "3/2",
+            "pt": "2/3",
             "special_text": "",
             "shape": "token",
             "set": "HOD",
             "loyalty": "",
             "designer": "Zangy",
             "artist": "Darantha",
-            "notes": "!tag Dewold\nRenowned Cycle\n!related Beckon Greatness; William's Page;"
+            "notes": "!tag Dewold\nRenowned Cycle\n!related Beckon Greatness;Call of the Rose;"
         },
         {
             "card_name": "The Diamond of the Nye",

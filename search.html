@@ -78,7 +78,7 @@
 		outline: 0;
 	}
 
-	button:disabled {
+	button:disabled, select:disabled {
 		cursor: auto;
 		background-color: var(--light-accent);
 		font-style: italic;
@@ -282,6 +282,31 @@
 		border: solid #777 3px;
 		margin-bottom: 70px;
 	}
+
+	.no-results {
+		display: none;
+		text-align: center;
+		padding-top: 100px;
+		padding-bottom: 100px;
+		width: 100%;
+	}
+	.no-results img {
+		width: 150px;
+		margin-bottom: 20px;
+		opacity: 0.4;
+		filter: drop-shadow(0 0 4px #000);
+	}
+	.no-results h1 {
+		font-family: Beleren;
+		color: color-mix(in srgb, var(--text-color), transparent 40%);
+		margin: 0;
+		font-size: 40px;
+	}
+	.no-results p {
+		color: color-mix(in srgb, var(--text-color), transparent 40%);
+		font-size: 18px;
+		margin-top: 10px;
+	}
 </style>
 
 
@@ -291,8 +316,10 @@
 		<div class="search-grid">
 			<a href="/"><img class="sg-logo" src="/img/banner.png"></a>
 			<img class="sg-icon" src="/img/header/search.png">
-			<input type="text" inputmode="search" placeholder="Search ..." name="search" id="search" spellcheck="false"
-				autocomplete="off" autocorrect="off" spellcheck="false">
+			<div style="position: relative; width: 100%;">
+				<input type="text" inputmode="search" placeholder="Search ..." name="search" id="search" spellcheck="false" autocomplete="off" autocorrect="off" spellcheck="false">
+				<div id="tag-dropdown" style="display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; border: 1px solid #d5d9d9; z-index: 1000; max-height: 200px; overflow-y: auto; color: black; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></div>
+			</div>
 			<a href="/all-sets"><img src="/img/header/sets.png" class="sg-icon">Sets</a>
 			<a href="/deckbuilder"><img src="/img/header/deck.png" class="sg-icon">Deckbuilder</a>
 			<a onclick="randomCard()"><img src="/img/random.png" class="sg-icon">Random</a>
@@ -349,6 +376,12 @@
 	</div>
 
 	<div class="image-grid-container" id="imagesOnlyGrid">
+	</div>
+
+	<div id="no-results" class="no-results">
+		<img src="/img/header/deck.png">
+		<h1>No cards found</h1>
+		<p>Your search didn't match any cards. Try adjusting your search terms.</p>
 	</div>
 
 	<div class="button-grid" id="footer">
@@ -413,6 +446,100 @@
 				.then(json => {
 					banlist = json;
 				}).catch(error => console.error('Error:', error));
+
+			
+			let all_tags = new Set();
+			card_list_arrayified.forEach(card => {
+				if (card.notes) {
+					const tagMatches = card.notes.matchAll(/!tag(?:<\w+>)?\s+([^\s\n\b]+)/g);
+					for (const match of tagMatches) {
+						if (match[0].includes('!tag<')) continue;
+						all_tags.add(match[1].replace(/;$/, ''));
+					}
+				}
+			});
+
+			const searchInput = document.getElementById("search");
+			const tagDropdown = document.getElementById("tag-dropdown");
+
+			// Create a mirror element for position calculation
+			const mirror = document.createElement("div");
+			Object.assign(mirror.style, {
+				position: "absolute",
+				visibility: "hidden",
+				whiteSpace: "pre",
+				font: getComputedStyle(searchInput).font,
+				padding: "0", // No padding for pure text measurement
+				border: "none",
+				boxSizing: "content-box"
+			});
+			document.body.appendChild(mirror);
+
+			if (searchInput && tagDropdown) {
+				tagDropdown.style.width = "auto";
+				tagDropdown.style.minWidth = "75px";
+				tagDropdown.style.maxWidth = "300px";
+				tagDropdown.style.maxHeight = "200px";
+				tagDropdown.style.overflowY = "auto";
+
+				const updateDropdown = function() {
+					const value = searchInput.value;
+					const cursorPosition = searchInput.selectionStart;
+					
+					// Find the tag: prefix immediately preceding the cursor
+					const lastTagIndex = value.substring(0, cursorPosition).lastIndexOf("tag:");
+					
+					if (lastTagIndex !== -1) {
+						const queryStart = lastTagIndex + 4;
+						const query = value.substring(queryStart, cursorPosition);
+						
+						if (!query.includes(" ")) {
+							const filteredTags = Array.from(all_tags).filter(tag => tag.toLowerCase().startsWith(query.toLowerCase())).sort();
+							if (filteredTags.length > 0) {
+								tagDropdown.innerHTML = "";
+								filteredTags.forEach(tag => {
+									const div = document.createElement("div");
+									div.innerText = tag;
+									div.style.padding = "5px 10px";
+									div.style.cursor = "pointer";
+									div.style.whiteSpace = "nowrap";
+									div.onmouseover = () => div.style.background = "#f0f0f0";
+									div.onmouseout = () => div.style.background = "white";
+									div.onclick = () => {
+										const newValue = value.substring(0, queryStart) + tag + " " + value.substring(cursorPosition);
+										searchInput.value = newValue;
+										tagDropdown.style.display = "none";
+										searchInput.focus();
+										const newCursorPos = queryStart + tag.length + 1;
+										searchInput.setSelectionRange(newCursorPos, newCursorPos);
+									};
+									tagDropdown.appendChild(div);
+								});
+
+								// Calculate position
+								mirror.textContent = value.substring(0, lastTagIndex + 4);
+								const textWidth = mirror.getBoundingClientRect().width;
+								const inputPaddingLeft = parseFloat(getComputedStyle(searchInput).paddingLeft) || 0;
+								
+								tagDropdown.style.left = Math.min(textWidth + inputPaddingLeft, searchInput.offsetWidth - tagDropdown.offsetWidth) + "px";
+								tagDropdown.style.display = "block";
+								return;
+							}
+						}
+					}
+					tagDropdown.style.display = "none";
+				};
+
+				searchInput.addEventListener("input", updateDropdown);
+				searchInput.addEventListener("click", updateDropdown);
+				searchInput.addEventListener("keyup", updateDropdown);
+
+				document.addEventListener("click", function(e) {
+					if (e.target !== searchInput && e.target !== tagDropdown) {
+						tagDropdown.style.display = "none";
+					}
+				});
+			}
 
 			if (sessionStorage.getItem("display") != "cards-only") {
 				cardGrid = document.getElementById("grid");
@@ -814,13 +941,13 @@
 		function compareFunction(a, b) {
 			const sortMode = document.getElementById("sort-by").value;
 
-			if (a.rarity.includes("masterpiece") && !b.rarity.includes("masterpiece")) {
-				return 1;
-			}
+			// if (a.rarity.includes("masterpiece") && !b.rarity.includes("masterpiece")) {
+			// 	return 1;
+			// }
 
-			if (!a.rarity.includes("masterpiece") && b.rarity.includes("masterpiece")) {
-				return -1;
-			}
+			// if (!a.rarity.includes("masterpiece") && b.rarity.includes("masterpiece")) {
+			// 	return -1;
+			// }
 
 			if (a.shape.includes("token") && !b.shape.includes("token")) {
 				return 1;
@@ -943,6 +1070,49 @@
 		}
 
 		function preSearch(setNewState) {
+			const searchTerms = document.getElementById("search").value.toLowerCase();
+			const tokens = tokenizeTerms(searchTerms) || [];
+			const sortBySelect = document.getElementById("sort-by");
+			const sortOrderSelect = document.getElementById("sort-order");
+
+			sortBySelect.disabled = false;
+			sortOrderSelect.disabled = false;
+
+			tokens.forEach(token => {
+				if (token.startsWith("sort:")) {
+					const val = token.substring(5);
+					const map = {
+						"name": "name",
+						"set": "set-code",
+						"mv": "mv",
+						"color": "color",
+						"rarity": "rarity",
+						"cube": "cube"
+					};
+					if (map[val]) {
+						const option = Array.from(sortBySelect.options).find(opt => opt.value === map[val]);
+						if (option) {
+							sortBySelect.value = map[val];
+							sortBySelect.disabled = true;
+						}
+					}
+				}
+				if (token.startsWith("direction:")) {
+					const val = token.substring(10);
+					const map = {
+						"asc": "ascending",
+						"desc": "descending"
+					};
+					if (map[val]) {
+						const option = Array.from(sortOrderSelect.options).find(opt => opt.value === map[val]);
+						if (option) {
+							sortOrderSelect.value = map[val];
+							sortOrderSelect.disabled = true;
+						}
+					}
+				}
+			});
+			
 			card_list_arrayified.sort(compareFunction);
 			if (document.getElementById("sort-order").value == "descending") {
 				card_list_arrayified.reverse();
@@ -1028,6 +1198,14 @@
 				document.getElementById("results-text").innerText = "";
 			}
 
+			if (search_results.length == 0) {
+				document.getElementById("no-results").style.display = "block";
+				document.getElementById("footer").style.display = "none";
+			} else {
+				document.getElementById("no-results").style.display = "none";
+				document.getElementById("footer").style.display = "grid";
+			}
+
 			if (page != 0) {
 				document.getElementById("prevBtn").disabled = false;
 				document.getElementById("prevBtn-footer").disabled = false;
@@ -1097,6 +1275,13 @@
 			if (tokens == null || tokens == '') {
 				return true;
 			}
+
+			tokens = tokens.filter(t => !t.startsWith("sort:") && !t.startsWith("direction:"));
+			if (tokens.length == 0)
+			{
+				return true;
+			}
+
 			for (let i = 0; i < tokens.length; i++) {
 				if (tokens[i].charAt(0) == '+') {
 					return await searchAllTokens(card, tokens.slice(0, i)) && await searchAllTokens(card, tokens.slice(i + 1));

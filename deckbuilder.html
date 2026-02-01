@@ -57,6 +57,7 @@
 			<li id="add-to-deck">Add to Deck</li>
 			<li id="add-to-sideboard">Add to Sideboard</li>
 			<li id="add-to-sanctum">Add to Sanctum</li>
+			<li id="open-in-new">Open in new tab</li>
 		</ul>
 	</div>
 	<input type="text" id="display" class="hidden" value="cards-and-text">
@@ -64,8 +65,11 @@
 	<div class="page-container">
 		<div class="search-container">
 			<div class="deckbuilder-search-grid popout">
-				<input type="text" inputmode="search" placeholder="Search ..." name="search" id="search"
-					spellcheck="false" autocomplete="off" autocorrect="off" spellcheck="false" class="popout">
+				<div style="position: relative; width: 100%;">
+					<input type="text" inputmode="search" placeholder="Search ..." name="search" id="search"
+						spellcheck="false" autocomplete="off" autocorrect="off" spellcheck="false" class="popout">
+					<div id="tag-dropdown" style="display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; border: 1px solid #d5d9d9; z-index: 1000; max-height: 200px; overflow-y: auto; color: black; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></div>
+				</div>
 				<div class="select-text">
 					<select name="sort-by" id="sort-by" class="popout">
 						<option value="name">Name</option>
@@ -309,6 +313,99 @@
 					sets_json = data;
 				}).catch(error => console.error('Error:', error));
 
+			let all_tags = new Set();
+			card_list_arrayified.forEach(card => {
+				if (card.notes) {
+					const tagMatches = card.notes.matchAll(/!tag(?:<\w+>)?\s+([^\s\n\b]+)/g);
+					for (const match of tagMatches) {
+						if (match[0].includes('!tag<')) continue;
+						all_tags.add(match[1].replace(/;$/, ''));
+					}
+				}
+			});
+
+			const searchInput = document.getElementById("search");
+			const tagDropdown = document.getElementById("tag-dropdown");
+
+			// Create a mirror element for position calculation
+			const mirror = document.createElement("div");
+			Object.assign(mirror.style, {
+				position: "absolute",
+				visibility: "hidden",
+				whiteSpace: "pre",
+				font: getComputedStyle(searchInput).font,
+				padding: "0", // No padding for pure text measurement
+				border: "none",
+				boxSizing: "content-box"
+			});
+			document.body.appendChild(mirror);
+
+			if (searchInput && tagDropdown) {
+				tagDropdown.style.width = "auto";
+				tagDropdown.style.minWidth = "75px";
+				tagDropdown.style.maxWidth = "300px";
+				tagDropdown.style.maxHeight = "200px";
+				tagDropdown.style.overflowY = "auto";
+
+				const updateDropdown = function() {
+					const value = searchInput.value;
+					const cursorPosition = searchInput.selectionStart;
+					
+					// Find the tag: prefix immediately preceding the cursor
+					const lastTagIndex = value.substring(0, cursorPosition).lastIndexOf("tag:");
+					
+					if (lastTagIndex !== -1) {
+						const queryStart = lastTagIndex + 4;
+						const query = value.substring(queryStart, cursorPosition);
+						
+						if (!query.includes(" ")) {
+							const filteredTags = Array.from(all_tags).filter(tag => tag.toLowerCase().startsWith(query.toLowerCase())).sort();
+							if (filteredTags.length > 0) {
+								tagDropdown.innerHTML = "";
+								filteredTags.forEach(tag => {
+									const div = document.createElement("div");
+									div.innerText = tag;
+									div.style.padding = "5px 10px";
+									div.style.cursor = "pointer";
+									div.style.whiteSpace = "nowrap";
+									div.onmouseover = () => div.style.background = "#f0f0f0";
+									div.onmouseout = () => div.style.background = "white";
+									div.onclick = () => {
+										const newValue = value.substring(0, queryStart) + tag + " " + value.substring(cursorPosition);
+										searchInput.value = newValue;
+										tagDropdown.style.display = "none";
+										searchInput.focus();
+										const newCursorPos = queryStart + tag.length + 1;
+										searchInput.setSelectionRange(newCursorPos, newCursorPos);
+									};
+									tagDropdown.appendChild(div);
+								});
+
+								// Calculate position
+								mirror.textContent = value.substring(0, lastTagIndex + 4);
+								const textWidth = mirror.getBoundingClientRect().width;
+								const inputPaddingLeft = parseFloat(getComputedStyle(searchInput).paddingLeft) || 0;
+								
+								tagDropdown.style.left = Math.min(textWidth + inputPaddingLeft, searchInput.offsetWidth - tagDropdown.offsetWidth) + "px";
+								tagDropdown.style.display = "block";
+								return;
+							}
+						}
+					}
+					tagDropdown.style.display = "none";
+				};
+
+				searchInput.addEventListener("input", updateDropdown);
+				searchInput.addEventListener("click", updateDropdown);
+				searchInput.addEventListener("keyup", updateDropdown);
+
+				document.addEventListener("click", function(e) {
+					if (e.target !== searchInput && e.target !== tagDropdown) {
+						tagDropdown.style.display = "none";
+					}
+				});
+			}
+
 			cardGrid = document.getElementById("imagesOnlyGrid");
 			card_list_arrayified.sort(compareFunction);
 
@@ -378,8 +475,11 @@
 			localStorage.setItem("colls.collections", JSON.stringify(colls));
 
 			if (localStorage.getItem("settings.autosave") == "On" && !deckURL && !window.fireimport) {
-				readDeckText(localStorage.getItem(localStorage.getItem("info.lastdeck")));
-				document.getElementById("deck-name").value = localStorage.getItem("info.lastdeck");
+				const deck = localStorage.getItem(localStorage.getItem("info.lastdeck"));
+				if (deck) {
+					readDeckText(deck);
+					document.getElementById("deck-name").value = localStorage.getItem("info.lastdeck");
+				}
 			}			
 
 			setGradient(localStorage.getItem("settings.gradient"));
@@ -671,6 +771,11 @@
 			// if the add to sanctum button in the right click menu is clicked, add the card to the deck, then hide the menu
 			addCardToSanctum(active_card);
 			contextMenu.style.display = "none";
+		});
+
+		document.getElementById("open-in-new").addEventListener("click", () => {
+			const card_stats = JSON.parse(active_card);
+			const w = window.open(`/card?set=${card_stats.set}&num=${card_stats.number}&name=${encodeURI(card_stats.card_name)}`, '_blank');
 		});
 
 		document.getElementById("display-select").addEventListener("change", function (event) {
@@ -1744,6 +1849,49 @@
 		}
 
 		function preSearch() {
+			const searchTerms = document.getElementById("search").value.toLowerCase();
+			const tokens = tokenizeTerms(searchTerms) || [];
+			const sortBySelect = document.getElementById("sort-by");
+			const sortOrderSelect = document.getElementById("sort-order");
+
+			sortBySelect.disabled = false;
+			sortOrderSelect.disabled = false;
+
+			tokens.forEach(token => {
+				if (token.startsWith("sort:")) {
+					const val = token.substring(5);
+					const map = {
+						"name": "name",
+						"set": "set-code",
+						"mv": "mv",
+						"color": "color",
+						"rarity": "rarity",
+						"cube": "cube"
+					};
+					if (map[val]) {
+						const option = Array.from(sortBySelect.options).find(opt => opt.value === map[val]);
+						if (option) {
+							sortBySelect.value = map[val];
+							sortBySelect.disabled = true;
+						}
+					}
+				}
+				if (token.startsWith("direction:")) {
+					const val = token.substring(10);
+					const map = {
+						"asc": "ascending",
+						"desc": "descending"
+					};
+					if (map[val]) {
+						const option = Array.from(sortOrderSelect.options).find(opt => opt.value === map[val]);
+						if (option) {
+							sortOrderSelect.value = map[val];
+							sortOrderSelect.disabled = true;
+						}
+					}
+				}
+			});
+
 			card_list_arrayified.sort(compareFunction);
 			if (document.getElementById("sort-order").value == "descending") {
 				card_list_arrayified.reverse();
@@ -1829,6 +1977,13 @@
 			if (tokens == null || tokens == '') {
 				return true;
 			}
+
+			tokens = tokens.filter(t => !t.startsWith("sort:") && !t.startsWith("direction:"));
+			if (tokens.length == 0)
+			{
+				return true;
+			}
+
 			for (let i = 0; i < tokens.length; i++) {
 				if (tokens[i].charAt(0) == '+') {
 					return searchAllTokens(card, tokens.slice(0, i)) && searchAllTokens(card, tokens.slice(i + 1));

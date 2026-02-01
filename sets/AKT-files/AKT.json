@@ -3,7 +3,7 @@
     "formats": "",
     "trimmed": "y",
     "image_type": "jpg",
-    "draft_structure": "cube",
+    "draft_structure": "play booster",
     "designer": "Myr",
     "cards": [
         {
@@ -1729,7 +1729,7 @@
             "loyalty": "",
             "designer": "Myr",
             "artist": "PlagueDaemon",
-            "notes": "BLUECOMMON\nCU16"
+            "notes": "BLUECOMMON\nCU16\n!tag CanonReprint"
         },
         {
             "card_name": "Drink Heresy",
@@ -1805,7 +1805,7 @@
             "loyalty": "",
             "designer": "Myr",
             "artist": "Edli Akolli",
-            "notes": "CG14\nGREENCOMMON"
+            "notes": "!tag CanonReprint\nCG14\nGREENCOMMON"
         },
         {
             "card_name": "Denizen of New Akella",
@@ -3204,7 +3204,7 @@
             "number": 106,
             "color_identity": "B",
             "cost": "{1}{B}",
-            "rules_text": "Flash, menace\nWhen Hired Bouncer enters, if it was cast, each player sacrifices a creature.",
+            "rules_text": "Flash, menace\nWhen Hired Bouncer enters, if you cast it, each player sacrifices a creature.",
             "flavor_text": "[i]\u201cLowly humans like us've got no chance in a fair fight with a callwolf. So convince them it's unfair.\u201d[/i]",
             "pt": "1/1",
             "special_text": "",
@@ -3223,7 +3223,7 @@
             "number": 115,
             "color_identity": "B",
             "cost": "{1}{B}{B}",
-            "rules_text": "When Mental Sewage enters, if it was cast, all creatures get -2/-2 until end of turn.\nWhenever a creature you control dies, you gain 1 life.",
+            "rules_text": "When Mental Sewage enters, if you cast it, all creatures get -2/-2 until end of turn.\nWhenever a creature you control dies, you gain 1 life.",
             "flavor_text": "[i][/i]",
             "pt": "",
             "special_text": "",
@@ -4165,7 +4165,7 @@
             "loyalty": "",
             "designer": "Myr",
             "artist": "MonoKubo",
-            "notes": "REDUNCOMMON\nUR10"
+            "notes": "!tag CanonReprint\nREDUNCOMMON\nUR10"
         },
         {
             "card_name": "Urdonsonder",
@@ -4479,7 +4479,7 @@
             "loyalty": "",
             "designer": "Myr",
             "artist": "Cui Xiaoyu",
-            "notes": ""
+            "notes": "!tag CanonReprint"
         },
         {
             "card_name": "Siege of Percitha",
@@ -4508,7 +4508,7 @@
             "number": 182,
             "color_identity": "G",
             "cost": "{1}{G}{G}",
-            "rules_text": "As Frail Friendship enters, choose two creature types.\nOnce each turn, when you cast a spell with only one of the chosen types, reveal cards from the top of your library until you reveal one that's the other type, put it into your hand, then shuffle.",
+            "rules_text": "As Frail Friendship enters, choose two creature types.\nOnce each turn, when you cast a spell with only one of the chosen types, you may reveal cards from the top of your library until you reveal one that's the other type, put it into your hand, then shuffle.",
             "flavor_text": "[i][/i]",
             "pt": "",
             "special_text": "",
@@ -5231,7 +5231,7 @@
             "number": 57,
             "color_identity": "U",
             "cost": "{3}{U}{U}",
-            "rules_text": "Flying\nWhen Gigant Nestcrafter enters, if it was cast, search your library for an artifact or enchantment card with mana value 3 or less, put it onto the battlefield, then shuffle.",
+            "rules_text": "Flying\nWhen Gigant Nestcrafter enters, if you cast it, search your library for an artifact or enchantment card with mana value 3 or less, put it onto the battlefield, then shuffle.",
             "flavor_text": "[i][/i]",
             "pt": "4/2",
             "special_text": "",

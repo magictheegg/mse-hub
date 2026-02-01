@@ -493,7 +493,7 @@
 		{
 			"name": "Holt Sleeper",
 			"rarity": "uncommon",
-			"mana_cost": "{W}",
+			"mana_cost": "{1}{W}",
 			"type": "Creature — Elk",
 			"collector_number": "18",
 			"image_uris": {
@@ -703,7 +703,7 @@
 		{
 			"name": "Ageless Wayfarer",
 			"rarity": "rare",
-			"mana_cost": "{1}{G}",
+			"mana_cost": "{2}{G}",
 			"type": "Creature — Demigod Ranger",
 			"collector_number": "144",
 			"image_uris": {
@@ -773,7 +773,7 @@
 		{
 			"name": "Corrupted Wish",
 			"rarity": "uncommon",
-			"mana_cost": "{1}{B}",
+			"mana_cost": "{2}{B}",
 			"type": "Instant",
 			"collector_number": "82",
 			"image_uris": {
@@ -1850,7 +1850,7 @@
 		{
 			"name": "Conceptual Digestion",
 			"rarity": "rare",
-			"mana_cost": "{B}{R}{G}{W}",
+			"mana_cost": "{2}{B}{R}{G}{W}",
 			"type": "Kindred Sorcery — Wonder",
 			"collector_number": "184",
 			"image_uris": {

@@ -1,6 +1,0 @@
-[
-	{ "name": "rare", "count": 1, "balanced": true, "custom": false, "filtered": false },
-	{ "name": "uncommon", "count": 3, "balanced": true, "custom": false, "filtered": false },
-	{ "name": "common", "count": 10, "balanced": true, "custom": false, "filtered": false },
-	{ "name": "texture", "count": 1, "custom": false, "balanced": false, "filtered": false, "customFilter": true, "filter": ["type", "Texture"] }
-]

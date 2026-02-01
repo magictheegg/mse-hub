@@ -99,7 +99,7 @@ button:focus {
 	outline: 0;
 }
 
-button:disabled {
+button:disabled, select:disabled {
 	cursor: auto;
 	background-color: var(--light-accent);
 	font-style: italic;

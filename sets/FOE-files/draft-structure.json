@@ -1,6 +1,0 @@
-[
-	{ "name": "rare",     "count": 1, "balanced": "b", "custom": false, "filtered": false },
-	{ "name": "uncommon", "count": 4, "balanced": "b", "custom": false, "filtered": false },
-	{ "name": "common",   "count": 7, "balanced": "b", "custom": false, "filtered": false },
-	{ "name": "wildcard", "count": 2, "balanced": "w", "custom": false, "filtered": false }
-]

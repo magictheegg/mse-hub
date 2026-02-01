@@ -242,7 +242,7 @@
             "number": 40,
             "color_identity": "U",
             "cost": "{U}",
-            "rules_text": "Flying\nWhen Deepmind Oracle enters, surveil X, where X is its power.\nIterate",
+            "rules_text": "Flying\nWhen Deepmind Oracle enters, surveil X, where X is its power.\nIterate [i](When this enters, conjure a colorless {6} 4/4 artifact creature version of it without iterate into your hand.)[/i]",
             "flavor_text": "[i][/i]",
             "pt": "1/1",
             "special_text": "",

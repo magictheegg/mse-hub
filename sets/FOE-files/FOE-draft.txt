@@ -5,9 +5,9 @@
 			"rarity": "common",
 			"mana_cost": "{2}",
 			"type": "Artifact",
-			"collector_number": "336",
+			"collector_number": "335",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/336_Rustic Cultivator.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/335_Rustic Cultivator.jpg"
 			}
 		},
 		{
@@ -1527,9 +1527,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}{C}{W}",
 			"type": "Creature — Faerie Dog",
-			"collector_number": "312",
+			"collector_number": "311",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/312_Morraire Shimmer Patrol.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/311_Morraire Shimmer Patrol.jpg"
 			}
 		},
 		{
@@ -1537,9 +1537,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{4}{C}{W}",
 			"type": "Creature — Wurm Cleric",
-			"collector_number": "284",
+			"collector_number": "283",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/284_Coiling Jailer.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/283_Coiling Jailer.jpg"
 			}
 		},
 		{
@@ -1547,9 +1547,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{R}{W}",
 			"type": "Creature — Wurm Human Soldier",
-			"collector_number": "324",
+			"collector_number": "323",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/324_Sisters in Sorrow.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/323_Sisters in Sorrow.jpg"
 			}
 		},
 		{
@@ -1557,9 +1557,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{3}{R}{W}",
 			"type": "Creature — Human Shaman",
-			"collector_number": "291",
+			"collector_number": "290",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/291_Feather Piper.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/290_Feather Piper.jpg"
 			}
 		},
 		{
@@ -1567,9 +1567,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{G}{W}",
 			"type": "Creature — Human Druid",
-			"collector_number": "329",
+			"collector_number": "328",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/329_Whisperer of the Paths.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/328_Whisperer of the Paths.jpg"
 			}
 		},
 		{
@@ -1577,9 +1577,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}{G}{W}",
 			"type": "Kindred Enchantment — Cat Entity",
-			"collector_number": "326",
+			"collector_number": "325",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/326_Sunlace Panthera.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/325_Sunlace Panthera.jpg"
 			}
 		},
 		{
@@ -1587,9 +1587,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{3}{W}{U}",
 			"type": "Enchantment Creature — Icon",
-			"collector_number": "322",
+			"collector_number": "321",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/322_Shadow of Grace.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/321_Shadow of Grace.jpg"
 			}
 		},
 		{
@@ -1597,9 +1597,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{W}{U}",
 			"type": "Artifact",
-			"collector_number": "304",
+			"collector_number": "303",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/304_Latent Powerstone.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/303_Latent Powerstone.jpg"
 			}
 		},
 		{
@@ -1607,9 +1607,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}{W}{B}",
 			"type": "Enchantment",
-			"collector_number": "318",
+			"collector_number": "317",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/318_Pathward Riftcalling.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/317_Pathward Riftcalling.jpg"
 			}
 		},
 		{
@@ -1617,9 +1617,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}{W}{B}",
 			"type": "Enchantment Creature — Demon",
-			"collector_number": "308",
+			"collector_number": "307",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/308_Menithel Demon.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/307_Menithel Demon.jpg"
 			}
 		},
 		{
@@ -1627,9 +1627,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{3}{C}{R}",
 			"type": "Creature — Drake",
-			"collector_number": "285",
+			"collector_number": "284",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/285_Cydina Storm Drake.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/284_Cydina Storm Drake.jpg"
 			}
 		},
 		{
@@ -1637,9 +1637,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{1}{C}{R}",
 			"type": "Creature — Jellyfish Snail",
-			"collector_number": "292",
+			"collector_number": "291",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/292_Flowsnail.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/291_Flowsnail.jpg"
 			}
 		},
 		{
@@ -1647,9 +1647,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{1}{R}{G}",
 			"type": "Creature — Bear Shaman Warrior",
-			"collector_number": "311",
+			"collector_number": "310",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/311_Mordel Spiritcaller.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/310_Mordel Spiritcaller.jpg"
 			}
 		},
 		{
@@ -1657,9 +1657,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{3}{R}{G}",
 			"type": "Creature — Human Elf Warrior",
-			"collector_number": "298",
+			"collector_number": "297",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/298_Ignelscor Frontliner.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/297_Ignelscor Frontliner.jpg"
 			}
 		},
 		{
@@ -1667,9 +1667,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{C}{G}",
 			"type": "Enchantment",
-			"collector_number": "320",
+			"collector_number": "319",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/320_Promise of Hunger.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/319_Promise of Hunger.jpg"
 			}
 		},
 		{
@@ -1677,9 +1677,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}{C}{G}",
 			"type": "Creature — Human Wolf Scout",
-			"collector_number": "279",
+			"collector_number": "278",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/279_Balutr Runners.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/278_Balutr Runners.jpg"
 			}
 		},
 		{
@@ -1687,9 +1687,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{C}{U}",
 			"type": "Creature — Human Noble",
-			"collector_number": "287",
+			"collector_number": "286",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/287_Drake Mentor.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/286_Drake Mentor.jpg"
 			}
 		},
 		{
@@ -1697,9 +1697,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}{C}{U}",
 			"type": "Creature — Chimera",
-			"collector_number": "281",
+			"collector_number": "280",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/281_Boundless Flight.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/280_Boundless Flight.jpg"
 			}
 		},
 		{
@@ -1707,9 +1707,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}{U}{R}",
 			"type": "Kindred Enchantment — Fish Entity",
-			"collector_number": "328",
+			"collector_number": "327",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/328_Upsurge Nemato-Gnathi.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/327_Upsurge Nemato-Gnathi.jpg"
 			}
 		},
 		{
@@ -1717,9 +1717,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}{U}{R}",
 			"type": "Creature — Human Wizard",
-			"collector_number": "288",
+			"collector_number": "287",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/288_Duraval Starmapper.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/287_Duraval Starmapper.jpg"
 			}
 		},
 		{
@@ -1727,9 +1727,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{1}{G}{U}",
 			"type": "Creature — Human Elf",
-			"collector_number": "302",
+			"collector_number": "301",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/302_Kaln-Ocean Harmonizer.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/301_Kaln-Ocean Harmonizer.jpg"
 			}
 		},
 		{
@@ -1737,9 +1737,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}{G}{U}",
 			"type": "Creature — Human Elf Warrior",
-			"collector_number": "317",
+			"collector_number": "316",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/317_Outlands Duelists.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/316_Outlands Duelists.jpg"
 			}
 		},
 		{
@@ -1747,9 +1747,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}{U}{B}",
 			"type": "Creature — Cat Scout",
-			"collector_number": "307",
+			"collector_number": "306",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/307_Meirel Pathrunner.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/306_Meirel Pathrunner.jpg"
 			}
 		},
 		{
@@ -1757,9 +1757,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}{U}{B}",
 			"type": "Enchantment Creature — Icon Warlock",
-			"collector_number": "327",
+			"collector_number": "326",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/327_Those Lost in the Paths.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/326_Those Lost in the Paths.jpg"
 			}
 		},
 		{
@@ -1767,9 +1767,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}{C}{B}",
 			"type": "Creature — Fish Spirit",
-			"collector_number": "282",
+			"collector_number": "281",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/282_Calamitous Koi.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/281_Calamitous Koi.jpg"
 			}
 		},
 		{
@@ -1777,9 +1777,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}{C}{B}",
 			"type": "Creature — Angel Reflection",
-			"collector_number": "315",
+			"collector_number": "314",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/315_Omen of Hunger.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/314_Omen of Hunger.jpg"
 			}
 		},
 		{
@@ -1787,9 +1787,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{1}{B}{R}",
 			"type": "Enchantment Creature — Icon Cleric",
-			"collector_number": "276",
+			"collector_number": "275",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/276_Ardent Grief.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/275_Ardent Grief.jpg"
 			}
 		},
 		{
@@ -1797,19 +1797,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{1}{B}{R}",
 			"type": "Creature — Human Elf Wizard",
-			"collector_number": "299",
+			"collector_number": "298",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/299_Ignelscor Weaver.jpg"
-			}
-		},
-		{
-			"name": "Guardian of the Cinders",
-			"rarity": "uncommon",
-			"mana_cost": "",
-			"type": "Enchantment Creature — Icon Warlock",
-			"collector_number": "275",
-			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/275_Guardian of the Cinders.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/298_Ignelscor Weaver.jpg"
 			}
 		},
 		{
@@ -1817,9 +1807,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{3}{B}{G}",
 			"type": "Creature — Horror Cleric",
-			"collector_number": "313",
+			"collector_number": "312",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/313_Mourncast Disciple.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/312_Mourncast Disciple.jpg"
 			}
 		},
 		{
@@ -1827,16 +1817,16 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}{B}{G}",
 			"type": "Battle — Siege",
-			"collector_number": "321",
+			"collector_number": "320",
 			"back": {
 				"name": "",
 				"type": "",
 				"image_uris": {
-					"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/321_Remnants of the War_back.jpg"
+					"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/320_Remnants of the War_back.jpg"
 				}
 			},
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/321_Remnants of the War_front.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/320_Remnants of the War_front.jpg"
 			}
 		},
 		{
@@ -1874,9 +1864,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{3}",
 			"type": "Artifact",
-			"collector_number": "333",
+			"collector_number": "332",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/333_Drakesteel Effigy.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/332_Drakesteel Effigy.jpg"
 			}
 		},
 		{
@@ -1884,9 +1874,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}",
 			"type": "Artifact — Equipment",
-			"collector_number": "332",
+			"collector_number": "331",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/332_Clerics Claymore.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/331_Clerics Claymore.jpg"
 			}
 		},
 		{
@@ -2014,9 +2004,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Basic Land — Fault",
-			"collector_number": "374",
+			"collector_number": "373",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/374_Fault.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/373_Fault.jpg"
 			}
 		},
 		{
@@ -2034,9 +2024,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Basic Land — Fault",
-			"collector_number": "376",
+			"collector_number": "374",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/376_Fault.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/374_Fault.jpg"
 			}
 		},
 		{
@@ -2044,29 +2034,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Basic Land — Fault",
-			"collector_number": "377",
+			"collector_number": "376",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/377_Fault.jpg"
-			}
-		},
-		{
-			"name": "Forest",
-			"rarity": "common",
-			"mana_cost": "",
-			"type": "Basic Land — Forest",
-			"collector_number": "371",
-			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/371_Forest.jpg"
-			}
-		},
-		{
-			"name": "Forest",
-			"rarity": "common",
-			"mana_cost": "",
-			"type": "Basic Land — Forest",
-			"collector_number": "373",
-			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/373_Forest.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/376_Fault.jpg"
 			}
 		},
 		{
@@ -2084,9 +2054,29 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Basic Land — Forest",
+			"collector_number": "371",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/371_Forest.jpg"
+			}
+		},
+		{
+			"name": "Forest",
+			"rarity": "common",
+			"mana_cost": "",
+			"type": "Basic Land — Forest",
 			"collector_number": "370",
 			"image_uris": {
 				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/370_Forest.jpg"
+			}
+		},
+		{
+			"name": "Forest",
+			"rarity": "common",
+			"mana_cost": "",
+			"type": "Basic Land — Forest",
+			"collector_number": "369",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/369_Forest.jpg"
 			}
 		},
 		{
@@ -2094,9 +2084,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Basic Land — Island",
-			"collector_number": "359",
+			"collector_number": "357",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/359_Island.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/357_Island.jpg"
 			}
 		},
 		{
@@ -2114,9 +2104,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Basic Land — Island",
-			"collector_number": "361",
+			"collector_number": "359",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/361_Island.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/359_Island.jpg"
 			}
 		},
 		{
@@ -2134,9 +2124,19 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Basic Land — Mountain",
-			"collector_number": "368",
+			"collector_number": "365",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/368_Mountain.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/365_Mountain.jpg"
+			}
+		},
+		{
+			"name": "Mountain",
+			"rarity": "common",
+			"mana_cost": "",
+			"type": "Basic Land — Mountain",
+			"collector_number": "366",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/366_Mountain.jpg"
 			}
 		},
 		{
@@ -2154,19 +2154,19 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Basic Land — Mountain",
-			"collector_number": "369",
+			"collector_number": "368",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/369_Mountain.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/368_Mountain.jpg"
 			}
 		},
 		{
-			"name": "Mountain",
+			"name": "Plains",
 			"rarity": "common",
 			"mana_cost": "",
-			"type": "Basic Land — Mountain",
-			"collector_number": "366",
+			"type": "Basic Land — Plains",
+			"collector_number": "353",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/366_Mountain.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/353_Plains.jpg"
 			}
 		},
 		{
@@ -2184,9 +2184,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Basic Land — Plains",
-			"collector_number": "357",
+			"collector_number": "355",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/357_Plains.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/355_Plains.jpg"
 			}
 		},
 		{
@@ -2200,13 +2200,13 @@
 			}
 		},
 		{
-			"name": "Plains",
+			"name": "Swamp",
 			"rarity": "common",
 			"mana_cost": "",
-			"type": "Basic Land — Plains",
-			"collector_number": "355",
+			"type": "Basic Land — Swamp",
+			"collector_number": "362",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/355_Plains.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/362_Swamp.jpg"
 			}
 		},
 		{
@@ -2224,16 +2224,6 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Basic Land — Swamp",
-			"collector_number": "365",
-			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/365_Swamp.jpg"
-			}
-		},
-		{
-			"name": "Swamp",
-			"rarity": "common",
-			"mana_cost": "",
-			"type": "Basic Land — Swamp",
 			"collector_number": "364",
 			"image_uris": {
 				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/364_Swamp.jpg"
@@ -2244,9 +2234,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Basic Land — Swamp",
-			"collector_number": "362",
+			"collector_number": "361",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/362_Swamp.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/361_Swamp.jpg"
 			}
 		},
 		{
@@ -2661,9 +2651,9 @@
 			"rarity": "mythic",
 			"mana_cost": "",
 			"type": "Land",
-			"collector_number": "353",
+			"collector_number": "352",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/353_Tavern Sanctum.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/352_Tavern Sanctum.jpg"
 			}
 		},
 		{
@@ -3477,9 +3467,9 @@
 			"rarity": "rare",
 			"mana_cost": "{9}",
 			"type": "Artifact",
-			"collector_number": "334",
+			"collector_number": "333",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/334_Extraplanar Portal.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/333_Extraplanar Portal.jpg"
 			}
 		},
 		{
@@ -3497,9 +3487,9 @@
 			"rarity": "rare",
 			"mana_cost": "{3}{R}{W}",
 			"type": "Legendary Enchantment — Wurm Entity",
-			"collector_number": "303",
+			"collector_number": "302",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/303_Korna, Adventuring Historian.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/302_Korna, Adventuring Historian.jpg"
 			}
 		},
 		{
@@ -3507,9 +3497,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{R}{G}",
 			"type": "Legendary Planeswalker — Zoslera",
-			"collector_number": "330",
+			"collector_number": "329",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/330_Zoslera, Exiled Visionary.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/329_Zoslera, Exiled Visionary.jpg"
 			}
 		},
 		{
@@ -3537,9 +3527,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{U}{R}{W}",
 			"type": "Legendary Creature — Angel",
-			"collector_number": "277",
+			"collector_number": "276",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/277_Aurel, Born Through Discord.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/276_Aurel, Born Through Discord.jpg"
 			}
 		},
 		{
@@ -3567,9 +3557,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{G}{U}",
 			"type": "Creature — Fish Wizard",
-			"collector_number": "325",
+			"collector_number": "324",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/325_Skyskif Flying Fish.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/324_Skyskif Flying Fish.jpg"
 			}
 		},
 		{
@@ -3577,9 +3567,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{U}{B}{R}",
 			"type": "Legendary Creature — Phoenix",
-			"collector_number": "294",
+			"collector_number": "293",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/294_Gael, Spiteflame Phoenix.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/293_Gael, Spiteflame Phoenix.jpg"
 			}
 		},
 		{
@@ -3587,9 +3577,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{W}{B}",
 			"type": "Legendary Planeswalker — Jothi",
-			"collector_number": "301",
+			"collector_number": "300",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/301_Jothi, Awakened Flock.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/300_Jothi, Awakened Flock.jpg"
 			}
 		},
 		{
@@ -3657,9 +3647,9 @@
 			"rarity": "rare",
 			"mana_cost": "{U}{B}",
 			"type": "Creature — Shark",
-			"collector_number": "300",
+			"collector_number": "299",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/300_Ikorian Skyshark.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/299_Ikorian Skyshark.jpg"
 			}
 		},
 		{
@@ -3807,9 +3797,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{C}{W}{U}",
 			"type": "Legendary Creature — Human Wizard",
-			"collector_number": "283",
+			"collector_number": "282",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/283_Cerise, Augur of Flow.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/282_Cerise, Augur of Flow.jpg"
 			}
 		},
 		{
@@ -3817,9 +3807,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}",
 			"type": "Artifact",
-			"collector_number": "335",
+			"collector_number": "334",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/335_Realmshaper.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/334_Realmshaper.jpg"
 			}
 		},
 		{
@@ -3827,9 +3817,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}",
 			"type": "Artifact",
-			"collector_number": "331",
+			"collector_number": "330",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/331_Campsite.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/330_Campsite.jpg"
 			}
 		},
 		{
@@ -3867,9 +3857,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{W}{U}",
 			"type": "Legendary Planeswalker — Heng",
-			"collector_number": "295",
+			"collector_number": "294",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/295_Heng Hien, Reifer of Justice.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/294_Heng Hien, Reifer of Justice.jpg"
 			}
 		},
 		{
@@ -4113,9 +4103,9 @@
 			"rarity": "mythic",
 			"mana_cost": "",
 			"type": "Land — Spire",
-			"collector_number": "352",
+			"collector_number": "351",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/352_Shifting Spire.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/351_Shifting Spire.jpg"
 			}
 		},
 		{
@@ -4143,9 +4133,9 @@
 			"rarity": "common",
 			"mana_cost": "{2}{C/G}",
 			"type": "Creature — Plant",
-			"collector_number": "289",
+			"collector_number": "288",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/289_Experience Cultivator.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/288_Experience Cultivator.jpg"
 			}
 		},
 		{
@@ -4243,9 +4233,9 @@
 			"rarity": "rare",
 			"mana_cost": "{G}{W}",
 			"type": "Artifact",
-			"collector_number": "296",
+			"collector_number": "295",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/296_Idol of Reconstruction.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/295_Idol of Reconstruction.jpg"
 			}
 		},
 		{
@@ -4273,9 +4263,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "",
 			"type": "Land",
-			"collector_number": "337",
+			"collector_number": "336",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/337_Abandoned Sanctum.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/336_Abandoned Sanctum.jpg"
 			}
 		},
 		{
@@ -4293,9 +4283,9 @@
 			"rarity": "rare",
 			"mana_cost": "{C}{U}{B}",
 			"type": "Instant",
-			"collector_number": "278",
+			"collector_number": "277",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/278_Avlod Charm.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/277_Avlod Charm.jpg"
 			}
 		},
 		{
@@ -4313,9 +4303,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{C}{G}{U}",
 			"type": "Enchantment",
-			"collector_number": "319",
+			"collector_number": "318",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/319_Personal Sins.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/318_Personal Sins.jpg"
 			}
 		},
 		{
@@ -4323,9 +4313,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{B}{R}",
 			"type": "Creature — Dinosaur Advisor",
-			"collector_number": "280",
+			"collector_number": "279",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/280_Bone Salesman.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/279_Bone Salesman.jpg"
 			}
 		},
 		{
@@ -4333,9 +4323,9 @@
 			"rarity": "rare",
 			"mana_cost": "{C}{R}{G}",
 			"type": "Instant",
-			"collector_number": "310",
+			"collector_number": "309",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/310_Mordel Charm.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/309_Mordel Charm.jpg"
 			}
 		},
 		{
@@ -4343,9 +4333,9 @@
 			"rarity": "rare",
 			"mana_cost": "{C}{W}{U}",
 			"type": "Instant",
-			"collector_number": "290",
+			"collector_number": "289",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/290_Fadove Charm.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/289_Fadove Charm.jpg"
 			}
 		},
 		{
@@ -4353,9 +4343,9 @@
 			"rarity": "rare",
 			"mana_cost": "{4}{W}{U}",
 			"type": "Creature — Dinosaur Soldier Advisor",
-			"collector_number": "305",
+			"collector_number": "304",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/305_Longneck Marketwatch.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/304_Longneck Marketwatch.jpg"
 			}
 		},
 		{
@@ -4383,9 +4373,9 @@
 			"rarity": "rare",
 			"mana_cost": "{G}{W}",
 			"type": "Creature — Dinosaur Advisor",
-			"collector_number": "306",
+			"collector_number": "305",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/306_Market Negotiator.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/305_Market Negotiator.jpg"
 			}
 		},
 		{
@@ -4423,9 +4413,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Frontier",
-			"collector_number": "344",
+			"collector_number": "343",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/344_Burgeoning Town.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/343_Burgeoning Town.jpg"
 			}
 		},
 		{
@@ -4433,9 +4423,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Frontier",
-			"collector_number": "339",
+			"collector_number": "338",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/339_Burgeoning Mindscape.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/338_Burgeoning Mindscape.jpg"
 			}
 		},
 		{
@@ -4443,9 +4433,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Frontier",
-			"collector_number": "342",
+			"collector_number": "341",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/342_Burgeoning Pith.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/341_Burgeoning Pith.jpg"
 			}
 		},
 		{
@@ -4453,9 +4443,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Frontier",
-			"collector_number": "343",
+			"collector_number": "342",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/343_Burgeoning Rockfall.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/342_Burgeoning Rockfall.jpg"
 			}
 		},
 		{
@@ -4463,9 +4453,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Frontier",
-			"collector_number": "338",
+			"collector_number": "337",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/338_Burgeoning Jungle.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/337_Burgeoning Jungle.jpg"
 			}
 		},
 		{
@@ -4473,9 +4463,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Frontier",
-			"collector_number": "341",
+			"collector_number": "340",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/341_Burgeoning Peaks.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/340_Burgeoning Peaks.jpg"
 			}
 		},
 		{
@@ -4483,9 +4473,9 @@
 			"rarity": "rare",
 			"mana_cost": "",
 			"type": "Land — Frontier",
-			"collector_number": "340",
+			"collector_number": "339",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/340_Burgeoning Path.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/339_Burgeoning Path.jpg"
 			}
 		},
 		{
@@ -4493,9 +4483,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Land",
-			"collector_number": "345",
+			"collector_number": "344",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/345_Drifting Crevasse.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/344_Drifting Crevasse.jpg"
 			}
 		},
 		{
@@ -4503,9 +4493,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Land",
-			"collector_number": "346",
+			"collector_number": "345",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/346_Drifting Field.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/345_Drifting Field.jpg"
 			}
 		},
 		{
@@ -4513,9 +4503,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Land",
-			"collector_number": "347",
+			"collector_number": "346",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/347_Drifting Isle.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/346_Drifting Isle.jpg"
 			}
 		},
 		{
@@ -4523,9 +4513,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Land",
-			"collector_number": "348",
+			"collector_number": "347",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/348_Drifting Jungle.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/347_Drifting Jungle.jpg"
 			}
 		},
 		{
@@ -4533,9 +4523,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Land",
-			"collector_number": "349",
+			"collector_number": "348",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/349_Drifting Mire.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/348_Drifting Mire.jpg"
 			}
 		},
 		{
@@ -4543,9 +4533,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Land",
-			"collector_number": "350",
+			"collector_number": "349",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/350_Drifting Peak.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/349_Drifting Peak.jpg"
 			}
 		},
 		{
@@ -4553,9 +4543,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Land",
-			"collector_number": "351",
+			"collector_number": "350",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/351_Drifting Sands.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/350_Drifting Sands.jpg"
 			}
 		},
 		{
@@ -4573,9 +4563,9 @@
 			"rarity": "rare",
 			"mana_cost": "{C}{G}{W}",
 			"type": "Instant",
-			"collector_number": "286",
+			"collector_number": "285",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/286_Deino Charm.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/285_Deino Charm.jpg"
 			}
 		},
 		{
@@ -4583,9 +4573,9 @@
 			"rarity": "rare",
 			"mana_cost": "{C}{B}{R}",
 			"type": "Instant",
-			"collector_number": "297",
+			"collector_number": "296",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/297_Ignelscor Charm.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/296_Ignelscor Charm.jpg"
 			}
 		},
 		{
@@ -4620,9 +4610,9 @@
 			"rarity": "rare",
 			"mana_cost": "{U}{B}",
 			"type": "Legendary Creature — Bird Advisor",
-			"collector_number": "323",
+			"collector_number": "322",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/323_Shivta, Vinimroth's Blade.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/322_Shivta, Vinimroth's Blade.jpg"
 			}
 		},
 		{
@@ -4630,9 +4620,9 @@
 			"rarity": "common",
 			"mana_cost": "{U}{B}",
 			"type": "",
-			"collector_number": "293",
+			"collector_number": "292",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/293_Flying Counter.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/292_Flying Counter.jpg"
 			}
 		},
 		{
@@ -4650,9 +4640,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{B}{G}",
 			"type": "Legendary Creature — Human Nomad",
-			"collector_number": "314",
+			"collector_number": "313",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/314_Numa, On Hope's Trail.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/313_Numa, On Hope's Trail.jpg"
 			}
 		},
 		{
@@ -4790,9 +4780,9 @@
 			"rarity": "rare",
 			"mana_cost": "{C}{U}{B}",
 			"type": "Legendary Planeswalker — Pramma",
-			"collector_number": "316",
+			"collector_number": "315",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/316_Oracle of Multaph.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/315_Oracle of Multaph.jpg"
 			}
 		},
 		{
@@ -4840,9 +4830,9 @@
 			"rarity": "rare",
 			"mana_cost": "{4}{U}{R}",
 			"type": "Legendary Planeswalker — Miori",
-			"collector_number": "309",
+			"collector_number": "308",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/309_Miori, Outlands Future.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/FOE-files/img/308_Miori, Outlands Future.jpg"
 			}
 		},
 		{
@@ -5062,7 +5052,6 @@
 	4 Omen of Hunger
 	4 Ardent Grief
 	4 Ignelscor Weaver
-	4 Guardian of the Cinders
 	4 Mourncast Disciple
 	4 Remnants of the War
 	4 Monument to Forever
@@ -5457,7 +5446,6 @@
 	15 Omen of Hunger
 	15 Ardent Grief
 	15 Ignelscor Weaver
-	15 Guardian of the Cinders
 	15 Mourncast Disciple
 	15 Remnants of the War
 	15 Monument to Forever

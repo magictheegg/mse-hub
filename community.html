@@ -239,7 +239,7 @@
 				q = query(collection(db, "events"));
 				all_events_docs = await getDocs(q);
 				all_events = [];
-				
+
 				all_users_docs.forEach((doc) => {
 					const data = doc.data();
 					all_users.push(data);
@@ -349,7 +349,7 @@
 			}
 
 			deck_preview.onclick = function () {
-				window.location.href = deck.url;
+				window.location.href = deck.url.replaceAll('deckbuilder', 'deck');
 			}
 
 			deck_preview.style.cursor = "pointer";

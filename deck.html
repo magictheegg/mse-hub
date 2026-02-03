@@ -540,6 +540,9 @@
 		document.getElementById("format-select").onchange = reload;
 
 		async function reload() {
+			localStorage.setItem('settings.deck.displayas', document.getElementById("displayed-as").value);
+			localStorage.setItem('settings.deck.sorttype', document.getElementById("sort-type").value);
+			localStorage.setItem('settings.deck.format', document.getElementById("format-select").value);
 			document.getElementById("deck-container").innerHTML = "";
 
 			const urlParams = new URLSearchParams(window.location.search);
@@ -1258,6 +1261,10 @@
 				]
 			];
 		}
+
+		document.getElementById("displayed-as").value = localStorage.getItem('settings.deck.displayas') || 'nstacks';
+		document.getElementById("sort-type").value = localStorage.getItem('settings.deck.sorttype') || 'mv';
+		document.getElementById("format-select").value = localStorage.getItem('settings.deck.format') || 'current';
 
 		reload();
 	</script>

@@ -70,13 +70,13 @@
 }
 
 .related a {
-	color: #1338be;
+	color: var(--link);
 	text-decoration: none;
 	transition: 0.2s;
 }
 
 .related a:hover {
-	color: #0492c2;
+	color: color-mix(in srgb, var(--link), cyan 40%);
 }
 
 .card-text .printings {
@@ -91,13 +91,13 @@
 }
 
 .printings a:not(.current-printing) {
-	color: #1338be;
+	color: var(--link);
 	text-decoration: none;
 	transition: 0.2s;
 }
 
 .printings a:hover:not(.current-printing) {
-	color: #0492c2;
+	color: color-mix(in srgb, var(--link), cyan 40%);;
 }
 
 .current-printing {

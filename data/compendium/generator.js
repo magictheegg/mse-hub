@@ -22,7 +22,7 @@ function isCA(card) { // (play|cast) ([^\\n.]+ (from exile|exiled)|(one of )?tho
 
 
 function isRemoval(card) {
-    const regex = /(destroy)|(deals [0-9]+? damage to (any|target|each) (creature|nonplayer|target|planeswalker))|((target|each) (player|opponent) sacrifices?)|(Exile (target|each) ((nonland|permanent|creature|artifact|enchantment|planeswalker|battle|land|kindred|legendary|snow) ?)+ ?[^c][^a][^r][^d])|(fights)|(return (target|each) ((nonland|permanent|creature|artifact|enchantment|planeswalker|battle|land|kindred|legendary|snow) ?)+ to its owner['’]s hand)|(loses all abilities)|(can['’]t attack or block)|(doesn['’]t untap during its controllers untap)|((target|each) (((nonland|permanent|creature|artifact|enchantment|planeswalker|battle|land|kindred|legendary|snow) ?)+) gets [+-][0-9X]+?\/-[1-9X]+?)|(put (target|each) ((nonland|permanent|creature|artifact|enchantment|planeswalker|battle|land|kindred|legendary|snow) ?)+ on the (top|bottom))/gi;
+    const regex = /(destroy)|(deals [0-9]+? damage to (any|target|each) (creature|nonplayer|target|planeswalker))|((target|each) (player|opponent) sacrifices?)|(Exile (target|each) ((nonland|permanent|creature|artifact|enchantment|planeswalker|battle|land|kindred|legendary|snow) ?)+ ?[^c][^a][^r][^d])|(fights)|(return (target|each) ((nonland|permanent|creature|artifact|enchantment|planeswalker|battle|land|kindred|legendary|snow) ?)+ to its owner['’]s hand)|(loses? all abilities)|(can['’]t attack or block)|(doesn['’]t untap during its controllers untap)|((target|each) (((nonland|permanent|creature|artifact|enchantment|planeswalker|battle|land|kindred|legendary|snow) ?)+) gets [+-][0-9X]+?\/-[1-9X]+?)|(put (target|each) ((nonland|permanent|creature|artifact|enchantment|planeswalker|battle|land|kindred|legendary|snow) ?)+ on the (top|bottom))/gi;
     
     if (isWipe(card)) return false;
     if (card.rules_text.match(/exile/i) && card.rules_text.match(/return it to the/i)) return false;
@@ -171,7 +171,7 @@ function convertToMV(cost) {
 
 function meetsPlayrate(card, category) {
     const pr = playrates[card.card_name] / numDecks;
-    const threshold = pr_override?.[category] ?? 0.015;
+    const threshold = pr_override?.[category] ?? 0.01;
     return pr > threshold;
 }
 
@@ -268,7 +268,7 @@ fs.readFile('../../lists/all-cards.json', 'utf8', async (err, data) => {
 
     const compendium = generateCompendium();
 
-    fs.writeFileSync('compendium.json', JSON.stringify(compendium));
+    fs.writeFileSync('compendium.json', JSON.stringify(compendium, null, 2));
     console.log("Succesfully generated compendium @ ./compendium.json !")
     process.exit(0);
 });

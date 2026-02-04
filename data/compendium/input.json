@@ -12,13 +12,30 @@
                 "Unending Malice",
                 "Hostile Pillars",
                 "Nirvanha Bloom",
-                "Omnipresent Vessel"
+                "Omnipresent Vessel",
+                "Field of Ruin",
+                "Mooyan Curry",
+                "Host Farm Babysitter",
+                "Banisher Priest",
+                "Mockery of Innocence",
+                "Overwhelming Force",
+                "Blossoming Conscience"
             ],
             "Other Removal": [
                 "Occult Occlusion",
                 "Nirvanha Bloom",
                 "Lightning Sarajii",
                 "Neverbloom"
+            ],
+            "Countermagic": [
+                "Wandering Travellers",
+                "Reject Input"
+            ],
+            "Discard": [
+                "Magic of Ignelscor",
+                "Stoic at Graven Laughs",
+                "Conceptual Digestion",
+                "Hook Ironmantle"
             ]
         },
         "Value": {

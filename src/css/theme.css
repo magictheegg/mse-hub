@@ -7,6 +7,7 @@ body[data-theme=Dark] {
 	--mid-accent: #777;
 	--dark-accent: #666;
 	--opposite: #f3f3f3;
+	--link: #1338be;
 }
 
 body[data-theme=Light] {
@@ -18,6 +19,7 @@ body[data-theme=Light] {
 	--dark-accent: #333;
 	--opposite: #171717;
 	--dark-text-color: #d5d9d9;
+	--link: #1338be;
 }
 
 body[data-theme=Blue] {
@@ -29,6 +31,7 @@ body[data-theme=Blue] {
 	--dark-accent: #66c7e8;
 	--opposite: #62c8ec;
 	--dark-text-color: #d5d9d9;
+	--link: #0492c2;
 }
 
 body[data-theme=Purple] {
@@ -40,6 +43,7 @@ body[data-theme=Purple] {
 	--dark-accent: #9466e8;
 	--opposite: #a562ec;
 	--dark-text-color: #d5d9d9;
+	--link: #0492c2;
 }
 
 .text {

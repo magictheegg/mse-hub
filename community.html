@@ -230,6 +230,7 @@
 		async function reload() {
 			tab = tab ? tab : "events";
 			setTabs();
+
 			if (initial_load) {
 				q = query(collection(db, "users"));
 				all_users_docs = await getDocs(q);
@@ -238,6 +239,7 @@
 				q = query(collection(db, "events"));
 				all_events_docs = await getDocs(q);
 				all_events = [];
+
 				all_users_docs.forEach((doc) => {
 					const data = doc.data();
 					all_users.push(data);
@@ -248,6 +250,7 @@
 					}
 					// all_decks.push(...data.decks);
 				});
+
 				all_events_docs.forEach((doc) => {
 					const data = doc.data();
 					all_events.push(data);
@@ -259,11 +262,19 @@
 						all_decks.push({ ...deck, "user": user, "event": true });
 					}
 				});
+
+				await getDoc(doc(db, "info", "events")).then(docSnap => {
+					const info = docSnap.data();
+					all_events.sort((a, b) => info.gporder.indexOf(a.name) - info.gporder.indexOf(b.name));
+					all_events.reverse();
+				});
+
 				decks_html = await makeDecksTab();
 				events_html = makeEventTab();
 				users_html = makeUsersTab();
 				initial_load = false;
 			}
+
 			if (tab == "events") {
 				document.getElementById("main-tab").appendChild(events_html);
 			}
@@ -338,7 +349,7 @@
 			}
 
 			deck_preview.onclick = function () {
-				window.location.href = deck.url;
+				window.location.href = deck.url.replaceAll('deckbuilder', 'deck');
 			}
 
 			deck_preview.style.cursor = "pointer";

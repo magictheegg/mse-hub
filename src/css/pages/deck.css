@@ -20,6 +20,21 @@
     height: var(--card-spacing);
 }
 
+.img-container .btn {
+    height: auto;
+    width: auto;
+    top: 140%;
+    left: 35%;
+}
+
+.img-flip-icon {
+    max-height: 20px;
+}
+
+.hover-card .btn {
+    display: none;
+}
+
 .group-label {
     width: 100%;
     text-align: center;

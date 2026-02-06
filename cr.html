@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="/src/css/header.css">
 	<link rel="stylesheet" href="/src/css/theme.css">
 	<link rel="stylesheet" href="/src/css/modal.css">
+	<link rel="stylesheet" href="/src/css/pages/cr.css">
 </head>
 <body>
 	<img src="img/header/menu.png" class="header-control" onclick="toggleHeader()">
@@ -48,6 +49,7 @@
 		</select>
 	</div>
 	<div class="page-container">
+        <div class="cr"></div>
 	</div>
 	<div id="modal-container">
 		<div id="modal-content" class="popout">
@@ -57,7 +59,7 @@
 	</div>
 	<script src="/src/js/background.js"></script>
 	<script>
-		document.addEventListener("DOMContentLoaded", async function () {
+        document.addEventListener("DOMContentLoaded", async function () {
 			await fetch('/lists/all-cards.json')
 				.then(response => response.json())
 				.then(json => {
@@ -176,7 +178,42 @@
 					}
 				});
 			}
+
+            buildCr(cr);
 		});
+
+
+        function buildCr(_cr) {
+            let [ contents, cr ] = _cr.split('Comprehensive Rules Start');
+            contents = contents.replaceAll(/^(\*?)([\w\d\.]+[a-z\.]) /gm, (_, star, $1) => `${star}<a href='#${$1}'>${$1}</a> `);
+            cr = cr.replaceAll(/^\*?\d+\. .*?$/gm, $1 => `<div class="cr-header">${$1}</div>`);
+            cr = cr.replaceAll(/^\*?\d+\.\d+\. .*?$/gm, $1 => `<div class="indent-1">${$1}</div>`);
+            cr = cr.replaceAll(/^\*?\d+\.\d+[a-z]+ .*?$/gm, $1 => `<div class="indent-2">${$1}</div>`);
+            // cr = cr.replaceAll(/^\*?\d+\.\d+\.\d+[a-z]+ /gm, $1 => `<div class="indent-3">${$1}</div>`);
+            cr = cr.replaceAll(/\>(\*?)([\w\d\.]+[a-z\.]) /gm, (_, $0, $1) => `>${$0}<a href='#${$1}' id='${$1}'>${$1}</a> `);
+            cr = cr.replaceAll(/rule (.*?)([), ]|\.\s)/g, (_, $1, $2) => `rule <a href="#${$1}${$1.match(/[a-z]/) ? '' : '.'}">${$1}</a>${$2}`);
+			cr = formatTextHTML(cr);
+            cr = cr.replaceAll('\n', '<br>');
+            contents = contents.replaceAll('\n', '<br>');
+			document.querySelector('.cr').innerHTML = contents + '<br>' + cr;
+		}
+
+		function formatTextHTML(str) {
+			if (!str)
+				return "";
+			str = str.replace(/[{]([^}]+)[}]/g, function (matched, _1) {
+				let letters = _1.toLowerCase()
+				return `<span class="mana mana-cost ${isText(letters)} mana-` + letters + '"></span>';
+			})
+			return str;
+		}
+
+		function isText(l) {
+			if (l.includes("v") || l.includes("e")) {
+				return "popout";
+			}
+			return "";
+		}
 
 		modal = document.getElementById("modal-container");
 		window.onclick = function (event) {
@@ -209,54 +246,6 @@
 
 			window.location.href = url;
 		}
-	</script>
-	<script type="module">
-		// Import the functions you need from the SDKs you need
-		import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-		import { setDoc, addDoc, updateDoc, doc, collection, getFirestore, query, where, getDocs, getDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-		// TODO: Add SDKs for Firebase products that you want to use
-		// https://firebase.google.com/docs/web/setup#available-libraries
-
-		// Your web app's Firebase configuration
-		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-		const firebaseConfig = {
-			apiKey: "AIzaSyCPurnKVn2caCn3L-gKF2tMFwWur73YAuw",
-			authDomain: "voyager-78e30.firebaseapp.com",
-			projectId: "voyager-78e30",
-			storageBucket: "voyager-78e30.firebasestorage.app",
-			messagingSenderId: "411191248476",
-			appId: "1:411191248476:web:591349be169d823e5f8899",
-			measurementId: "G-TQ1L48F25M"
-		};
-
-		// Initialize Firebase
-		const app = initializeApp(firebaseConfig);
-		const db = getFirestore(app);
-		let username = "";
-		let password = "";
-		let sessionid = localStorage.getItem('settings.session');
-		let decks = {};
-		const events = ["GP1", "League"];
-		let user_data;
-
-		if (sessionid) {
-			await getDoc(doc(db, 'sessions', sessionid)).then(docSnap => {
-				let data = docSnap.data();
-				username = data.username;
-				password = data.password;
-			});
-
-			await getDoc(doc(db, 'users', username)).then(docSnap => {
-				let data = docSnap.data();
-				user_data = data;
-			});
-		}
-
-		async function reload() {
-			//firebase code
-		}
-
-		reload();
 	</script>
 </body>
 

@@ -1,0 +1,25 @@
+.cr {
+    background-color: color-mix(in srgb, var(--bg-color), transparent 30%);
+    color: var(--popout-text-color);
+    width: 80%;
+    margin: auto;
+    font-size: 1.1em;
+    padding: 1.4em;
+}
+
+a {
+    color: var(--link);
+}
+
+.indent-1 {
+    margin-left: 3em;
+}
+
+.indent-2 {
+    margin-left: 6em;
+}
+
+.cr-header {
+    font-size: 1.5em;
+    font-weight: bold;
+}

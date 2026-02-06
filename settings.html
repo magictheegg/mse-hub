@@ -15,7 +15,7 @@
 		font-weight: 500;
 		cursor: pointer;
 		background-color: var(--bg-color);
-		color: var(--text-color);
+		color: var(--popout-text-color);
 		padding: 2px;
 	}
 
@@ -420,7 +420,6 @@
 			if (!func) {
 				dropdown.onchange = function () {
 					localStorage.setItem(settingtag, document.getElementById(settingtag).value);
-					processDeck();
 				}
 			} else {
 				dropdown.onchange = func;

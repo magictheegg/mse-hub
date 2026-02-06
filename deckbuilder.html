@@ -126,7 +126,7 @@
 					<option value="default">Actions ...</option>
 					<option value="new">New deck</option>
 					<option value="import">Import deck</option>
-					<option value="load-text">Input textbox</option>
+					<option value="load-text">Load from clipboard</option>
 					<option value="save-collection">Save as collection</option>
 					<option value="load-collection">Load collection</option>
 					<option value="load">Load deck</option>
@@ -1366,13 +1366,14 @@
 		}
 
 		function readDeckText(text, name) {
-			document.getElementById("deck-name").value = name;
+			document.getElementById("deck-name").value = name || 'Untitled Deck';
 
 			deck = [];
 			sideboard = [];
 			sanctum = [];
 			sb_cards = false;
 			sc_cards = false;
+			cockatrice_file = false;
 
 			const lines = text.split('\n');
 
@@ -1380,8 +1381,16 @@
 			let sb_map = new Map();
 			let sc_map = new Map();
 
-			for (const line of lines) {
-				if (line == 'sideboard' || line == '') // '' for Draftmancer files
+			for (let line of lines) {
+				if (line.startsWith('//')) {
+					cockatrice_file = true;
+					continue;
+				};
+				if (line.startsWith('SB:')) {
+					if (!sb_cards) sb_cards = true;
+					line = line.split('SB: ')[1];
+				} 
+				if (line == 'sideboard' || (line == '' && !cockatrice_file)) // '' for Draftmancer files
 				{
 					sb_cards = true;
 				}

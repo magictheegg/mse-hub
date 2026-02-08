@@ -125,11 +125,12 @@
 				<select name="file-menu" class="file-menu popout" id="file-menu">
 					<option value="default">Actions ...</option>
 					<option value="new">New deck</option>
-					<option value="import">Import deck</option>
-					<option value="load-text">Load from clipboard</option>
+					<option value="load">Load deck</option>
+					<option value="import">Import from file</option>
+					<option value="load-text">Import from clipboard</option>
+					<option value="view-deck">View deck in new tab</option>
 					<option value="save-collection">Save as collection</option>
 					<option value="load-collection">Load collection</option>
-					<option value="load">Load deck</option>
 					<option value="delete">Delete saved property</option>
 				</select>
 				<input type="file" class="hidden" id="import-file" onclick="this.value=null;">
@@ -727,6 +728,7 @@
 			}
 			else if (option == "import") {
 				document.getElementById("import-file").click(); // Import a file by clicking a certain element
+				document.getElementById("file-menu").value = "default";
 			}
 			else if (option == "load") {
 				loadDeck(); // open the modal for loading decks
@@ -740,11 +742,15 @@
 				localStorage.setItem("colls.collections", JSON.stringify(colls));
 				// document.getElementById("file-menu").value = "default"; // set colls back stringified
 				openModal("Deck Saved as collection: " + document.getElementById("deck-name").value + '<span class="close" onclick="closeModal()">&times;</span>'); // open the modal to notify the user
+				document.getElementById("file-menu").value = "default";
 			}
 			else if (option == "load-collection") {
 				openLoadCollectionWindow();
 			} else if (option == "load-text") {
 				openTextareaModal();
+			} else if (option == "view-deck") {
+				window.open(`/deck?deck=${encodeURIComponent(document.getElementById("deck-name").value) + ';' + btoa(generateDeckText(true, true))}&main=${deck.length}&side=${sideboard.length}&sanctum=${sanctum.length}`, '_blank');
+				document.getElementById("file-menu").value = "default";
 			}
 		});
 

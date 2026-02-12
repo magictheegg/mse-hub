@@ -5,7 +5,43 @@ import json
 
 #F = Fungustober's notes
 
+type_sort_codes = {
+	"Land": "L_Land",
+	"Equipment": "E_Equipment",
+	"Aura": "F_Aura",
+	"Creature": "C_Creature",
+	"Planeswalker": "A_Planeswalker",
+	"Enchantment": "H_Enchantment",
+	"Battle": "B_Battle",
+	"Vehicle": "D_Vehicle",
+	"Artifact": "G_Artifact",
+	"Instant": "I_Instant",
+	"Sorcery": "J_Sorcery"
+}
+
+def cmc(x):
+	cmc = 0
+	for match in re.finditer(r"\{(.+?)\}", x['cost']):
+		try:
+			cmc += int(match.group(1))
+		except ValueError:
+			cmc += 1
+	return cmc
+
+def is_legendary(x):
+	return 'Legendary' in x['type']
+
+def get_sort_code(x):
+	for key in type_sort_codes:
+		if key in x['type']:
+			return type_sort_codes[key]
+	return "Z_" + x['type']
+def sort_type(x):
+
+	return [get_sort_code(x), cmc(x), 'A' if is_legendary(x) else 'B']
+
 def convertList(setCode):
+	use_order_mator = '--order=mator' in sys.argv 
 	#F: inputList = sets/SET-files/SET.json
 	inputList = os.path.join('sets', setCode + '-files', setCode + '.json')
 	#F: outputList = lists/SET-list.json
@@ -117,6 +153,10 @@ def convertList(setCode):
 		if 'devoid' in card['rules_text'].lower():
 			card['color'] = card['color_identity']
 
+		#CE: fix for land creature cards
+		if 'land' in card['type'].lower() and 'creature' in card['type'].lower():
+			card['color'] = card['color_identity']
+
 		#CE: fix for split cards
 		if 'split' in card['shape']:
 			card['color'] = "".join(set(card['color'] + card['color2']))
@@ -142,7 +182,7 @@ def convertList(setCode):
 		elif card['color'] == '':
 			if 'Basic' in card['type']:
 				cards_sorted['basic'].append(card)
-			elif 'Land' in card['type']:
+			elif 'Land' in card['type'] and 'Creature' not in card['type']:
 				assigned = False
 				for c in colors:
 					if colorEquals(card['color_identity'], c):
@@ -244,6 +284,8 @@ def convertList(setCode):
 				if len(cards_arr[x]) > 0 and 'Basic' not in cards_arr[x][0]['type']:
 					if len(r['cards']) == 1 and r['cards'][0] in sort_groups:
 						cards_arr[x] = sorted(cards_arr[x], key=lambda x : (x['notes'], x['rarity'], x['number']))
+					elif use_order_mator: 
+						cards_arr[x] = sorted(cards_arr[x], key=lambda x : (len(x['color']), x['rarity'], *sort_type(x), x['number'])) 
 					else:
 						cards_arr[x] = sorted(cards_arr[x], key=lambda x : (len(x['color']), x['rarity'], x['notes'], x['number'])) # start with len() for 3+c cards
 					# otherwise, preserve order of basics from set file

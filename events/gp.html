@@ -1779,6 +1779,12 @@
 			for (const deck of search_results) {
 				const deck_ele = gridifyDeck(deck);
 				deck_ele.onclick = () => {
+					const legal = checkIllegal(deck);
+					if (!legal) {
+						alert(`${deck.name} is not legal in voyager!\n${legal}`);
+						return;
+					}
+
 					const new_decks = event_data.decks;
 					new_decks[username] = deck;
 
@@ -1792,6 +1798,70 @@
 				}
 				document.getElementById("deck-select-container").appendChild(deck_ele);
 			}
+		}
+
+		function checkIllegal(deck) {
+			const deck_list = atob(deck.url.split(";")[1].split("&main")[0]).toLowerCase();
+			const lines = deck_list.split("\n")
+
+			let maindeck = 0
+			let sideboard = 0
+			let sanctum = 0
+
+			const total_copies = {}
+
+			let category = "main"
+
+			for (const line of lines) {
+				if (line.startsWith('//')) continue;
+
+				if ((line == "" || line == "sideboard" || line == "Sideboard:") && category == "main") {
+					category = "side";
+					continue;
+				}
+
+				if ((line == "" || line == "sanctum" || line == "Sanctum:") && category == "side") {
+					category = "sanctum";
+					continue;
+				}
+
+				const copies = parseInt(line.split(" ")[0]);
+				const card_name = line.substring(line.indexOf(' '));
+
+				if (category == "main")
+					maindeck += copies;
+
+				if (category == "side")
+					sideboard += copies;
+
+				if (category == "sanctum")
+					sanctum += copies;
+
+				if (banlist.includes(card_name))
+					return card_name + " is banned";
+
+				if (category == "main" && copies > 4 && !extracopies.includes(card_name))
+					return "Too many copies of " + card_name + " (" + str(copies) + ") in maindeck";
+				
+				if (category == "sideboard" && copies > 4 && !extracopies.includes(card_name))
+					return "Too many copies of " + card_name + " (" + str(copies) + ") in sideboard";
+				
+				if (category == "sanctum" && copies > 1 && !extracopies.includes(card_name))
+					return "Too many copies of " + card_name + " (" + str(copies) + ") in sanctum";
+				
+				total_copies[card_name] = total_copies[card_name] ? total_copies[card_name] + copies : copies;
+
+				if (total_copies[card_name] > 4 && !extracopies.includes(card_name))
+					return "Too many copies of " + card_name + " (" + str(total_copies[card_name]) + ")"
+			}	
+				
+			if (sideboard > 15)
+				return "Too many cards in sideboard (" + str(sideboard) + ")";
+
+			if (sanctum > 7)
+				return "Too many cards in sanctum (" + str(sanctum) + ")";
+
+			return false
 		}
 
 		function gridifyDeck(deck) {

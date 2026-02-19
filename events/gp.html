@@ -381,6 +381,10 @@
 			document.getElementById("games").appendChild(bracket_header);
 
 			let topcut = await topCutHelper(rounds); // {players, matches, seedings, stats}
+			console.log(topcut.seedings);
+			for (let i = 0; i < 5; i++) {
+				console.log(getTopCutMatch(topcut, i.toString()));
+			}
 			let matches = topcut.matches;
 			let structure = parseStructure(topcut.structure);
 
@@ -592,6 +596,7 @@
 
 		function getTopCutMatch(topcut, player_id) {
 			if (isFinite(player_id)) {
+				console.log(player_id, topcut.seedings);
 				return topcut.seedings[player_id].player;
 			}
 
@@ -1278,14 +1283,14 @@
 				let record = stats.records[player];
 				let total = stats.match_total[player];
 				if (record[0] >= (event_data.num_rounds - 1)) {
-					console.log("in top cut", player);
 					players.push(player);
 				}
-				seedings.push({ player: player, record: record, match_total: total });
+				seedings.push({ player: player, record: record, match_total: total, omw: stats.omw[player] });
 			}
 
 			matches = rounds.bracket.matches;
 			seedings.sort(seeder);
+			console.log(seedings);
 
 			return { players: players, matches: rounds.bracket.matches, seedings: seedings, stats: stats, structure: rounds.bracket.structure };
 		}
@@ -1397,7 +1402,7 @@
 					let record = stats.records[player];
 					let total = stats.match_total[player];
 
-					seedings.push({ player: player, record: record, match_total: total, opps: opps });
+					seedings.push({ player: player, record: record, match_total: total, opps: opps, omw: stats.omw[player] });
 				}
 
 				seedings.sort(seeder);
@@ -1441,7 +1446,7 @@
 						players.push(player);
 					}
 
-					seedings.push({ player: player, record: record, match_total: total });
+					seedings.push({ player: player, record: record, match_total: total, omw: stats.omw[player] });
 				}
 
 				const struct_obj = getStructure(players.length);

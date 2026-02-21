@@ -959,7 +959,7 @@
 			for (const deck of all_decks) {
 				const decklist = atob(deck.url.split(';')[1].split('&main')[0]);
 				for (const line of decklist.split("\n")) {
-					const card_name = line.substring(line.indexOf(" ") + 1, line.length).trim();
+					const card_name = line.split('(')[0].substring(line.indexOf(" ") + 1, line.length).trim();
 
 					if (!stats[card_name]) continue;
 

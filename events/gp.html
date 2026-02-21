@@ -381,10 +381,6 @@
 			document.getElementById("games").appendChild(bracket_header);
 
 			let topcut = await topCutHelper(rounds); // {players, matches, seedings, stats}
-			console.log(topcut.seedings);
-			for (let i = 0; i < 5; i++) {
-				console.log(getTopCutMatch(topcut, i.toString()));
-			}
 			let matches = topcut.matches;
 			let structure = parseStructure(topcut.structure);
 

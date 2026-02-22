@@ -1811,10 +1811,6 @@
 					continue;
 				}
 
-				if (card.type.includes("Basic") && !searchTerms.includes("+t:basic") && !searchTerms.includes("t:basic")) {
-					continue;
-				}
-
 				searched = await searchAllTokens(card, tokenizeTerms(searchTerms));
 				if (searched)
 					search_results.push(card);

@@ -78,21 +78,7 @@ function gridifyCard(card_stats, card_text = false, rotate_card = false, designe
 		display_type = false;
 	}
 
-	// card_text = false; // WHYYYYYYYYYYY DO I HAVE TO DO THIS JS
-
-	let _card_text = false;
-
-	if (display_type) {
-		_card_text = document.getElementById("display").value == "cards-text";
-	}
-
-	if (card_text) {
-		_card_text = true;
-	}
-
-	if (!_card_text) {
-		return buildImgContainer(card_stats, true, rotate_card);
-	}
+	if (!card_text) return buildImgContainer(card_stats, true, rotate_card);
 
 	const grid = document.createElement("div");
 	grid.className = "image-grid";

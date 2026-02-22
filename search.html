@@ -392,9 +392,6 @@
 					<button class="popout" type="submit" onclick="nextPage()" id="nextBtn-footer">Next 30 ></button>
 		</div>
 	</div>
-
-	<button id="get-stats" style="display: none;"></button>
-
 	<div id="modal-container">
 		<div id="modal-content" class="popout">
 			<span class="close" onclick="closeModal()">&times;</span>
@@ -1794,34 +1791,12 @@
 							return (card_shape.includes("transform") || card.rules_text.includes("transform")) && card_shape.includes("double");
 						}
 						if (check == "played") {
-							if (!document.getElementById("get-stats").dataset.ready) {
-								do {
-									await delay(100);
-								}
-								while (!document.getElementById("get-stats").dataset.ready);
-							}
-
-							if (!all_cards_stats) {
-								document.getElementById("get-stats").click();
-								all_cards_stats = JSON.parse(localStorage.getItem("info.stats"));
-							}
-
-							return isPlayed(all_cards_stats[card.card_name]);
+							if (!all_cards_stats) all_cards_stats = await getCardStats();
+							return all_cards_stats[card.card_name].is_played;
 						}
 						if (check == "staple") {
-							if (!document.getElementById("get-stats").dataset.ready) {
-								do {
-									await delay(100);
-								}
-								while (!document.getElementById("get-stats").dataset.ready);
-							}
-
-							if (!all_cards_stats) {
-								document.getElementById("get-stats").click();
-								all_cards_stats = JSON.parse(localStorage.getItem("info.stats"));
-							}
-
-							return isStaple(all_cards_stats[card.card_name]);
+							if (!all_cards_stats) all_cards_stats = await getCardStats();
+							return all_cards_stats[card.card_name].is_staple;
 						}
 						if (check == "removal") {
 							return isRemoval(card_stats);
@@ -2254,91 +2229,17 @@ Search for cards that were made into champion promo's by a specific user. For ex
 		let all_events_docs;
 		let all_events = [];
 
-		function getCardStats() {
-			const stats = {};
-			for (const card of card_list_arrayified) {
-				let num_decks = 0;
-				let total_wins = 0;
-				let total_games = 0;
-				let num_event_decks = 0;
-				let num_user_decks = 0;
+		window.getCardStats = async () => {
+			let stats;
+			await fetch('https://voyager-api-pq2h.onrender.com/stats')
+				.then(response => response.json())
+				.then(json => {
+					stats = json;
+				}).catch(error => console.error('Error:', error));
 
-				for (const event of all_events) {
-					if (event.name.includes("League")) continue;
-					const swiss = JSON.parse(event.rounds).swiss;
-					const decks = event.decks;
-					let players_with_card = [];
-					for (const player in decks) {
-						const deck = decks[player];
-						const decklist = atob(deck.url.split(';')[1].split('&main')[0]);
-						for (const line of decklist.split("\n")) {
-							if (line.substring(line.indexOf(" ") + 1, line.length) == card.card_name) {
-								players_with_card.push(player);
-								break;
-							}
-						}
-					}
-					for (const round_name in swiss) {
-						const round = swiss[round_name];
-						for (const game of round) {
-							const p1 = Object.keys(game)[0];
-							const p2 = Object.keys(game)[1];
+			fetch('https://voyager-api-pq2h.onrender.com/stats/regenerate');
 
-							const p1_score = parseInt(game[p1]);
-							const p2_score = parseInt(game[p2]);
-
-							let winner = 0;
-							if (p1_score > p2_score)
-								winner = p1;
-							if (p1_score < p2_score)
-								winner = p2;
-
-							if (players_with_card.includes(p1)) {
-								if (winner == p1) {
-									total_wins++;
-								}
-								if (winner != 0)
-									total_games++;
-							}
-							if (players_with_card.includes(p2)) {
-								if (winner == p2) {
-									total_wins++;
-								}
-								if (winner != 0)
-									total_games++;
-							}
-						}
-					}
-				}
-
-				for (const deck of all_decks) {
-					const decklist = atob(deck.url.split(';')[1].split('&main')[0]);
-					for (const line of decklist.split("\n")) {
-						if (line.substring(line.indexOf(" ") + 1, line.length) == card.card_name) {
-							num_decks += 1;
-							if (deck.event)
-								num_event_decks++;
-							else
-								num_user_decks++;
-						}
-					}
-				}
-
-				let winrate = ((total_wins / total_games) * 100).toFixed(2).toString() + "%";
-				winrate = winrate.replace("NaN%", "No Data");
-				const playrate_event_text = ((num_event_decks / event_decks_count) * 100).toFixed(2).toString() + "%";
-				const playrate_user_text = ((num_user_decks / user_decks_count) * 100).toFixed(2).toString() + "%";
-				const playrate_text = ((num_decks / all_decks.length) * 100).toFixed(2).toString() + "%";
-
-				stats[card.card_name] = {
-					winrate: ["GP Winrate", winrate],
-					playrate_event: ["Event Playrate", playrate_event_text],
-					playrate_user: ["User Playrate", playrate_user_text],
-					playrate_general: ["Overall Playrate", playrate_text]
-				}
-			}
-
-			localStorage.setItem("info.stats", JSON.stringify(stats));
+			return stats;
 		}
 
 		q = query(collection(db, "events"));
@@ -2376,9 +2277,6 @@ Search for cards that were made into champion promo's by a specific user. For ex
 				user_decks_count++;
 			}
 		}
-
-		document.getElementById("get-stats").dataset.ready = true;
-		document.getElementById("get-stats").addEventListener("click", getCardStats);
 
 	</script>
 </body>

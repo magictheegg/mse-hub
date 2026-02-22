@@ -599,65 +599,6 @@
 
 		async function makeCardsTab() {
 			stats = await getCardStats();
-
-			// const header_container = document.createElement("div");
-			// header_container.className = "cards-header popout";
-
-			// const card_name = document.createElement("div");
-			// card_name.className = "card-row-item card-row-name card-row-header";
-			// card_name.innerText = "Card Name";
-
-			// const card_wr = document.createElement("div");
-			// card_wr.className = "card-row-item card-row-wr card-row-header";
-			// card_wr.innerText = "GP Winrate";
-
-			// const card_event_playrate = document.createElement("div");
-			// card_event_playrate.className = "card-row-item card-row-event-playrate card-row-header";
-			// card_event_playrate.innerText = "Event Playrate";
-
-			// const card_user_playrate = document.createElement("div");
-			// card_user_playrate.className = "card-row-item card-row-user-playrate card-row-header";
-			// card_user_playrate.innerText = "User Playrate";
-
-			// const card_full_playrate = document.createElement("div");
-			// card_full_playrate.className = "card-row-item card-row-full-playrate card-row-header";
-			// card_full_playrate.innerText = "Playrate";
-
-			// header_container.appendChild(card_name);
-			// header_container.appendChild(card_wr);
-			// header_container.appendChild(card_event_playrate);
-			// header_container.appendChild(card_user_playrate);
-			// header_container.appendChild(card_full_playrate);
-
-			// Array.prototype.sortStats = function (stats) {
-			// 	function compare(a, b) {
-			// 		sort_cards = "winrate";
-			// 		if (sort_cards == "name") {
-			// 			if (a.card_name === b.card_name) {
-			// 				return 0;
-			// 			}
-			// 			else {
-			// 				return (a.card_name < b.card_name) ? -1 : 1;
-			// 			}
-			// 		} else if (sort_cards == "winrate") {
-			// 			const a_wr_unparsed = stats[a.card_name].winrate;
-			// 			const b_wr_unparsed = stats[b.card_name].winrate;
-
-			// 			const a_wr = a_wr_unparsed == "No Data" ? -1 : parseFloat(a_wr_unparsed.split("%")[0]);
-			// 			const b_wr = a_wr_unparsed == "No Data" ? -1 : parseFloat(a_wr_unparsed.split("%")[0]);
-
-			// 			if (a_wr === b_wr) {
-			// 				return 0;
-			// 			}
-			// 			else {
-			// 				return (a_wr < b_wr) ? -1 : 1;
-			// 			}
-			// 		}
-			// 	}
-			// }
-
-			// card_list_arrayified.sortStats(stats);
-
 			return makeCardsContainer();
 		}
 
@@ -862,114 +803,14 @@
 		}
 
 		async function getCardStats() {
-			const stats = {};
-			// for (const card of card_list_arrayified) {
-			// 	let num_event_decks = 0;
-			// 	let num_user_decks = 0;
-			// 	let num_decks = 0;
-			// 	let total_wins = 0;
-			// 	let total_games = 0;
+			let stats;
+			await fetch('https://voyager-api-pq2h.onrender.com/stats')
+				.then(response => response.json())
+				.then(json => {
+					stats = json;
+				}).catch(error => console.error('Error:', error));
 
-			// for (const event of all_events) {
-			// 	if (event.name.includes("League")) continue;
-			// 	const swiss = JSON.parse(event.rounds).swiss;
-			// 	const decks = event.decks;
-			// 	let players_with_card = [];
-			// 	for (const player in decks) {
-			// 		const deck = decks[player];
-			// 		const decklist = atob(deck.url.split(';')[1].split('&main')[0]);
-			// 		for (const line of decklist.split("\n")) {
-			// 			if (line.substring(line.indexOf(" ") + 1, line.length) == card.card_name) {
-			// 				players_with_card.push(player);
-			// 				break;
-			// 			}
-			// 		}
-			// 	}
-			// 	for (const round_name in swiss) {
-			// 		const round = swiss[round_name];
-			// 		for (const game of round) {
-			// 			const p1 = Object.keys(game)[0];
-			// 			const p2 = Object.keys(game)[1];
-
-			// 			const p1_score = parseInt(game[p1]);
-			// 			const p2_score = parseInt(game[p2]);
-
-			// 			let winner = 0;
-			// 			if (p1_score > p2_score)
-			// 				winner = p1;
-			// 			if (p1_score < p2_score)
-			// 				winner = p2;
-
-			// 			if (players_with_card.includes(p1)) {
-			// 				if (winner == p1) {
-			// 					total_wins++;
-			// 				}
-			// 				if (winner != 0)
-			// 					total_games++;
-			// 			}
-			// 			if (players_with_card.includes(p2)) {
-			// 				if (winner == p2) {
-			// 					total_wins++;
-			// 				}
-			// 				if (winner != 0)
-			// 					total_games++;
-			// 			}
-			// 		}
-			// 	}
-			// }
-
-			// 	for (const deck of all_decks) {
-			// 		const decklist = atob(deck.url.split(';')[1].split('&main')[0]);
-			// 		for (const line of decklist.split("\n")) {
-			// 			if (line.substring(line.indexOf(" ") + 1, line.length) == card.card_name) {
-			// 				num_decks += 1;
-			// 				if (deck.event)
-			// 					num_event_decks++;
-			// 				else
-			// 					num_user_decks++;
-			// 			}
-			// 		}
-			// 	}
-
-			// 	// let winrate = ((total_wins / total_games) * 100).toFixed(2).toString() + "%";
-			// 	// winrate = winrate.replace("NaN%", "No Data");
-			// 	const playrate_event_text = ((num_event_decks / all_events_decks.length) * 100).toFixed(2).toString() + "%";
-			// 	const playrate_user_text = ((num_user_decks / all_users_decks.length) * 100).toFixed(2).toString() + "%";
-			// 	const playrate_text = ((num_decks / all_decks.length) * 100).toFixed(2).toString() + "%";
-
-			// 	stats[card.card_name] = {
-			// 		// winrate: ["GP Winrate", winrate],
-			// 		playrate_event: ["Event Playrate", playrate_event_text],
-			// 		playrate_user: ["User Playrate", playrate_user_text],
-			// 		playrate_general: ["Overall Playrate", playrate_text]
-			// 	}
-			// }
-
-			for (const card of card_list_arrayified) {
-				stats[card.card_name] = {
-					event_count: 0,
-					user_count: 0,
-					playrate_event: 0,
-					playrate_user: 0,
-				}
-			}
-
-			for (const deck of all_decks) {
-				const decklist = atob(deck.url.split(';')[1].split('&main')[0]);
-				for (const line of decklist.split("\n")) {
-					const card_name = line.split('(')[0].substring(line.indexOf(" ") + 1, line.length).trim();
-
-					if (!stats[card_name]) continue;
-
-					const deck_type_key = deck.event ? "playrate_event" : "playrate_user";
-					const deck_type_count = deck.event ? "event_count" : "user_count";
-					const deck_type_total = deck.event ? all_events_decks.length : all_users_decks.length;
-
-					stats[card_name][deck_type_count]++;
-					stats[card_name][deck_type_key] = stats[card_name][deck_type_count] / deck_type_total;
-				}
-			}
-
+			fetch('https://voyager-api-pq2h.onrender.com/stats/regenerate');
 			return stats;
 		}
 

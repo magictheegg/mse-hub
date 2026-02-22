@@ -240,7 +240,6 @@
 					const data = doc.data();
 					all_users.push(data);
 					for (const deck of data.decks) {
-						if (deck.private) continue;
 						all_decks.push({ ...deck, "user": data.username, "event": false });
 						all_users_decks.push({ ...deck, "user": data.username, "event": false });
 					}
@@ -252,7 +251,6 @@
 					all_events.push(data);
 					for (const user in data.decks) {
 						let deck = data.decks[user];
-						if (deck.private) continue;
 
 						all_events_decks.push({ ...deck, "user": user, "event": true });
 						all_decks.push({ ...deck, "user": user, "event": true });

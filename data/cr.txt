@@ -552,7 +552,7 @@ Example: {W/P}{W/P} can be paid by spending {W}{W}, by spending {W} and paying 2
 
 107.18. The pawprint symbol is {P}. This symbol is used to indicate the modes on some modal spells, and does not represent a cost, mana, counters, or any type of persistent resource. See rule 700.2i.
 
-*107.19. The vertex symbol is {V}. It represents one vertex counter. To pay {V}, a player removes one vertex counter from themselves
+*107.19. The vertex symbol is {V}. It represents one vertex counter. To pay {V}, a player removes one vertex counter from themselves.
 
 108. Cards
 
@@ -661,7 +661,7 @@ Example: Spitting Image is a sorcery that says, in part, “Create a token that�
 
 111.6. A token is subject to anything that affects permanents in general or that affects the token’s card type or subtype. A token isn’t a card (even if represented by a card that has a Magic back or that came from a Magic booster pack).
 
-111.7. A token that’s in a zone other than the battlefield ceases to exist. This is a state-based action; see rule 704. (Note that if a token changes zones, applicable triggered abilities will trigger before the token ceases to exist.)
+*111.7. A token that’s in a zone other than the battlefield or the reserves ceases to exist. This is a state-based action; see rule 704. (Note that if a token changes zones, applicable triggered abilities will trigger before the token ceases to exist.)
 
 111.8. A token that has left the battlefield can’t move to another zone or come back onto the battlefield. If such a token would change zones, it remains in its current zone instead. It ceases to exist the next time state-based actions are checked; see rule 704.
 
@@ -708,20 +708,6 @@ Example: Spitting Image is a sorcery that says, in part, “Create a token that�
 111.10u A Lander token is a colorless Lander artifact token with “{2}, {T}, Sacrifice this token: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.”
 
 *111.10v A Weapon token is a colorless Equipment Weapon artifact token with “Equipped creature gets +1/+1” and equip {2}.
-
-*111.10w A Plains token is a basic colorless Plains land token named Plains. Because it is a Plains, it has the intrinsic ability “{T}: Add {W}.”
-
-*111.10w An Island token is a basic colorless Island land token named Island. Because it is an Island, it has the intrinsic ability “{T}: Add {U}.”
-
-*111.10w A Swamp token is a basic colorless Swamp land token named Swamp. Because it is a Swamp, it has the intrinsic ability “{T}: Add {B}.”
-
-*111.10w A Mountain token is a basic colorless Mountain land token named Mountain. Because it is a Mountain, it has the intrinsic ability “{T}: Add {R}.”
-
-*111.10w A Forest token is a basic colorless Forest land token named Forest. Because it is a Forest, it has the intrinsic ability “{T}: Add {G}.”
-
-*111.10w A Fault token is a basic colorless Fault land token named Fault. Because it is a Fault, it has the intrinsic ability “{T}: Add {I}.”
-
-
 
 111.11. If an effect instructs a player to create a token by name, doesn’t define any other characteristics for that token, and the name is not one of the types in the list of predefined tokens above, that player uses the card with that name in the Oracle card reference to determine the characteristics of that token.
 Example: Disa the Restless has the ability “Whenever one or more creatures you control deal combat damage to a player, create a Tarmogoyf token.” As that ability resolves, its controller creates a token with the same characteristics as the card named Tarmogoyf, as determined by the Oracle card reference.
@@ -2144,11 +2130,11 @@ Example: Exquisite Archangel has an ability which reads “If you would lose the
 
 *409. Reserves
 
-409.1. The reserves is a per-player public zone where tokens may be created. Tokens in the reserves are not considered permanents. Tokens in the reserves aren’t on the battlefield and therefore are unaffected by effects that work with tokens on the battlefield (such as Wrath of God or Intangible Virtue).
+409.1. A player may create tokens in their reserves for later use. Tokens in the reserves aren't considered permanents, but don't cease to exist like they would in other zones. (See rule 704.5d.)
 
-409.2.  If an effect instructs you to create one or more tokens in your reserves, they are put into your reserves and do not trigger “enters” abilities. They are, however, modified by effects that modify how you create tokens (such as Doubling Season). Whenever you modify tokens, those tokens still are put into the reserves. 
+409.2. If an effect instructs a player to create one or more tokens in your reserves, they are still considered “created” for the purposes of any replacement effects or triggered abilities that refer to creating a token. Any additional or altered tokens created replacement effects are still created in that player's reserves.
 
-408.3. As long as you have one or more tokens in the reserves, the zone has the activated ability “{3}: Put up to three tokens from your reserves onto the battlefield. Activate only as a sorcery.” This is able to be interacted with with all things that interact with activated abilities, such as doubling, countering, etc.  If a Reserves ability is doubled, you can't move the same token multiple times, but instead get to move more tokens out.
+409.3. As long as a player has one or more tokens in their reserves, they have the activated ability “{3}: Put up to three tokens from your reserves onto the battlefield. Activate only as a sorcery.”
 
 *410. The Sanctum
 
@@ -5577,8 +5563,7 @@ Example: Tapestry Warden has as ability that reads “Each creature you control 
 
 702.191a Sycophant is a triggered ability that lets your next spell cost {1} less whenever they deal any sort of damage to a player or planeswalker.  
 
-702.191b These stack. (so if you somehow got 10 extra combat steps with a sycophant creature and then swung 10 times and hit, your next spell would cost {10} less to cast.)
- 
+702.191b These stack. (so if 10 sycophant creatures you control deal combat damage to a player, the next spell you cast costs {10} less to cast.)
 
 *702.192. Impetus
 
@@ -5595,6 +5580,12 @@ Example: Tapestry Warden has as ability that reads “Each creature you control 
 *702.194. Ploy
 
 702.194a Ploy is a special kind of triggered ability. “Ploy — [Effect]" means "Whenever this creature attacks, you may have [Effect] trigger. If you do, at the beginning of the next end step, sacrifice this creature."
+
+*702.195. Coalesce
+
+702.195a Coalesce appears on Revelation cards. It represents three static abilities: one that functions while the card is in a player's graveyard and two that function while the card is on the stack. “Coalesce (cost)” means “You may cast this card from your graveyard by paying (cost) rather than paying its mana cost” and “If the coalesce cost was paid, put this card onto the battlefield as a Horror creature. If this spell is a kindred, it also has each of this spell's creature types. If it would leave the battlefield, exile it instead of putting it anywhere else,” and “If the coalesce cost was paid, exile this card instead of putting it anywhere else anytime it would leave the stack except being put onto the battlefield with its coalesce ability.”
+
+702.195b A copy of a spell cast for its coalesce cost is unable to enter the battlefield, as a token or otherwise. The spell effect of the copy will still happen as normal.
 
 *702.195. Overcoalesce
 
@@ -5764,7 +5755,7 @@ Example: A player controls Maro, a creature with the ability “Maro’s power a
 
 704.5c If a player has ten or more poison counters, that player loses the game. Ignore this rule in Two-Headed Giant games; see rule 704.6b instead.
 
-704.5d If a token is in a zone other than the battlefield, it ceases to exist.
+*704.5d If a token is in a zone other than the battlefield or the reserves, it ceases to exist.
 
 704.5e If a copy of a spell is in a zone other than the stack, it ceases to exist. If a copy of a card is in any zone other than the stack or the battlefield, it ceases to exist.
 

@@ -411,6 +411,7 @@
 		let specialchars = "";
 		let sets_json = {};
 		let all_cards_stats;
+		let changelogs;
 		const delay = ms => new Promise(res => setTimeout(res, ms));
 
 		document.addEventListener("DOMContentLoaded", async function () {
@@ -431,6 +432,14 @@
 				.then(text => {
 					specialchars = text;
 				}).catch(error => console.error('Error:', error));
+
+			await fetch('/data/changelogs.json')
+				.then(response => response.json())
+				.then(json => {
+					_changelogs = json;
+				}).catch(error => console.error('Error:', error));
+
+			changelogs = Object.values(_changelogs).join('\n');
 
 			card_list_arrayified = card_list.cards;
 
@@ -1834,6 +1843,10 @@
 						}
 						if (check == "recur" || check == "recurrable") {
 							return isRecurrable(card_stats);
+						}
+						if (check == 'nerfed' || check == 'changed') {
+							const card_match = new RegExp(`\\*\\*${RegExp.escape(card_name)}(\\'s)?\\*\\* (.*?)\\n`, "gi");
+							return changelogs.match(card_match);
 						}
 					}
 					/* unsupported flows

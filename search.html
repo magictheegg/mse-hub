@@ -360,6 +360,7 @@
 				<option value="mv">Mana Value</option>
 				<option value="color">Color</option>
 				<option value="rarity">Rarity</option>
+				<option value="playrate">Playrate</option>
 			</select> : <select name="sort-order" id="sort-order" class="popout">
 				<option value="ascending">Asc</option>
 				<option value="descending">Desc</option>
@@ -553,7 +554,8 @@
 			else {
 				cardGrid = document.getElementById("imagesOnlyGrid");
 			}
-
+			
+			all_cards_stats = await getCardStats();
 			card_list_arrayified.sort(compareFunction);
 
 			// refresh page values
@@ -1072,6 +1074,10 @@
 				else {
 					return (a_rarity_index < b_rarity_index) ? -1 : 1;
 				}
+			}
+
+			if (sortMode == 'playrate') {
+				return all_cards_stats[b.card_name].playrate_overall - all_cards_stats[a.card_name].playrate_overall;
 			}
 		}
 
@@ -1791,11 +1797,9 @@
 							return (card_shape.includes("transform") || card.rules_text.includes("transform")) && card_shape.includes("double");
 						}
 						if (check == "played") {
-							if (!all_cards_stats) all_cards_stats = await getCardStats();
 							return all_cards_stats[card.card_name].is_played;
 						}
 						if (check == "staple") {
-							if (!all_cards_stats) all_cards_stats = await getCardStats();
 							return all_cards_stats[card.card_name].is_staple;
 						}
 						if (check == "removal") {

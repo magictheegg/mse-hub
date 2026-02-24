@@ -132,6 +132,7 @@
 					<option value="view-deck">View deck in new tab</option>
 					<option value="save-collection">Save as collection</option>
 					<option value="load-collection">Load collection</option>
+					<option value="load-collection-deck">Edit collection</option>
 					<option value="delete">Delete saved property</option>
 				</select>
 				<input type="file" class="hidden" id="import-file" onclick="this.value=null;">
@@ -222,9 +223,6 @@
 		let active_card = [];
 		let sets_json = {};
 		let collection_copies = {};
-		let deck_2 = {};
-		let sideboard_2 = {};
-		let sanctum_2 = {};
 		let gradients = [];
 		let all_cards_stats;
 
@@ -729,9 +727,6 @@
 				deck = [];
 				sideboard = [];
 				sanctum = [];
-				deck_2 = {};
-				sideboard_2 = {};
-				sanctum_2 = {};
 				document.getElementById("deck-name").value = "Untitled Deck"; // reset deck name
 				processDeck();
 				document.getElementById("file-menu").value = "default"; // set the value back
@@ -749,7 +744,7 @@
 			}
 			else if (option == "save-collection") {
 				let colls = JSON.parse(localStorage.getItem("colls.collections")); // get the collections object from colls.collections
-				colls[document.getElementById("deck-name").value.toString()] = deckTextToCollection(); // save the deck text converted to collection text in the colls object with the deck name as the key
+				colls[document.getElementById("deck-name").value.toString()] = generateDeckText(true, true).split("\n"); // save the deck text converted to collection text in the colls object with the deck name as the key
 				localStorage.setItem("colls.collections", JSON.stringify(colls));
 				// document.getElementById("file-menu").value = "default"; // set colls back stringified
 				openModal("Deck Saved as collection: " + document.getElementById("deck-name").value + '<span class="close" onclick="closeModal()">&times;</span>'); // open the modal to notify the user
@@ -762,6 +757,8 @@
 			} else if (option == "view-deck") {
 				window.open(`/deck?deck=${encodeURIComponent(document.getElementById("deck-name").value) + ';' + btoa(generateDeckText(true, true))}&main=${deck.length}&side=${sideboard.length}&sanctum=${sanctum.length}`, '_blank');
 				document.getElementById("file-menu").value = "default";
+			} else if (option == "load-collection-deck") {
+				openLoadCollectionWindow(true);
 			}
 		});
 
@@ -843,11 +840,11 @@
 			let card_img_container = createElement("div", "card-modal-img-container");
 			let card_img = gridifyCard(card_stats);
 			let card_buttons_container = createElement("div", "card-modal-buttons");
-			let maindeck_text = createElement("div", "card-modal-maindeck-text", "Maindeck (" + getCopies2("deck", card_stats.set + '-' + card_stats.number) + ")");
+			let maindeck_text = createElement("div", "card-modal-maindeck-text", "Maindeck (" + getCopies("deck", card_stats) + ")");
 			let maindeck_buttons = createElement("div", "card-modal-buttons");
-			let sideboard_text = createElement("div", "card-modal-sideboard-text", "Sideboard (" + getCopies2("sideboard", card_stats.set + '-' + card_stats.number) + ")");
+			let sideboard_text = createElement("div", "card-modal-sideboard-text", "Sideboard (" + getCopies("sideboard", card_stats) + ")");
 			let sideboard_buttons = createElement("div", "card-modal-buttons");
-			let sanctum_text = createElement("div", "card-modal-sanctum-text", "Sanctum (" + getCopies2("sanctum", card_stats.set + '-' + card_stats.number) + ")");
+			let sanctum_text = createElement("div", "card-modal-sanctum-text", "Sanctum (" + getCopies("sanctum", card_stats) + ")");
 			let sanctum_buttons = createElement("div", "card-modal-buttons");
 			let add_button = createElement("span", "card-modal-add-button", "+");
 			let minus_button = createElement("span", "card-modal-minus-button", "-");
@@ -859,38 +856,35 @@
 
 			add_button.onclick = function () {
 				addCardToDeck(card);
-				document.getElementsByClassName("card-modal-maindeck-text")[0].innerText = "Maindeck (" + getCopies2("deck", card_stats.set + '-' + card_stats.number) + ")";
+				document.getElementsByClassName("card-modal-maindeck-text")[0].innerText = "Maindeck (" + getCopies("deck", card_stats) + ")";
 			}
 
 			minus_button.onclick = function () {
 				deck.splice(deck.indexOf(card), 1);
-				modifyDeck2(`${card_stats['set']}-${card_stats['number']}`, "-");
 				processDeck();
-				document.getElementsByClassName("card-modal-maindeck-text")[0].innerText = "Maindeck (" + getCopies2("deck", card_stats.set + '-' + card_stats.number) + ")";
+				document.getElementsByClassName("card-modal-maindeck-text")[0].innerText = "Maindeck (" + getCopies("deck", card_stats) + ")";
 			}
 
 			add_button_sb.onclick = function () {
 				addCardToSideboard(card);
-				document.getElementsByClassName("card-modal-sideboard-text")[0].innerText = "Sideboard (" + getCopies2("sideboard", card_stats.set + '-' + card_stats.number) + ")";
+				document.getElementsByClassName("card-modal-sideboard-text")[0].innerText = "Sideboard (" + getCopies("sideboard", card_stats) + ")";
 			}
 
 			minus_button_sb.onclick = function () {
 				sideboard.splice(sideboard.indexOf(card), 1);
-				modifySB2(`${card_stats['set']}-${card_stats['number']}`, "-");
 				processDeck();
-				document.getElementsByClassName("card-modal-sideboard-text")[0].innerText = "Sideboard (" + getCopies2("sideboard", card_stats.set + '-' + card_stats.number) + ")";
+				document.getElementsByClassName("card-modal-sideboard-text")[0].innerText = "Sideboard (" + getCopies("sideboard", card_stats) + ")";
 			}
 
 			add_button_sc.onclick = function () {
 				addCardToSanctum(card);
-				document.getElementsByClassName("card-modal-sanctum-text")[0].innerText = "Sanctum (" + getCopies2("sanctum", card_stats.set + '-' + card_stats.number) + ")";
+				document.getElementsByClassName("card-modal-sanctum-text")[0].innerText = "Sanctum (" + getCopies("sanctum", card_stats) + ")";
 			}
 
 			minus_button_sc.onclick = function () {
 				sanctum.splice(sanctum.indexOf(card), 1);
-				modifySC2(`${card_stats['set']}-${card_stats['number']}`, "-");
 				processDeck();
-				document.getElementsByClassName("card-modal-sanctum-text")[0].innerText = "Sanctum (" + getCopies2("sanctum", card_stats.set + '-' + card_stats.number) + ")";
+				document.getElementsByClassName("card-modal-sanctum-text")[0].innerText = "Sanctum (" + getCopies("sanctum", card_stats) + ")";
 			}
 
 
@@ -919,39 +913,17 @@
 			document.getElementById("modal-content").appendChild(container_div);
 		}
 
-		function getCopies2(loc, key) {
-			if (loc == "deck") {
-				let val = deck_2[key];
-				if (val == undefined) {
-					return "0";
-				}
-				if (isNaN(val) || val <= 0) {
-					deck_2[key] = 0;
-					return "0";
-				}
-				return val;
-			}
-			if (loc == "sanctum") {
-				let val = sanctum_2[key];
-				if (val == undefined) {
-					return "0";
-				}
-				if (isNaN(val) || val <= 0) {
-					sanctum_2[key] = 0;
-					return "0";
-				}
-				return val;
-			}
-			// sideboard
-			let val = sideboard_2[key];
-			if (val == undefined) {
-				return "0";
-			}
-			if (isNaN(val) || val <= 0) {
-				sideboard_2[key] = 0;
-				return "0";
-			}
-			return val;
+		function getCopies(loc, card) {
+			let zone;
+			if (loc == 'sanctum') zone = sanctum;
+			if (loc == 'sideboard') zone = sideboard;
+			if (loc == 'deck') zone = deck;
+
+			let copies = 0;
+			for (const c of zone)
+				if (JSON.stringify(card) == c) copies++;
+
+			return copies;
 		}
 
 		function exportButtonHtml(name, func, img = false) {
@@ -965,8 +937,6 @@
 			}
 			return button;
 		}
-
-		// jumphere
 
 		function openExportModal() {
 			document.getElementById("modal-content").innerHTML = `<span class="close" onclick="closeModal()">&times;</span>`;
@@ -1308,15 +1278,22 @@
 			return container;
 		}
 
-		function openLoadCollectionWindow() {
+		function openLoadCollectionWindow(load_as_deck = false) {
 			// make the modal visible and add the text 'Loading Collection:'
 			document.getElementById("modal-container").style.display = "block";
 			document.getElementById("modal-content").innerHTML = "Loading Collection:";
-			Object.keys(JSON.parse(localStorage.getItem("colls.collections"))).forEach(function (key) { // Loop through each item in the collections object
+			Object.keys(JSON.parse(localStorage.getItem("colls.collections"))).forEach(key => { // Loop through each item in the collections object
 				// add a button that loads the collection using loadCollection and has the name of the collection (key = collection name)
-				document.getElementById("modal-content").innerHTML += `<span class="load-btn" onclick="loadCollection('${key}')">${key}</span>`;
+				const clickFn = `loadCollection${load_as_deck ? 'Deck' : ''}('${key}')`;
+				document.getElementById("modal-content").innerHTML += `<span class="load-btn" onclick="${clickFn}">${key}</span>`;
 			});
 			document.getElementById("modal-content").innerHTML += '<span class="close" onclick="closeModal()">&times;</span>';
+		}
+
+		function loadCollectionDeck(key) {
+			const coll = JSON.parse(localStorage.getItem("colls.collections"))[key];
+			const deck = coll.join('\n');
+			readDeckText(deck, key);
 		}
 
 		function loadCollection(name, fullcoll = false) {
@@ -1339,26 +1316,87 @@
 			if (fullcoll) {
 				collectionToLoad_ = fullcoll;
 			}
-			for (const item of collectionToLoad_) {
-				// for each item in collections, push the card name (the number will be cut off)
-				collectionToLoad.push(item.slice(2));
-			}
-			for (const card of card_list.cards) { // Loop through the card JSON
-				if (collectionToLoad.includes(card.card_name)) { // If the collection has this card, add it to new_list, if it's undefined, don't do the next part
-					new_list.push(card);
-					if (collectionToLoad_[i] == undefined) {
-						continue;
-					}
-					// add to the css to add the copy indicator in the topleft corner
-					collection_copies[`${card["set"]}-${card["number"]}`] = Number(collectionToLoad_[i].split(" ")[0]);
-					cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${collectionToLoad_[i].split(" ")[0]}x"; display: block; position: absolute; border-radius: 20px;}\n`
-					// modify deck and sideboard 2 and incrementy i
-					i++;
-					deck_2[`${card["set"]}-${card["number"]}`] = 0;
-					sideboard_2[`${card["set"]}-${card["number"]}`] = 0;
-					sanctum_2[`${card["set"]}-${card["number"]}`] = 0;
+			// for (const item of collectionToLoad_) {
+			// 	// for each item in collections, push the card name (the number will be cut off)
+			// 	collectionToLoad.push(item.slice(2));
+			// }
+			// for (const card of card_list.cards) { // Loop through the card JSON
+			// 	if (collectionToLoad.includes(card.card_name)) { // If the collection has this card, add it to new_list, if it's undefined, don't do the next part
+			// 		new_list.push(card);
+			// 		if (collectionToLoad_[i] == undefined) {
+			// 			continue;
+			// 		}
+			// 		// add to the css to add the copy indicator in the topleft corner
+			// 		collection_copies[`${card["set"]}-${card["number"]}`] = Number(collectionToLoad_[i].split(" ")[0]);
+			// 		cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${collectionToLoad_[i].split(" ")[0]}x"; display: block; position: absolute; border-radius: 20px;}\n`
+			// 		// modify deck and sideboard 2 and incrementy i
+			// 		i++;
+			// 		deck_2[`${card["set"]}-${card["number"]}`] = 0;
+			// 		sideboard_2[`${card["set"]}-${card["number"]}`] = 0;
+			// 		sanctum_2[`${card["set"]}-${card["number"]}`] = 0;
+			// 	}
+			// }
+
+			// {
+			// 	new_list.push(card);
+			// 	cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${collectionToLoad_[i].split(" ")[0]}x"; display: block; position: absolute; border-radius: 20px;}\n`;
+			// }
+
+			let deck_map = new Map();
+
+			for (let line of collectionToLoad_) {
+				// get the count and card name
+				count = parseInt(line.substring(0, line.indexOf(' ')));
+				card_name = line.substring(line.indexOf(' ') + 1).split(" (")[0];
+				card_set = line.match(/[0-9]+ .*? \((.*?)\)/);
+				card_num = line.match(/[0-9]+ .*? \(.*?\) ([0-9]+)/);
+
+				card_set = card_set == null ? "XXX" : card_set[1];
+				card_num = card_num == null ? "0" : card_num[1];
+				
+				if (deck_map.has([card_name, card_set, card_num])) // if the deck has card name, add the new value, if it doesnt, set the value to stop keyerrors
+				{
+					deck_map.set([card_name, card_set, card_num], deck_map.get(card_name) + count);
+				}
+				else {
+					deck_map.set([card_name, card_set, card_num], count);
 				}
 			}
+
+			for (const card of card_list.cards) {
+				for (const [ key, value ] of deck_map.entries()) {
+					if (key[0] == card.card_name && (key[1] == card.set || key[1] == "XXX") && (key[2] == card.number.toString() || key[2] == "0")) {
+						new_list.push(card);
+						cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${value}x"; display: block; position: absolute; border-radius: 20px;}\n`;
+						deck_map.delete(key);
+					}
+				}
+			}
+
+			if (deck_map.size > 1) {
+				for (const card of card_list.cards) {
+					for (const [ key, value ] of deck_map.entries()) {
+						if (key[0] == card.card_name && (key[1] == card.set || key[1] == "XXX")) {
+							new_list.push(card);
+							cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${value}x"; display: block; position: absolute; border-radius: 20px;}\n`;
+							deck_map.delete(key);
+						}
+					}
+				}
+			}
+
+			if (deck_map.size > 1) {
+				for (const card of card_list.cards) {
+						for (const [ key, value ] of deck_map.entries()) {
+						if (key[0] == card.card_name) {
+							new_list.push(card);
+							cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${value}x"; display: block; position: absolute; border-radius: 20px;}\n`;
+							deck_map.delete(key);
+						}
+					}
+				}
+			}
+
 			// set the card list to te new list, then add a style element with the css string we just made, then add it to the body. Close the modal, then initialize the search
 			card_list_arrayified = new_list;
 			const cssElem = document.createElement("style");
@@ -1374,18 +1412,6 @@
 
 			closeModal();
 			preSearch();
-		}
-
-		function deckTextToCollection() {
-			// get the deck text then split it into lines
-			var text = generateDeckText();
-			var lines = text.split("\n");
-			var cardlist = [];
-			for (const line of lines) {
-				// for each line, add the line to the list
-				cardlist.push(line);
-			}
-			return cardlist;
 		}
 
 		function readDeckText(text, name) {
@@ -1508,7 +1534,7 @@
 
 			if (deck_map.size > 1 || sb_map.size > 1 || sc_map.size > 1) {
 				for (const card of card_list_arrayified) {
-						for (const [ key, value ] of deck_map.entries()) {
+					for (const [ key, value ] of deck_map.entries()) {
 						if (key[0] == card.card_name && (key[1] == card.set || key[1] == "XXX")) {
 							for (let i = 0; i < value; i++) {
 								addCardToDeck(JSON.stringify(card), false);
@@ -1873,28 +1899,18 @@
 				return;
 			}
 
-			if (modifyDeck2(`${card_parsed['set']}-${card_parsed['number']}`, '+')) {
-				return;
-			}
-
 			deck.push(card);
 			if (process) processDeck();
 		}
 
 		function addCardToSideboard(card, process = true) {
 			let card_parsed = JSON.parse(card);
-			if (modifySB2(`${card_parsed['set']}-${card_parsed['number']}`, '+')) {
-				return;
-			}
 			sideboard.push(card);
 			if (process) processDeck();
 		}
 
 		function addCardToSanctum(card, process = true) {
 			let card_parsed = JSON.parse(card);
-			if (modifySC2(`${card_parsed['set']}-${card_parsed['number']}`, '+')) {
-				return;
-			}
 			sanctum.push(card);
 			if (process) processDeck();
 		}
@@ -2117,7 +2133,6 @@
 					event.preventDefault();
 					sideboard.splice(sideboard.indexOf(card), 1);
 					let parsed_card = JSON.parse(card);
-					modifySB2(`${parsed_card['set']}-${parsed_card['number']}`, '-');
 					addCardToDeck(card);
 				}
 			} else if (key == "sanctum") {
@@ -2143,7 +2158,6 @@
 					event.preventDefault();
 					sanctum.splice(sanctum.indexOf(card), 1);
 					let parsed_card = JSON.parse(card);
-					modifySC2(`${parsed_card['set']}-${parsed_card['number']}`, '-');
 					addCardToDeck(card);
 				}
 			}
@@ -2154,7 +2168,6 @@
 				let card_parsed = JSON.parse(card);
 				del_btn.onclick = function () {
 					deck.splice(deck.indexOf(card), 1);
-					modifyDeck2(`${card_parsed['set']}-${card_parsed['number']}`, "-");
 					processDeck();
 				}
 
@@ -2172,7 +2185,6 @@
 				card_in_deck.oncontextmenu = function (event) {
 					event.preventDefault();
 					deck.splice(deck.indexOf(card), 1);
-					modifyDeck2(`${card_parsed['set']}-${card_parsed['number']}`, "-");
 					addCardToSideboard(card);
 					processDeck();
 				}
@@ -2524,69 +2536,6 @@
 			if (event.target == modal) {
 				closeModal();
 			}
-		}
-
-		function modifyDeck2(setNum, op) {
-			if (op == "+") {
-				if (((deck_2[setNum] + sideboard_2[setNum] + sanctum_2[setNum]) >= collection_copies[setNum]) && localStorage.getItem("settings.maxcopies") == "On") {
-					return true;
-				}
-				if (setNum in deck_2) {
-					deck_2[setNum] += 1;
-				} else {
-					deck_2[setNum] = 1;
-				}
-			}
-			if (op == "-") {
-				if (deck_2[setNum] <= 0) {
-					deck_2[setNum] = 0;
-				} else {
-					deck_2[setNum] -= 1;
-				}
-			}
-			return false;
-		}
-
-		function modifySB2(setNum, op) {
-			if (op == "+") {
-				if (((deck_2[setNum] + sideboard_2[setNum] + sanctum_2[setNum]) >= collection_copies[setNum]) && localStorage.getItem("settings.maxcopies") == "On") {
-					return true;
-				}
-				if (setNum in sideboard_2) {
-					sideboard_2[setNum] += 1;
-				} else {
-					sideboard_2[setNum] = 1;
-				}
-			}
-			if (op == "-") {
-				if (sideboard_2[setNum] <= 0) {
-					sideboard_2[setNum] = 0;
-				} else {
-					sideboard_2[setNum] -= 1;
-				}
-			}
-			return false;
-		}
-
-		function modifySC2(setNum, op) {
-			if (op == "+") {
-				if (((deck_2[setNum] + sideboard_2[setNum] + sanctum_2[setNum]) >= collection_copies[setNum]) && localStorage.getItem("settings.maxcopies") == "On") {
-					return true;
-				}
-				if (setNum in sanctum_2) {
-					sanctum_2[setNum] += 1;
-				} else {
-					sanctum_2[setNum] = 1;
-				}
-			}
-			if (op == "-") {
-				if (sanctum_2[setNum] <= 0) {
-					sanctum_2[setNum] = 0;
-				} else {
-					sanctum_2[setNum] -= 1;
-				}
-			}
-			return false;
 		}
 
 		window.onbeforeunload = function () {

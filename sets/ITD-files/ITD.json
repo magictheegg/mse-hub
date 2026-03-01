@@ -565,7 +565,7 @@
             "number": 2,
             "color_identity": "C",
             "cost": "{5}",
-            "rules_text": "[i](Creatures don't lose loyalty from damage.)[/i]\nWard {2}\n[+1]: Phase out up to one other target permanent until your next turn.\n[-3]: This creature deals 7 damage to target creature or planeswalker.",
+            "rules_text": "[i](Creatures don't lose loyalty from damage.)[/i]\nWard {2}\n[+1]: Up to one other target permanent phases out until your next turn.\n[-3]: This creature deals 7 damage to target creature or planeswalker.",
             "flavor_text": "[i][/i]",
             "pt": "5/5",
             "special_text": "",
@@ -821,7 +821,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "Artur Sadlos",
-            "notes": ""
+            "notes": "!tapped"
         },
         {
             "card_name": "Far-off Door",
@@ -1182,7 +1182,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "Shahab Alizadeh",
-            "notes": ""
+            "notes": "!tapped"
         },
         {
             "card_name": "Awakened Fiend",
@@ -1809,7 +1809,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "Zdzislaw Beksinski",
-            "notes": ""
+            "notes": "!tapped"
         },
         {
             "card_name": "Desolate Expanse",
@@ -1828,7 +1828,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "Shajab Alizadeh",
-            "notes": ""
+            "notes": "!tapped"
         },
         {
             "card_name": "Beseech the Divine",
@@ -2056,7 +2056,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "Pavel Vophira",
-            "notes": "https://www.artstation.com/artwork/Ga6WYQ"
+            "notes": "!tapped\nhttps://www.artstation.com/artwork/Ga6WYQ"
         },
         {
             "card_name": "Forlorn Battlefield",
@@ -2075,7 +2075,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "Pavel Vophira",
-            "notes": "https://www.artstation.com/artwork/wJmb4O"
+            "notes": "!tapped\nhttps://www.artstation.com/artwork/wJmb4O"
         },
         {
             "card_name": "Seek Understanding",
@@ -2151,7 +2151,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "VookaSheen",
-            "notes": "https://www.deviantart.com/vookasheen/art/Swamp-Creatures-602183184"
+            "notes": "!tapped\nhttps://www.deviantart.com/vookasheen/art/Swamp-Creatures-602183184"
         },
         {
             "card_name": "Ghostspitter",
@@ -2569,7 +2569,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "LoganWalden",
-            "notes": ""
+            "notes": "!tapped"
         },
         {
             "card_name": "Goddess of Puppet Strings",
@@ -2664,7 +2664,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "Slitherbop",
-            "notes": ""
+            "notes": "!tapped"
         },
         {
             "card_name": "Liferoot Gnawer",
@@ -2854,7 +2854,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "NaismithArt",
-            "notes": ""
+            "notes": "!tapped"
         },
         {
             "card_name": "Shortcut Through Hell",
@@ -3576,7 +3576,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "Elentori",
-            "notes": "!tokentag I8\n!related Ancient Forerunner;\n!conjured"
+            "notes": "!skipimport\n!tokentag I8\n!related Ancient Forerunner;\n!conjured"
         },
         {
             "card_name": "Cloudscape Observer",
@@ -3595,7 +3595,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "LoganWalden",
-            "notes": "!tokentag I1\n!related Cloudscape Observer;\n!conjured"
+            "notes": "!skipimport\n!tokentag I1\n!related Cloudscape Observer;\n!conjured"
         },
         {
             "card_name": "Deepmind Oracle",
@@ -3614,7 +3614,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "Benjamin GILETTI",
-            "notes": "!tokentag I2\n!related Deepmind Oracle;\n!conjured"
+            "notes": "!skipimport\n!tokentag I2\n!related Deepmind Oracle;\n!conjured"
         },
         {
             "card_name": "Emergent Anomaly",
@@ -3633,7 +3633,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "QBRTcubeart",
-            "notes": "!tokentag I3\n!related Emergent Anomaly;\n!conjured"
+            "notes": "!skipimport\n!tokentag I3\n!related Emergent Anomaly;\n!conjured"
         },
         {
             "card_name": "Fracture of Divinity",
@@ -3652,7 +3652,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "Pascal Blance",
-            "notes": "!tokentag I4\n!related Fracture of Divinity;\n!conjured"
+            "notes": "!skipimport\n!tokentag I4\n!related Fracture of Divinity;\n!conjured"
         },
         {
             "card_name": "Lammasu, Dream-Stilled",
@@ -3671,7 +3671,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "Piotr Gajda",
-            "notes": "!tokentag I5\n!related Lammasu, Dream-Stilled;\n!conjured"
+            "notes": "!skipimport\n!tokentag I5\n!related Lammasu, Dream-Stilled;\n!conjured"
         },
         {
             "card_name": "Mechanised Hunter",
@@ -3690,7 +3690,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "Sebastian Gosko",
-            "notes": "!tokentag I6\n!related Mechanised Hunter;\n!conjured"
+            "notes": "!skipimport\n!tokentag I6\n!related Mechanised Hunter;\n!conjured"
         },
         {
             "card_name": "New-Life Acolyte",
@@ -3709,7 +3709,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "Mark Molnar",
-            "notes": "!tokentag I9\n!related New-Life Acolyte;\n!conjured"
+            "notes": "!skipimport\n!tokentag I9\n!related New-Life Acolyte;\n!conjured"
         },
         {
             "card_name": "Priest of Perfection",
@@ -3728,7 +3728,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "esuthio",
-            "notes": "!tokentag I7\n!related Priest of Perfection;\n!conjured"
+            "notes": "!skipimport\n!tokentag I7\n!related Priest of Perfection;\n!conjured"
         },
         {
             "card_name": "Shifting Silverscape",
@@ -3747,7 +3747,7 @@
             "loyalty": "",
             "designer": "Trewq",
             "artist": "Aldo Katayanagi",
-            "notes": "!tokentag I10\n!related Shifting Silverscape;\n!conjured"
+            "notes": "!skipimport\n!tokentag I10\n!related Shifting Silverscape;\n!conjured"
         },
         {
             "card_name": "Insect",
@@ -3790,7 +3790,7 @@
         {
             "card_name": "Deepgrowth Animist",
             "color": "G",
-            "rarity": "uncommon",
+            "rarity": "rare",
             "type": "Creature \u2014 Elf Shaman",
             "number": 114,
             "color_identity": "G",

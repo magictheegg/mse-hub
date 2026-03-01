@@ -213,7 +213,7 @@
 		{
 			"name": "Sealed Deepborn",
 			"rarity": "uncommon",
-			"mana_cost": "{1}{C}",
+			"mana_cost": "{2}{C}",
 			"type": "Creature — Merfolk Chimera Citizen",
 			"collector_number": "62",
 			"image_uris": {

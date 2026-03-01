@@ -3786,7 +3786,7 @@
             "number": 66,
             "color_identity": "U",
             "cost": "{1}{U}",
-            "rules_text": "Flash\nWhen Ophidian Soul enters, target permanent gains Ophidian Soul abilities until end of turn.\nWhenever Ophidian Soul deals combat damage to a player, draw a card.",
+            "rules_text": "Flash\nWhen Ophidian Soul enters, target permanent gains Ophidian Soul's abilities until end of turn.\nWhenever Ophidian Soul deals combat damage to a player, draw a card.",
             "flavor_text": "[i][/i]",
             "pt": "1/1",
             "special_text": "",
@@ -4631,7 +4631,7 @@
             "loyalty": "",
             "designer": "Kogane",
             "artist": "Alessia H. Valastro",
-            "notes": "Cleric Token\ninduct"
+            "notes": "Cleric Token\ninduct\n!related God Horror"
         },
         {
             "card_name": "Foretell",
@@ -5021,7 +5021,7 @@
             "number": 89,
             "color_identity": "B",
             "cost": "{2}{B}{B}",
-            "rules_text": "Flying\nAt the beginning of your end step, each player sacrifices a creature. \nWhen you sacrifice Crowned Ghoul, you may search your library for a card named The Crowned Growth exile it. If you do, it becomes foretold. [i](Its foretell cost is its mana cost if it isn't already specified.)[/i]",
+            "rules_text": "Flying\nAt the beginning of your end step, each player sacrifices a creature. \nWhen you sacrifice Crowned Ghoul, you may search your library for a card named The Crowned Growth and exile it. If you do, it becomes foretold. [i](Its foretell cost is its mana cost if it isn't already specified.)[/i]",
             "flavor_text": "[i][/i]",
             "pt": "3/2",
             "special_text": "",

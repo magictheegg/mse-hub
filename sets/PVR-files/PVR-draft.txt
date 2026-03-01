@@ -2134,7 +2134,7 @@
 			"name": "Cultivator's Caravan",
 			"rarity": "uncommon",
 			"mana_cost": "{3}",
-			"type": "Artifact Creature — Vehicle",
+			"type": "Artifact — Vehicle",
 			"collector_number": "275",
 			"image_uris": {
 				"en": "https://Voyager-MTG.github.io/sets/PVR-files/img/275_Cultivator's Caravan.jpg"

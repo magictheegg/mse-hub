@@ -1992,7 +1992,7 @@
 		},
 		{
 			"name": "Deepgrowth Animist",
-			"rarity": "uncommon",
+			"rarity": "rare",
 			"mana_cost": "{G}",
 			"type": "Creature — Elf Shaman",
 			"collector_number": "114",
@@ -2200,5 +2200,6 @@
 	2 The Howling Door
 	2 The Eternal Echo
 	2 Apocalypse of the Forest
+	2 Deepgrowth Animist
 	2 One of Keys
 	2 Desolate Meeting

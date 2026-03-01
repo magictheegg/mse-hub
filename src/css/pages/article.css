@@ -29,12 +29,12 @@ hr {
 
 .card-hover-text {
 	font-weight: bold;
-	color: #1338be;
+	color: var(--link);
 	transition: 0.2s;
 }
 
 .card-hover-text:hover {
-	color: #0492c2;
+	color: color-mix(in srgb, var(--link), cyan 50%);
 }
 
 .article-content {

@@ -258,6 +258,11 @@
 				return `<div style="display: grid; grid-template-columns: 1fr 0.1fr 1fr; gap: 10px; align-items: center; justify-items: center; width: 100%;"><img style="max-height: 300px;" src="${image_1}"><span style="font-weight: bold; font-size: 100px;">›</span><img style="max-height: 300px;" src="${image_2}"></div>`;
 			});
 
+			// Change preview ban
+			md = md.replaceAll(/<change-preview ban>\n?(.*?)\n(.*?)\n?<\/change-preview>/gm, function (_1, image_1, image_2) {
+				return `<div style="display: grid; grid-template-columns: 1fr 0.1fr 1fr; gap: 10px; align-items: center; justify-items: center; width: 100%;"><img style="max-height: 300px;" src="${image_1}"><span style="font-weight: bold; font-size: 100px;">›</span><img style="max-height: 300px; filter: grayscale() brightness(0.8);" src="${image_2}"></div>`;
+			});
+
 			// Italic bold
 			md = md.replaceAll(/\*\*\*(.*?)\*\*\*/g, function (_1, _2) {
 				return `<i><b>${_2}</i></b>`;

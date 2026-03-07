@@ -1,0 +1,89 @@
+[zeta(3)]
+1 Cloudscape Observer
+1 Corpse-Shell Container
+1 Covert Cloak
+1 Cryptic Columns
+1 Crystalline Cover
+1 Culture Collector
+1 Curious Observer
+1 Decrepid Terraformer
+1 Deepmind Oracle
+1 Disregarded Project
+1 Dreadship Vessel
+1 Ego Eroder
+1 Emergent Anomaly
+1 Endless Distortion Line
+1 Erys Memoirs
+1 Eteres Chronicler
+1 Extant Surveyor
+1 Extraplanar Portal
+1 Extravagent Airship
+1 Firmament Sculptor
+1 Firmament-Rending Blade
+1 Flaming Iron
+1 Flesh Centrifuge
+1 Font of Decadence
+1 Foreboding Monolith
+1 Fracture of Divinity
+1 Giants Blade
+1 Hazard Technician
+1 Hierarch of Expiration
+1 Hierarch of Exultation
+1 Idol of Forgotten Gods
+1 Idol of Reconstruction
+1 Important Parcel
+1 Infested Fortress
+1 Liferoot Gnawer
+1 Longlegs
+1 Malevolent Naginata
+1 Matryoshka Crawler
+1 Mechanised Hunter
+1 Meso Meso
+1 Messenger of Absent Messages
+1 Monument of Rags
+1 New-Life Acolyte
+1 Oblivion Zealot
+1 Obsolete Sentinel
+1 Pot of Wishes
+1 Priest of Perfection
+1 Prismatic Powerstone
+1 Prophetic Prism
+1 Realmshaper
+1 Rustic Cultivator
+1 Sacred Avenger
+1 Sample Skimmer
+1 Self-Intersector
+1 Serrated Angel
+1 Somnonaut Drone
+1 Sorting Servant
+1 Soul Taker
+1 Spire of Rebirth
+1 Stinging Surveyor
+1 Syphroid
+1 Thoughtglass Whip
+1 Throat of Remnants
+1 Towering Protector
+1 Wings of New Horizons
+1 Yaiba Robo
+1 Armament of Armageddon
+1 Asset Manager
+1 Catechesis Engine
+1 Ecocidal Tracker
+1 Marblewrought Titan
+1 Apocalypse Engine
+1 Awakened Marauder
+1 Ancient Forerunner
+1 Cadix the Raze-Rager
+1 Awakened Titan
+1 Refraction Mech
+1 Ancient Activator
+1 Envoy of Debauchery
+1 Imperial Excommunicator
+1 Ancient Viewdrifter
+1 Aspect of Logic
+1 Collapsed Chaos
+1 Condensed Memory
+1 Explorers Compass
+1 Heirloom of the Obsolete
+1 Hulking Vessel
+1 Recovered Guardian

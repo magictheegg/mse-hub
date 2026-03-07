@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Noncreatures",
+        "color": "U",
+        "list": "1 Kaln-Ocean Seahorse (FOE) 74\n1 Resolute Watcher (VNM) 71\n1 Rastira Trawler (PVR) 77\n1 Frostborn Glimmer (VNM) 60\n1 Veneer Walker (FOE) 95\n1 Sage of Truths (VNM) 73\n1 Storm Bearer (VNM) 77\n1 Kidnapping (HOD) 60\n1 Due Dismissal (VNM) 59\n1 Denied by Nature (VNM) 58\n1 Vertical Shift (FOE) 96\n1 Reshape Eternity (FOE) 84\n7 Island (EXPT) 2\n1 Drifting Isle (FOE) 346\nsanctum\n1 Tiderock Passage (FOE) 92\n",
+        "face_card": "Kaln-Ocean Seahorse"
+    },
+    {
+        "name": "Toughness",
+        "color": "I",
+        "list": "1 Soaring Chorus (FOE) 269\n1 Draconic Reflection (EXPT) 22\n1 Hopeless Summit (EXPT) 37\n1 Information Recovery Crew (EXPT) 39\n1 Tepid Tamer (EXPT) 74\n1 Blade Reifier (FOE) 228\n1 Wisped Wings (EXPT) 82\n1 Scholigaunt (EXPT) 60\n1 Grazed by the Endless (VNM) 190\n1 Searing Sigils (EXPT) 63\n1 Guardian of Faloden Woods (VNM) 229\n1 Blooming Peculiarity (EXPT) 13\n7 Fault (EXPT) 31\n1 Drifting Crevasse (FOE) 344\nsanctum\n1 Paths Strider (VNM) 6\n",
+        "face_card": "Soaring Chorus"
+    },
+    {
+        "name": "Prismatic Colorless",
+        "color": "C",
+        "list": "1 Dawnshroud Castle (FOE) 0\n1 Drifting Sands (FOE) 350\n1 Fault (EXPT) 31\n1 Forest (EXPT) 7\n1 Island (EXPT) 2\n1 Mountain (EXPT) 5\n1 Plains (EXPT) 1\n1 Swamp (EXPT) 3\n1 Wind Worn Peaks (FOE) 18\n1 Wings of New Horizons (VNM) 284\n1 Faloden Tear-Warden (VNM) 3\n1 Parading Terrain (FOE) 14\n1 Prophetic Prism (PVR) 283\n1 Wealthy Slabman (HOD) 289\n1 Foreboding Monolith (ITD) 160\n1 Arbiter (ITD) 2\n1 Misguiding Lighthouse (PTN) 5\n1 Recovered Guardian (PVR) 285\n1 Remnant Awakener (VNM) 8\n1 Monument to Forever (FOE) 11\nsanctum\n1 Pathbound Bloom (VNM) 281\n",
+        "face_card": "Arbiter"
+    },
+    {
+        "name": "Enchantments",
+        "color": "W",
+        "list": "1 Calia, Oracle of Tofnet Plains (VNM) 16\n1 Drifting Field (FOE) 345\n1 Kilnhart Smoghorn (FOE) 7\n1 Maddened by Hunger (VNM) 32\n1 Outfoxed (FOE) 43\n1 Outlands Recruiter (FOE) 46\n7 Plains (PTN) 260\n1 Radiant Guide (VNM) 39\n1 Rapturous Joy (WAW) 31\n1 Shining Idol (VNM) 42\n1 Stardust Haze (WAW) 33\n1 Usher of the Lost (VNM) 46\n1 Wandering Entity (VNM) 13\n1 Wandering Soul (VNM) 47\nsanctum\n1 Mesmerize (WAW) 204\n",
+        "face_card": "Calia, Oracle of Tofnet Plains"
+    },
+    {
+        "name": "Vertices",
+        "color": "R",
+        "list": "1 Brood Protector (VNM) 118\n1 Drifting Peak (FOE) 349\n1 Fervent Incandescence (VNM) 123\n1 Harsurfir Scavenger (PVR) 151\n1 Hellish Inferngon (PVR) 154\n1 Into the Mines (PVR) 155\n7 Mountain (VNM) 16\n1 Overclocked Dragon (PVR) 162\n1 Render Flesh (PVR) 166\n1 Semiothaumaturge (AKT) 159\n1 Spoils of Scarcity (PVR) 171\n1 Tenuous Empowerment (VNM) 143\n1 Terror of Harsurfir (PVR) 176\n1 Polystone Quarry (PVR) 280\nsanctum\n1 Path of the Brood (VNM) 136\n",
+        "face_card": "Overclocked Dragon"
+    },
+    {
+        "name": "Self=Mill",
+        "color": "B",
+        "list": "1 Avakin Devotee (FOE) 102\n1 Carapace Guardian (PTN) 85\n1 Drifting Mire (FOE) 348\n1 Eternity Siphon (VNM) 96\n1 Grocery Shopper (AKT) 104\n1 Ignelscor Jidiao (FOE) 117\n1 Left for the Crows (FOE) 118\n1 Nilshroud Mulcher (PVR) 121\n1 Scornful Pursuit (VNM) 110\n1 Sewage Surveyor (AKT) 124\n1 Stare at the Stars (WAW) 98\n7 Swamp (EXPT) 3\n1 Verse Change (PTN) 119\n1 Witness to Nil (PVR) 135\nsanctum\n1 Pathborn Aggression (VNM) 107\n",
+        "face_card": "Grocery Shopper"
+    },
+    {
+        "name": "Sneak",
+        "color": "U",
+        "list": "1 Castle Delta Lookout (HOD) 48\n1 Drifting Isle (FOE) 346\n1 Fly Away With Me (FOE) 70\n7 Island (PTN) 263\n1 Like Butterflies on Strings (ITD) 52\n1 Mental Unmooring (WAW) 56\n1 Pilferer of Shrouded Coasts (HOD) 72\n1 River Drowner (PTN) 71\n1 Seven-Coil Shipbreaker (PTN) 75\n1 Tormentor of Tales (HOD) 80\n1 Windshaper Drake (VNM) 82\n1 Outlands Wanderer (VNM) 65\n1 Obsolete Sentinel (PVR) 70\n1 Pensive Engine (AKT) 76\nsanctum\n1 Placid Sunbask (WAW) 209\n",
+        "face_card": "Like Butterflies on Strings"
+    },
+    {
+        "name": "Skills",
+        "color": "W",
+        "list": "1 Drifting Field (FOE) 345\n7 Plains (EXPT) 1\n1 Fadove Trainer (VNM) 25\n1 Light of Hope (FOE) 36\n1 Fadove Tracker (VNM) 24\n1 Found Family (AKT) 13\n1 Outlands Riftbearer (VNM) 35\n1 Giant's Blade (VNM) 27\n1 Iron Verdict (PTN) 31\n1 Khestri, Fadove Clanleader (VNM) 31\n1 Fadove Drillmaster (VNM) 20\n1 Fadove Willshaper (VNM) 26\n1 Radiant Guide (VNM) 39\n1 Wandering Soul (VNM) 47\nsanctum\n1 Path of the Proud (VNM) 36\n",
+        "face_card": "Khestri, Fadove Clanleader"
+    },
+    {
+        "name": "Defender",
+        "color": "R",
+        "list": "1 Drifting Peak (FOE) 349\n7 Mountain (EXPT) 5\n1 Burnout (VNM) 119\n1 Highway Courier (AKT) 141\n1 Smoldering Entity (VNM) 142\n1 Untamed Drake (VNM) 270\n1 Warforged Herald (VNM) 149\n1 Evanescent Impasse (VNM) 225\n1 Ghirbi, the Gatekeeper (PTN) 131\n1 Tenuous Empowerment (VNM) 143\n1 Beacon of Greatness (HOD) 130\n1 Lavaskimmer Wurm (VNM) 127\n1 Brood Protector (VNM) 118\n1 Cryptic Columns (WAW) 230\nsanctum\n1 Mordel Razer (VNM) 134\n",
+        "face_card": "Ghirbi, the Gatekeeper"
+    },
+    {
+        "name": "Artifacts",
+        "color": "B",
+        "list": "1 Drifting Mire (FOE) 348\n7 Swamp (AKT) 291\n1 Awakened Marauder (PVR) 95\n1 Kinematic Constrictor (PVR) 118\n1 Malevolent Naginata (VNM) 101\n1 Erfex Cemetery (PVR) 109\n1 Heirloom of the Obsolete (PVR) 276\n1 Messenger of Absent Messages (HOD) 285\n1 Spire of Rebirth (FOE) 136\n1 Cultivator's Caravan (PVR) 275\n1 Soul Taker (PVR) 132\n1 Planetary Harvester (PVR) 126\n1 Advocate of Heresy (PVR) 93\n1 Flesh Centrifuge (PVR) 113\nsanctum\n1 Eroding River (FOE) 111\n",
+        "face_card": "Flesh Centrifuge"
+    },
+    {
+        "name": "Bloom",
+        "color": "G",
+        "list": "1 Drifting Jungle (FOE) 347\n6 Forest (EXPT) 7\n1 Overflowing Sanctuary (HOD) 298\n1 Boon of Roduth (VNM) 154\n1 Guerrilla Ambush (HOD) 186\n1 Primal Power (PVR) 215\n1 Cloudkissed Tracker (HOD) 177\n1 Foliage Decoy (HOD) 180\n1 Mordel Warrior (VNM) 169\n1 Replenishing Camp (HOD) 196\n1 Tesseractapillar (PVR) 222\n1 Sapner Trapper (HOD) 202\n1 Fort Sapner Caretaker (HOD) 181\n1 Fulchard Sapner, Gentle Giant (HOD) 182\n1 Immensity (WAW) 159\nsanctum\n1 Outlands Guardian (VNM) 173\n",
+        "face_card": "Sapner Trapper"
+    },
+    {
+        "name": "Sacrifice",
+        "color": "B",
+        "list": "1 Drifting Mire (FOE) 348\n7 Swamp (EXPT) 3\n1 Cyprian Haemomancer (PTN) 91\n1 Malevolent Plumber (AKT) 113\n1 Pathborn Stinger (FOE) 128\n1 Backface Culling (PVR) 96\n1 Called by the Void (VNM) 92\n1 Power's Promise (WAW) 95\n1 Tattered Entity (VNM) 112\n1 Warden of the Lost (VNM) 115\n1 Crafty Cutthroat (WAW) 83\n1 New Tensuo Clergy (WAW) 91\n1 Abstraction Breaker (PVR) 92\n1 Monument of Rags (PTN) 104\nsanctum\n1 Deepholt Encounter (WAW) 186\n",
+        "face_card": "Abstraction Breaker"
+    },
+    {
+        "name": "Tokens",
+        "color": "I",
+        "list": "1 Drifting Crevasse (FOE) 344\n7 Fault (EXPT) 31\n1 Impunity of Souls (VNM) 233\n1 Tofnet Thrummer (VNM) 197\n1 Choked Essence (VNM) 185\n1 Dessigry (EXPT) 20\n1 Drougth Attuner (FOE) 236\n1 Splendid Genesis (VNM) 262\n1 Tepid Tamer (EXPT) 74\n1 Enlisted Arms (FOE) 241\n1 Korna's Forward (FOE) 251\n1 Bark of Tofnet Plains (VNM) 207\n1 Shell's Scraping (EXPT) 65\n1 Drougth Oracle (FOE) 237\n",
+        "face_card": "Shell's Scraping"
+    },
+    {
+        "name": "Toughness",
+        "color": "I",
+        "list": "1 Drifting Crevasse (FOE) 344\n7 Fault (EXPT) 31\n1 Blooming Peculiarity (EXPT) 13\n1 Information Recovery Crew (EXPT) 39\n1 Draconic Reflection (EXPT) 22\n1 Grazed by the Endless (VNM) 190\n1 Searing Sigils (EXPT) 63\n1 Soaring Chorus (FOE) 269\n1 Tepid Tamer (EXPT) 74\n1 Blade Reifier (FOE) 228\n1 Hopeless Summit (EXPT) 37\n1 Guardian of Faloden Woods (VNM) 229\n1 Scholigaunt (EXPT) 60\n1 Wisped Wings (EXPT) 82\nsanctum\n1 Paths Strider (VNM) 6\n",
+        "face_card": "Soaring Chorus"
+    },
+    {
+        "name": "Clerics",
+        "color": "W",
+        "list": "1 Drifting Field (FOE) 345\n7 Plains (EXPT) 1\n1 Broken Sun-Servant (PTN) 15\n1 Ignite Fervor (PTN) 30\n1 Mystical Trail (PTN) 35\n1 Defacement (PTN) 17\n1 Glassgarden Seer (PTN) 24\n1 The Sky, The Soul (PTN) 41\n1 Banisher Priest (PTN) 12\n1 Glassgarden Elder (PTN) 22\n1 Oblivion Zealot (PVR) 29\n1 Rarefied Illuminator (PTN) 38\n1 Glassgarden Watcheye (PTN) 25\n1 Bringer of Glory (PTN) 14\nsanctum\n1 Paths Strider (VNM) 6\n",
+        "face_card": "Glassgarden Watcheye"
+    },
+    {
+        "name": "Compexity",
+        "color": "U",
+        "list": "1 Drifting Isle (FOE) 346\n7 Island (EXPT) 2\n1 Buffer Zone (PVR) 49\n1 Cryptic Columns (WAW) 230\n1 Urwrapir Ambusher (PVR) 88\n1 Luddite Infiltrator (PVR) 55\n1 Prefabrication (PVR) 73\n1 Reject Input (PVR) 79\n1 Squid Squad (PVR) 84\n1 Tidal Drift (PVR) 86\n1 Submerged Titangill (PVR) 85\n1 Migrating Songon (PVR) 63\n1 Vial of Erysium (AKT) 262\n1 Enduring Turtle (HOD) 52\nsanctum\n1 Pathbound Bloom (VNM) 281\n",
+        "face_card": "Luddite Infiltrator"
+    },
+    {
+        "name": "Lands",
+        "color": "G",
+        "list": "1 Drifting Jungle (FOE) 347\n3 Forest (EXPT) 7\n1 Garden of Nurbs (PVR) 298\n1 Pool of Becoming (PVR) 304\n1 Specular Shack (PVR) 310\n1 Pattern Processing (PVR) 211\n1 Disciple of the Thicket (FOE) 189\n1 Leyline Weaver (FOE) 199\n1 Wolven Hatred (PTN) 195\n1 Earthen Curiosity (WAW) 153\n1 Tireless Recruiter (PTN) 189\n1 Normal Mapper (PVR) 206\n1 Virgin Media (PVR) 225\n1 Stampeding Goliath (PVR) 218\n1 Progeny of Bruin (VNM) 177\n1 Brightblossom Enclave (FOE) 0\n1 Territorial Primarch (PVR) 221\n1 Ravenous Unmaker (PTN) 181\nsanctum\n1 Placid Sunbask (WAW) 209\n",
+        "face_card": "Territorial Primarch"
+    },
+    {
+        "name": "Unearth",
+        "color": "I",
+        "list": "1 Drifting Crevasse (FOE) 344\n7 Fault (EXPT) 31\n1 Center Mass (EXPT) 15\n1 Inkblot Artist (FOE) 247\n1 Captivate (FOE) 231\n1 Dessigry (EXPT) 20\n1 Exuberant Archaeologist (EXPT) 30\n1 Iconic Challenger (FOE) 245\n1 Kaln-Ocean Wispop (VNM) 234\n1 Scars of Oil (VNM) 258\n1 Searing Sigils (EXPT) 63\n1 Blade Reifier (FOE) 228\n1 Duet of Loss and Life (EXPT) 23\n1 Faloden Scavenger (VNM) 188\nsanctum\n1 Concealing Ruins (FOE) 234\n",
+        "face_card": "Faloden Scavenger"
+    },
+    {
+        "name": "11 Counters",
+        "color": "G",
+        "list": "1 Drifting Jungle (FOE) 347\n7 Forest (PTN) 269\n1 Attwater Elite (HOD) 169\n1 Boon of Roduth (VNM) 154\n1 Ranging Symbiote (FOE) 209\n1 Iconic Altercation (VNM) 163\n1 Imprisoned Aspect (ITD) 121\n1 Mordel Clanwarden (VNM) 167\n1 Virulent Attendant (FOE) 221\n1 Cervus Sprouting (FOE) 183\n1 Clanless Weaver (FOE) 184\n1 Hunter's Strength (FOE) 195\n1 Outlands Caretaker (FOE) 206\n1 Progeny of Mordel (VNM) 178\nsanctum\n1 Outlands Guardian (VNM) 173\n",
+        "face_card": "Imprisoned Aspect"
+    },
+    {
+        "name": "Exile",
+        "color": "R",
+        "list": "1 Drifting Peak (FOE) 349\n7 Mountain (EXPT) 5\n1 Mordel Excursionist (VNM) 132\n1 Sacred Signs (PVR) 168\n1 Blazing Crescendo (PTN) 122\n1 Curious Qualiaform (AKT) 132\n1 Playful Skulk (WAW) 127\n1 Subvert the Light (PTN) 154\n1 Malleary Seer (PTN) 141\n1 Siege of Percitha (AKT) 160\n1 Malleary Smelter (PTN) 142\n1 Enflamed Caligine (PTN) 127\n1 Drougth Adventurer (FOE) 151\n1 Mordel Drillmaster (VNM) 131\nsanctum\n1 Bosket Peak (FOE) 143\n",
+        "face_card": "Siege of Percitha"
+    }
+]

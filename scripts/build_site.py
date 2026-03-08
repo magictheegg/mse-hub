@@ -26,6 +26,8 @@ def genAllCards(codes):
 		#CE: non-indented JSON is driving me insane
 		prettifyJSON(os.path.join('sets', code + '-files', code + '.json'))	
 		#F: grabs the corresponding file,
+		with open('data/collectionleague/packs.json') as f:
+			packs = json.load(f)
 		with open(os.path.join('sets', code + '-files', code + '.json'), encoding='utf-8-sig') as f:
 			#F: puts its card data into a temp dictionary,
 			raw = json.load(f)
@@ -51,6 +53,7 @@ def genAllCards(codes):
 			set_data['set_name'] = raw['name']
 			set_data['formats'] = raw['formats']
 			set_data['designer'] = raw['designer']
+			if code in packs['theme']: set_data['pack'] = True
 			set_input['sets'].append(set_data)
 	#F: opens a path,
 	with open(os.path.join('lists', 'all-cards.json'), 'w', encoding='utf-8') as f:

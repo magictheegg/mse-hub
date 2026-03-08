@@ -22,7 +22,7 @@
 	<img class="preload-hidden" src="/img/save.png">
 	<img class="preload-hidden" src="/img/download.png">
 	<img class="preload-hidden" src="/img/copy-white.png">
-	<img src="img/header/menu.png" class="header-control" onclick="toggleHeader()">
+	<img src="/img/header/menu.png" class="header-control" onclick="toggleHeader()">
 	<div class="header">
 		<div class="search-grid">
 			<a href="/"><img class="sg-logo" src="/img/banner.png"></a>
@@ -34,13 +34,13 @@
 						class="sg-icon">Community<b>⮟</b></a>
 				<div class="community-dropdown">
 					<a href="/community?tab=users" class="community-dropdown-item"><img class="dropdown-icon"
-							src="img/header/community.png">Users</a>
+							src="/img/header/community.png">Users</a>
 					<a href="/community?tab=decks" class="community-dropdown-item"><img class="dropdown-icon"
-							src="img/header/deck.png">Decks</a>
+							src="/img/header/deck.png">Decks</a>
 					<a href="/community?tab=events" class="community-dropdown-item"><img class="dropdown-icon"
-							src="img/swords.png">Events</a>
+							src="/img/swords.png">Events</a>
 					<a href="/community?tab=cards" class="community-dropdown-item"><img class="dropdown-icon"
-							src="img/header/sets.png">Cards</a>
+							src="/img/header/sets.png">Cards</a>
 				</div>
 			</div>
 			<a href="/settings" class="account-link"><img src="/img/header/settings.png" class="sg-icon"></a>
@@ -1255,7 +1255,7 @@
 			container.className = "load-deck-container";
 			const preview_img = document.createElement("img");
 			let card_stats;
-			let card_stats_image = "img/card_back.png";
+			let card_stats_image = "/img/card_back.png";
 			for (const card of card_list_arrayified) {
 				if (deck.previewimg == card.card_name) {
 					card_stats = card;
@@ -1263,7 +1263,7 @@
 					break;
 				}
 			}
-			preview_img.src = deck.previewimg == "cardback" ? "img/card_back.png" : card_stats_image;
+			preview_img.src = deck.previewimg == "cardback" ? "/img/card_back.png" : card_stats_image;
 			preview_img.className = "deck-preview-img";
 			// preview_img.onclick = function() {
 			//     window.location.href = `/deck?deck=${deck.user}-${encodeURI(deck.name)}`

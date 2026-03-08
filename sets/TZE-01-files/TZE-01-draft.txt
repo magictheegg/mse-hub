@@ -1,0 +1,297 @@
+[CustomCards]
+	[
+		{
+			"name": "Apocalypse Engine",
+			"rarity": "mythic",
+			"mana_cost": "{5}{B}{B}",
+			"type": "Legendary Artifact",
+			"collector_number": "6",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/6_Apocalypse Engine.jpg"
+			}
+		},
+		{
+			"name": "Armament of Armageddon",
+			"rarity": "mythic",
+			"mana_cost": "{4}{W}{W}",
+			"type": "Artifact Creature — Zombie Angel",
+			"collector_number": "1",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/1_Armament of Armageddon.jpg"
+			}
+		},
+		{
+			"name": "Imperial Excommunicator",
+			"rarity": "uncommon",
+			"mana_cost": "{2}{W}{B}",
+			"type": "Artifact Creature — Zombie Noble",
+			"collector_number": "14",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/14_Imperial Excommunicator.jpg"
+			}
+		},
+		{
+			"name": "Explorer's Compass",
+			"rarity": "uncommon",
+			"mana_cost": "{1}",
+			"type": "Artifact — Equipment",
+			"collector_number": "19",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/19_Explorer's Compass.jpg"
+			}
+		},
+		{
+			"name": "Collapsed Chaos",
+			"rarity": "rare",
+			"mana_cost": "{4}",
+			"type": "Enchantment Artifact Creature — Fractal",
+			"collector_number": "17",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/17_Collapsed Chaos.jpg"
+			}
+		},
+		{
+			"name": "Heirloom of the Obsolete",
+			"rarity": "common",
+			"mana_cost": "{2}",
+			"type": "Artifact — Equipment",
+			"collector_number": "20",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/20_Heirloom of the Obsolete.jpg"
+			}
+		},
+		{
+			"name": "Hulking Vessel",
+			"rarity": "common",
+			"mana_cost": "{3}",
+			"type": "Artifact — Vehicle",
+			"collector_number": "21",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/21_Hulking Vessel.jpg"
+			}
+		},
+		{
+			"name": "Scout",
+			"rarity": "common",
+			"mana_cost": "",
+			"type": "Token Creature — Scout",
+			"collector_number": "3",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/3_Scout.jpg"
+			}
+		},
+		{
+			"name": "Scout",
+			"rarity": "common",
+			"mana_cost": "",
+			"type": "Token Creature — Scout",
+			"collector_number": "4",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/4_Scout.jpg"
+			}
+		},
+		{
+			"name": "Envoy of Debauchery",
+			"rarity": "mythic",
+			"mana_cost": "{1}{W}{B}",
+			"type": "Artifact Creature — Zombie Wall",
+			"collector_number": "13",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/13_Envoy of Debauchery.jpg"
+			}
+		},
+		{
+			"name": "Catechesis Engine",
+			"rarity": "uncommon",
+			"mana_cost": "{4}{W}",
+			"type": "Artifact Creature — Zombie Soldier",
+			"collector_number": "3",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/3_Catechesis Engine.jpg"
+			}
+		},
+		{
+			"name": "Ecocidal Tracker",
+			"rarity": "common",
+			"mana_cost": "{1}{W}",
+			"type": "Artifact Creature — Zombie Soldier",
+			"collector_number": "4",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/4_Ecocidal Tracker.jpg"
+			}
+		},
+		{
+			"name": "Recovered Guardian",
+			"rarity": "common",
+			"mana_cost": "{5}",
+			"type": "Artifact Creature — Zombie Soldier",
+			"collector_number": "22",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/22_Recovered Guardian.jpg"
+			}
+		},
+		{
+			"name": "Refraction Mech",
+			"rarity": "rare",
+			"mana_cost": "{2}{C}",
+			"type": "Artifact Creature — Robot Warrior",
+			"collector_number": "11",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/11_Refraction Mech.jpg"
+			}
+		},
+		{
+			"name": "Ancient Forerunner",
+			"rarity": "rare",
+			"mana_cost": "{R}",
+			"type": "Artifact Creature — Construct",
+			"collector_number": "8",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/8_Ancient Forerunner.jpg"
+			}
+		},
+		{
+			"name": "Asset Manager",
+			"rarity": "common",
+			"mana_cost": "{3}{W}",
+			"type": "Artifact Creature — Zombie Scout",
+			"collector_number": "2",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/2_Asset Manager.jpg"
+			}
+		},
+		{
+			"name": "Human",
+			"rarity": "common",
+			"mana_cost": "",
+			"type": "Token Creature — Human",
+			"collector_number": "2",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/2_Human.jpg"
+			}
+		},
+		{
+			"name": "Aspect of Logic",
+			"rarity": "rare",
+			"mana_cost": "{7}",
+			"type": "Enchantment Artifact Creature — Avatar",
+			"collector_number": "16",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/16_Aspect of Logic.jpg"
+			}
+		},
+		{
+			"name": "Marblewrought Titan",
+			"rarity": "rare",
+			"mana_cost": "{1}{W}{W}",
+			"type": "Artifact Creature — Demon Construct",
+			"collector_number": "5",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/5_Marblewrought Titan.jpg"
+			}
+		},
+		{
+			"name": "Awakened Titan",
+			"rarity": "rare",
+			"mana_cost": "{1}{G}",
+			"type": "Artifact Creature — Demon Construct",
+			"collector_number": "10",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/10_Awakened Titan.jpg"
+			}
+		},
+		{
+			"name": "Awakened Marauder",
+			"rarity": "uncommon",
+			"mana_cost": "{B}",
+			"type": "Artifact Creature — Zombie Warrior",
+			"collector_number": "7",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/7_Awakened Marauder.jpg"
+			}
+		},
+		{
+			"name": "Cadix, the Raze-Rager",
+			"rarity": "rare",
+			"mana_cost": "{2}{R}{R}",
+			"type": "Legendary Artifact Creature — Zombie Dinosaur",
+			"collector_number": "9",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/9_Cadix, the Raze-Rager.jpg"
+			}
+		},
+		{
+			"name": "Ancient Activator",
+			"rarity": "rare",
+			"mana_cost": "{U}{B}",
+			"type": "Artifact",
+			"collector_number": "12",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/12_Ancient Activator.jpg"
+			}
+		},
+		{
+			"name": "Fractal Horror",
+			"rarity": "common",
+			"mana_cost": "",
+			"type": "Token Creature — Fractal Horror",
+			"collector_number": "1",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/1_Fractal Horror.jpg"
+			}
+		},
+		{
+			"name": "Ancient Viewdrifter",
+			"rarity": "rare",
+			"mana_cost": "{1}",
+			"type": "Artifact Creature — Thopter",
+			"collector_number": "15",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/15_Ancient Viewdrifter.jpg"
+			}
+		},
+		{
+			"name": "White Base",
+			"rarity": "common",
+			"mana_cost": "",
+			"type": "Legendary Land Token",
+			"collector_number": "5",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/5_White Base.jpg"
+			}
+		},
+		{
+			"name": "Condensed Memory",
+			"rarity": "uncommon",
+			"mana_cost": "{2}",
+			"type": "Artifact",
+			"collector_number": "18",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/18_Condensed Memory.jpg"
+			}
+		},
+	]
+
+[cube(15)]
+	1 Apocalypse Engine
+	1 Armament of Armageddon
+	1 Imperial Excommunicator
+	1 Explorer's Compass
+	1 Collapsed Chaos
+	1 Heirloom of the Obsolete
+	1 Hulking Vessel
+	1 Envoy of Debauchery
+	1 Catechesis Engine
+	1 Ecocidal Tracker
+	1 Recovered Guardian
+	1 Refraction Mech
+	1 Ancient Forerunner
+	1 Asset Manager
+	1 Aspect of Logic
+	1 Marblewrought Titan
+	1 Awakened Titan
+	1 Awakened Marauder
+	1 Cadix, the Raze-Rager
+	1 Ancient Activator
+	1 Ancient Viewdrifter
+	1 Condensed Memory

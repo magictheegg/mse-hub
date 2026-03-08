@@ -68,7 +68,7 @@ function isText(l) {
 	return "";
 }
 
-function gridifyCard(card_stats, card_text = false, rotate_card = false, designer_notes = false) {
+function gridifyCard(card_stats, card_text = false, rotate_card = false, designer_notes = false, link = true) {
 	const card_name = card_stats.card_name;
 	let display_type;
 
@@ -78,12 +78,12 @@ function gridifyCard(card_stats, card_text = false, rotate_card = false, designe
 		display_type = false;
 	}
 
-	if (!card_text) return buildImgContainer(card_stats, true, rotate_card);
+	if (!card_text) return buildImgContainer(card_stats, true, rotate_card, display_type, '', link);
 
 	const grid = document.createElement("div");
 	grid.className = "image-grid";
 
-	grid.appendChild(buildImgContainer(card_stats, false, rotate_card, display_type));
+	grid.appendChild(buildImgContainer(card_stats, false, rotate_card, display_type, '', link));
 
 	const text = document.createElement("div");
 	text.className = "card-text popout";
@@ -175,7 +175,7 @@ function gridifyCard(card_stats, card_text = false, rotate_card = false, designe
 	return grid;
 }
 
-function buildImgContainer(card_stats, hidden_title = false, rotate_card = false, display_type = false, img_src = "") {
+function buildImgContainer(card_stats, hidden_title = false, rotate_card = false, display_type = false, img_src = "", _link = true) {
 	const imgContainer = document.createElement("div");
 	imgContainer.className = "img-container";
 	const id = card_stats.set + "-" + card_stats.number + (display_type ? "-" + document.getElementById("display").value : "");
@@ -206,16 +206,18 @@ function buildImgContainer(card_stats, hidden_title = false, rotate_card = false
 
 	const link = document.createElement("a");
 
-	const url = new URL('card', window.location.origin);
-	const params = {
-		set: card_stats.set,
-		num: card_stats.number,
-		name: card_stats.card_name
+	if (_link) {
+		const url = new URL('card', window.location.origin);
+		const params = {
+			set: card_stats.set,
+			num: card_stats.number,
+			name: card_stats.card_name
+		}
+		for (const key in params) {
+			url.searchParams.append(key, params[key]);
+		}
+		link.href = url;
 	}
-	for (const key in params) {
-		url.searchParams.append(key, params[key]);
-	}
-	link.href = url;
 
 	link.appendChild(img);
 

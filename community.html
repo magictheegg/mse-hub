@@ -14,7 +14,7 @@
 </head>
 
 <body>
-	<img src="img/header/menu.png" class="header-control" onclick="toggleHeader()">
+	<img src="/img/header/menu.png" class="header-control" onclick="toggleHeader()">
 	<div class="header">
 		<div class="search-grid">
 			<a href="/"><img class="sg-logo" src="/img/banner.png"></a>
@@ -26,13 +26,13 @@
 						class="sg-icon">Community<b>⮟</b></a>
 				<div class="community-dropdown">
 					<a href="/community?tab=users" class="community-dropdown-item"><img class="dropdown-icon"
-							src="img/header/community.png">Users</a>
+							src="/img/header/community.png">Users</a>
 					<a href="/community?tab=decks" class="community-dropdown-item"><img class="dropdown-icon"
-							src="img/header/deck.png">Decks</a>
+							src="/img/header/deck.png">Decks</a>
 					<a href="/community?tab=events" class="community-dropdown-item"><img class="dropdown-icon"
-							src="img/swords.png">Events</a>
+							src="/img/swords.png">Events</a>
 					<a href="/community?tab=cards" class="community-dropdown-item"><img class="dropdown-icon"
-							src="img/header/sets.png">Cards</a>
+							src="/img/header/sets.png">Cards</a>
 				</div>
 			</div>
 			<a href="/settings" class="account-link"><img src="/img/header/settings.png" class="sg-icon"></a>
@@ -51,19 +51,19 @@
 	<div class="page-container">
 		<div class="tab-select" id="tab-select">
 			<div class="tab-btn" id="users-tab-select">
-				<img src="img/header/community.png" class="tab-switch-icon">
+				<img src="/img/header/community.png" class="tab-switch-icon">
 				<span>Users</span>
 			</div>
 			<div class="tab-btn" id="decks-tab-select">
-				<img src="img/header/deck.png" class="tab-switch-icon">
+				<img src="/img/header/deck.png" class="tab-switch-icon">
 				<span>Decks</span>
 			</div>
 			<div class="tab-btn" id="events-tab-select">
-				<img src="img/trophy.png" class="tab-switch-icon">
+				<img src="/img/trophy.png" class="tab-switch-icon">
 				<span>Events</span>
 			</div>
 			<div class="tab-btn" id="cards-tab-select">
-				<img src="img/header/sets.png" class="tab-switch-icon">
+				<img src="/img/header/sets.png" class="tab-switch-icon">
 				<span>Cards</span>
 			</div>
 		</div>
@@ -337,7 +337,7 @@
 			}
 
 			if (!card_stats) {
-				deck_preview.src = "img/card_back.png"
+				deck_preview.src = "/img/card_back.png"
 			} else {
 				deck_preview.src = "/sets/" + card_stats.set + "-files/img/" + card_stats.number + (card_stats.shape.includes("token") ? "t_" : "_") + card_stats.card_name + ((card_stats.shape.includes("double")) ? "_front" : "") + "." + card_stats.image_type;
 			}
@@ -460,7 +460,7 @@
 
 			const show_img = document.createElement("img");
 			show_img.className = "show-img deck-icon-green";
-			show_img.src = "img/show-white.png";
+			show_img.src = "/img/show-white.png";
 			decks_button.appendChild(show_img);
 
 			decks_button.onclick = function () {
@@ -473,7 +473,7 @@
 
 			const show_img_2 = document.createElement("img");
 			show_img_2.className = "show-img deck-icon-blue";
-			show_img_2.src = "img/show-white.png";
+			show_img_2.src = "/img/show-white.png";
 			view_button.appendChild(show_img_2);
 
 			view_button.onclick = function () {

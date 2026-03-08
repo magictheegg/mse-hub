@@ -5,19 +5,19 @@ function prepareGradients() {
 	const opt = document.createElement("option");
 	opt.value = defaultGradient.replace(' ', '-');
 	opt.text = defaultGradient;
-	document.getElementById("color-select").appendChild(opt);
+	try { document.getElementById("color-select").appendChild(opt); } catch {}
 	let random_card = localStorage.getItem("settings.gradient").replace('-', ' ');
 	const opt_rand = document.createElement("option");
 	opt_rand.value = "Random-Card";
 	opt_rand.text = "Random Card";
 
-	document.getElementById("color-select").appendChild(opt_rand);
+	try { document.getElementById("color-select").appendChild(opt_rand); } catch {}
 	for (const gradient of gradients) {
 		const opt = document.createElement("option");
 		opt.value = gradient.name.replace(' ', '-');
 		opt.text = gradient.name;
 		if (gradient.name != defaultGradient) {
-			document.getElementById("color-select").appendChild(opt);
+			try { document.getElementById("color-select").appendChild(opt); } catch {}
 		}
 	}
 
@@ -26,7 +26,7 @@ function prepareGradients() {
 		opt.value = gradient.replace(' ', '-');
 		opt.text = gradient;
 		if (gradient.name != defaultGradient) {
-			document.getElementById("color-select").appendChild(opt);
+			try { document.getElementById("color-select").appendChild(opt); } catch {}
 		}
 	}
 }
@@ -149,6 +149,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 	card_backgrounds = raw_gradients.cards;
 	setGradient(localStorage.getItem("settings.gradient"));
 	prepareGradients();
+
+	if (window.location.href.includes('#nobg')) {
+		document.body.style.background = 'rgba(0,0,0,0)';
+		document.querySelector('.header').style.display = 'none';
+	}
 });
 
 function closeModal() {

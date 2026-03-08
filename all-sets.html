@@ -25,13 +25,13 @@
 						class="sg-icon">Community<b>⮟</b></a>
 				<div class="community-dropdown">
 					<a href="/community?tab=users" class="community-dropdown-item"><img class="dropdown-icon"
-							src="img/header/community.png">Users</a>
+							src="/img/header/community.png">Users</a>
 					<a href="/community?tab=decks" class="community-dropdown-item"><img class="dropdown-icon"
-							src="img/header/deck.png">Decks</a>
+							src="/img/header/deck.png">Decks</a>
 					<a href="/community?tab=events" class="community-dropdown-item"><img class="dropdown-icon"
-							src="img/swords.png">Events</a>
+							src="/img/swords.png">Events</a>
 					<a href="/community?tab=cards" class="community-dropdown-item"><img class="dropdown-icon"
-							src="img/header/sets.png">Cards</a>
+							src="/img/header/sets.png">Cards</a>
 				</div>
 			</div>
 			<a href="/settings" id="account-link"><img src="/img/header/settings.png" class="sg-icon"></a>
@@ -39,7 +39,7 @@
 		</div>
 	</div>
 	<div class="page-container" id="page-container">
-		<span class="area-header text">Sets</span>
+		<span class="area-header text" id="header-text">Sets</span>
 		<hr class="text-bg top-dividder">
 		<div class="set-area" id="set-area">
 		</div>
@@ -72,9 +72,20 @@
 					specialchars = text;
 				}).catch(error => console.error('Error:', error));
 
+			const packs = window.location.search.includes('?packs');
+			if (packs) document.querySelector('#header-text').innerText = 'Packs';
+
 			card_list_arrayified = card_list.cards;
-			set_list_arrayified = set_list.sets;
-			// prepareGradients();
+			set_list_arrayified = set_list.sets.filter(set => packs ? set.pack : !set.pack);
+			if (!packs) set_list_arrayified.push({
+				"set_code": "",
+				"set_name": "Collection League Packs",
+				"formats": "",
+				"designer": "Voyager",
+				"symbol": "/data/collectionleague/icon.png",
+				"desc": "A different page with collection league packs",
+				"link": "?packs"
+			});
 
 			let all_tags = new Set();
 			card_list_arrayified.forEach(card => {
@@ -169,12 +180,8 @@
 				});
 			}
 
-			generateHTML();
-		});
-
-		function generateHTML() {
 			generateSetHTML();
-		}
+		});
 
 		function generateSetHTML() {
 			let set_counts = {}
@@ -205,13 +212,13 @@
 			container.className = "set-icon-container";
 
 			const link = document.createElement("a");
-			link.href = `/sets/${set.set_code}`;
+			link.href = set.link ?  set.link : `/sets/${set.set_code}`;
 
 			const set_icon = document.createElement("div");
 			set_icon.className = "set-icon";
 
 			const set_icon_img = document.createElement("img");
-			set_icon_img.src = `/sets/${set.set_code}-files/icon.png`;
+			set_icon_img.src = set.symbol ? set.symbol : `/sets/${set.set_code}-files/icon.png`;
 			set_icon_img.title = set.set_name;
 
 			const set_icon_name = document.createElement("div");
@@ -236,7 +243,7 @@
 
 			const set_icon_info = document.createElement("div");
 			set_icon_info.className = "set-icon-info text";
-			set_icon_info.innerHTML = `${set.set_code} - ${set_counts[set.set_code]} cards<br>By ${set.designer}`;
+			set_icon_info.innerHTML = set.desc ? set.desc : `${set.set_code} - ${set_counts[set.set_code]} cards<br>By ${set.designer}`;
 
 			container.appendChild(divider);
 			container.appendChild(set_icon_info);

@@ -49,6 +49,13 @@
             "designer": "Myr"
         },
         {
+            "set_code": "TZE-01",
+            "set_name": "Zeta",
+            "formats": "",
+            "designer": "",
+            "pack": true
+        },
+        {
             "set_code": "VNM",
             "set_name": "Vinimroth Eternities",
             "formats": "",

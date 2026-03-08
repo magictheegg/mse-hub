@@ -6,12 +6,6 @@
         "face_card": "Kaln-Ocean Seahorse"
     },
     {
-        "name": "Toughness",
-        "color": "I",
-        "list": "1 Soaring Chorus (FOE) 269\n1 Draconic Reflection (EXPT) 22\n1 Hopeless Summit (EXPT) 37\n1 Information Recovery Crew (EXPT) 39\n1 Tepid Tamer (EXPT) 74\n1 Blade Reifier (FOE) 228\n1 Wisped Wings (EXPT) 82\n1 Scholigaunt (EXPT) 60\n1 Grazed by the Endless (VNM) 190\n1 Searing Sigils (EXPT) 63\n1 Guardian of Faloden Woods (VNM) 229\n1 Blooming Peculiarity (EXPT) 13\n7 Fault (EXPT) 31\n1 Drifting Crevasse (FOE) 344\nsanctum\n1 Paths Strider (VNM) 6\n",
-        "face_card": "Soaring Chorus"
-    },
-    {
         "name": "Prismatic Colorless",
         "color": "C",
         "list": "1 Dawnshroud Castle (FOE) 0\n1 Drifting Sands (FOE) 350\n1 Fault (EXPT) 31\n1 Forest (EXPT) 7\n1 Island (EXPT) 2\n1 Mountain (EXPT) 5\n1 Plains (EXPT) 1\n1 Swamp (EXPT) 3\n1 Wind Worn Peaks (FOE) 18\n1 Wings of New Horizons (VNM) 284\n1 Faloden Tear-Warden (VNM) 3\n1 Parading Terrain (FOE) 14\n1 Prophetic Prism (PVR) 283\n1 Wealthy Slabman (HOD) 289\n1 Foreboding Monolith (ITD) 160\n1 Arbiter (ITD) 2\n1 Misguiding Lighthouse (PTN) 5\n1 Recovered Guardian (PVR) 285\n1 Remnant Awakener (VNM) 8\n1 Monument to Forever (FOE) 11\nsanctum\n1 Pathbound Bloom (VNM) 281\n",
@@ -30,7 +24,7 @@
         "face_card": "Overclocked Dragon"
     },
     {
-        "name": "Self=Mill",
+        "name": "Self-Mill",
         "color": "B",
         "list": "1 Avakin Devotee (FOE) 102\n1 Carapace Guardian (PTN) 85\n1 Drifting Mire (FOE) 348\n1 Eternity Siphon (VNM) 96\n1 Grocery Shopper (AKT) 104\n1 Ignelscor Jidiao (FOE) 117\n1 Left for the Crows (FOE) 118\n1 Nilshroud Mulcher (PVR) 121\n1 Scornful Pursuit (VNM) 110\n1 Sewage Surveyor (AKT) 124\n1 Stare at the Stars (WAW) 98\n7 Swamp (EXPT) 3\n1 Verse Change (PTN) 119\n1 Witness to Nil (PVR) 135\nsanctum\n1 Pathborn Aggression (VNM) 107\n",
         "face_card": "Grocery Shopper"
@@ -48,7 +42,7 @@
         "face_card": "Khestri, Fadove Clanleader"
     },
     {
-        "name": "Defender",
+        "name": "Defenders",
         "color": "R",
         "list": "1 Drifting Peak (FOE) 349\n7 Mountain (EXPT) 5\n1 Burnout (VNM) 119\n1 Highway Courier (AKT) 141\n1 Smoldering Entity (VNM) 142\n1 Untamed Drake (VNM) 270\n1 Warforged Herald (VNM) 149\n1 Evanescent Impasse (VNM) 225\n1 Ghirbi, the Gatekeeper (PTN) 131\n1 Tenuous Empowerment (VNM) 143\n1 Beacon of Greatness (HOD) 130\n1 Lavaskimmer Wurm (VNM) 127\n1 Brood Protector (VNM) 118\n1 Cryptic Columns (WAW) 230\nsanctum\n1 Mordel Razer (VNM) 134\n",
         "face_card": "Ghirbi, the Gatekeeper"
@@ -90,7 +84,7 @@
         "face_card": "Glassgarden Watcheye"
     },
     {
-        "name": "Compexity",
+        "name": "Complexity",
         "color": "U",
         "list": "1 Drifting Isle (FOE) 346\n7 Island (EXPT) 2\n1 Buffer Zone (PVR) 49\n1 Cryptic Columns (WAW) 230\n1 Urwrapir Ambusher (PVR) 88\n1 Luddite Infiltrator (PVR) 55\n1 Prefabrication (PVR) 73\n1 Reject Input (PVR) 79\n1 Squid Squad (PVR) 84\n1 Tidal Drift (PVR) 86\n1 Submerged Titangill (PVR) 85\n1 Migrating Songon (PVR) 63\n1 Vial of Erysium (AKT) 262\n1 Enduring Turtle (HOD) 52\nsanctum\n1 Pathbound Bloom (VNM) 281\n",
         "face_card": "Luddite Infiltrator"

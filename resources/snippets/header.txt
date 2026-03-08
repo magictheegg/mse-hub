@@ -14,13 +14,13 @@
 					class="sg-icon">Community<b>⮟</b></a>
 			<div class="community-dropdown">
 				<a href="/community?tab=users" class="community-dropdown-item"><img class="dropdown-icon"
-						src="img/header/community.png">Users</a>
+						src="/img/header/community.png">Users</a>
 				<a href="/community?tab=decks" class="community-dropdown-item"><img class="dropdown-icon"
-						src="img/header/deck.png">Decks</a>
+						src="/img/header/deck.png">Decks</a>
 				<a href="/community?tab=events" class="community-dropdown-item"><img class="dropdown-icon"
-						src="img/swords.png">Events</a>
+						src="/img/swords.png">Events</a>
 				<a href="/community?tab=cards" class="community-dropdown-item"><img class="dropdown-icon"
-						src="img/header/sets.png">Cards</a>
+						src="/img/header/sets.png">Cards</a>
 			</div>
 		</div>
 		<a href="/settings" class="account-link"><img src="/img/header/settings.png" class="sg-icon"></a>

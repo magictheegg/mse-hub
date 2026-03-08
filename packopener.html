@@ -9,6 +9,17 @@
 	<link rel="stylesheet" href="/src/css/theme.css">
 </head>
 <style>
+	#modal-content {
+		background: none;
+		border: none;
+		width: 100%;
+		/* overflow: hidden; */
+	}
+
+	#modal-container {
+		background-color: rgba(0, 0, 0, 0.6);
+	}
+
 	select {
 		text-align: center;
 		font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
@@ -259,23 +270,15 @@
 		color: rgba(0, 0, 0, 0);
 	}
 
+	.booster {
+		height: 300px;
+	}
+
 	/* .set-code {
             font-weight: bold;
             font-size: 24px;
         } */
 </style>
-<style id="text-style">
-	.text {
-		color: white;
-	}
-</style>
-<style id="popout-style">
-	.popout {
-		background-color: #f3f3f3;
-		/* color: #f3f3f3; */
-	}
-</style>
-
 <body>
 	<img src="/img/header/menu.png" class="header-control" onclick="toggleHeader()">
 	<div class="header">
@@ -499,14 +502,47 @@
 					}
 				}
 				if (isSanctum(card)) masterPack[13].push(card);
-				if (card.type.includes("Land"))
+				if (card.type.includes("Land") && !card.type.includes('Basic'))
 					masterPack[14].push(card); 
 			}
 
-			await getPack(isCollLeague ? cleague_packs[0] : pack);			
+			if (isCollLeague) {
+				openPackSelect();
+				return;
+			}
+			await getPack(pack);			
 			packOnePickOne();
 			updatePackCount();
 		});
+
+		async function openPackSelect() {
+			const modal_content = document.getElementById("modal-content");
+			modal_content.style.width = "90%";
+			modal_content.innerHTML = "";
+			document.getElementById("modal-container").style.display = "block";
+			
+			cleague_packs = cleague_packs.reduce((acc, curr) => {
+				acc[curr] = (acc[curr] || 0) + 1;
+				return acc;
+			}, {});
+
+			const container = document.createElement('div');
+			container.className = 'packs-container';
+			
+			for (const [pack, num] of Object.entries(cleague_packs)) {
+				const pack_container = document.createElement('div');
+				pack_container.className = `pack-container pack-${pack}`;
+
+				const booster = document.createElement('img');
+				booster.src = `/data/collectionleague/packs/${pack}.png`;
+				booster.className = 'booster';
+				pack_container.appendChild(booster);
+
+				container.appendChild(pack_container);
+			}
+
+			modal_content.appendChild(container);
+		}
 
 		async function getPack(pack) {
 			if (pack === 'MASTER') {
@@ -793,7 +829,7 @@
 			set_list.sets.push({
 				set_name: 'Master Pack',
 				set_code: 'MASTER',
-				set_logo: '/data/collectionleague/icon.png'
+				set_logo: '/data/collectionleague/packs/MASTER.png'
 			});
 
 			for (const set of set_list.sets) {

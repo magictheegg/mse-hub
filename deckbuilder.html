@@ -26,7 +26,7 @@
 	<div class="header">
 		<div class="search-grid">
 			<a href="/"><img class="sg-logo" src="/img/banner.png"></a>
-			<img class="sg-icon" src="/img/header/search.png">
+			<img class="sg-icon" src="/img/header/search.png" onclick="window.location.href = '/search'" style="cursor: pointer;">
 			<a href="/all-sets"><img src="/img/header/sets.png" class="sg-icon">Sets</a>
 			<a href="/deckbuilder"><img src="/img/header/deck.png" class="sg-icon">Deckbuilder</a>
 			<a onclick="randomCard()"><img src="/img/random.png" class="sg-icon">Random</a>
@@ -2595,10 +2595,10 @@
 			password = data.password;
 		});
 
-
+		console.log('????');
 		await getDoc(doc(db, 'users', username)).then(async docSnap => {
 			let data = docSnap.data();
-			let colls; // comment
+			let colls;
 			const admin = data.admin;
 			let coll_league = data.coll_league;
 			decks = data.decks;
@@ -2613,7 +2613,7 @@
 			}
 
 			const urlParams = new URLSearchParams(window.location.search);
-
+			console.log('HELLO');
 
 			if (urlParams.get('deck') != null) { // check if deck exists
 				if (urlParams.get("deck").includes("-") && !urlParams.get("deck").includes(";")) {
@@ -2679,6 +2679,17 @@
 				}
 			}
 
+			console.log('whyyyy');
+			if (window.location.search.includes('collectionleague')) {
+				console.log('whyyyy');
+				let collection;
+				await fetch(`https://voyager-api-pq2h.onrender.com/collectionleague/collection/view?session=${localStorage.getItem('settings.session')}`)
+					.then(response => response.text())
+					.then(data => {
+						collection = data;
+					}).catch(error => console.error('Error:', error));
+				loadCollection('Collection League', collection.split('\n'));
+			}
 
 			document.getElementById('save-btn').addEventListener("click", (e) => {
 				let colorsList = [];

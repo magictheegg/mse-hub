@@ -7,278 +7,9 @@
 	<link rel="stylesheet" href="/src/css/header.css">
 	<link rel="stylesheet" href="/src/css/modal.css">
 	<link rel="stylesheet" href="/src/css/theme.css">
+	<link rel="stylesheet" href="/src/css/img-container.css">
+	<link rel="stylesheet" href="/src/css/pages/packopener.css">
 </head>
-<style>
-	#modal-content {
-		background: none;
-		border: none;
-		width: 100%;
-		/* overflow: hidden; */
-	}
-
-	#modal-container {
-		background-color: rgba(0, 0, 0, 0.6);
-	}
-
-	select {
-		text-align: center;
-		font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-		font-weight: 500;
-		cursor: pointer;
-		background-color: #F3F3F3;
-		padding: 2px;
-	}
-
-	.selects {
-		position: absolute;
-		top: 10%;
-		left: 1%;
-		z-index: 1;
-	}
-
-	.img-container .btn {
-		background-color: #ffffffaa;
-		background-size: contain;
-		background-position: center;
-		width: 15%;
-		height: 11%;
-		cursor: pointer;
-		border: none;
-		position: absolute;
-		left: 50%;
-		top: 48%;
-		transform: translate(170%, -150%);
-		opacity: 0.8;
-		border-radius: 100%;
-		border: 2px solid black;
-		padding: 3px;
-	}
-
-	.img-container .btn:hover {
-		background-size: contain;
-		background-position: center;
-		background-color: #ffffff;
-	}
-
-	/*.page-container {
-            display: flex;
-            align-items: center;
-            justify-items: center;
-            width: 100%;
-            height: 100%; 
-            flex-direction: column;
-        }*/
-	hr {
-		width: 85%;
-		height: 4px;
-		background-color: black;
-		border-radius: 2px;
-		border: none;
-	}
-
-	.top-section {
-		width: 100%;
-		position: relative;
-		display: flex;
-		background-color: #88888866;
-	}
-
-	.pack {
-		margin-top: 30px;
-		display: grid;
-		grid-template-columns: repeat(8, 1fr);
-		gap: 13px;
-		align-items: center;
-		justify-items: center;
-		width: 95%;
-		margin-left: 2.5%;
-		padding-bottom: 25px;
-		position: relative;
-		/* height: 1000%; */
-	}
-
-	.pulls {
-		/* background-color: green; */
-		/* width: 100%;
-            height: 100%; */
-		display: grid;
-		grid-template-columns: repeat(7, 1fr);
-		height: fit-content;
-		margin-bottom: 15px;
-		width: 80%;
-		margin-left: 10%;
-		padding-top: 20px;
-	}
-
-	.divider {
-		position: absolute;
-		bottom: 0;
-		width: 100%;
-		height: 2px;
-		align-items: center;
-		justify-items: center;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.img-container {
-		position: relative;
-		/* align-self: center; */
-		text-align: center;
-	}
-
-	.img-container img {
-		width: 100%;
-		height: auto;
-	}
-
-	.card-image {
-		border-radius: 4%;
-	}
-
-	.main-top-area {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		height: 100%;
-		width: 100%;
-		align-items: center;
-		justify-items: center;
-	}
-
-	.top-area-section {
-		width: 100%;
-		height: 100%;
-		margin: 8px;
-		position: relative;
-	}
-
-	.dark-button {
-		font-size: 20px;
-		border-radius: 5px;
-		border: 1px solid white;
-		color: white;
-		background-color: #333;
-		padding: 6px;
-		display: flex;
-		align-items: center;
-		justify-items: center;
-		gap: 6px;
-		cursor: pointer;
-	}
-
-	.top-area-button {
-		float: right;
-		margin-right: 10px;
-		margin-top: 10px;
-	}
-
-	.dark-button:hover {
-		background-color: black;
-	}
-
-	.card-col {
-		display: grid;
-		grid-auto-rows: 30px;
-		height: fit-content;
-	}
-
-	.img-container {
-		transition: 0.2s;
-	}
-
-	.page-container .img-container:hover {
-		transform: scale(110%);
-		z-index: 1;
-	}
-
-	.input {
-		border-radius: 6px;
-		border: 1px solid white;
-		font-size: 16px;
-		padding: 4px;
-	}
-
-	.pack-counter {
-		margin-top: 19px;
-		margin-right: 0%;
-		/* width: 85%; */
-		float: right;
-		text-align: center;
-		font-weight: bold;
-		font-size: 24px;
-		/* position: absolute; */
-	}
-
-	.save-coll-modal-container {
-		display: flex;
-		gap: 8px;
-		width: 60%;
-	}
-
-	.top-area-btn-icon {
-		height: 30px;
-		pointer-events: none;
-	}
-
-	.set-modal-container {
-		display: grid;
-		gap: 15px;
-		grid-template-columns: 70px 5fr 1fr 70px 120px;
-		align-items: center;
-		/* justify-items: center; */
-		padding: 8px;
-		margin-bottom: 70px;
-	}
-
-	.set-logo {
-		height: 70px;
-	}
-
-	.set-name {
-		font-family: beleren;
-		font-size: 28px;
-	}
-
-	.pack-num {
-		font-size: 30px;
-		text-align: center;
-	}
-
-	.total-cost {
-		font-size: 24px;
-		width: 80%;
-		font-weight: bold;
-		display: inline-block;
-		text-align: center;
-	}
-
-	.coll-league-set-header {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-items: center;
-		gap: 18px;
-		margin-bottom: 8px;
-	}
-
-	.img-container .hidden-text {
-		position: absolute;
-		font-family: Beleren;
-		top: 5%;
-		left: 9%;
-		font-size: .97vw;
-		color: rgba(0, 0, 0, 0);
-	}
-
-	.booster {
-		height: 300px;
-	}
-
-	/* .set-code {
-            font-weight: bold;
-            font-size: 24px;
-        } */
-</style>
 <body>
 	<img src="/img/header/menu.png" class="header-control" onclick="toggleHeader()">
 	<div class="header">
@@ -360,21 +91,22 @@
 		let gradTop = null;
 		let gradBottom = null;
 		let p1p1_cards;
-		let pulls = [];
+		let pulls = []; // TODO: rework this to be an index into all_packs to save memory & time
+		let all_packs = [];
 		let firstpack = true;
+		let doneFirstWindow = false;
 		const card_list_cleaned = [];
 		const urlParams = new URLSearchParams(window.location.search);
 		let pack = urlParams.get('pack');
 		const source = urlParams.get('source');
-		let pack_count = 1;
+		let pack_count = 0;
 		let num_packs = urlParams.get('num') ? parseInt(urlParams.get('num')) : 1 /* that should be enough for everyone */;
 		const masterPack = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
 		// document.getElementById("next-pack").dataset.count = pack_count;
 		// document.getElementById("next-pack").dataset.packs = num_packs;
 		modal = document.getElementById("modal-container");
 		window.onclick = function (event) {
-			let iscoll = document.getElementById("modal-container").dataset.source == "coll";
-			if (event.target == modal && !iscoll) {
+			if (event.target == modal && (!window.location.search.includes('?collectionleague') || doneFirstWindow)) {
 				document.getElementById('modal-container').style.display = 'none';
 			}
 		}
@@ -510,18 +242,18 @@
 				openPackSelect();
 				return;
 			}
-			await getPack(pack);			
-			packOnePickOne();
+			await getPack(pack);
+			nextPack();
 			updatePackCount();
 		});
 
 		async function openPackSelect() {
 			const modal_content = document.getElementById("modal-content");
 			modal_content.style.width = "90%";
-			modal_content.innerHTML = "";
+			modal_content.innerHTML = "<h1>Unopened Packs</h1>";
 			document.getElementById("modal-container").style.display = "block";
 			
-			cleague_packs = cleague_packs.reduce((acc, curr) => {
+			cleague_packs_reduced = cleague_packs.reduce((acc, curr) => {
 				acc[curr] = (acc[curr] || 0) + 1;
 				return acc;
 			}, {});
@@ -529,19 +261,108 @@
 			const container = document.createElement('div');
 			container.className = 'packs-container';
 			
-			for (const [pack, num] of Object.entries(cleague_packs)) {
+			for (const [pack, num] of Object.entries(cleague_packs_reduced)) {
 				const pack_container = document.createElement('div');
+				pack_container.dataset.pack = pack;
+				pack_container.dataset.num = num;
 				pack_container.className = `pack-container pack-${pack}`;
+
+				const label = document.createElement('span');
+				label.className = 'code-label';
+				label.innerText = `Open ${pack} packs:`;
 
 				const booster = document.createElement('img');
 				booster.src = `/data/collectionleague/packs/${pack}.png`;
 				booster.className = 'booster';
-				pack_container.appendChild(booster);
 
+				const num_packs = document.createElement('div');
+				num_packs.className = 'packs-select';
+
+				const packs_input = document.createElement('input');
+				packs_input.className = 'num-packs';
+				packs_input.type = 'number';
+				packs_input.value = 0;
+				packs_input.onchange = () => {
+					packs_input.value = Math.min(Math.max(packs_input.value, 0), num);
+				}
+
+				const total_packs = document.createElement('span');
+				total_packs.className = 'total-packs';
+				total_packs.innerText = `/${num}`;
+
+				num_packs.appendChild(packs_input);
+				num_packs.appendChild(total_packs);
+				pack_container.appendChild(booster);
+				pack_container.appendChild(label);
+				pack_container.appendChild(num_packs);
 				container.appendChild(pack_container);
 			}
 
 			modal_content.appendChild(container);
+
+			if (cleague_packs.length == 0) {
+				const no_packs_text = document.createElement('div');
+				no_packs_text.className = 'no-packs-text';
+				no_packs_text.innerText = 'You have no packs to open currently. To obtain more, play games of any Voyager format.';
+				modal_content.appendChild(no_packs_text);
+			}
+
+			const buttonContainer = document.createElement('div');
+			buttonContainer.className = 'open-button-container';
+
+			const open = document.createElement('button');
+			open.className = 'open-button';
+			open.innerText = 'Open Selected Packs';
+
+			const openAll = document.createElement('button');
+			openAll.className = 'open-button';
+			openAll.innerText = 'Open All';
+
+			open.onclick = async () => {
+				let cleague_packs = [];
+				let message = 'Continue to open the following packs?\n';
+				for (const pack of document.querySelectorAll('.pack-container')) {
+					const title = pack.dataset.pack;
+					const num = pack.querySelector('input').value;
+					message += `${num} ${title} packs\n`;
+					for (let i = 0; i < num; i++)
+						cleague_packs.push(title);
+				}
+				if (!window.confirm(message)) return;
+
+				num_packs = cleague_packs.length;
+				pack_count = 0;
+				await generateAllPacks();
+				document.querySelector('#modal-container').style.display = 'none';
+				nextPack();
+				await fetch(`https://voyager-api-pq2h.onrender.com/collectionleague/packs/open?session=${localStorage.getItem('settings.session')}&packs=${encodeURI(cleague_packs.join(','))}`)
+				doneFirstWindow = true;
+			};
+
+			openAll.onclick = async () => {
+				let cleague_packs = [];
+				let message = 'Continue to open the following packs?\n';
+				for (const pack of document.querySelectorAll('.pack-container')) {
+					const title = pack.dataset.pack;
+					const num = pack.dataset.num;
+					message += `${num} ${title} packs\n`;
+					for (let i = 0; i < num; i++)
+						cleague_packs.push(title);
+				}
+				if (!window.confirm(message)) return;
+
+				num_packs = cleague_packs.length;
+				pack_count = 0;
+				await generateAllPacks();
+				document.querySelector('#modal-container').style.display = 'none';
+				nextPack();
+				await fetch(`https://voyager-api-pq2h.onrender.com/collectionleague/packs/open?session=${localStorage.getItem('settings.session')}&packs=${encodeURI(cleague_packs.join(','))}`)
+				doneFirstWindow = true;
+			}
+
+			buttonContainer.appendChild(open);
+			buttonContainer.appendChild(openAll);
+			modal_content.appendChild(buttonContainer);
 		}
 
 		async function getPack(pack) {
@@ -634,36 +455,100 @@
 		}
 
 		async function nextPack() {
-			if (window.location.search.includes('?collectionleague')) await getPack(cleague_packs[pack_count]);
+			const current_pack = all_packs.length != 0 ? all_packs[pack_count] : generatePack();
 
-			if (pack_count <= num_packs && (num_packs != 1 || firstpack)) {
-				pulls.push(...used_cards);
+			if (pack_count < num_packs && (num_packs != 1 || firstpack)) {
+				pulls.push(...current_pack);
 				pack_count++;
+			} else {
+				document.getElementById("pack").innerHTML = "";
+				endScreen(pulls);
+				return;
 			}
 
 			if (pack_count <= num_packs) {
-				packOnePickOne();
-			}
-			else {
-				document.getElementById("pack").innerHTML = "";
+				showPack(current_pack);
 			}
 
-			updatePackCount();
+			if (pack_count <= num_packs) updatePackCount();
 
 			if (pack_count >= num_packs) {
 				document.getElementById("next-pack").innerText = "View Pulls";
 			}
 
 			buildPulls();
+			firstpack = false
+		}
 
-			firstpack = false;
+		async function endScreen(opened) {
+			document.getElementById("pulls").style.display = 'block';
+			document.getElementById("pulls").innerHTML = `
+				<div class="summary-center">
+					<div class="deck-view"></div>
+					<div class="card-preview-container">
+						<img class="card-preview">
+						<button class="open-button" onclick="window.location.reload()">Continue</button>
+					</div>
+				</div>`;
+
+			opened.sort((a, b) => {
+				if (a.type.includes('Basic') && !b.type.includes('Basic')) return 1;
+				if (!a.type.includes('Basic') && b.type.includes('Basic')) return -1;
+				const rarity_sort_order = ["mythic", "rare", "uncommon", "common"];
+				let a_rarity_index = 100;
+				let b_rarity_index = 100;
+
+				for (const [i, rarity] of rarity_sort_order.entries()) {
+					if (a.rarity.toLowerCase() == rarity)
+						a_rarity_index = i;
+					if (b.rarity.toLowerCase() == rarity)
+						b_rarity_index = i;	
+				}
+
+				return a_rarity_index - b_rarity_index;
+			});
+
+			const deck_container = document.querySelector('.deck-view');
+			for (const card of opened) {
+				const container = buildImgContainer(card);
+				const link = container.querySelector('a');
+				link.removeAttribute('href');
+				link.style.cursor = 'pointer';
+				link.onclick = () => {
+					document.querySelector('.card-preview').src = link.querySelector('img').src;
+				}
+				deck_container.appendChild(container);
+			}
 		}
 
 		function updatePackCount() {
 			document.getElementById("pack-counter").innerText = `Pack ${pack_count}/${num_packs}`;
 		}
 
-		function packOnePickOne() {
+		async function generateAllPacks() {
+			let packs;
+			let prev;
+			all_packs = [];
+			if (window.location.search.includes('?collectionleague')) packs = cleague_packs;
+			else packs = Array(num_packs).fill(pack);
+
+			for (const pack_to_open of packs) {
+				if (pack_to_open != prev) await getPack(pack_to_open);
+				const generated = generatePack();
+				all_packs.push(generated);
+				await fetch(`https://voyager-api-pq2h.onrender.com/collectionleague/collection/edit?session=${localStorage.getItem('settings.session')}&group=1 ${pack_to_open}&collection=${packToText(generated)}`) 
+				prev = pack_to_open;
+			}				
+		}
+
+		function packToText(_pack) {
+			let ret = '';
+			for (const card of _pack) 
+				ret += `1 ${card.card_name} (${card.set}) ${card.number}\n`;
+			return btoa(ret);
+		}
+
+		function generatePack() {
 			img_list = [];
 			used_cards = [];
 			for (const slot of p1p1_cards) {
@@ -683,10 +568,13 @@
 				img_list.push(image);
 				used_cards.push(card);
 			}
+			return used_cards;
+		}
 
+		function showPack(_pack) {
 			document.getElementById("pack").innerHTML = "";
 
-			for (const card of used_cards) {
+			for (const card of _pack) {
 				const card_ele = gridifyCard(card, false, false, false, false);
 				card_ele.onclick = () => {
 					openCardModal(card);
@@ -697,23 +585,6 @@
 			const divider = document.createElement("div");
 			divider.className = "divider text-bg";
 			document.getElementById("pack").appendChild(divider);
-
-			// const canvas = document.getElementById("canvas");
-			// const ctx = canvas.getContext('2d');
-
-			// canvas.width = 1883;
-			// canvas.height = 1573;
-
-			// for (let i = 0; i < img_list.length; i++)
-			// {
-			//     img_list[i].onload = function() {
-			//         x_offset = 377 * (i % 5);
-			//         y_offset = 525 * Math.floor(i / 5);
-			//         ctx.drawImage(img_list[i], x_offset, y_offset, 375, 523);
-			//     };
-			// }
-
-			// document.getElementById("p1p1").style.display = "block";
 		}
 
 		function buildPulls() {
@@ -879,14 +750,15 @@
 				const file = files[0];
 				const name = file.name.replace(/\.[^/.]+$/, "");
 				const reader = new FileReader();
-				reader.onload = function (e) {
+				reader.onload = async function (e) {
 					const fileContent = e.target.result;
-					pack_count = 1;
+					pack_count = 0;
 					pulls = [];
 					buildPulls();
 					updatePackCount();
 					draftmancerToP1P1(fileContent);
-					packOnePickOne();
+					await generateAllPacks();
+					nextPack();
 				}
 
 				reader.readAsText(file);

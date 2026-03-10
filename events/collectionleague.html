@@ -1,13 +1,14 @@
 <html>
 
 <head>
-	<title>TITLE</title>
+	<title>Collection League</title>
 	<link rel="icon" type="image/x-icon" href="/img/favicon.png">
 	<link rel="stylesheet" href="/src/css/mana.css">
 	<link rel="stylesheet" href="/src/css/header.css">
 	<link rel="stylesheet" href="/src/css/theme.css">
 	<link rel="stylesheet" href="/src/css/tab.css">
 	<link rel="stylesheet" href="/src/css/modal.css">
+	<link rel="stylesheet" href="/src/css/img-container.css">
 	<link rel="stylesheet" href="/src/css/pages/collectionleague.css">
 </head>
 <body>
@@ -15,11 +16,7 @@
 	<div class="header">
 		<div class="search-grid">
 			<a href="/"><img class="sg-logo" src="/img/banner.png"></a>
-			<img class="sg-icon" src="/img/header/search.png">
-			<div style="position: relative; width: 100%;">
-				<input type="text" inputmode="search" placeholder="Search ..." name="search" id="search" spellcheck="false" autocomplete="off" autocorrect="off" spellcheck="false">
-				<div id="tag-dropdown" style="display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; border: 1px solid #d5d9d9; z-index: 1000; max-height: 200px; overflow-y: auto; color: black; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></div>
-			</div>
+			<img class="sg-icon" src="/img/header/search.png" onclick="window.location.href = '/search'" style="cursor: pointer;">
 			<a href="/all-sets"><img src="/img/header/sets.png" class="sg-icon">Sets</a>
 			<a href="/deckbuilder"><img src="/img/header/deck.png" class="sg-icon">Deckbuilder</a>
 			<a onclick="randomCard()"><img src="/img/random.png" class="sg-icon">Random</a>
@@ -73,15 +70,40 @@
 			</div>
 		</div>
 		<div class="main-tab" id="main-tab">
-			<div class="tab home-tab" id="home">home</div>
+			<div class="tab home-tab" id="home"><span class="wip">This tab is a work in progress.</span></div>
 			<div class="tab opener-tab" id="opener">
 				<iframe src="/packopener.html?collectionleague#nobg" class="embed"></iframe>
 			</div>
-			<div class="tab collection-tab" id="collection">collection</div>
+			<div class="tab collection-tab" id="collection">
+				<div class="search-area">
+					<div style="position: relative; width: 100%; padding: 0; margin: 0;">
+						<input type="text" inputmode="search" placeholder="Search ..." name="search" id="search" spellcheck="false" autocomplete="off" autocorrect="off" spellcheck="false">
+						<div id="tag-dropdown" style="display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; border: 1px solid #d5d9d9; z-index: 1000; max-height: 200px; overflow-y: auto; color: black; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></div>
+					</div>
+					<div class="select-text">
+						<select name="sort-by" id="sort-by" class="popout">
+							<option value="name">Name</option>
+							<option value="set-code">Set / Number</option>
+							<option value="mv">Mana Value</option>
+							<option value="color">Color</option>
+							<option value="rarity">Rarity</option>
+							<option value="playrate">Playrate</option>
+							<option value="copies">Copies</option>
+						</select>:<select name="sort-order" id="sort-order" class="popout">
+							<option value="ascending">Asc</option>
+							<option value="descending">Desc</option>
+						</select>
+					</div>
+					<a href="/deckbuilder?collectionleague"><button class="go build-deck-button"><img src="/img/header/deck.png" class="btn-icon">Build a deck</button></a>
+				</div>
+				<div class="search-image-grid-container">
+					<div class="card-grid" id="cardGrid"></div>
+				</div>
+			</div>
 			<div class="tab viewer-tab" id="viewer">
 				<iframe src="/all-sets.html?packs#nobg" class="embed"></iframe>
 			</div>
-			<div class="tab records-tab" id="records">records</div>
+			<div class="tab records-tab" id="records"><span class="wip">This tab is a work in progress.</span></div>
 		</div>
 	</div>
 	<div id="modal-container">
@@ -91,8 +113,12 @@
 		</div>
 	</div>
 	<script src="/src/js/background.js"></script>
+	<script src="/src/js/search.js"></script>
 	<script src="/src/js/img-container-defs.js"></script>
 	<script>
+		let collection_cards = [];
+		let collection_copies;
+		const on_cl_page = true;
 		const delay = ms => new Promise(res => setTimeout(res, ms));
 		
 		document.addEventListener("DOMContentLoaded", async function () {
@@ -106,6 +132,18 @@
 				.then(response => response.json())
 				.then(json => {
 					set_list = json;
+				}).catch(error => console.error('Error:', error));
+
+			await fetch('https://voyager-api-pq2h.onrender.com/stats')
+				.then(response => response.json())
+				.then(json => {
+					all_cards_stats = json;
+				}).catch(error => console.error('Error:', error));
+
+			await fetch(`https://voyager-api-pq2h.onrender.com/collectionleague/collection/view?session=${localStorage.getItem('settings.session')}`)
+				.then(response => response.text())
+				.then(text => {
+					collection = text;
 				}).catch(error => console.error('Error:', error));
 
 			card_list_arrayified = card_list.cards;
@@ -188,8 +226,8 @@
 								mirror.textContent = value.substring(0, lastTagIndex + 4);
 								const textWidth = mirror.getBoundingClientRect().width;
 								const inputPaddingLeft = parseFloat(getComputedStyle(searchInput).paddingLeft) || 0;
-								
-								tagDropdown.style.left = Math.min(textWidth + inputPaddingLeft, searchInput.offsetWidth - tagDropdown.offsetWidth) + "px";
+								const px = Math.min(textWidth + inputPaddingLeft, searchInput.offsetWidth - tagDropdown.offsetWidth);
+								tagDropdown.style.left = `calc(20% + ${px}px)`;
 								tagDropdown.style.display = "block";
 								return;
 							}
@@ -214,8 +252,67 @@
 					document.querySelector('#modal-container').style.display = 'block';
 					document.querySelector('#modal-content').innerHTML = `<div class="new-to-cl"><h1 class="not-joined">You're not in Collection League.</h1><p>To start, you'll get to open some packs!</p><button class="go" onclick="jumpStart()">Continue</button></div>`;			
 				}
+
+				await reloadCollection();
+				preSearch();
 			}
 		});
+
+		async function reloadCollection() {
+			collection_copies = new Map(); // map from card_name, set, num > copies
+			for (const line of collection.split('\n')) {
+				const card_match = line.match(/(\d+) ((.*?) \(([A-Z]+?)\) (\d+))/);
+				if (!card_match) continue;
+				const [_, _copies, card_id, card_name, set, num] = card_match;
+				const copies = parseInt(_copies);
+
+				if (collection_copies.has(card_id))
+					collection_copies.set(card_id, collection_copies.get(card_id) + copies);
+				else 
+					collection_copies.set(card_id, copies);
+			}
+			
+			let cards_to_check = card_list_arrayified.slice();
+			let cards_already_checked = [];
+			collection_cards = [];
+			const _collection_copies = new Map(collection_copies);
+			for (const [i, card] of card_list_arrayified.entries()) {
+				const card_id = `${card.card_name} (${card.set}) ${card.number}`;
+				if (_collection_copies.has(card_id)) {
+					collection_cards.push(card);
+					cards_already_checked.push(i);
+					_collection_copies.delete(card_id);
+				}
+			}
+			cards_to_check = card_list_arrayified.filter((_, i) => !cards_already_checked.includes(i));
+
+			for (const collection_card of _collection_copies.keys()) {
+				const [_, card_name, set, num] = collection_card.match(/(.*?) \(([A-Z]+)\) (\d+)/);
+				for (const [i, card] of cards_to_check.entries()) {
+					if (card.card_name == card_name && card.set == set) {
+						collection_cards.push(card);
+						cards_already_checked.push(i);
+						_collection_copies.delete(collection_card);
+						collection = collection.replaceAll(_, `${card.card_name} (${card.set}) ${card.number}`);
+					}
+				}
+			}
+			cards_to_check = card_list_arrayified.filter((_, i) => !cards_already_checked.includes(i));
+
+			for (const collection_card of _collection_copies.keys()) {
+				const [_, card_name, set, num] = collection_card.match(/(.*?) \(([A-Z]+)\) (\d+)/);
+				for (const [i, card] of cards_to_check.entries()) {
+					if (card.card_name == card_name) {
+						collection_cards.push(card);
+						cards_already_checked.push(i);
+						_collection_copies.delete(collection_card);
+						collection = collection.replaceAll(_, `${card.card_name} (${card.set}) ${card.number}`);
+					}
+				}
+			}
+
+			await fetch(`https://voyager-api-pq2h.onrender.com/collectionleague/collection/write?session=${localStorage.getItem('settings.session')}&collection=${btoa(collection)}`);
+		}
 
 		async function jumpStart() {
 			await fetch('/data/collectionleague/jumpstart.json')
@@ -401,7 +498,7 @@
 		}
 
 		function changeTab(tab_name) {
-			document.getElementById(tab_name).style.display = "grid";
+			document.getElementById(tab_name).style.display = "block";
 			document.getElementById(tab_name + "-tab-select").className = "tab-btn tab-btn-active"
 			for (const child of document.getElementById("main-tab").children) {
 				if (child.id != tab_name && child.id != "ended-text") {
@@ -415,18 +512,102 @@
 			}
 		}
 
-		function endJumpstart() {
-			document.getElementById("modal-container").style.display = 'none';
-		}
-
 		document.getElementById("search").addEventListener("keypress", function (event) {
 			if (event.key === "Enter") {
 				event.preventDefault();
-				const url = new URL('search', window.location.origin);
-				url.searchParams.append('search', document.getElementById("search").value);
-				window.location.href = url;
+				preSearch();
 			}
 		});
+
+		document.getElementById("sort-by").onchange = preSearch;
+		document.getElementById("sort-order").onchange = preSearch;
+
+		function preSearch() {
+			const searchTerms = document.getElementById("search").value.toLowerCase();
+			const tokens = tokenizeTerms(searchTerms) || [];
+			const sortBySelect = document.getElementById("sort-by");
+			const sortOrderSelect = document.getElementById("sort-order");
+
+			sortBySelect.disabled = false;
+			sortOrderSelect.disabled = false;
+
+			tokens.forEach(token => {
+				if (token.startsWith("sort:")) {
+					const val = token.substring(5);
+					const map = {
+						"name": "name",
+						"set": "set-code",
+						"mv": "mv",
+						"color": "color",
+						"rarity": "rarity",
+						"cube": "cube"
+					};
+					if (map[val]) {
+						const option = Array.from(sortBySelect.options).find(opt => opt.value === map[val]);
+						if (option) {
+							sortBySelect.value = map[val];
+							sortBySelect.disabled = true;
+						}
+					}
+				}
+				if (token.startsWith("direction:")) {
+					const val = token.substring(10);
+					const map = {
+						"asc": "ascending",
+						"desc": "descending"
+					};
+					if (map[val]) {
+						const option = Array.from(sortOrderSelect.options).find(opt => opt.value === map[val]);
+						if (option) {
+							sortOrderSelect.value = map[val];
+							sortOrderSelect.disabled = true;
+						}
+					}
+				}
+			});
+
+			console.log(collection_cards);
+			collection_cards.sort(compareFunction);
+			if (document.getElementById("sort-order").value == "descending") {
+				collection_cards.reverse();
+			}
+			search_results = [];
+
+			search();
+		}
+
+		async function search() {
+			searchTerms = document.getElementById("search").value.toLowerCase();
+			tokenizedTerms = tokenizeTerms(searchTerms);
+
+			cardGrid = document.getElementById("cardGrid");
+			cardGrid.innerHTML = "";
+
+			for (const card of collection_cards) {
+				if (card.shape.includes("token") && !searchTerms.includes("+t:token") && !searchTerms.includes("t:token")) {
+					continue;
+				}
+
+				searched = await searchAllTokens(card, tokenizeTerms(searchTerms));
+				if (searched)
+					search_results.push(card);
+			}
+
+			for (const res of search_results) {
+				const imgContainer = document.createElement("div");
+				imgContainer.appendChild(gridifyCard(res));
+				imgContainer.style.position = 'relative';
+
+				const copies = collection_copies.get(`${res.card_name} (${res.set}) ${res.number}`);
+				const copies_label = document.createElement('span');
+				copies_label.className = 'copies-label';
+				copies_label.innerText = `${copies}x`;
+				imgContainer.appendChild(copies_label);
+
+				cardGrid.appendChild(imgContainer);
+			}
+		}
+
 		function randomCard() {
 			let i = Math.floor(Math.random() * (card_list_arrayified.length + 1));
 			let random_card = card_list_arrayified[i];
@@ -500,6 +681,7 @@
 			await fetch(`https://voyager-api-pq2h.onrender.com/collectionleague/collection/edit?session=${localStorage.getItem('settings.session')}&group=1 START&collection=${btoa(localStorage.getItem('colls.pulls'))}`);
 			// window.location.href = '/packopener?collectionleague'
 			document.querySelector('#modal-container').style.display = 'none';
+			document.querySelector('.opener-tab .embed').contentWindow.location.reload();
 			changeTab('opener');
 		}
 	</script>

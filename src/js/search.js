@@ -30,7 +30,7 @@ function compareFunction(a, b) {
             return (a.set < b.set) ? -1 : 1;
         }
     }
-    if (sortMode == 'name') {
+    else if (sortMode == 'name') {
         if (a.card_name === b.card_name) {
             return 0;
         }
@@ -38,7 +38,7 @@ function compareFunction(a, b) {
             return (a.card_name < b.card_name) ? -1 : 1;
         }
     }
-    if (sortMode == 'mv') {
+    else if (sortMode == 'mv') {
         //since cost is now formatted like {1}{U} instead of 1U, we need to remove the brackets from the string first
         //CE: undoing this because we're counting { chars for MV
         a_mv = isDecimal(a.cost.charAt(1)) ? parseInt(a.cost.substring(1, a.cost.indexOf('}'))) + a.cost.replaceAll('x', '').split('{').length - 2 : a.cost.replaceAll('x', '').split('{').length - 1;
@@ -55,7 +55,7 @@ function compareFunction(a, b) {
             return (a_mv < b_mv) ? -1 : 1;
         }
     }
-    if (sortMode == 'color') {
+    else if (sortMode == 'color') {
         color_sort_order = ["W", "U", "B", "R", "G", "I", "WU", "UB", "BR", "RG", "GW", "WB", "UR", "BG", "RW", 'IW', 'IU', 'IB', 'IR', 'IG', "GU", "WUB", "UBR", "BRG", "RGW", "GWU", "RWB", "GUR", "WBG", "URW", "BGU", 'IWU', 'IUB', 'IBR', 'IRG', 'IGW', 'IWB', 'IBG', 'IGU', 'IUR', 'IRW', "WUBR", "UBRG", "BRGW", "RGWU", "GWUB", "IWUB", "IUBR", "IBRG", "IRGW", "IGWU", "IRWB", "IGUR", "IWBG", "IURW", "IBGU", "WUBRG", "IWUBR", "IUBRG", "IBRGW", "IRGWU", "IGWUB", ""];
 
         a_color_index = -1;
@@ -82,7 +82,7 @@ function compareFunction(a, b) {
             return (a_color_index < b_color_index) ? -1 : 1;
         }
     }
-    if (sortMode == 'rarity') {
+    else if (sortMode == 'rarity') {
         rarity_sort_order = ["mythic", "rare", "uncommon", "common"];
         a_rarity_index = 100;
         b_rarity_index = 100;
@@ -128,13 +128,19 @@ function compareFunction(a, b) {
         }
     }
 
-    if (sortMode == "copies") {
-        const a_copies = collection_copies[`${a.set}-${a.number}`];
-        const b_copies = collection_copies[`${b.set}-${b.number}`];
-        return (a_copies < b_copies) ? -1 : 1;
+    else if (sortMode == "copies") {
+        if (on_cl_page) {
+            const a_copies = collection_copies.get(`${a.card_name} (${a.set}) ${a.number}`);
+            const b_copies = collection_copies.get(`${b.card_name} (${b.set}) ${b.number}`);
+            return b_copies - a_copies;
+        } else {
+            const a_copies = collection_copies[`${a.set}-${a.number}`];
+            const b_copies = collection_copies[`${b.set}-${b.number}`];
+            return b_copies - a_copies;
+        }
     }
 
-    if (sortMode == 'playrate') {
+    else if (sortMode == 'playrate') {
         return all_cards_stats[b.card_name].playrate_overall - all_cards_stats[a.card_name].playrate_overall;
     }
 }

@@ -1354,20 +1354,23 @@
 				card_set = card_set == null ? "XXX" : card_set[1];
 				card_num = card_num == null ? "0" : card_num[1];
 				
-				if (deck_map.has([card_name, card_set, card_num])) // if the deck has card name, add the new value, if it doesnt, set the value to stop keyerrors
+				if (deck_map.has(`${card_name} (${card_set}) ${card_num}`)) // if the deck has card name, add the new value, if it doesnt, set the value to stop keyerrors
 				{
-					deck_map.set([card_name, card_set, card_num], deck_map.get(card_name) + count);
+					deck_map.set(`${card_name} (${card_set}) ${card_num}`, deck_map.get(`${card_name} (${card_set}) ${card_num}`) + count);
 				}
 				else {
-					deck_map.set([card_name, card_set, card_num], count);
+					deck_map.set(`${card_name} (${card_set}) ${card_num}`, count);
 				}
 			}
 
 			for (const card of card_list.cards) {
 				for (const [ key, value ] of deck_map.entries()) {
-					if (key[0] == card.card_name && (key[1] == card.set || key[1] == "XXX") && (key[2] == card.number.toString() || key[2] == "0")) {
+					const card_match = key.match(/(.*) \(([A-Z]+)\) (\d+)/);
+					if (!card_match) continue;
+					const [_, name, set, num] = card_match;
+					if (name == card.card_name && (set == card.set || set == "XXX") && (num == card.number.toString() || num == "0")) {
 						new_list.push(card);
-						cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${value}x"; display: block; position: absolute; border-radius: 20px;}\n`;
+						cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}-cards-and-text):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${value}x"; display: block; position: absolute; border-radius: 20px;}\n`;
 						deck_map.delete(key);
 					}
 				}
@@ -1376,9 +1379,12 @@
 			if (deck_map.size > 1) {
 				for (const card of card_list.cards) {
 					for (const [ key, value ] of deck_map.entries()) {
-						if (key[0] == card.card_name && (key[1] == card.set || key[1] == "XXX")) {
+						const card_match = key.match(/(.*) \(([A-Z]+)\) (\d+)/);
+						if (!card_match) continue;
+						const [_, name, set, num] = card_match;
+						if (name == card.card_name && (set == card.set || set == "XXX")) {
 							new_list.push(card);
-							cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${value}x"; display: block; position: absolute; border-radius: 20px;}\n`;
+							cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}-cards-and-text):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${value}x"; display: block; position: absolute; border-radius: 20px;}\n`;
 							deck_map.delete(key);
 						}
 					}
@@ -1387,10 +1393,13 @@
 
 			if (deck_map.size > 1) {
 				for (const card of card_list.cards) {
-						for (const [ key, value ] of deck_map.entries()) {
-						if (key[0] == card.card_name) {
+					for (const [ key, value ] of deck_map.entries()) {
+						const card_match = key.match(/(.*) \(([A-Z]+)\) (\d+)/);
+						if (!card_match) continue;
+						const [_, name, set, num] = card_match;
+						if (name == card.card_name) {
 							new_list.push(card);
-							cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${value}x"; display: block; position: absolute; border-radius: 20px;}\n`;
+							cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}-cards-and-text):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${value}x"; display: block; position: absolute; border-radius: 20px;}\n`;
 							deck_map.delete(key);
 						}
 					}

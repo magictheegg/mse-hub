@@ -272,7 +272,7 @@
 		},
 	]
 
-[cube(15)]
+[cube(3)]
 	1 Apocalypse Engine
 	1 Armament of Armageddon
 	1 Imperial Excommunicator

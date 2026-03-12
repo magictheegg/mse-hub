@@ -102,6 +102,14 @@
 		let pack_count = 0;
 		let num_packs = urlParams.get('num') ? parseInt(urlParams.get('num')) : 1 /* that should be enough for everyone */;
 		const masterPack = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
+		const bonusW = [[], [], []];
+		const bonusU = [[], [], []];
+		const bonusB = [[], [], []];
+		const bonusR = [[], [], []];
+		const bonusG = [[], [], []];
+		const bonusI = [[], [], []];
+		const bonusC = [[], [], []];
+		const bonusDefault = [[], [], []];
 		// document.getElementById("next-pack").dataset.count = pack_count;
 		// document.getElementById("next-pack").dataset.packs = num_packs;
 		modal = document.getElementById("modal-container");
@@ -162,6 +170,7 @@
 			for (const card of card_list_arrayified) {
 				if (seen_cards.includes(card.card_name)) continue;
 				if (card.shape.includes('token')) continue;
+				if (card.type.includes('Basic')) continue;
 				if (card.card_name === "Kera, New Mordel's Hope" || card.card_name === "Guardian of the Cinders") continue;
 
 					
@@ -185,58 +194,95 @@
 				if (card.rarity === 'rare' || card.rarity === 'mythic') { 
 					masterPack[0].push(card);
 				}
-				if (card.rarity === 'uncommon' || card.rarity === 'common') {
-					if (card.color.includes("W")) { 
+				// if (card.rarity === 'uncommon' || card.rarity === 'common') {
+				if (card.color.includes("W")) {
+					if (card.rarity === 'uncommon' || card.rarity === 'common') {
 						for (let i = 0; i < 5; i++) {
 							masterPack[1].push(card);
 							masterPack[2].push(card);
 						}
 					}
+					bonusW[0].push(card);
+					bonusW[1].push(card);
+					bonusW[2].push(card);
+				}
 
-					if (card.color.includes("U")) { 
+				if (card.color.includes("U")) { 
+					if (card.rarity === 'uncommon' || card.rarity === 'common') {
 						for (let i = 0; i < 5; i++) {
 							masterPack[3].push(card);
 							masterPack[4].push(card);
 						}
 					}
+					bonusU[0].push(card);
+					bonusU[1].push(card);
+					bonusU[2].push(card);
+				}
 
-					if (card.color.includes("B")) { 
+				if (card.color.includes("B")) { 
+					if (card.rarity === 'uncommon' || card.rarity === 'common') {
 						for (let i = 0; i < 5; i++) {
 							masterPack[5].push(card);
 							masterPack[6].push(card);
 						}
 					}
+					bonusB[0].push(card);
+					bonusB[1].push(card);
+					bonusB[2].push(card);
+				}
 
-					if (card.color.includes("R")) { 
+				if (card.color.includes("R")) { 
+					if (card.rarity === 'uncommon' || card.rarity === 'common') {
 						for (let i = 0; i < 5; i++) {
 							masterPack[7].push(card);
 							masterPack[8].push(card);
 						}
 					}
+					bonusR[0].push(card);
+					bonusR[1].push(card);
+					bonusR[2].push(card);
+				}
 
-					if (card.color.includes("G")) { 
+				if (card.color.includes("G")) { 
+					if (card.rarity === 'uncommon' || card.rarity === 'common') {
 						for (let i = 0; i < 5; i++) {
 							masterPack[9].push(card);
 							masterPack[10].push(card);
 						}
 					}
+					bonusG[0].push(card);
+					bonusG[1].push(card);
+					bonusG[2].push(card);
+				}
 
-					if (card.color.includes("I")) { 
+				if (card.color.includes("I")) { 
+					if (card.rarity === 'uncommon' || card.rarity === 'common') {
 						for (let i = 0; i < 5; i++) {
 							masterPack[11].push(card);
 							masterPack[12].push(card);
 						}
 					}
-
-					if (card.card_color === '') {
-						for (let i = 1; i <= 12; i++)
-							masterPack[i].push(card);
-					}
+					bonusI[0].push(card);
+					bonusI[1].push(card);
+					bonusI[2].push(card);
 				}
+
+				if (card.card_color === '') {
+					for (let i = 1; i <= 12; i++)
+						masterPack[i].push(card);
+					bonusC[0].push(card);
+					bonusC[1].push(card);
+					bonusC[2].push(card);
+				}
+				
 				if (isSanctum(card)) masterPack[13].push(card);
 				if (card.type.includes("Land") && !card.type.includes('Basic'))
 					masterPack[14].push(card); 
 			}
+
+			bonusDefault[0] = card_list_cleaned;
+			bonusDefault[1] = card_list_cleaned;
+			bonusDefault[2] = card_list_cleaned;
 
 			if (isCollLeague) {
 				openPackSelect();
@@ -319,16 +365,18 @@
 			openAll.innerText = 'Open All';
 
 			open.onclick = async () => {
-				let cleague_packs = [];
+				cleague_packs = [];
 				let message = 'Continue to open the following packs?\n';
 				for (const pack of document.querySelectorAll('.pack-container')) {
 					const title = pack.dataset.pack;
 					const num = pack.querySelector('input').value;
+					if (num < 1) continue;
 					message += `${num} ${title} packs\n`;
 					for (let i = 0; i < num; i++)
 						cleague_packs.push(title);
 				}
 				if (!window.confirm(message)) return;
+				console.log(cleague_packs);
 
 				num_packs = cleague_packs.length;
 				pack_count = 0;
@@ -370,6 +418,14 @@
 				p1p1_cards = masterPack.slice();
 				return;
 			}
+			if (pack === 'BONUS-W') return p1p1_cards = bonusW.slice();
+			if (pack === 'BONUS-U') return p1p1_cards = bonusU.slice();
+			if (pack === 'BONUS-B') return p1p1_cards = bonusB.slice();
+			if (pack === 'BONUS-R') return p1p1_cards = bonusR.slice();
+			if (pack === 'BONUS-G') return p1p1_cards = bonusG.slice();
+			if (pack === 'BONUS-I') return p1p1_cards = bonusI.slice();
+			if (pack === 'BONUS-C') return p1p1_cards = bonusC.slice();
+			if (pack === 'BONUS'  ) return p1p1_cards = bonusDefault.slice();
 			const draft_file = await getDraftFile(pack);
 			draftmancerToP1P1(draft_file, pack);
 		}
@@ -533,7 +589,9 @@
 			else packs = Array(num_packs).fill(pack);
 
 			for (const pack_to_open of packs) {
+				console.log(pack_to_open, packs);
 				if (pack_to_open != prev) await getPack(pack_to_open);
+				console.log(p1p1_cards);
 				const generated = generatePack();
 				all_packs.push(generated);
 				await fetch(`https://voyager-api-pq2h.onrender.com/collectionleague/collection/edit?session=${localStorage.getItem('settings.session')}&group=1 ${pack_to_open}&collection=${packToText(generated)}`) 

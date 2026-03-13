@@ -5,9 +5,9 @@
 			"rarity": "mythic",
 			"mana_cost": "{5}{B}{B}",
 			"type": "Legendary Artifact",
-			"collector_number": "6",
+			"collector_number": "22",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/6_Apocalypse Engine.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/22_Apocalypse Engine.jpg"
 			}
 		},
 		{
@@ -25,9 +25,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}{W}{B}",
 			"type": "Artifact Creature — Zombie Noble",
-			"collector_number": "14",
+			"collector_number": "56",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/14_Imperial Excommunicator.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/56_Imperial Excommunicator.jpg"
 			}
 		},
 		{
@@ -35,9 +35,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{1}",
 			"type": "Artifact — Equipment",
-			"collector_number": "19",
+			"collector_number": "70",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/19_Explorer's Compass.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/70_Explorer's Compass.jpg"
 			}
 		},
 		{
@@ -45,9 +45,9 @@
 			"rarity": "rare",
 			"mana_cost": "{4}",
 			"type": "Enchantment Artifact Creature — Fractal",
-			"collector_number": "17",
+			"collector_number": "61",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/17_Collapsed Chaos.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/61_Collapsed Chaos.jpg"
 			}
 		},
 		{
@@ -55,9 +55,9 @@
 			"rarity": "common",
 			"mana_cost": "{2}",
 			"type": "Artifact — Equipment",
-			"collector_number": "20",
+			"collector_number": "75",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/20_Heirloom of the Obsolete.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/75_Heirloom of the Obsolete.jpg"
 			}
 		},
 		{
@@ -65,9 +65,9 @@
 			"rarity": "common",
 			"mana_cost": "{3}",
 			"type": "Artifact — Vehicle",
-			"collector_number": "21",
+			"collector_number": "76",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/21_Hulking Vessel.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/76_Hulking Vessel.jpg"
 			}
 		},
 		{
@@ -75,9 +75,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Token Creature — Scout",
-			"collector_number": "3",
+			"collector_number": "5",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/3_Scout.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/5_Scout.jpg"
 			}
 		},
 		{
@@ -85,9 +85,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Token Creature — Scout",
-			"collector_number": "4",
+			"collector_number": "6",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/4_Scout.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/6_Scout.jpg"
 			}
 		},
 		{
@@ -95,9 +95,9 @@
 			"rarity": "mythic",
 			"mana_cost": "{1}{W}{B}",
 			"type": "Artifact Creature — Zombie Wall",
-			"collector_number": "13",
+			"collector_number": "53",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/13_Envoy of Debauchery.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/53_Envoy of Debauchery.jpg"
 			}
 		},
 		{
@@ -115,9 +115,9 @@
 			"rarity": "common",
 			"mana_cost": "{1}{W}",
 			"type": "Artifact Creature — Zombie Soldier",
-			"collector_number": "4",
+			"collector_number": "5",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/4_Ecocidal Tracker.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/5_Ecocidal Tracker.jpg"
 			}
 		},
 		{
@@ -125,9 +125,9 @@
 			"rarity": "common",
 			"mana_cost": "{5}",
 			"type": "Artifact Creature — Zombie Soldier",
-			"collector_number": "22",
+			"collector_number": "85",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/22_Recovered Guardian.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/85_Recovered Guardian.jpg"
 			}
 		},
 		{
@@ -135,9 +135,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{C}",
 			"type": "Artifact Creature — Robot Warrior",
-			"collector_number": "11",
+			"collector_number": "47",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/11_Refraction Mech.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/47_Refraction Mech.jpg"
 			}
 		},
 		{
@@ -145,9 +145,9 @@
 			"rarity": "rare",
 			"mana_cost": "{R}",
 			"type": "Artifact Creature — Construct",
-			"collector_number": "8",
+			"collector_number": "34",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/8_Ancient Forerunner.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/34_Ancient Forerunner.jpg"
 			}
 		},
 		{
@@ -165,19 +165,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Token Creature — Human",
-			"collector_number": "2",
+			"collector_number": "4",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/2_Human.jpg"
-			}
-		},
-		{
-			"name": "Aspect of Logic",
-			"rarity": "rare",
-			"mana_cost": "{7}",
-			"type": "Enchantment Artifact Creature — Avatar",
-			"collector_number": "16",
-			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/16_Aspect of Logic.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/4_Human.jpg"
 			}
 		},
 		{
@@ -185,9 +175,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{W}{W}",
 			"type": "Artifact Creature — Demon Construct",
-			"collector_number": "5",
+			"collector_number": "9",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/5_Marblewrought Titan.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/9_Marblewrought Titan.jpg"
 			}
 		},
 		{
@@ -195,9 +185,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}{G}",
 			"type": "Artifact Creature — Demon Construct",
-			"collector_number": "10",
+			"collector_number": "42",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/10_Awakened Titan.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/42_Awakened Titan.jpg"
 			}
 		},
 		{
@@ -205,9 +195,9 @@
 			"rarity": "uncommon",
 			"mana_cost": "{B}",
 			"type": "Artifact Creature — Zombie Warrior",
-			"collector_number": "7",
+			"collector_number": "23",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/7_Awakened Marauder.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/23_Awakened Marauder.jpg"
 			}
 		},
 		{
@@ -215,9 +205,9 @@
 			"rarity": "rare",
 			"mana_cost": "{2}{R}{R}",
 			"type": "Legendary Artifact Creature — Zombie Dinosaur",
-			"collector_number": "9",
+			"collector_number": "35",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/9_Cadix, the Raze-Rager.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/35_Cadix, the Raze-Rager.jpg"
 			}
 		},
 		{
@@ -225,9 +215,9 @@
 			"rarity": "rare",
 			"mana_cost": "{U}{B}",
 			"type": "Artifact",
-			"collector_number": "12",
+			"collector_number": "51",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/12_Ancient Activator.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/51_Ancient Activator.jpg"
 			}
 		},
 		{
@@ -235,9 +225,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Token Creature — Fractal Horror",
-			"collector_number": "1",
+			"collector_number": "2",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/1_Fractal Horror.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/2_Fractal Horror.jpg"
 			}
 		},
 		{
@@ -245,9 +235,9 @@
 			"rarity": "rare",
 			"mana_cost": "{1}",
 			"type": "Artifact Creature — Thopter",
-			"collector_number": "15",
+			"collector_number": "59",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/15_Ancient Viewdrifter.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/59_Ancient Viewdrifter.jpg"
 			}
 		},
 		{
@@ -255,9 +245,9 @@
 			"rarity": "common",
 			"mana_cost": "",
 			"type": "Legendary Land Token",
-			"collector_number": "5",
+			"collector_number": "7",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/5_White Base.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/7_White Base.jpg"
 			}
 		},
 		{
@@ -265,9 +255,716 @@
 			"rarity": "uncommon",
 			"mana_cost": "{2}",
 			"type": "Artifact",
+			"collector_number": "62",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/62_Condensed Memory.jpg"
+			}
+		},
+		{
+			"name": "Dreadship Vessel",
+			"rarity": "common",
+			"mana_cost": "{4}",
+			"type": "Artifact — Vehicle",
+			"collector_number": "68",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/68_Dreadship Vessel.jpg"
+			}
+		},
+		{
+			"name": "Yaiba Robo",
+			"rarity": "common",
+			"mana_cost": "{3}{C}",
+			"type": "Artifact Creature — Robot",
+			"collector_number": "50",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/50_Yaiba Robo.jpg"
+			}
+		},
+		{
+			"name": "Wings of New Horizons",
+			"rarity": "common",
+			"mana_cost": "{1}",
+			"type": "Artifact — Equipment",
+			"collector_number": "89",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/89_Wings of New Horizons.jpg"
+			}
+		},
+		{
+			"name": "Towering Protector",
+			"rarity": "common",
+			"mana_cost": "{2}{R}{R}",
+			"type": "Enchantment Artifact Creature — Construct",
+			"collector_number": "41",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/41_Towering Protector.jpg"
+			}
+		},
+		{
+			"name": "Disregarded Project",
+			"rarity": "uncommon",
+			"mana_cost": "{W}",
+			"type": "Artifact Creature — Zombie Warrior",
+			"collector_number": "4",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/4_Disregarded Project.jpg"
+			}
+		},
+		{
+			"name": "Ego Eroder",
+			"rarity": "uncommon",
+			"mana_cost": "{B}{B}",
+			"type": "Artifact Creature — Zombie Cleric",
+			"collector_number": "24",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/24_Ego Eroder.jpg"
+			}
+		},
+		{
+			"name": "Extravagent Airship",
+			"rarity": "uncommon",
+			"mana_cost": "{4}",
+			"type": "Artifact — Vehicle",
+			"collector_number": "72",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/72_Extravagent Airship.jpg"
+			}
+		},
+		{
+			"name": "Giant's Blade",
+			"rarity": "uncommon",
+			"mana_cost": "{1}{W}{W}",
+			"type": "Artifact — Equipment",
+			"collector_number": "7",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/7_Giant's Blade.jpg"
+			}
+		},
+		{
+			"name": "Covert Cloak",
+			"rarity": "common",
+			"mana_cost": "{1}",
+			"type": "Artifact — Equipment",
+			"collector_number": "64",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/64_Covert Cloak.jpg"
+			}
+		},
+		{
+			"name": "Cleric",
+			"rarity": "common",
+			"mana_cost": "",
+			"type": "Token Creature — Cleric",
+			"collector_number": "1",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/1_Cleric.jpg"
+			}
+		},
+		{
+			"name": "God Horror",
+			"rarity": "common",
+			"mana_cost": "",
+			"type": "Token Creature — God Horror",
+			"collector_number": "3",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/3_God Horror.jpg"
+			}
+		},
+		{
+			"name": "Crystalline Cover",
+			"rarity": "common",
+			"mana_cost": "{U}",
+			"type": "Artifact — Equipment",
+			"collector_number": "14",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/14_Crystalline Cover.jpg"
+			}
+		},
+		{
+			"name": "Flaming Iron",
+			"rarity": "common",
+			"mana_cost": "{R}",
+			"type": "Artifact — Equipment",
+			"collector_number": "37",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/37_Flaming Iron.jpg"
+			}
+		},
+		{
+			"name": "Messenger of Absent Messages",
+			"rarity": "common",
+			"mana_cost": "{2}",
+			"type": "Artifact Creature — Scout",
+			"collector_number": "80",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/80_Messenger of Absent Messages.jpg"
+			}
+		},
+		{
+			"name": "Obsolete Sentinel",
+			"rarity": "common",
+			"mana_cost": "{2}{U}",
+			"type": "Artifact Creature — Zombie Wizard",
+			"collector_number": "21",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/21_Obsolete Sentinel.jpg"
+			}
+		},
+		{
+			"name": "Soul Taker",
+			"rarity": "common",
+			"mana_cost": "{2}{B}",
+			"type": "Artifact Creature — Zombie Warlock",
+			"collector_number": "31",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/31_Soul Taker.jpg"
+			}
+		},
+		{
+			"name": "Mechanised Hunter",
+			"rarity": "rare",
+			"mana_cost": "{2}{U}",
+			"type": "Artifact Creature — Horror",
+			"collector_number": "19",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/19_Mechanised Hunter.jpg"
+			}
+		},
+		{
+			"name": "Mechanised Hunter",
+			"rarity": "rare",
+			"mana_cost": "{6}",
+			"type": "Artifact Creature — Horror",
+			"collector_number": "79",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/79_Mechanised Hunter.jpg"
+			}
+		},
+		{
+			"name": "New-Life Acolyte",
+			"rarity": "rare",
+			"mana_cost": "{1}{U}",
+			"type": "Artifact Creature — Warlock",
+			"collector_number": "20",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/20_New-Life Acolyte.jpg"
+			}
+		},
+		{
+			"name": "Aspect of Logic",
+			"rarity": "rare",
+			"mana_cost": "{7}",
+			"type": "Enchantment Artifact Creature — Avatar",
+			"collector_number": "60",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/60_Aspect of Logic.jpg"
+			}
+		},
+		{
+			"name": "Cloudscape Observer",
+			"rarity": "rare",
+			"mana_cost": "{2}{U}",
+			"type": "Artifact Creature — Drone",
+			"collector_number": "13",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/13_Cloudscape Observer.jpg"
+			}
+		},
+		{
+			"name": "Corpse-Shell Container",
+			"rarity": "rare",
+			"mana_cost": "{5}",
+			"type": "Artifact — Equipment",
+			"collector_number": "63",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/63_Corpse-Shell Container.jpg"
+			}
+		},
+		{
+			"name": "Cryptic Columns",
+			"rarity": "common",
+			"mana_cost": "{1}",
+			"type": "Artifact Creature — Wall",
+			"collector_number": "65",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/65_Cryptic Columns.jpg"
+			}
+		},
+		{
+			"name": "Culture Collector",
+			"rarity": "common",
+			"mana_cost": "{3}",
+			"type": "Artifact Creature — Construct Warlock",
+			"collector_number": "66",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/66_Culture Collector.jpg"
+			}
+		},
+		{
+			"name": "Curious Observer",
+			"rarity": "uncommon",
+			"mana_cost": "{5}",
+			"type": "Artifact Creature — Wizard",
+			"collector_number": "67",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/67_Curious Observer.jpg"
+			}
+		},
+		{
+			"name": "Decrepid Terraformer",
+			"rarity": "rare",
+			"mana_cost": "{1}{G}{W}",
+			"type": "Artifact Creature — Construct",
+			"collector_number": "52",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/52_Decrepid Terraformer.jpg"
+			}
+		},
+		{
+			"name": "Deepmind Oracle",
+			"rarity": "rare",
+			"mana_cost": "{U}",
+			"type": "Artifact Creature — Sphinx",
+			"collector_number": "15",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/15_Deepmind Oracle.jpg"
+			}
+		},
+		{
+			"name": "Emergent Anomaly",
+			"rarity": "rare",
+			"mana_cost": "{2}{R}",
+			"type": "Artifact Creature — Horror",
+			"collector_number": "36",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/36_Emergent Anomaly.jpg"
+			}
+		},
+		{
+			"name": "Endless Distortion Line",
+			"rarity": "rare",
+			"mana_cost": "{2}",
+			"type": "Artifact — Vehicle",
+			"collector_number": "69",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/69_Endless Distortion Line.jpg"
+			}
+		},
+		{
+			"name": "Erys' Memoirs",
+			"rarity": "mythic",
+			"mana_cost": "{1}{U}{R}",
+			"type": "Legendary Artifact",
+			"collector_number": "54",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/54_Erys' Memoirs.jpg"
+			}
+		},
+		{
+			"name": "Eteres' Chronicler",
+			"rarity": "rare",
+			"mana_cost": "{2}{G}",
+			"type": "Artifact Creature — Construct Scout",
+			"collector_number": "43",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/43_Eteres' Chronicler.jpg"
+			}
+		},
+		{
+			"name": "Extant Surveyor",
+			"rarity": "rare",
+			"mana_cost": "{C}",
+			"type": "Artifact Creature — Robot Construct",
+			"collector_number": "46",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/46_Extant Surveyor.jpg"
+			}
+		},
+		{
+			"name": "Extraplanar Portal",
+			"rarity": "rare",
+			"mana_cost": "{9}",
+			"type": "Artifact",
+			"collector_number": "71",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/71_Extraplanar Portal.jpg"
+			}
+		},
+		{
+			"name": "Firmament Sculptor",
+			"rarity": "rare",
+			"mana_cost": "{1}{U}",
+			"type": "Artifact Creature — Avatar",
+			"collector_number": "16",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/16_Firmament Sculptor.jpg"
+			}
+		},
+		{
+			"name": "Firmament-Rending Blade",
+			"rarity": "rare",
+			"mana_cost": "{2}",
+			"type": "Artifact — Equipment",
+			"collector_number": "73",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/73_Firmament-Rending Blade.jpg"
+			}
+		},
+		{
+			"name": "Flesh Centrifuge",
+			"rarity": "rare",
+			"mana_cost": "{7}{B}",
+			"type": "Artifact Creature — Zombie Horror",
+			"collector_number": "25",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/25_Flesh Centrifuge.jpg"
+			}
+		},
+		{
+			"name": "Font of Decadence",
+			"rarity": "rare",
+			"mana_cost": "{2}{W}{W}",
+			"type": "Artifact Creature — Zombie Advisor",
+			"collector_number": "6",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/6_Font of Decadence.jpg"
+			}
+		},
+		{
+			"name": "Foreboding Monolith",
+			"rarity": "rare",
+			"mana_cost": "{3}",
+			"type": "Artifact",
+			"collector_number": "74",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/74_Foreboding Monolith.jpg"
+			}
+		},
+		{
+			"name": "Fracture of Divinity",
+			"rarity": "rare",
+			"mana_cost": "{1}{U}",
+			"type": "Artifact Creature — Demigod Construct",
+			"collector_number": "17",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/17_Fracture of Divinity.jpg"
+			}
+		},
+		{
+			"name": "Hazard Technician",
+			"rarity": "uncommon",
+			"mana_cost": "{3}{G}",
+			"type": "Creature — Lizard Werewolf Artificer",
+			"collector_number": "44",
+			"back": {
+				"name": "",
+				"type": "",
+				"image_uris": {
+					"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/44_Hazard Technician_back.jpg"
+				}
+			},
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/44_Hazard Technician_front.jpg"
+			}
+		},
+		{
+			"name": "Hierarch of Expiration",
+			"rarity": "uncommon",
+			"mana_cost": "{3}{B}",
+			"type": "Artifact Creature — Zombie Cleric",
+			"collector_number": "26",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/26_Hierarch of Expiration.jpg"
+			}
+		},
+		{
+			"name": "Hierarch of Exultation",
+			"rarity": "uncommon",
+			"mana_cost": "{1}{W}",
+			"type": "Artifact Creature — Zombie Cleric",
+			"collector_number": "8",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/8_Hierarch of Exultation.jpg"
+			}
+		},
+		{
+			"name": "Idol of Forgotten Gods",
+			"rarity": "rare",
+			"mana_cost": "{2}{U}",
+			"type": "Artifact",
 			"collector_number": "18",
 			"image_uris": {
-				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/18_Condensed Memory.jpg"
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/18_Idol of Forgotten Gods.jpg"
+			}
+		},
+		{
+			"name": "Idol of Reconstruction",
+			"rarity": "rare",
+			"mana_cost": "{G}{W}",
+			"type": "Artifact",
+			"collector_number": "55",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/55_Idol of Reconstruction.jpg"
+			}
+		},
+		{
+			"name": "Important Parcel",
+			"rarity": "uncommon",
+			"mana_cost": "{0}",
+			"type": "Artifact — Clue",
+			"collector_number": "77",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/77_Important Parcel.jpg"
+			}
+		},
+		{
+			"name": "Infested Fortress",
+			"rarity": "uncommon",
+			"mana_cost": "{4}{B}{B}",
+			"type": "Artifact Creature — Dragon Building",
+			"collector_number": "27",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/27_Infested Fortress.jpg"
+			}
+		},
+		{
+			"name": "Liferoot Gnawer",
+			"rarity": "rare",
+			"mana_cost": "{3}{R}{R}",
+			"type": "Artifact Creature — Horror",
+			"collector_number": "38",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/38_Liferoot Gnawer.jpg"
+			}
+		},
+		{
+			"name": "Longlegs",
+			"rarity": "rare",
+			"mana_cost": "{5}{B}{B}",
+			"type": "Artifact Creature — Octopus",
+			"collector_number": "28",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/28_Longlegs.jpg"
+			}
+		},
+		{
+			"name": "Malevolent Naginata",
+			"rarity": "uncommon",
+			"mana_cost": "{B}",
+			"type": "Artifact — Equipment",
+			"collector_number": "29",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/29_Malevolent Naginata.jpg"
+			}
+		},
+		{
+			"name": "Matryoshka Crawler",
+			"rarity": "rare",
+			"mana_cost": "{5}",
+			"type": "Artifact Creature — Construct",
+			"collector_number": "78",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/78_Matryoshka Crawler.jpg"
+			}
+		},
+		{
+			"name": "Meso Meso",
+			"rarity": "rare",
+			"mana_cost": "{W}",
+			"type": "Artifact Creature — Bird Angel Orb",
+			"collector_number": "10",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/10_Meso Meso.jpg"
+			}
+		},
+		{
+			"name": "Monument of Rags",
+			"rarity": "uncommon",
+			"mana_cost": "{2}{B}{B}",
+			"type": "Artifact",
+			"collector_number": "30",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/30_Monument of Rags.jpg"
+			}
+		},
+		{
+			"name": "Oblivion Zealot",
+			"rarity": "uncommon",
+			"mana_cost": "{2}{W}",
+			"type": "Artifact Creature — Zombie Cleric",
+			"collector_number": "11",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/11_Oblivion Zealot.jpg"
+			}
+		},
+		{
+			"name": "Pot of Wishes",
+			"rarity": "rare",
+			"mana_cost": "{1}",
+			"type": "Artifact",
+			"collector_number": "81",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/81_Pot of Wishes.jpg"
+			}
+		},
+		{
+			"name": "Priest of Perfection",
+			"rarity": "rare",
+			"mana_cost": "{1}{U}{R}",
+			"type": "Artifact Creature — Cleric",
+			"collector_number": "57",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/57_Priest of Perfection.jpg"
+			}
+		},
+		{
+			"name": "Prismatic Powerstone",
+			"rarity": "uncommon",
+			"mana_cost": "{3}",
+			"type": "Artifact",
+			"collector_number": "82",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/82_Prismatic Powerstone.jpg"
+			}
+		},
+		{
+			"name": "Prophetic Prism",
+			"rarity": "rare",
+			"mana_cost": "{2}",
+			"type": "Artifact",
+			"collector_number": "83",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/83_Prophetic Prism.jpg"
+			}
+		},
+		{
+			"name": "Realmshaper",
+			"rarity": "rare",
+			"mana_cost": "{2}",
+			"type": "Artifact",
+			"collector_number": "84",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/84_Realmshaper.jpg"
+			}
+		},
+		{
+			"name": "Rustic Cultivator",
+			"rarity": "common",
+			"mana_cost": "{2}",
+			"type": "Artifact",
+			"collector_number": "86",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/86_Rustic Cultivator.jpg"
+			}
+		},
+		{
+			"name": "Sacred Avenger",
+			"rarity": "uncommon",
+			"mana_cost": "{1}{U}{R}{W}",
+			"type": "Artifact — Equipment",
+			"collector_number": "58",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/58_Sacred Avenger.jpg"
+			}
+		},
+		{
+			"name": "Sample Skimmer",
+			"rarity": "uncommon",
+			"mana_cost": "{2}{C}",
+			"type": "Artifact Creature — Robot Construct",
+			"collector_number": "48",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/48_Sample Skimmer.jpg"
+			}
+		},
+		{
+			"name": "Self-Intersector",
+			"rarity": "rare",
+			"mana_cost": "{1}",
+			"type": "Artifact",
+			"collector_number": "87",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/87_Self-Intersector.jpg"
+			}
+		},
+		{
+			"name": "Serrated Angel",
+			"rarity": "uncommon",
+			"mana_cost": "{4}{W}{W}",
+			"type": "Artifact Creature — Zombie Angel",
+			"collector_number": "12",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/12_Serrated Angel.jpg"
+			}
+		},
+		{
+			"name": "Somnonaut Drone",
+			"rarity": "rare",
+			"mana_cost": "{3}{R}",
+			"type": "Artifact Creature — Drone",
+			"collector_number": "39",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/39_Somnonaut Drone.jpg"
+			}
+		},
+		{
+			"name": "Sorting Servant",
+			"rarity": "rare",
+			"mana_cost": "{2}",
+			"type": "Artifact Creature — Golem",
+			"collector_number": "88",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/88_Sorting Servant.jpg"
+			}
+		},
+		{
+			"name": "Spire of Rebirth",
+			"rarity": "uncommon",
+			"mana_cost": "{1}{B}",
+			"type": "Artifact",
+			"collector_number": "32",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/32_Spire of Rebirth.jpg"
+			}
+		},
+		{
+			"name": "Stinging Surveyor",
+			"rarity": "rare",
+			"mana_cost": "{2}{R}",
+			"type": "Artifact Creature — Insect Robot",
+			"collector_number": "40",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/40_Stinging Surveyor.jpg"
+			}
+		},
+		{
+			"name": "Syphroid",
+			"rarity": "uncommon",
+			"mana_cost": "{4}{C}{C}",
+			"type": "Artifact Creature — Robot",
+			"collector_number": "49",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/49_Syphroid.jpg"
+			}
+		},
+		{
+			"name": "Thoughtglass Whip",
+			"rarity": "common",
+			"mana_cost": "{2}{G}",
+			"type": "Artifact — Equipment",
+			"collector_number": "45",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/45_Thoughtglass Whip.jpg"
+			}
+		},
+		{
+			"name": "Throat of Remnants",
+			"rarity": "uncommon",
+			"mana_cost": "{B}",
+			"type": "Artifact",
+			"collector_number": "33",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/TZE-01-files/img/33_Throat of Remnants.jpg"
 			}
 		},
 	]
@@ -287,7 +984,6 @@
 	1 Refraction Mech
 	1 Ancient Forerunner
 	1 Asset Manager
-	1 Aspect of Logic
 	1 Marblewrought Titan
 	1 Awakened Titan
 	1 Awakened Marauder
@@ -295,3 +991,71 @@
 	1 Ancient Activator
 	1 Ancient Viewdrifter
 	1 Condensed Memory
+	1 Dreadship Vessel
+	1 Yaiba Robo
+	1 Wings of New Horizons
+	1 Towering Protector
+	1 Disregarded Project
+	1 Ego Eroder
+	1 Extravagent Airship
+	1 Giant's Blade
+	1 Covert Cloak
+	1 Crystalline Cover
+	1 Flaming Iron
+	1 Messenger of Absent Messages
+	1 Obsolete Sentinel
+	1 Soul Taker
+	1 Mechanised Hunter
+	1 Mechanised Hunter
+	1 New-Life Acolyte
+	1 Aspect of Logic
+	1 Cloudscape Observer
+	1 Corpse-Shell Container
+	1 Cryptic Columns
+	1 Culture Collector
+	1 Curious Observer
+	1 Decrepid Terraformer
+	1 Deepmind Oracle
+	1 Emergent Anomaly
+	1 Endless Distortion Line
+	1 Erys' Memoirs
+	1 Eteres' Chronicler
+	1 Extant Surveyor
+	1 Extraplanar Portal
+	1 Firmament Sculptor
+	1 Firmament-Rending Blade
+	1 Flesh Centrifuge
+	1 Font of Decadence
+	1 Foreboding Monolith
+	1 Fracture of Divinity
+	1 Hazard Technician
+	1 Hierarch of Expiration
+	1 Hierarch of Exultation
+	1 Idol of Forgotten Gods
+	1 Idol of Reconstruction
+	1 Important Parcel
+	1 Infested Fortress
+	1 Liferoot Gnawer
+	1 Longlegs
+	1 Malevolent Naginata
+	1 Matryoshka Crawler
+	1 Meso Meso
+	1 Monument of Rags
+	1 Oblivion Zealot
+	1 Pot of Wishes
+	1 Priest of Perfection
+	1 Prismatic Powerstone
+	1 Prophetic Prism
+	1 Realmshaper
+	1 Rustic Cultivator
+	1 Sacred Avenger
+	1 Sample Skimmer
+	1 Self-Intersector
+	1 Serrated Angel
+	1 Somnonaut Drone
+	1 Sorting Servant
+	1 Spire of Rebirth
+	1 Stinging Surveyor
+	1 Syphroid
+	1 Thoughtglass Whip
+	1 Throat of Remnants

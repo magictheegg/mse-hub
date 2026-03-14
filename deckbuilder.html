@@ -1365,12 +1365,12 @@
 
 			for (const card of card_list.cards) {
 				for (const [ key, value ] of deck_map.entries()) {
-					const card_match = key.match(/(.*) \(([A-Z]+)\) (\d+)/);
+					const card_match = key.match(/(.*) \(([A-Z\-_0-9]+)\) (\d+)/);
 					if (!card_match) continue;
 					const [_, name, set, num] = card_match;
 					if (name == card.card_name && (set == card.set || set == "XXX") && (num == card.number.toString() || num == "0")) {
 						new_list.push(card);
-						cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}-cards-and-text):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${value}x"; display: block; position: absolute; border-radius: 20px;}\n`;
+						cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}-cards-and-text):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${value}x"; display: block; position: absolute; border-radius: 20px; z-index: 1;}\n`;
 						deck_map.delete(key);
 					}
 				}
@@ -1379,12 +1379,12 @@
 			if (deck_map.size > 1) {
 				for (const card of card_list.cards) {
 					for (const [ key, value ] of deck_map.entries()) {
-						const card_match = key.match(/(.*) \(([A-Z]+)\) (\d+)/);
+						const card_match = key.match(/(.*) \(([A-Z\-_0-9]+)\) (\d+)/);
 						if (!card_match) continue;
 						const [_, name, set, num] = card_match;
 						if (name == card.card_name && (set == card.set || set == "XXX")) {
 							new_list.push(card);
-							cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}-cards-and-text):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${value}x"; display: block; position: absolute; border-radius: 20px;}\n`;
+							cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}-cards-and-text):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${value}x"; display: block; position: absolute; border-radius: 20px; z-index: 1;}\n`;
 							deck_map.delete(key);
 						}
 					}
@@ -1394,12 +1394,12 @@
 			if (deck_map.size > 1) {
 				for (const card of card_list.cards) {
 					for (const [ key, value ] of deck_map.entries()) {
-						const card_match = key.match(/(.*) \(([A-Z]+)\) (\d+)/);
+						const card_match = key.match(/(.*) \(([A-Z\-_0-9]+)\) (\d+)/);
 						if (!card_match) continue;
 						const [_, name, set, num] = card_match;
 						if (name == card.card_name) {
 							new_list.push(card);
-							cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}-cards-and-text):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${value}x"; display: block; position: absolute; border-radius: 20px;}\n`;
+							cssStr += `.img-container:has(> #${card["set"]}-${card["number"]}-cards-and-text):before {background-color: rgba(0,0,0,0.8); padding: 10px; color: white; font-size: 20px; content: "${value}x"; display: block; position: absolute; border-radius: 20px; z-index: 1;}\n`;
 							deck_map.delete(key);
 						}
 					}

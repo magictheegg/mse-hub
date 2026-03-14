@@ -70,11 +70,24 @@
 			</div>
 		</div>
 		<div class="main-tab" id="main-tab">
-			<div class="tab home-tab" id="home"><span class="wip">This tab is a work in progress.</span></div>
-			<div class="tab opener-tab" id="opener">
+			<div class="tab home-tab" id="home">
+				<div class="new-cards">
+					<h1>New Cards</h1>
+					<div class="new-cards-grid">
+						This is a work in progress.
+					</div>
+				</div>
+				<div class="monthly-pack">
+					<h1>Monthly Pack: Zeta</h1>
+					<img src="/data/collectionleague/packs/TZE-01.png">
+					<p>Zeta is a bonus pack filled to the brim with exciting rearts focusing on science fiction, artifacts, and most importantly Gundam!</p>
+					<button class="go" onclick="window.location.href='/sets/TZE-01'">View Pack</button>
+				</div>
+			</div>
+			<div class="tab opener-tab" id="opener" style="display: none;">
 				<iframe src="/packopener.html?collectionleague#nobg" class="embed"></iframe>
 			</div>
-			<div class="tab collection-tab" id="collection">
+			<div class="tab collection-tab" id="collection" style="display: none;">
 				<div class="search-area">
 					<div style="position: relative; width: 100%; padding: 0; margin: 0;">
 						<input type="text" inputmode="search" placeholder="Search ..." name="search" id="search" spellcheck="false" autocomplete="off" autocorrect="off" spellcheck="false">
@@ -100,12 +113,15 @@
 					<div class="card-grid" id="cardGrid"></div>
 				</div>
 			</div>
-			<div class="tab viewer-tab" id="viewer">
+			<div class="tab viewer-tab" id="viewer" style="display: none;">
 				<iframe src="/all-sets.html?packs#nobg" class="embed"></iframe>
 			</div>
-			<div class="tab records-tab" id="records"><span class="wip">This tab is a work in progress.</span></div>
+			<div class="tab records-tab" id="records" style="display: none;">
+				<div class="records-container"></div>
+			</div>
 		</div>
 	</div>
+	<img id="hover-card" class="hover-card">
 	<div id="modal-container">
 		<div id="modal-content" class="popout">
 			<span class="close"
@@ -118,6 +134,8 @@
 	<script>
 		let collection_cards = [];
 		let collection_copies;
+		let collection;
+		let on_jmp = false;
 		const on_cl_page = true;
 		const delay = ms => new Promise(res => setTimeout(res, ms));
 		
@@ -245,23 +263,165 @@
 						tagDropdown.style.display = "none";
 					}
 				});
+			}
 
-				while (!window.inCollectionLeague) await delay(100);
+			while (!window.inCollectionLeague) await delay(100);
 
-				if (!(await inCollectionLeague())) {
-					document.querySelector('#modal-container').style.display = 'block';
-					document.querySelector('#modal-content').innerHTML = `<div class="new-to-cl"><h1 class="not-joined">You're not in Collection League.</h1><p>To start, you'll get to open some packs!</p><button class="go" onclick="jumpStart()">Continue</button></div>`;			
+			if (!(await inCollectionLeague())) {
+				document.querySelector('#modal-container').style.display = 'block';
+				document.querySelector('#modal-content').innerHTML = `<div class="new-to-cl"><h1 class="not-joined">You're not in Collection League.</h1><p>To start, you'll get to open some packs!</p><button class="go" onclick="jumpStart()">Continue</button></div>`;			
+			}
+
+			await reloadCollection();
+			preSearch();
+			makeRecordsTab();
+		});
+
+		modal = document.getElementById("modal-container");
+		window.onclick = function (event) {
+			if (event.target == modal && !on_jmp) {
+				closeModal();
+			}
+		}
+
+
+		function makeRecordsTab() {
+			const records_container = document.querySelector('.records-container');
+			let group;
+			let cards = [];
+
+			for (const line of collection.split('\n')) {
+				const group_match = line.match(/(.*?) (\d+?\/\d+?\/\d+? \d+?:\d+?:\d+?):/);
+				if (!group_match) {
+					cards.push(line);
+					continue;
 				}
 
-				await reloadCollection();
-				preSearch();
+				if (!group) {
+					group = group_match;
+					continue;
+				}
+
+				const [_, name, time] = group;
+
+				const row = document.createElement('div');
+				row.className = 'record-row';
+
+				const name_label = document.createElement('div');
+				name_label.className = 'record-label';
+				name_label.innerText = name;
+
+				const date_time_label = document.createElement('div');
+				date_time_label.className = 'record-date';
+				date_time_label.innerText = time;
+
+				const summary = document.createElement('div');
+				summary.className = 'record-summary';
+
+				const card_jsons = [];
+				for (const card of cards) {
+					if (card == '') continue;
+					const [_, card_name, set, num] = card.match(/\d+ (.*?) \(([A-Z\-_0-9]+)\) (\d+)/);
+					let card_stats;
+					for (const _card of card_list_arrayified)
+						if (_card.card_name == card_name && set == _card.set && num == _card.number) card_stats = _card;
+					card_jsons.push(card_stats);
+				}
+
+				card_jsons.sort((a, b) => {
+					if (a.type.includes('Basic') && !b.type.includes('Basic')) return 1;
+					if (!a.type.includes('Basic') && b.type.includes('Basic')) return -1;
+					const rarity_sort_order = ["mythic", "rare", "uncommon", "common"];
+					let a_rarity_index = 100;
+					let b_rarity_index = 100;
+
+					for (const [i, rarity] of rarity_sort_order.entries()) {
+						if (a.rarity.toLowerCase() == rarity)
+							a_rarity_index = i;
+						if (b.rarity.toLowerCase() == rarity)
+							b_rarity_index = i;	
+					}
+
+					return a_rarity_index - b_rarity_index;
+				});
+
+				let first = true;
+				for (const card of card_jsons) {
+					const card_preview = document.createElement('span');
+					card_preview.innerText = (first ? '' : ', ') + card.card_name;
+					card_preview.className = 'card-preview';
+					card_preview.onmouseover = () => showCardHover(card);
+					card_preview.onmousemove = (event) => moveCardHover(event);
+					card_preview.onmouseout = () => hideCardHover();
+					summary.appendChild(card_preview);
+					first = false;
+				}
+
+				const view = document.createElement('div');
+				view.onclick = () => {
+					const modal_container = document.querySelector('#modal-container');
+					const modal_content = document.querySelector('#modal-content');
+
+					modal_content.innerHTML = '';
+					modal_container.style.display = 'block';
+					// modal_content.style.background = 'var(--bg-color)';
+					modal_content.style.width = '70%';
+					modal_content.style.overflow = 'auto';
+					modal_container.style.overflow = 'auto';
+					modal_container.style.paddingTop = '70px';
+
+					const pulls_container = document.createElement('div');
+					pulls_container.className = 'view-pack-container';
+
+					for (const card of card_jsons) {
+						pulls_container.appendChild(buildImgContainer(card));
+					}
+
+					modal_content.appendChild(pulls_container);
+				}
+				view.className = 'view-pack';
+
+				const view_img = document.createElement('img');
+				view_img.src = '/img/show-white.png';
+
+				const view_label = document.createElement('span');
+				view_label.innerText = 'View Pulls';
+
+				view.appendChild(view_img);
+				view.appendChild(view_label);
+
+				row.appendChild(date_time_label);
+				row.appendChild(name_label);
+				row.appendChild(summary);
+				row.appendChild(view);
+				records_container.appendChild(row);
+				group = group_match;
+				cards = [];
 			}
-		});
+		}
+
+		function showCardHover(card_stats) {
+			const src = "/sets/" + card_stats.set + "-files/img/" + card_stats.number + (card_stats.shape.includes("token") ? "t_" : "_") + card_stats.card_name + ((card_stats.shape.includes("double")) ? "_front" : "") + "." + card_stats.image_type;
+
+			const hover_card = document.getElementById("hover-card");
+			hover_card.style.display = "block";
+			hover_card.src = src;
+			return;
+		}
+
+		function moveCardHover(event) {
+			document.getElementById("hover-card").style.left = event.pageX + "px";
+			document.getElementById("hover-card").style.top = event.pageY - 262 + "px";
+		}
+
+		function hideCardHover() {
+			document.getElementById("hover-card").style.display = "none";
+		}
 
 		async function reloadCollection() {
 			collection_copies = new Map(); // map from card_name, set, num > copies
 			for (const line of collection.split('\n')) {
-				const card_match = line.match(/(\d+) ((.*?) \(([A-Z]+?)\) (\d+))/);
+				const card_match = line.match(/(\d+) ((.*?) \(([A-Z\-_0-9]+?)\) (\d+))/);
 				if (!card_match) continue;
 				const [_, _copies, card_id, card_name, set, num] = card_match;
 				const copies = parseInt(_copies);
@@ -276,6 +436,8 @@
 			let cards_already_checked = [];
 			collection_cards = [];
 			const _collection_copies = new Map(collection_copies);
+			console.log(Array.from(_collection_copies.entries()));
+
 			for (const [i, card] of card_list_arrayified.entries()) {
 				const card_id = `${card.card_name} (${card.set}) ${card.number}`;
 				if (_collection_copies.has(card_id)) {
@@ -284,10 +446,14 @@
 					_collection_copies.delete(card_id);
 				}
 			}
+
+			console.log(cards_already_checked.map(i => card_list_arrayified[i]));
 			cards_to_check = card_list_arrayified.filter((_, i) => !cards_already_checked.includes(i));
 
+			console.log(_collection_copies);
 			for (const collection_card of _collection_copies.keys()) {
-				const [_, card_name, set, num] = collection_card.match(/(.*?) \(([A-Z]+)\) (\d+)/);
+				console.log(collection_card);
+				const [_, card_name, set, num] = collection_card.match(/(.*?) \(([A-Z\-_0-9]+)\) (\d+)/);
 				for (const [i, card] of cards_to_check.entries()) {
 					if (card.card_name == card_name && card.set == set) {
 						collection_cards.push(card);
@@ -300,7 +466,7 @@
 			cards_to_check = card_list_arrayified.filter((_, i) => !cards_already_checked.includes(i));
 
 			for (const collection_card of _collection_copies.keys()) {
-				const [_, card_name, set, num] = collection_card.match(/(.*?) \(([A-Z]+)\) (\d+)/);
+				const [_, card_name, set, num] = collection_card.match(/(.*?) \(([A-Z\-_0-9]+)\) (\d+)/);
 				for (const [i, card] of cards_to_check.entries()) {
 					if (card.card_name == card_name) {
 						collection_cards.push(card);
@@ -311,10 +477,13 @@
 				}
 			}
 
+			if (collection.includes('500 Internal Server Error')) return;
 			await fetch(`https://voyager-api-pq2h.onrender.com/collectionleague/collection/write?session=${localStorage.getItem('settings.session')}&collection=${btoa(collection)}`);
 		}
 
 		async function jumpStart() {
+			on_jmp = true;
+
 			await fetch('/data/collectionleague/jumpstart.json')
 				.then(response => response.json())
 				.then(json => {
@@ -412,7 +581,7 @@
 
 					const collection = new Map();
 					for (const line of (pack1.list + pack.list).split('\n')) {
-						const card_match = line.match(/(\d+) (.*?) \(([A-Z]+?)\) (\d+)/);
+						const card_match = line.match(/(\d+) (.*?) \(([A-Z\-_0-9]+?)\) (\d+)/);
 						if (!card_match) continue;
 
 						const [_, _copies, card_name, set, num] = card_match;
@@ -498,7 +667,7 @@
 		}
 
 		function changeTab(tab_name) {
-			document.getElementById(tab_name).style.display = "block";
+			document.getElementById(tab_name).style.display = "";
 			document.getElementById(tab_name + "-tab-select").className = "tab-btn tab-btn-active"
 			for (const child of document.getElementById("main-tab").children) {
 				if (child.id != tab_name && child.id != "ended-text") {
@@ -566,7 +735,6 @@
 				}
 			});
 
-			console.log(collection_cards);
 			collection_cards.sort(compareFunction);
 			if (document.getElementById("sort-order").value == "descending") {
 				collection_cards.reverse();
@@ -647,12 +815,9 @@
 		// Initialize Firebase
 		const app = initializeApp(firebaseConfig);
 		const db = getFirestore(app);
-		let username = "";
-		let password = "";
+		let username;
+		let password;
 		let sessionid = localStorage.getItem('settings.session');
-		let decks = {};
-		const events = ["GP1", "League"];
-		let user_data;
 
 		if (sessionid) {
 			await getDoc(doc(db, 'sessions', sessionid)).then(docSnap => {
@@ -660,16 +825,11 @@
 				username = data.username;
 				password = data.password;
 			});
-
-			await getDoc(doc(db, 'users', username)).then(docSnap => {
-				let data = docSnap.data();
-				user_data = data;
-			});
 		}
 
 		window.inCollectionLeague = async () => {
-			const d = await getDoc(doc(db, 'collectionleague', username));
-			return d.data() != undefined;
+			const d = (await getDoc(doc(db, 'collectionleague', username))).data();
+			return !(d == undefined || d.joined === false);
 		};
 
 		window.openMaster = async () => {
@@ -683,6 +843,7 @@
 			document.querySelector('#modal-container').style.display = 'none';
 			document.querySelector('.opener-tab .embed').contentWindow.location.reload();
 			changeTab('opener');
+			on_jmp = false;
 		}
 	</script>
 </body>

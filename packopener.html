@@ -156,7 +156,7 @@
 				await fetch(`https://voyager-api-pq2h.onrender.com/collectionleague/packs/available?session=${localStorage.getItem('settings.session')}`)
 					.then(response => response.json())
 					.then(json => {
-						cleague_packs = json;
+						cleague_packs = json.filter(p => p !== null);
 					}).catch(error => console.error('Error:', error));
 
 				num_packs = cleague_packs.length;
@@ -488,6 +488,7 @@
 				if (default_set && card.set !== default_set) continue;
 				if (seen_cards.includes(card.card_name)) continue;
 				if (card.shape.includes('token')) continue;
+				if (card.type.includes('Basic')) continue;
 				if (card.card_name === "Kera, New Mordel's Hope" || card.card_name === "Guardian of the Cinders") continue;
 
 					

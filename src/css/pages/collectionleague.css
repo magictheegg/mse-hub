@@ -150,8 +150,8 @@
     justify-content: center;
 }
 
-.tab:not(.home-tab) {
-    display: none;
+.tab {
+    display: block;
 }
 
 .embed {
@@ -290,4 +290,119 @@
 
 a {
     text-decoration: none;
+}
+
+.new-cards {
+    background-color: var(--bg-color);
+    color: var(--popout-text-color);
+    border: 3px solid var(--opposite);
+    border-radius: 20px;
+}
+
+.home-tab {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 20px;
+}
+
+.records-tab {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.records-container {
+    display: flex;
+    flex-direction: column;
+    background-color: color-mix(in srgb, var(--bg-color), transparent 50%);
+    color: var(--popout-text-color);
+    border: 1px solid var(--opposite);
+    border-radius: 15px;
+    padding: 12px;
+    
+}
+
+.record-row:nth-child(1) {
+    border-top: 1.4px solid var(--popout-text-color);
+}
+
+.record-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 5fr 1fr;
+    border-bottom: 1px solid var(--popout-text-color);
+    font-size: 1.2em;
+    border-left: 1px solid var(--popout-text-color);
+}
+
+.record-row div {
+    border-right: 1px solid var(--popout-text-color);
+    padding: 3px;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 1.1em;
+}
+
+.hover-card {
+	display: none;
+	position: absolute;
+	height: 262px;
+	width: 188px;
+	pointer-events: none;
+}
+
+span {
+    display: inline-block;
+}
+
+.view-pack img {
+    max-height: 1em;
+}
+
+.view-pack {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    cursor:pointer;
+    gap: 3px;
+}
+
+.view-pack-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.home-tab h1 {
+    width: 100%;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.monthly-pack {
+    height: fit-content;
+}
+
+.monthly-pack img {
+    max-height: 60vh;
+    margin: auto;
+    width: auto;
+    display: block;
+}
+
+.monthly-pack p {
+    color: var(--text-color);
+    width: 80%;
+    margin: auto;
+    margin-top: 15px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.monthly-pack .go {
+    margin: auto;
+    width: fit-content;
+    display: block;
+    margin-top: 10px;
 }

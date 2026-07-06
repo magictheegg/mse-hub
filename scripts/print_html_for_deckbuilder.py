@@ -619,8 +619,10 @@ def generateHTML(codes):
 		let sideboard = [];
 		let active_card = [];
 		let sets_json = {};
+		let contextMenu;
 
 		document.addEventListener("DOMContentLoaded", async function () {
+			contextMenu = document.getElementById("myContextMenu");
 			'''
 
 	with open(os.path.join('scripts', 'snippets', 'load-files.txt'), encoding='utf-8-sig') as f:
@@ -634,7 +636,48 @@ def generateHTML(codes):
 					.then(data => {
 						sets_json = data; 
 				}).catch(error => console.error('Error:', error));
+'''
 
+	if os.path.exists(os.path.join('lists', 'external-hubs.txt')):
+		html_content += '''
+			try {
+				const hubResp = await fetch(rootPath + '/lists/external-hubs.txt');
+				if (hubResp.ok) {
+					const hubsText = await hubResp.text();
+					const hubURLs = hubsText.split(/\\r?\\n/).map(url => url.trim()).filter(url => url.length > 0);
+					for (let url of hubURLs) {
+						if (!url.startsWith('http')) {
+							url = 'https://' + url;
+						}
+						try {
+							const externalCardsResp = await fetch(url + '/lists/all-cards.json');
+							if (externalCardsResp.ok) {
+								const externalCardsJson = await externalCardsResp.json();
+								externalCardsJson.cards.forEach(c => {
+									c.hubURL = url;
+									card_list_arrayified.push(c);
+								});
+							}
+							const externalSetsResp = await fetch(url + '/lists/all-sets.json');
+							if (externalSetsResp.ok) {
+								const externalSetsJson = await externalSetsResp.json();
+								externalSetsJson.sets.forEach(s => {
+									if (!sets_json.sets.some(existing => existing.set_code === s.set_code)) {
+										sets_json.sets.push(s);
+									}
+								});
+							}
+						} catch (e) {
+							console.error('Error fetching external hub:', url, e);
+						}
+					}
+				}
+			} catch (e) {
+				// No external hubs file or other error
+			}
+'''
+
+	html_content += '''
 			await fetch(rootPath + '/lists/formats.json')
 					.then(response => response.json())
 					.then(data => {
@@ -1095,6 +1138,34 @@ def generateHTML(codes):
 		html_content += snippet
 
 	html_content += '''
+		const originalBuildImgContainer = buildImgContainer;
+		buildImgContainer = function(card_stats, hidden_title = false, rotate_card = false) {
+			const container = originalBuildImgContainer(card_stats, hidden_title, rotate_card);
+			if (card_stats.hubURL) {
+				const img = container.querySelector(".card-image");
+				if (img) {
+					img.src = img.src.replace(/^.*\/sets\//, card_stats.hubURL + "/sets/");
+				}
+				const hImg = container.querySelector(".h-img");
+				if (hImg) {
+					hImg.src = hImg.src.replace(/^.*\/sets\//, card_stats.hubURL + "/sets/");
+				}
+				const link = container.querySelector("a");
+				if (link) {
+					const url = new URL(card_stats.hubURL + '/card', card_stats.hubURL);
+					const params = {
+						set: card_stats.set,
+						num: card_stats.number,
+						name: card_stats.card_name
+					}
+					for (const key in params) {
+						url.searchParams.append(key, params[key]);
+					}
+					link.href = url.toString();
+				}
+			}
+			return container;
+		};
 
 		function hasAllChars(strOut, strIn) {
 			let retVal = true;

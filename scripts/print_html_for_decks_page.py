@@ -299,11 +299,58 @@ def generateHTML():
             // Load set configs to know naming conventions
             const setsResponse = await fetch('./lists/all-sets.json');
             const setsData = await setsResponse.json();
-            
-            for (const set of setsData.sets) {
+            sets_json = setsData; // Ensure sets_json is populated for the loops below
+'''
+
+    if os.path.exists(os.path.join('lists', 'external-hubs.txt')):
+        html_content += '''
+            try {
+                const hubResp = await fetch(rootPath + '/lists/external-hubs.txt');
+                if (hubResp.ok) {
+                    const hubsText = await hubResp.text();
+                    const hubURLs = hubsText.split(/\\r?\\n/).map(url => url.trim()).filter(url => url.length > 0);
+                    for (let url of hubURLs) {
+                        if (!url.startsWith('http')) {
+                            url = 'https://' + url;
+                        }
+                        try {
+                            const externalCardsResp = await fetch(url + '/lists/all-cards.json');
+                            if (externalCardsResp.ok) {
+                                const externalCardsJson = await externalCardsResp.json();
+                                externalCardsJson.cards.forEach(c => {
+                                    c.hubURL = url;
+                                    card_list_arrayified.push(c);
+                                });
+                            }
+                            const externalSetsResp = await fetch(url + '/lists/all-sets.json');
+                            if (externalSetsResp.ok) {
+                                const externalSetsJson = await externalSetsResp.json();
+                                externalSetsJson.sets.forEach(s => {
+                                    if (!sets_json.sets.some(existing => existing.set_code === s.set_code)) {
+                                        s.hubURL = url;
+                                        sets_json.sets.push(s);
+                                    }
+                                });
+                            }
+                        } catch (e) {
+                            console.error('Error fetching external hub:', url, e);
+                        }
+                    }
+                }
+            } catch (e) {
+                // No external hubs file or other error
+            }
+'''
+
+    html_content += '''
+            for (const set of sets_json.sets) {
                 try {
-                    const setConfResp = await fetch(`./sets/${set.set_code}-files/${set.set_code}.json`);
+                    const prefix = set.hubURL ? set.hubURL : ".";
+                    const setConfResp = await fetch(`${prefix}/sets/${set.set_code}-files/${set.set_code}.json`);
                     setConfigs[set.set_code] = await setConfResp.json();
+                    if (set.hubURL) {
+                        setConfigs[set.set_code].hubURL = set.hubURL;
+                    }
                 } catch (e) {
                     console.error("Could not load config for set:", set.set_code);
                 }
@@ -536,7 +583,8 @@ def generateHTML():
                         namePart = `${card.number}${connector}${card.card_name}${suffix}`;
                     }
                     
-                    imageUrl = `./sets/${card.set}-files/img/${namePart}.${imgType}`;
+                    const prefix = (setConf && setConf.hubURL) ? setConf.hubURL : ".";
+                    imageUrl = `${prefix}/sets/${card.set}-files/img/${namePart}.${imgType}`;
                 }
                 
                 const cardEl = document.createElement('a');

@@ -556,7 +556,7 @@ def generateHTML(codes):
 		function lookupCards(codes) {
 			if (!codes) return [];
 			return codes.map(item => {
-				const stats = card_list_arrayified.find(c => c.set === item.set && c.number == (item.num || item.number));
+				const stats = card_list_arrayified.find(c => c.set === item.set && c.number == (item.num || item.number) && (!c.shape || !c.shape.includes("token")));
 				return stats ? { count: item.count, stats: stats } : null;
 			}).filter(c => c !== null);
 		}

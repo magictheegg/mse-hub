@@ -51,7 +51,7 @@ def generateHTML(codes):
 	.deck-display-container {
 		height: 100%;
 		width: 100%;
-		max-width: 1200px;
+		max-width: 1300px;
 		margin: auto;
 		border: 1px solid #d5d9d9;
 		border-top: 4px solid #171717;
@@ -598,37 +598,33 @@ def generateHTML(codes):
 					document.getElementById("view-select").value = "images";
 				}
 
-				// Wait for images to potentially load
-				await new Promise(resolve => setTimeout(resolve, 500));
+				// Wait for images to potentially load and layout to stabilize
+				await new Promise(resolve => setTimeout(resolve, 1000));
 
 				const spoilerCont = container.querySelector(".spoiler-container");
 				if (spoilerCont) {
-					// Temporary style changes for better capture
-					const originalBackground = spoilerCont.style.background;
-					const originalPadding = spoilerCont.style.padding;
-					const originalWidth = spoilerCont.style.width;
-					
-					spoilerCont.style.background = "#f3f3f3";
-					spoilerCont.style.padding = "20px";
-					spoilerCont.style.width = "fit-content";
-					spoilerCont.style.marginRight = "0"; // remove the negative margin trick for capture
+					const currentWidth = spoilerCont.offsetWidth;
 
 					html2canvas(spoilerCont, {
 						useCORS: true,
 						allowTaint: true,
 						backgroundColor: "#f3f3f3",
-						scale: 2 // Higher quality
+						scale: 2,
+						logging: false,
+						onclone: (clonedDoc) => {
+							const cloned = clonedDoc.querySelector(".spoiler-container");
+							if (cloned) {
+								cloned.style.marginRight = "0";
+								cloned.style.padding = "20px";
+								cloned.style.background = "#f3f3f3";
+								cloned.style.width = currentWidth + "px";
+							}
+						}
 					}).then(canvas => {
 						const link = document.createElement('a');
 						link.download = deck_name + ".png";
 						link.href = canvas.toDataURL("image/png");
 						link.click();
-
-						// Restore styles
-						spoilerCont.style.background = originalBackground;
-						spoilerCont.style.padding = originalPadding;
-						spoilerCont.style.width = originalWidth;
-						spoilerCont.style.marginRight = "-70px";
 					});
 				}
 
@@ -713,7 +709,6 @@ def generateHTML(codes):
 					}
 					const card_img = document.createElement("img");
 					card_img.src = getCardImgSrc(card_stats);
-					card_img.loading = "lazy";
 					
 					const fx1 = document.createElement("div"); fx1.className = "card-fx";
 					const fx2 = document.createElement("div"); fx2.className = "card-fx";
@@ -755,7 +750,7 @@ def generateHTML(codes):
 				const div = document.createElement("div");
 				div.className = "spoiler-card";
 				div.style.width = "140px";
-				div.innerHTML = `<div class="spoiler-count">${card.count}</div><img loading="lazy" src="${getCardImgSrc(card.stats)}">`;
+				div.innerHTML = `<div class="spoiler-count">${card.count}</div><img src="${getCardImgSrc(card.stats)}">`;
 				div.onmouseover = () => showCardInGrid(card.stats);
 				div.onclick = () => window.open(getCardUrl(card.stats), '_blank');
 				grid.appendChild(div);

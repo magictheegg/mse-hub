@@ -71,6 +71,12 @@ def generateHTML(codes):
 		overflow-x: hidden;
 		height: 100%;
 	}
+	.gallery-column {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		overflow: hidden;
+	}
 	.search-container {
 		height: 100%;
 		border: 1px solid #d5d9d9;
@@ -81,6 +87,22 @@ def generateHTML(codes):
 		display: flex;
 		flex-direction: column;
 		overflow-y: hidden;
+	}
+	.filter-bar {
+		background-color: white;
+		border-top: 1px solid #d5d9d9;
+		padding: 5px 15px;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 13px;
+		min-height: 20px;
+	}
+	.filter-bar input[type="checkbox"] {
+		width: auto;
+		height: auto;
+		margin: 0;
+		cursor: pointer;
 	}
 	.deckbuilder-search-grid {
 		width: 95%;
@@ -188,6 +210,7 @@ def generateHTML(codes):
 	}
 	.search-image-grid-container {
 		overflow-y: scroll;
+		flex: 1;
 	}
 	.search-image-grid {
 		display: grid;
@@ -517,8 +540,14 @@ def generateHTML(codes):
 				</select>
 			</div>
 			<div class="search-results-container">
-				<div class="search-image-grid-container">
-					<div class="search-image-grid" id="imagesOnlyGrid">
+				<div class="gallery-column">
+					<div class="search-image-grid-container">
+						<div class="search-image-grid" id="imagesOnlyGrid">
+						</div>
+					</div>
+					<div class="filter-bar">
+						<input type="checkbox" id="filter-duplicates" checked onchange="displayChangeListener()">
+						<label for="filter-duplicates">Filter duplicates</label>
 					</div>
 				</div>
 				<div class="card-grid-container" id="card-grid-container">
@@ -850,6 +879,8 @@ def generateHTML(codes):
 						}
 						for (const card of card_list_arrayified)
 						{
+							if (card.shape && card.shape.includes("token")) continue;
+
 							if (deck_map.has(card.card_name))
 							{
 								for (let i = 0; i < deck_map.get(card.card_name); i++)
@@ -946,6 +977,7 @@ def generateHTML(codes):
 		function search() {
 			searchTerms = document.getElementById("search").value.toLowerCase();
 			const displayMode = document.getElementById("search-display").value;
+			const filterDuplicates = document.getElementById("filter-duplicates").checked;
 
 			const resultsContainer = document.querySelector(".search-image-grid-container");
 			if (resultsContainer) resultsContainer.scrollTop = 0;
@@ -977,7 +1009,7 @@ def generateHTML(codes):
 
 				searched = searchAllTokens(card, tokenizeTerms(searchTerms));
 
-				if (searched && !containsCard(search_results, card))
+				if (searched && (!filterDuplicates || !containsCard(search_results, card)))
 				{
 					search_results.push(card);
 				}
@@ -986,7 +1018,7 @@ def generateHTML(codes):
 			// Pre-process results for the current display mode
 			if (displayMode === "text") {
 				const groupedResults = [];
-				const seenNames = new Set();
+				const seenCards = new Set();
 				
 				// Create a quick lookup for sets to avoid O(n^2) later
 				const setLookup = {};
@@ -996,9 +1028,12 @@ def generateHTML(codes):
 				});
 
 				search_results.forEach(card => {
-					if (!seenNames.has(card.card_name)) {
-						seenNames.add(card.card_name);
-						const cardSets = Array.from(setLookup[card.card_name]).join(", ");
+					// Unique identifier depends on whether we are filtering duplicates
+					const id = filterDuplicates ? card.card_name : `${card.set}-${card.number}`;
+					
+					if (!seenCards.has(id)) {
+						seenCards.add(id);
+						const cardSets = filterDuplicates ? Array.from(setLookup[card.card_name]).join(", ") : card.set;
 						groupedResults.push({ ...card, allSets: cardSets });
 					}
 				});
@@ -1503,7 +1538,7 @@ def generateHTML(codes):
 			});
 			mainMap.forEach((count, cardStr) => {
 				const card = JSON.parse(cardStr);
-				mainParts.push(`${card.set}.${card.number}.${count}`);
+				mainParts.push(`${card.set}:${card.number}:${count}:${card.card_name}`);
 			});
 
 			const sideMap = new Map();
@@ -1512,11 +1547,11 @@ def generateHTML(codes):
 			});
 			sideMap.forEach((count, cardStr) => {
 				const card = JSON.parse(cardStr);
-				sideParts.push(`${card.set}.${card.number}.${count}`);
+				sideParts.push(`${card.set}:${card.number}:${count}:${card.card_name}`);
 			});
 
-			const compactString = `${deckName}|${document.getElementById("format-select").value}|${mainParts.join(',')}|${sideParts.join(',')}`;
-			const hash = btoa(compactString);
+			const compactString = `${deckName}|${document.getElementById("format-select").value}|${mainParts.join(';')}|${sideParts.join(';')}`;
+			const hash = btoa(unescape(encodeURIComponent(compactString)));
 			window.open(rootPath + "/deck#" + hash, "_blank");
 			document.getElementById("file-menu").value = "default";
 		}
@@ -1533,7 +1568,7 @@ def generateHTML(codes):
 			});
 			mainMap.forEach((count, cardStr) => {
 				const card = JSON.parse(cardStr);
-				mainboardData.push({ set: card.set, num: card.number, count: count });
+				mainboardData.push({ set: card.set, num: card.number, count: count, name: card.card_name });
 			});
 
 			const sideboardData = [];
@@ -1543,7 +1578,7 @@ def generateHTML(codes):
 			});
 			sideMap.forEach((count, cardStr) => {
 				const card = JSON.parse(cardStr);
-				sideboardData.push({ set: card.set, num: card.number, count: count });
+				sideboardData.push({ set: card.set, num: card.number, count: count, name: card.card_name });
 			});
 
 			const { data, error } = await _supabase
@@ -1690,6 +1725,8 @@ def generateHTML(codes):
 				}
 				for (const card of card_list_arrayified)
 				{
+					if (card.shape && card.shape.includes("token")) continue;
+
 					if (deck_map.has(card.card_name))
 					{
 						for (let i = 0; i < deck_map.get(card.card_name); i++)

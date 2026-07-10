@@ -444,7 +444,7 @@ def generateHTML(codes):
 			const hash = window.location.hash.substring(1);
 			if (!hash) return;
 			try {
-				const decoded = atob(hash);
+				const decoded = decodeURIComponent(escape(atob(hash)));
 				if (decoded.startsWith('{')) {
 					// Old JSON format
 					currentDeck = JSON.parse(decoded);
@@ -458,9 +458,12 @@ def generateHTML(codes):
 
 					const parsePart = (str) => {
 						if (!str) return [];
-						return str.split(',').map(item => {
-							const bits = item.split('.');
-							return { set: bits[0], num: bits[1], count: parseInt(bits[2]) };
+						// Try semicolon first (new format), fallback to comma (old format)
+						const items = str.includes(';') ? str.split(';') : str.split(',');
+						return items.map(item => {
+							// Try colon first (new format), fallback to period (old format)
+							const bits = item.includes(':') ? item.split(':') : item.split('.');
+							return { set: bits[0], num: bits[1], count: parseInt(bits[2]), name: bits[3] };
 						});
 					};
 
@@ -556,7 +559,27 @@ def generateHTML(codes):
 		function lookupCards(codes) {
 			if (!codes) return [];
 			return codes.map(item => {
-				const stats = card_list_arrayified.find(c => c.set === item.set && c.number == (item.num || item.number) && (!c.shape || !c.shape.includes("token")));
+				const name = (item.name || item.card_name || "").trim();
+				const num = item.num || item.number;
+				const set = item.set;
+
+				let stats = null;
+				
+				// 1. Try Set + Name + Number
+				if (name && num) {
+					stats = card_list_arrayified.find(c => c.set === set && c.card_name.trim() === name && c.number == num);
+				}
+				
+				// 2. Try Set + Name
+				if (!stats && name) {
+					stats = card_list_arrayified.find(c => c.set === set && c.card_name.trim() === name);
+				}
+				
+				// 3. Try Set + Number
+				if (!stats && num) {
+					stats = card_list_arrayified.find(c => c.set === set && c.number == num);
+				}
+
 				return stats ? { count: item.count, stats: stats } : null;
 			}).filter(c => c !== null);
 		}

@@ -378,10 +378,42 @@ def generateHTML():
             allCardsArray = card_list_arrayified;
             card_list_arrayified.forEach(card => {
                 const key = `${card.set}-${card.number}`;
-                cardLookup[key] = card;
+                const isToken = card.shape && card.shape.includes('token');
+                if (!cardLookup[key] || (!isToken && cardLookup[key].shape && cardLookup[key].shape.includes('token'))) {
+                    cardLookup[key] = card;
+                }
             });
 
             await fetchDecks();
+        }
+
+        function getCardStats(item) {
+            const name = item.name || item.card_name;
+            const num = item.num || item.number;
+            const set = item.set;
+
+            const findFunc = (c) => {
+                const notToken = !c.shape || !c.shape.includes("token");
+                const matchSet = c.set === set;
+                if (name && num) {
+                    return matchSet && c.card_name === name && c.number == num && notToken;
+                } else if (name) {
+                    return matchSet && c.card_name === name && notToken;
+                } else {
+                    return matchSet && c.number == num && notToken;
+                }
+            };
+
+            let stats = allCardsArray.find(findFunc);
+            if (!stats && name && num) {
+                stats = allCardsArray.find(c => c.set === set && c.card_name === name && (!c.shape || !c.shape.includes("token")));
+                if (!stats) {
+                    stats = cardLookup[`${set}-${num}`];
+                }
+            } else if (!stats) {
+                stats = cardLookup[`${set}-${num}`];
+            }
+            return stats;
         }
 
         document.addEventListener("DOMContentLoaded", async function () {
@@ -531,7 +563,7 @@ def generateHTML():
                     const deckCards = (deck.mainboard || []).concat(deck.sideboard || []);
                     const deckCardNames = new Set();
                     deckCards.forEach(item => {
-                        const c = cardLookup[`${item.set}-${item.num}`];
+                        const c = getCardStats(item);
                         if (c) deckCardNames.add(c.card_name);
                     });
 
@@ -612,7 +644,7 @@ def generateHTML():
             let maxScore = -1;
 
             board.forEach(item => {
-                const card = cardLookup[`${item.set}-${item.num}`];
+                const card = getCardStats(item);
                 if (card) {
                     const mv = convertToMV(card.cost);
                     const rarities = { 'mythic': 4, 'rare': 3, 'uncommon': 2, 'common': 1, 'cube': 0 };

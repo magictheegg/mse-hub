@@ -637,7 +637,7 @@ def generateHTML():
         }
 
         function getMostExpensiveCard(deck) {
-            const board = (deck.mainboard || []).concat(deck.sideboard || []);
+            const board = (deck.mainboard || []);
             if (board.length === 0) return null;
             
             let bestCard = null;

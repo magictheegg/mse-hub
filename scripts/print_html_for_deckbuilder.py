@@ -41,6 +41,10 @@ def generateHTML(codes):
 		font-family: Beleren;
 		src: url('./resources/beleren.ttf');
 	}
+	@font-face {
+		font-family: 'Gotham Narrow Medium';
+		src: url('./resources/gotham-narrow-medium.otf');
+	}
 	body {
 		font-family: 'Helvetica', 'Arial', sans-serif;
 		overscroll-behavior: none;
@@ -58,6 +62,195 @@ def generateHTML(codes):
 		margin: auto;
 		gap: 5px;
 	}
+	.admin-only.hidden {
+		display: none;
+	}
+	
+	/* Admin Password Modal */
+	#admin-modal-overlay {
+		position: fixed;
+		top: 0; left: 0; width: 100%; height: 100%;
+		background: rgba(0,0,0,0.7);
+		display: none;
+		justify-content: center;
+		align-items: center;
+		z-index: 10000;
+	}
+	.admin-modal {
+		background: white;
+		padding: 30px;
+		border-radius: 8px;
+		width: 350px;
+		box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+		text-align: center;
+		position: relative;
+	}
+	.admin-modal-close {
+		position: absolute;
+		top: 10px;
+		right: 15px;
+		font-size: 24px;
+		cursor: pointer;
+		color: #888;
+		line-height: 1;
+	}
+	.admin-modal-close:hover {
+		color: #171717;
+	}
+	
+	/* General Notification Modal */
+	#notification-modal-overlay {
+		position: fixed;
+		top: 0; left: 0; width: 100%; height: 100%;
+		background: rgba(0,0,0,0.5);
+		display: none;
+		justify-content: center;
+		align-items: center;
+		z-index: 11000;
+	}
+	.notification-modal {
+		background: white;
+		padding: 25px;
+		border-radius: 8px;
+		width: 320px;
+		box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+		text-align: center;
+	}
+	.notification-modal p {
+		margin-top: 5px;
+		margin-bottom: 20px;
+		font-size: 16px;
+	}
+	
+	/* Selection Modal */
+	#selection-modal-overlay {
+		position: fixed;
+		top: 0; left: 0; width: 100%; height: 100%;
+		background: rgba(0,0,0,0.5);
+		display: none;
+		justify-content: center;
+		align-items: center;
+		z-index: 10500;
+	}
+	.selection-modal {
+		background: white;
+		padding: 25px;
+		border-radius: 8px;
+		width: 650px;
+		height: 85vh;
+		box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+		display: flex;
+		flex-direction: column;
+		position: relative;
+	}
+	.selection-chips {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+		gap: 15px;
+		justify-content: center;
+		margin: 20px 0;
+		overflow-y: auto;
+		padding: 5px;
+	}
+	.selection-chip {
+		background: white;
+		border: 1px solid #d5d9d9;
+		border-radius: 8px;
+		cursor: pointer;
+		overflow: hidden;
+		transition: transform 0.2s, box-shadow 0.2s;
+		display: flex;
+		flex-direction: column;
+		height: 140px;
+	}
+	.selection-chip:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+	}
+	.selection-chip-image {
+		height: 100px;
+		width: 100%;
+		background-size: 150%;
+		background-position: center 20%;
+		background-color: #eee;
+	}
+	.selection-chip-info {
+		padding: 8px;
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		flex-grow: 1;
+		background: white;
+	}
+	.selection-chip-name {
+		font-family: Beleren;
+		font-size: 13px;
+		margin: 0;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #171717;
+	}
+	.selection-chip-format {
+		font-size: 11px;
+		color: #666;
+		font-style: italic;
+		margin: 2px 0 0 0;
+	}
+	#selection-search {
+		width: 100%;
+		padding: 10px;
+		margin-bottom: 10px;
+		border: 1px solid #d5d9d9;
+		border-radius: 4px;
+		box-sizing: border-box;
+		font-size: 16px;
+	}
+	#selection-title {
+		margin-top: 0;
+		font-family: Beleren;
+		text-align: center;
+	}
+	
+	.admin-modal p {
+		margin-top: 0;
+		margin-bottom: 15px;
+		font-size: 18px;
+	}
+	#admin-verify-msg {
+		font-size: 12px;
+		margin-top: 20px;
+		margin-bottom: 0px;
+		color: #666;
+		display: none;
+	}
+	.admin-modal input {
+		width: 90%;
+		padding: 10px;
+		margin: 10px 0 20px 0;
+		border: 1px solid #d5d9d9;
+		border-radius: 4px;
+		font-size: 16px;
+	}
+	.admin-modal-buttons {
+		justify-self: center;
+		width: 70%;
+		display: flex;
+		gap: 40px;
+		justify-content: space-around;
+	}
+	.admin-btn {
+		padding: 8px 20px;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		font-weight: bold;
+		max-width: 86px;
+	}
+	.admin-btn.save { background: #171717; color: white; }
+	.admin-btn.cancel { background: #e0e0e0; color: #333; }
+
 	.deckbuilder-container {
 		display: flex;
 		flex-direction: column;
@@ -363,7 +556,7 @@ def generateHTML(codes):
 		min-height: 36px;
 		display: grid;
 		grid-template-columns: 1.5fr 1fr .65fr .75fr .75fr;
-		gap: 3px;
+		gap: 6px;
 		padding: 5px 2.5%;
 		border-bottom: 1px solid #898989;
 		justify-items: center;
@@ -572,15 +765,22 @@ def generateHTML(codes):
 				</select>
 				<select name="file-menu" class="file-menu" id="file-menu">
 					<option value="default">Actions ...</option>
+					<option disabled>─── EDIT ───</option>
 					<option value="new">New deck</option>
 					<option value="import">Import deck</option>
 					<option value="import-clipboard">Load from clipboard</option>
 					<option value="clipboard">Copy to clipboard</option>
 					<option value="save">Save deck</option>
 					<option value="save-hash">Open deck page</option>
+					<option disabled>─── EXPORT ───</option>
 					<option value="export-dek">Export .dek</option>
 					<option value="export-txt">Export .txt</option>
 					<option value="export-cod">Export .cod</option>
+					<option disabled>─── ADMIN ───</option>
+					<option value="admin" id="admin-toggle-option">Admin mode</option>
+					<option value="load-db" class="admin-only hidden">Load from database</option>
+					<option value="update-db" class="admin-only hidden">Update saved deck</option>
+					<option value="delete-db" class="admin-only hidden">Delete saved deck</option>
 				</select>
 				<input type="file" class="hidden" id="import-file" onclick="this.value=null;">
 			</div>
@@ -640,6 +840,44 @@ def generateHTML(codes):
 		</div>
 	</div>
 
+	<!-- Admin Password Modal -->
+	<div id="admin-modal-overlay">
+		<div class="admin-modal">
+			<span class="admin-modal-close" onclick="closeAdminModal()">&times;</span>
+			<p>Enter Hub Password:</p>
+			<input type="password" id="admin-password-input" placeholder="Password...">
+			<div class="admin-modal-buttons">
+				<button class="admin-btn cancel" onclick="closeAdminModal()">Cancel</button>
+				<button class="admin-btn save" id="admin-submit-btn" onclick="submitAdminPassword()">Submit</button>
+			</div>
+			<p id="admin-verify-msg">Verifying...</p>
+		</div>
+	</div>
+
+	<!-- Notification Modal -->
+	<div id="notification-modal-overlay">
+		<div class="notification-modal">
+			<p id="notification-msg"></p>
+			<div class="admin-modal-buttons" id="notification-buttons-single">
+				<button class="admin-btn save" onclick="closeNotification()">OK</button>
+			</div>
+			<div class="admin-modal-buttons" id="notification-buttons-confirm" style="display: none;">
+				<button class="admin-btn cancel" onclick="closeNotification()">Cancel</button>
+				<button class="admin-btn save" id="confirm-yes-btn">Confirm</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Selection Modal -->
+	<div id="selection-modal-overlay">
+		<div class="selection-modal">
+			<span class="admin-modal-close" onclick="closeSelectionModal()">&times;</span>
+			<h3 id="selection-title">Select Deck</h3>
+			<input type="text" id="selection-search" placeholder="Search decks...">
+			<div class="selection-chips" id="selection-list"></div>
+		</div>
+	</div>
+
 	<script>
 		let search_results = [];
 		let card_list_arrayified = [];
@@ -648,7 +886,81 @@ def generateHTML(codes):
 		let sideboard = [];
 		let active_card = [];
 		let sets_json = {};
+		let currentDeckId = null;
+		let isAdmin = false;
 		let contextMenu;
+
+		function getCardImgSrc(card_stats) {
+			const prefix = card_stats.hubURL ? card_stats.hubURL : rootPath;
+			if ("position" in card_stats) {
+				return prefix + "/sets/" + card_stats.set + "-files/img/" + card_stats.position + ((card_stats.shape.includes("double")) ? "_front" : "") + "." + card_stats.image_type;
+			}
+			return prefix + "/sets/" + card_stats.set + "-files/img/" + card_stats.number + (card_stats.shape.includes("token") ? "t_" : "_") + card_stats.card_name + ((card_stats.shape.includes("double")) ? "_front" : "") + "." + card_stats.image_type;
+		}
+
+		function getCardStats(item) {
+			if (!item) return null;
+			const name = (item.name || item.card_name || "").trim();
+			const num = item.num || item.number;
+			const set = item.set;
+
+			// Hierarchical match
+			let stats = card_list_arrayified.find(c => c.set === set && (c.card_name || "").trim() === name && c.number == num);
+			if (!stats) stats = card_list_arrayified.find(c => c.set === set && (c.card_name || "").trim() === name);
+			if (!stats) stats = card_list_arrayified.find(c => c.set === set && c.number == num);
+			
+			return stats;
+		}
+
+		function getCardUrl(card) {
+			const prefix = card.hubURL ? card.hubURL : window.location.origin;
+			const url = new URL(prefix + '/card', prefix);
+			url.searchParams.append('set', card.set);
+			url.searchParams.append('num', card.number);
+			url.searchParams.append('name', card.card_name);
+			return url.href;
+		}
+
+		function convertToMV(cost) {
+			if (!cost) return 0;
+			let mv = 0;
+			const tokens = cost.substring(1, cost.length - 1).split('}{');
+			tokens.forEach(token => {
+				if (!isNaN(token)) {
+					mv += parseInt(token);
+				} else if (token.includes('2')) {
+					mv += 2;
+				} else if (token !== 'x' && token !== '') {
+					mv += 1;
+				}
+			});
+			return mv;
+		}
+
+		function getMostExpensiveCard(deckData) {
+			const board = (deckData.mainboard || []);
+			if (board.length === 0) return null;
+			
+			let bestCard = null;
+			let maxScore = -1;
+
+			board.forEach(item => {
+				const card = getCardStats(item);
+				if (card) {
+					const mv = convertToMV(card.cost);
+					const rarities = { 'mythic': 4, 'rare': 3, 'uncommon': 2, 'common': 1, 'cube': 0 };
+					const rarityScore = rarities[card.rarity] || 0;
+					const score = (mv * 10) + rarityScore;
+					
+					if (score > maxScore) {
+						maxScore = score;
+						bestCard = card;
+					}
+				}
+			});
+
+			return bestCard;
+		}
 
 		document.addEventListener("DOMContentLoaded", async function () {
 			contextMenu = document.getElementById("myContextMenu");
@@ -729,7 +1041,315 @@ def generateHTML(codes):
 
 			// initial search on load
 			preSearch();
+
+			if (localStorage.getItem("hubPassword")) {
+				isAdmin = true;
+				updateAdminUI();
+			}
+
+			document.getElementById("admin-password-input").addEventListener("keydown", (e) => {
+				if (e.key === "Enter") submitAdminPassword();
+			});
 		});
+
+		function toggleAdminMode() {
+			if (!isAdmin) {
+				document.getElementById("admin-modal-overlay").style.display = "flex";
+				document.getElementById("admin-password-input").focus();
+			} else {
+				showConfirm("Disable Admin Mode?", () => {
+					localStorage.removeItem("hubPassword");
+					isAdmin = false;
+					updateAdminUI();
+				});
+			}
+		}
+
+		function closeAdminModal() {
+			document.getElementById("admin-modal-overlay").style.display = "none";
+			document.getElementById("admin-password-input").value = "";
+			document.getElementById("admin-verify-msg").style.display = "none";
+		}
+
+		async function submitAdminPassword() {
+			const pass = document.getElementById("admin-password-input").value;
+			if (!pass) return;
+
+			document.getElementById("admin-verify-msg").style.display = "block";
+			document.getElementById("admin-verify-msg").innerText = "Verifying...";
+			
+			// Try to fetch from hub_secrets using this password
+			const resp = await fetch(`${SUPABASE_URL}/rest/v1/hub_secrets?hub_name=eq.${hubName}`, {
+				headers: {
+					'apikey': SUPABASE_KEY,
+					'Authorization': `Bearer ${SUPABASE_KEY}`,
+					'x-hub-password': pass
+				}
+			});
+
+			const data = await resp.json();
+			if (resp.ok && data.length > 0) {
+				localStorage.setItem("hubPassword", pass);
+				isAdmin = true;
+				updateAdminUI();
+				closeAdminModal();
+			} else {
+				document.getElementById("admin-verify-msg").innerText = "Invalid password.";
+				document.getElementById("admin-verify-msg").style.color = "red";
+			}
+		}
+
+		function showAlert(msg) {
+			document.getElementById("notification-msg").innerText = msg;
+			document.getElementById("notification-buttons-single").style.display = "flex";
+			document.getElementById("notification-buttons-confirm").style.display = "none";
+			document.getElementById("notification-modal-overlay").style.display = "flex";
+		}
+
+		function showConfirm(msg, onConfirm) {
+			document.getElementById("notification-msg").innerText = msg;
+			document.getElementById("notification-buttons-single").style.display = "none";
+			document.getElementById("notification-buttons-confirm").style.display = "flex";
+			document.getElementById("notification-modal-overlay").style.display = "flex";
+			
+			const confirmBtn = document.getElementById("confirm-yes-btn");
+			// Clone button to remove old listeners
+			const newConfirmBtn = confirmBtn.cloneNode(true);
+			confirmBtn.parentNode.replaceChild(newConfirmBtn, confirmBtn);
+			
+			newConfirmBtn.onclick = () => {
+				closeNotification();
+				onConfirm();
+			};
+		}
+
+		function closeNotification() {
+			document.getElementById("notification-modal-overlay").style.display = "none";
+		}
+
+		function showSelectionModal(title, items, onSelect) {
+			document.getElementById("selection-title").innerText = title;
+			const list = document.getElementById("selection-list");
+			const searchInput = document.getElementById("selection-search");
+			
+			searchInput.value = "";
+			
+			const renderChips = (filterText = "") => {
+				list.innerHTML = "";
+				const filtered = items.filter(item => 
+					item.name.toLowerCase().includes(filterText.toLowerCase())
+				);
+				
+				filtered.forEach(item => {
+					const chip = document.createElement("div");
+					chip.className = "selection-chip";
+					
+					// Get preview image from the most "expensive" card (like decks.html)
+					let imgSrc = "";
+					const bestCard = getMostExpensiveCard(item);
+					if (bestCard) {
+						imgSrc = getCardImgSrc(bestCard);
+					}
+
+					chip.innerHTML = `
+						<div class="selection-chip-image" style="${imgSrc ? `background-image: url('${imgSrc}')` : ''}"></div>
+						<div class="selection-chip-info">
+							<p class="selection-chip-name">${item.name}</p>
+							<p class="selection-chip-format">${item.format || 'No format'}</p>
+						</div>
+					`;
+
+					chip.onclick = () => {
+						closeSelectionModal();
+						onSelect(item);
+					};
+					list.appendChild(chip);
+				});
+			};
+
+			searchInput.oninput = (e) => renderChips(e.target.value);
+			renderChips();
+			
+			document.getElementById("selection-modal-overlay").style.display = "flex";
+			searchInput.focus();
+		}
+
+		function closeSelectionModal() {
+			document.getElementById("selection-modal-overlay").style.display = "none";
+		}
+
+		function updateAdminUI() {
+			const adminToggle = document.getElementById("admin-toggle-option");
+			
+			if (isAdmin) {
+				adminToggle.innerText = "Exit Admin Mode";
+			} else {
+				adminToggle.innerText = "Admin Mode";
+			}
+
+			// Load from database only needs isAdmin
+			const loadOpt = document.querySelector('option[value="load-db"]');
+			if (isAdmin) loadOpt.classList.remove("hidden");
+			else loadOpt.classList.add("hidden");
+
+			// Update and Delete need isAdmin AND currentDeckId
+			const updateOpt = document.querySelector('option[value="update-db"]');
+			const deleteOpt = document.querySelector('option[value="delete-db"]');
+			
+			if (isAdmin && currentDeckId) {
+				updateOpt.classList.remove("hidden");
+				deleteOpt.classList.remove("hidden");
+			} else {
+				updateOpt.classList.add("hidden");
+				deleteOpt.classList.add("hidden");
+			}
+		}
+
+		async function loadFromDatabase() {
+			const { data, error } = await _supabase
+				.from('decks')
+				.select('id, name, format, mainboard, sideboard')
+				.eq('hub', hubName)
+				.order('created_at', { ascending: false });
+
+			if (error) {
+				console.error('Error fetching decks:', error);
+				showAlert('Failed to fetch decks from database.');
+				return;
+			}
+
+			if (data.length === 0) {
+				showAlert("No decks found in the database for this hub.");
+				return;
+			}
+
+			showSelectionModal("Select a deck to load:", data, async (selectedDeck) => {
+				// Fetch full deck details
+				const { data: fullDeck, error: fetchError } = await _supabase
+					.from('decks')
+					.select('*')
+					.eq('id', selectedDeck.id)
+					.single();
+
+				if (fetchError) {
+					console.error('Error fetching deck details:', fetchError);
+					return;
+				}
+
+				// Load into builder
+				currentDeckId = fullDeck.id;
+				document.getElementById("deck-name").value = fullDeck.name;
+				document.getElementById("format-select").value = fullDeck.format || "None";
+				
+				deck = [];
+				sideboard = [];
+
+				fullDeck.mainboard.forEach(item => {
+					const stats = getCardStats(item);
+					if (stats) {
+						for (let i = 0; i < item.count; i++) deck.push(JSON.stringify(stats));
+					}
+				});
+
+				fullDeck.sideboard.forEach(item => {
+					const stats = getCardStats(item);
+					if (stats) {
+						for (let i = 0; i < item.count; i++) sideboard.push(JSON.stringify(stats));
+					}
+				});
+
+				processDeck();
+				updateAdminUI();
+			});
+		}
+
+		async function updateSavedDeck() {
+			if (!currentDeckId) return;
+			const password = localStorage.getItem("hubPassword");
+			if (!password) {
+				showAlert("Admin Password missing. Re-enable Admin Mode.");
+				return;
+			}
+
+			const deckName = document.getElementById("deck-name").value;
+			const deckFormat = document.getElementById("format-select").value;
+
+			const mainboardData = [];
+			const mainMap = new Map();
+			deck.forEach(cardStr => {
+				mainMap.set(cardStr, (mainMap.get(cardStr) || 0) + 1);
+			});
+			mainMap.forEach((count, cardStr) => {
+				const card = JSON.parse(cardStr);
+				mainboardData.push({ set: card.set, num: card.number, count: count, name: card.card_name });
+			});
+
+			const sideboardData = [];
+			const sideMap = new Map();
+			sideboard.forEach(cardStr => {
+				sideMap.set(cardStr, (sideMap.get(cardStr) || 0) + 1);
+			});
+			sideMap.forEach((count, cardStr) => {
+				const card = JSON.parse(cardStr);
+				sideboardData.push({ set: card.set, num: card.number, count: count, name: card.card_name });
+			});
+
+			// We use a custom fetch here because Supabase JS client doesn't support custom headers for specific requests easily
+			// and we need to pass the hub password for RLS.
+			const resp = await fetch(`${SUPABASE_URL}/rest/v1/decks?id=eq.${currentDeckId}`, {
+				method: 'PATCH',
+				headers: {
+					'apikey': SUPABASE_KEY,
+					'Authorization': `Bearer ${SUPABASE_KEY}`,
+					'Content-Type': 'application/json',
+					'Prefer': 'return=representation',
+					'x-hub-password': password
+				},
+				body: JSON.stringify({
+					name: deckName,
+					format: deckFormat,
+					mainboard: mainboardData,
+					sideboard: sideboardData
+				})
+			});
+
+			if (!resp.ok) {
+				const err = await resp.json();
+				console.error('Error updating deck:', err);
+				showAlert('Failed to update deck. Check password?');
+			} else {
+				const shareUrl = window.location.origin + window.location.pathname.replace('deckbuilder', 'deck') + '?id=' + currentDeckId;
+				window.open(shareUrl, "_blank");
+			}
+			document.getElementById("file-menu").value = "default";
+		}
+
+		async function deleteSavedDeck() {
+			if (!currentDeckId) return;
+			showConfirm("Are you sure you want to PERMANENTLY delete this deck from the database?", async () => {
+				const password = localStorage.getItem("hubPassword");
+				
+				const resp = await fetch(`${SUPABASE_URL}/rest/v1/decks?id=eq.${currentDeckId}`, {
+					method: 'DELETE',
+					headers: {
+						'apikey': SUPABASE_KEY,
+						'Authorization': `Bearer ${SUPABASE_KEY}`,
+						'x-hub-password': password
+					}
+				});
+
+				if (!resp.ok) {
+					showAlert('Failed to delete deck. Check password?');
+				} else {
+					deck = [];
+					sideboard = [];
+					currentDeckId = null;
+					document.getElementById("deck-name").value = "Untitled Deck";
+					processDeck();
+					updateAdminUI();
+				}
+			});
+		}
 
 		function displayChangeListener() {
 			preSearch();
@@ -757,18 +1377,35 @@ def generateHTML(codes):
 			{
 				importFromClipboard();
 			}
+			else if (option == "load-db")
+			{
+				loadFromDatabase();
+			}
 			else if (option == "save")
 			{
 				saveToCloud();
+			}
+			else if (option == "update-db")
+			{
+				updateSavedDeck();
+			}
+			else if (option == "delete-db")
+			{
+				deleteSavedDeck();
 			}
 			else if (option == "save-hash")
 			{
 				openHashedDeck();
 			}
+			else if (option == "admin")
+			{
+				toggleAdminMode();
+			}
 			else if (option == "clipboard" || option.startsWith("export"))
 			{
 				exportFile(option);
 			}
+			document.getElementById("file-menu").value = "default";
 		});
 
 		document.addEventListener("click", (event) => {
@@ -1435,12 +2072,7 @@ def generateHTML(codes):
 
 							card_img = document.createElement("img");
 							card_img.loading = "lazy";
-							if ("position" in card_stats) {
-								card_img.src = "/sets/" + card_stats.set + "-files/img/" + card_stats.position + ((card_stats.shape.includes("double")) ? "_front" : "") + "." + card_stats.image_type;
-							}
-							else {
-								card_img.src = "/sets/" + card_stats.set + "-files/img/" + card_stats.number + (card_stats.shape.includes("token") ? "t_" : "_") + card_stats.card_name + ((card_stats.shape.includes("double")) ? "_front" : "") + "." + card_stats.image_type;
-							}
+							card_img.src = getCardImgSrc(card_stats);
 							card_img.style.cursor = "pointer";
 							card_img.onmouseover = function() {
 								cgc = document.getElementById("card-grid-container");
@@ -1590,7 +2222,7 @@ def generateHTML(codes):
 
 			if (error) {
 				console.error('Error saving deck:', error);
-				alert('Failed to save deck to cloud.');
+				showAlert('Failed to save deck to cloud.');
 			} else {
 				const shareUrl = window.location.origin + window.location.pathname.replace('deckbuilder', 'deck') + '?id=' + deckId;
 				window.open(shareUrl, "_blank");

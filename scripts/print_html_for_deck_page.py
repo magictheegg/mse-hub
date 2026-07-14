@@ -8,7 +8,7 @@ def generateHTML(codes):
 	with open(os.path.join('resources', 'site-config.json'), encoding='utf-8-sig') as f:
 		config = json.load(f)
 		base_url = config.get('base_url', '')
-		hub_name = base_url.split('https://')[1].split('.github.io')[0] if 'https://' in base_url else 'unknown'
+		hub_name = base_url.split('https://')[1].split('.github.io')[0].lower() if 'https://' in base_url else 'unknown'
 
 	# Start creating the HTML file content
 	html_content = '''<html>
@@ -618,6 +618,33 @@ def generateHTML(codes):
 								cloned.style.padding = "20px";
 								cloned.style.background = "#f3f3f3";
 								cloned.style.width = currentWidth + "px";
+
+								// Add Title to the image
+								const header = clonedDoc.createElement("div");
+								header.style.marginBottom = "20px";
+								header.style.width = "100%";
+								header.style.borderBottom = "1px solid #898989";
+								header.style.paddingBottom = "10px";
+								header.style.display = "flex";
+								header.style.alignItems = "baseline";
+								header.style.gap = "15px";
+
+								const title = clonedDoc.createElement("div");
+								title.innerText = currentDeck.name || "Untitled Deck";
+								title.style.fontFamily = "Beleren";
+								title.style.fontSize = "32px";
+								header.appendChild(title);
+
+								if (currentDeck.format && currentDeck.format !== "None") {
+									const format = clonedDoc.createElement("div");
+									format.innerText = currentDeck.format;
+									format.style.fontSize = "20px";
+									format.style.color = "#666";
+									format.style.fontStyle = "italic";
+									header.appendChild(format);
+								}
+
+								cloned.prepend(header);
 							}
 						}
 					}).then(canvas => {

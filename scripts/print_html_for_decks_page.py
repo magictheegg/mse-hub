@@ -7,7 +7,7 @@ def generateHTML():
     with open(os.path.join('resources', 'site-config.json'), encoding='utf-8-sig') as f:
         config = json.load(f)
         base_url = config.get('base_url', '')
-        hub_name = base_url.split('https://')[1].split('.github.io')[0] if 'https://' in base_url else 'unknown'
+        hub_name = base_url.split('https://')[1].split('.github.io')[0].lower() if 'https://' in base_url else 'unknown'
 
     # Start creating the HTML file content
     html_content = f'''<html>

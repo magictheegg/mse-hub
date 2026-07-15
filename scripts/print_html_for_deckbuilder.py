@@ -881,6 +881,7 @@ def generateHTML(codes):
 	<script>
 		let search_results = [];
 		let card_list_arrayified = [];
+		let cardLookupIndex = new Map();
 		let specialchars = "";
 		let deck = [];
 		let sideboard = [];
@@ -889,6 +890,17 @@ def generateHTML(codes):
 		let currentDeckId = null;
 		let isAdmin = false;
 		let contextMenu;
+
+		function buildCardIndex() {
+			cardLookupIndex.clear();
+			card_list_arrayified.forEach(c => {
+				const name = (c.card_name || "").trim().toLowerCase();
+				// Index by Set+Num
+				cardLookupIndex.set(`${c.set}:${c.number}`, c);
+				// Index by Set+Name (for fallback)
+				cardLookupIndex.set(`${c.set}:${name}`, c);
+			});
+		}
 
 		function getCardImgSrc(card_stats) {
 			const prefix = card_stats.hubURL ? card_stats.hubURL : rootPath;
@@ -904,10 +916,20 @@ def generateHTML(codes):
 			const num = item.num || item.number;
 			const set = item.set;
 
-			// Hierarchical match
-			let stats = card_list_arrayified.find(c => c.set === set && (c.card_name || "").trim() === name && c.number == num);
-			if (!stats) stats = card_list_arrayified.find(c => c.set === set && (c.card_name || "").trim() === name);
-			if (!stats) stats = card_list_arrayified.find(c => c.set === set && c.number == num);
+			const notToken = (c) => !c.shape || !c.shape.includes("token");
+
+			// 1. Try Set + Name + Number
+			let stats = card_list_arrayified.find(c => c.set === set && (c.card_name || "").trim() === name && c.number == num && notToken(c));
+			
+			// 2. Try Set + Name
+			if (!stats) {
+				stats = card_list_arrayified.find(c => c.set === set && (c.card_name || "").trim() === name && notToken(c));
+			}
+			
+			// 3. Try Set + Number
+			if (!stats) {
+				stats = card_list_arrayified.find(c => c.set === set && c.number == num && notToken(c));
+			}
 			
 			return stats;
 		}
@@ -1033,6 +1055,7 @@ def generateHTML(codes):
 
 			cardGrid = document.getElementById("imagesOnlyGrid");
 			card_list_arrayified.sort(compareFunction);
+			buildCardIndex();
 
 			gridified_card = gridifyCard(card_list_arrayified[0], true);
 			gridified_card.getElementsByTagName("img")[0].id = "image-grid-card";

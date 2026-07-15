@@ -564,20 +564,21 @@ def generateHTML(codes):
 				const set = item.set;
 
 				let stats = null;
+				const notToken = (c) => !c.shape || !c.shape.includes("token");
 				
 				// 1. Try Set + Name + Number
 				if (name && num) {
-					stats = card_list_arrayified.find(c => c.set === set && c.card_name.trim() === name && c.number == num);
+					stats = card_list_arrayified.find(c => c.set === set && c.card_name.trim() === name && c.number == num && notToken(c));
 				}
 				
 				// 2. Try Set + Name
 				if (!stats && name) {
-					stats = card_list_arrayified.find(c => c.set === set && c.card_name.trim() === name);
+					stats = card_list_arrayified.find(c => c.set === set && c.card_name.trim() === name && notToken(c));
 				}
 				
 				// 3. Try Set + Number
 				if (!stats && num) {
-					stats = card_list_arrayified.find(c => c.set === set && c.number == num);
+					stats = card_list_arrayified.find(c => c.set === set && c.number == num && notToken(c));
 				}
 
 				return stats ? { count: item.count, stats: stats } : null;

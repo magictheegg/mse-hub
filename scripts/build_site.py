@@ -253,7 +253,7 @@ for code in set_codes:
 					if card_copy != prev_card_copy:
 						changed = True
 						changed_string += card['card_name'] + '\n'
-						for key in [ 'type', 'cost', 'rules_text', 'pt', 'special_text', 'loyalty' ]:
+						for key in [ 'type', 'cost', 'rules_text', 'flavor_text', 'pt', 'special_text', 'loyalty', "artist" ]:
 							if card[key] != prev_card[key]:
 								changed_string += key + ': ' + prev_card[key] + ' => ' + card[key] + '\n'
 						changed_string += '\n'

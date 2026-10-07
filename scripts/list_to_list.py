@@ -248,6 +248,11 @@ def convertList(setCode):
 		json.dump(final_list, f, indent=4)
 
 def cleanCard(card):
+	if 'card_name' in card:
+		card['card_name'] = card['card_name'].replace('\n', '').replace('\r', '').strip()
+	if 'card_name2' in card:
+		card['card_name2'] = card['card_name2'].replace('\n', '').replace('\r', '').strip()
+
 	#CE: fix for devoid cards
 	if 'devoid' in card['rules_text'].lower():
 		card['color'] = card['color_identity']

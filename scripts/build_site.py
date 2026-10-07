@@ -91,6 +91,12 @@ def generateFormats():
 def prettifyJSON(filepath):
 	with open(filepath, encoding='utf-8-sig') as f:
 		js_data = json.load(f)
+	if isinstance(js_data, dict) and 'cards' in js_data:
+		for card in js_data['cards']:
+			if 'card_name' in card:
+				card['card_name'] = card['card_name'].replace('\n', '').replace('\r', '').strip()
+			if 'card_name2' in card:
+				card['card_name2'] = card['card_name2'].replace('\n', '').replace('\r', '').strip()
 	with open(filepath, 'w', encoding='utf-8-sig') as f:
 		json.dump(js_data, f, indent=4)
 

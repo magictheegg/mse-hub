@@ -55,8 +55,9 @@ def generateFile(code):
 				if ('!' + slot_name) in card['notes']:
 					booster[slot_name].append(card)
 
+		card_name = card['card_name'].replace('\n', '').replace('\r', '').strip()
 		draft_string += '''	{
-			"name": "''' + card['card_name'] + '''",
+			"name": "''' + card_name + '''",
 			"rarity": "''' + ('special' if card['rarity'] in ['cube','masterpiece'] else card['rarity']) + '''",
 			"mana_cost": "''' + re.sub(h_pattern, h_replace, card['cost']) + '''",
 			"type": "''' + card['type'] + '''",
@@ -71,7 +72,7 @@ def generateFile(code):
 	'''
 
 
-		card_file_name = (str(card['number']) + '_' + card['card_name']) if ('position' not in card) else card['position']
+		card_file_name = (str(card['number']) + '_' + card_name) if ('position' not in card) else card['position']
 		if 'double' in card['shape']:
 			draft_string += '''		"back": {
 				"name": "",
@@ -143,7 +144,7 @@ def generateFile(code):
 				count = 5
 
 			if count > 0:
-				draft_string += '''	''' + str(count) + ''' ''' + c['card_name'] + '''
+				draft_string += '''	''' + str(count) + ''' ''' + c['card_name'].replace('\n', '').replace('\r', '').strip() + '''
 '''
 		for x in range(slot['count']):
 			p1p1.append(slot_list)

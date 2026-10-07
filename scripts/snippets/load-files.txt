@@ -14,6 +14,12 @@ await fetch(rootPath + '/lists/all-cards.json')
 
 				let all_tags = new Set();
 				card_list_arrayified.forEach(card => {
+					if (card.card_name) {
+						card.card_name = card.card_name.replace(/[\r\n]+/g, '').trim();
+					}
+					if (card.card_name2) {
+						card.card_name2 = card.card_name2.replace(/[\r\n]+/g, '').trim();
+					}
 					if (card.notes) {
 						const tagMatches = card.notes.matchAll(/!tag(?:<\w+>)?\s+([^\s\n\b]+)/g);
 						for (const match of tagMatches) {
